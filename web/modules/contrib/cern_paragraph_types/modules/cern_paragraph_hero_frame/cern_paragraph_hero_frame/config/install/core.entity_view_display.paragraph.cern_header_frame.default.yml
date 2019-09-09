@@ -1,0 +1,102 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_header_frame.field_p_header_block_background
+    - field.field.paragraph.cern_header_frame.field_p_header_block_bg_color
+    - field.field.paragraph.cern_header_frame.field_p_header_block_bg_image
+    - field.field.paragraph.cern_header_frame.field_p_header_block_bg_video
+    - field.field.paragraph.cern_header_frame.field_p_header_block_bread_color
+    - field.field.paragraph.cern_header_frame.field_p_header_block_breadcrumbs
+    - field.field.paragraph.cern_header_frame.field_p_header_block_link
+    - field.field.paragraph.cern_header_frame.field_p_header_block_slide_timer
+    - field.field.paragraph.cern_header_frame.field_p_header_block_subti_color
+    - field.field.paragraph.cern_header_frame.field_p_header_block_subtitle
+    - field.field.paragraph.cern_header_frame.field_p_header_block_title
+    - field.field.paragraph.cern_header_frame.field_p_header_block_title_color
+    - paragraphs.paragraphs_type.cern_header_frame
+  module:
+    - ds
+    - entity_reference_revisions
+    - link
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_header_block
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+    regions:
+      background:
+        - field_p_header_block_background
+        - field_p_header_block_breadcrumbs
+      link:
+        - field_p_header_block_link
+      subtitle:
+        - field_p_header_block_subtitle
+      title:
+        - field_p_header_block_title
+id: paragraph.cern_header_frame.default
+targetEntityType: paragraph
+bundle: cern_header_frame
+mode: default
+content:
+  field_p_header_block_background:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: background
+  field_p_header_block_breadcrumbs:
+    weight: 1
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: background
+  field_p_header_block_link:
+    weight: 2
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link_separate
+    region: link
+  field_p_header_block_subtitle:
+    weight: 3
+    label: above
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    type: text_trimmed
+    region: subtitle
+  field_p_header_block_title:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: title
+hidden:
+  field_p_header_block_bg_color: true
+  field_p_header_block_bg_image: true
+  field_p_header_block_bg_video: true
+  field_p_header_block_bread_color: true
+  field_p_header_block_slide_timer: true
+  field_p_header_block_subti_color: true
+  field_p_header_block_title_color: true

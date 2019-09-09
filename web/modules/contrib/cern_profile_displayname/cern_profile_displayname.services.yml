@@ -1,0 +1,5 @@
+services:
+  cern_profile_displayname.path_processor_displayname:
+    class: Drupal\cern_profile_displayname\PathProcessor\CernProfileDisplaynameOutboundPathProcessor
+    tags:
+      - { name: path_processor_outbound, priority: -1000 }

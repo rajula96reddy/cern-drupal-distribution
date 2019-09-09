@@ -1,0 +1,31 @@
+#cern-cookieconsent {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    box-shadow: none;
+    border-radius: 0;
+    border: 0;
+    left: 0;
+    background: rgba(30, 30, 30, 0.95);
+    color: #ccc;
+    padding-bottom: 3rem;
+    font-family: "sourcesans-regular";
+    text-align: center;
+}
+
+#cern-cookieconsent * {
+    font-size: 0.9em;
+    text-align: center;
+}
+
+#cern-cookieconsent a.cc_btn_accept_all {
+    display: inline-block;
+    position: static;
+    margin: 25px auto 0;
+    background: #f6f6f6;
+    border: 0;
+}
+
+#cern-cookieconsent .cc_message a {
+    color: #4d94cc;
+}

@@ -1,0 +1,9 @@
+name: CERN Toolbar
+type: module
+description: "Provides CERN Toolbar. The CERN Toolbar is obligatory for all CERN Drupal websites so make sure that the checkbox on the left is ticked."
+core: 8.x
+package: CERN Basic Elements
+version: 1.0
+dependencies:
+  - cookieconsent
+  - locale

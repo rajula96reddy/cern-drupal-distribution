@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: cern_image_gallery_large
+label: 'Image gallery large'
+effects:
+  ba96f878-e32f-4256-a15d-60f01f82e873:
+    uuid: ba96f878-e32f-4256-a15d-60f01f82e873
+    id: image_scale
+    weight: 1
+    data:
+      width: 1440
+      height: null
+      upscale: false

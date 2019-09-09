@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * @file
+ * Contains cern_toolbar.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function cern_toolbar_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the cern_toolbar module.
+    case 'help.page.cern_toolbar':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module enables the CERN toolbar on the top of the site.') . '</p>';
+      $output .= '<p>' . t('This module is not configurable: find more information about the CERN Toolbar at') . ' ' . l('http://ux.web.cern.ch/assets/cern-toolbar', 'http://ux.web.cern.ch/assets/cern-toolbar') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function cern_toolbar_theme() {
+  return [
+    'cern_toolbar' => [
+      'render element' => 'element',
+      'variables' => [
+        'toolbar_links' => NULL,
+        'directory_link' => NULL, 
+        'logged_in' => NULL, 
+        'attributes' => []
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function cern_toolbar_theme_registry_alter(&$theme_registry) {
+  $theme_registry['cookieconsent']['path'] = drupal_get_path('module', 'cern_toolbar').'/templates/';
+}
+
+/**
+ * Implements hook_page_top().
+ */
+function cern_toolbar_page_top(array &$page_top) {
+  $page_top['cern_toolbar'] = [
+      '#type' => 'cern_toolbar',
+      '#cache' => [
+          'tags' => ['cern_toolbar'],
+          'contexts' => ['user'],
+      ],
+  ];
+}

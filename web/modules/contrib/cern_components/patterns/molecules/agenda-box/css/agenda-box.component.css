@@ -1,0 +1,399 @@
+@font-face {
+  font-family: "sourcesans-regular";
+  src: url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/regular.eot?") format("eot"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/regular.woff2") format("woff2"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/regular.woff") format("woff"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/regular.ttf") format("truetype"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/regular.svg#sourcesans-regular") format("svg"); }
+@font-face {
+  font-family: "sourcesans-semibold";
+  src: url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/semibold.eot?") format("eot"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/semibold.woff2") format("woff2"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/semibold.woff") format("woff"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/semibold.ttf") format("truetype"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/semibold.svg#sourcesans-semibold") format("svg"); }
+@font-face {
+  font-family: "sourcesans-bold";
+  src: url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/bold.eot?") format("eot"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/bold.woff2") format("woff2"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/bold.woff") format("woff"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/bold.ttf") format("truetype"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/bold.svg#sourcesans-bold") format("svg"); }
+@font-face {
+  font-family: "sourcesans-light";
+  src: url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/light.eot?") format("eot"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/light.woff2") format("woff2"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/light.woff") format("woff"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/light.ttf") format("truetype"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/light.svg#sourcesans-light") format("svg"); }
+@font-face {
+  font-family: "opensans-regular";
+  src: url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/regular.eot?") format("eot"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/regular.woff2") format("woff2"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/regular.woff") format("woff"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/regular.ttf") format("truetype"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/regular.svg#opensans-regular") format("svg"); }
+@font-face {
+  font-family: "opensans-semibold";
+  src: url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/semibold.eot?") format("eot"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/semibold.woff2") format("woff2"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/semibold.woff") format("woff"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/semibold.ttf") format("truetype"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/semibold.svg#opensans-semibold") format("svg"); }
+@font-face {
+  font-family: "opensans-bold";
+  src: url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/bold.eot?") format("eot"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/bold.woff2") format("woff2"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/bold.woff") format("woff"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/bold.ttf") format("truetype"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/bold.svg#opensans-bold") format("svg"); }
+@font-face {
+  font-family: "cern-icons";
+  src: url("//framework.web.cern.ch/framework/3.0/fonts/cern/cern.eot?") format("eot"), url("//framework.web.cern.ch/framework/3.0/fonts/cern/cern.woff2") format("woff2"), url("//framework.web.cern.ch/framework/3.0/fonts/cern/cern.woff") format("woff"), url("//framework.web.cern.ch/framework/3.0/fonts/cern/cern.ttf") format("truetype"), url("//framework.web.cern.ch/framework/3.0/fonts/cern/cern.svg#cern-icons") format("svg"); }
+.agenda-box-pattern {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-family: 'sourcesans-regular';
+  padding: 30px 40px;
+  background: #0855a0;
+  margin-bottom: 15px;
+  max-width: 100%;
+  min-height: 210px;
+  float: left;
+  vertical-align: top;
+  position: relative; }
+  .agenda-box-pattern.portrait {
+    width: calc(33.3% - 8px);
+    min-height: 428px;
+    margin: 4px; }
+    .agenda-box-pattern.portrait .agenda-box-pattern__box_wrapper {
+      height: 368px; }
+    @media screen and (max-width: 991px) {
+      .agenda-box-pattern.portrait {
+        width: calc(50% - 8px); } }
+    @media screen and (max-width: 767px) {
+      .agenda-box-pattern.portrait {
+        margin: 4px 0;
+        min-height: 210px;
+        width: 100%; }
+        .agenda-box-pattern.portrait .agenda-box-pattern__box_wrapper {
+          height: 150px; } }
+    .agenda-box-pattern.portrait:hover .component-related_card__veil {
+      opacity: 0; }
+  .agenda-box-pattern.simple-display {
+    width: calc(33.3% - 8px);
+    min-height: 210px;
+    margin: 4px; }
+    @media screen and (max-width: 991px) {
+      .agenda-box-pattern.simple-display {
+        width: calc(50% - 8px); } }
+    @media screen and (max-width: 767px) {
+      .agenda-box-pattern.simple-display {
+        margin: 4px 0;
+        width: 100%; } }
+    .agenda-box-pattern.simple-display:hover .component-related_card__veil {
+      opacity: 0; }
+  .agenda-box-pattern.portrait.box-force-full-width {
+    width: calc(100% - 8px);
+    min-height: 428px;
+    margin: 4px; }
+    @media screen and (max-width: 991px) {
+      .agenda-box-pattern.portrait.box-force-full-width {
+        width: calc(100% - 8px); } }
+    @media screen and (max-width: 767px) {
+      .agenda-box-pattern.portrait.box-force-full-width {
+        margin: 4px 0;
+        width: 100%; } }
+    .agenda-box-pattern.portrait.box-force-full-width:hover .component-related_card__veil {
+      opacity: 0; }
+  .agenda-box-pattern.simple-display.box-force-full-width, .agenda-box-pattern:not(.portrait):not(.simple-display) {
+    width: calc(100% - 8px);
+    min-height: 210px;
+    margin: 4px; }
+    @media screen and (max-width: 991px) {
+      .agenda-box-pattern.simple-display.box-force-full-width, .agenda-box-pattern:not(.portrait):not(.simple-display) {
+        width: calc(100% - 8px); } }
+    @media screen and (max-width: 767px) {
+      .agenda-box-pattern.simple-display.box-force-full-width, .agenda-box-pattern:not(.portrait):not(.simple-display) {
+        margin: 4px 0;
+        width: 100%; } }
+    .agenda-box-pattern.simple-display.box-force-full-width:hover .component-related_card__veil, .agenda-box-pattern:not(.portrait):not(.simple-display):hover .component-related_card__veil {
+      opacity: 0; }
+  .agenda-box-pattern .agenda-box-pattern__box-wrapper {
+    align-self: flex-end;
+    width: 100%;
+    z-index: 1; }
+    .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-date-wrapper {
+      color: white; }
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-date-wrapper .agenda-box-week-day {
+        text-transform: uppercase; }
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-date-wrapper .agenda-box-event-dates span {
+        font-size: 32px;
+        text-transform: uppercase;
+        line-height: 35px; }
+        .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-date-wrapper .agenda-box-event-dates span.agenda-box-event-dates-1, .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-date-wrapper .agenda-box-event-dates span.agenda-box-event-dates-2 {
+          text-transform: uppercase;
+          font-family: "sourcesans-bold"; }
+        .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-date-wrapper .agenda-box-event-dates span.agenda-box-event-dates-3 {
+          font-family: "sourcesans-light"; }
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-date-wrapper .agenda-box-event-time {
+        font-size: 1.5rem;
+        letter-spacing: 0.2px; }
+        .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-date-wrapper .agenda-box-event-time .agenda-box-start-time {
+          font-weight: bold; }
+        .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-date-wrapper .agenda-box-event-time .agenda-box-time-zone {
+          display: inline; }
+          .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-date-wrapper .agenda-box-event-time .agenda-box-time-zone * {
+            display: inline; }
+    .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-cal-wrapper {
+      text-align: right;
+      padding-right: 10px;
+      bottom: 15px;
+      position: absolute;
+      right: 10px; }
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-cal-wrapper .agenda-box-cal-button {
+        background: rgba(0, 0, 0, 0.15);
+        position: relative;
+        display: inline-block; }
+        .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-cal-wrapper .agenda-box-cal-button a:before {
+          font-size: 33px;
+          font-size: 3.3rem;
+          font-family: "cern-icons";
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          content: '\h';
+          display: table;
+          position: relative;
+          top: 2px;
+          left: 3px;
+          line-height: 25px;
+          width: 22px;
+          text-indent: -5px;
+          padding: 5px 8px; }
+    .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-link h2,
+    .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-link h3 {
+      font-size: 20px;
+      font-size: 2rem;
+      line-height: 26px;
+      margin: 0;
+      font-family: "sourcesans-semibold"; }
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-link h2 a,
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-link h3 a {
+        display: block;
+        position: relative; }
+        .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-link h2 a span,
+        .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-link h3 a span {
+          display: block;
+          width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; }
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-link h2 a:hover,
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-link h3 a:hover {
+        text-decoration: none; }
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-link h2 a:before,
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-link h3 a:before {
+        content: '\j';
+        font-size: 40px;
+        font-size: 4rem;
+        -webkit-transition: all 0.6s ease-in-out 0s;
+        -khtml-transition: all 0.6s ease-in-out 0s;
+        -moz-transition: all 0.6s ease-in-out 0s;
+        -ms-transition: all 0.6s ease-in-out 0s;
+        -o-transition: all 0.6s ease-in-out 0s;
+        transition: all 0.6s ease-in-out 0s;
+        font-family: "cern-icons";
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        vertical-align: bottom;
+        position: absolute;
+        top: -1px;
+        left: -10px;
+        line-height: 25px;
+        width: 12px;
+        text-indent: -25px; }
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-link h2 a:hover:before,
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-link h3 a:hover:before {
+        left: 0; }
+    .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-content-type {
+      color: white;
+      display: inline;
+      margin-right: 10px; }
+    .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-audience {
+      display: inline; }
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-audience * {
+        display: inline;
+        color: white; }
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-audience:before {
+        content: '|';
+        display: inline-block;
+        position: relative;
+        left: -6px;
+        top: -1px; }
+    .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-place {
+      display: inline;
+      color: white; }
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-place * {
+        display: inline; }
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-place:before {
+        content: '|';
+        display: inline-block;
+        position: relative;
+        left: -6px;
+        top: -1px; }
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-place p:last-child {
+        color: white;
+        margin-bottom: 0; }
+    .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-week-day,
+    .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-content-type,
+    .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-audience,
+    .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-place {
+      font-family: "sourcesans-regular";
+      font-size: 14px;
+      font-size: 1.4rem;
+      line-height: 18px; }
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-week-day *,
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-content-type *,
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-audience *,
+      .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-place * {
+        font-family: "sourcesans-regular";
+        font-size: 14px;
+        font-size: 1.4rem;
+        line-height: 18px; }
+    .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-body p:last-child {
+      margin: 0; }
+
+.component-row__sidebar-right .agenda-box-pattern.portrait,
+.component-row__sidebar-left .agenda-box-pattern.portrait {
+  margin: 4px 4px 4px 0px;
+  width: 100%;
+  min-height: 210px; }
+  .component-row__sidebar-right .agenda-box-pattern.portrait .agenda-box-pattern__wrapper,
+  .component-row__sidebar-left .agenda-box-pattern.portrait .agenda-box-pattern__wrapper {
+    height: 150px; }
+  @media screen and (max-width: 991px) {
+    .component-row__sidebar-right .agenda-box-pattern.portrait,
+    .component-row__sidebar-left .agenda-box-pattern.portrait {
+      margin: 4px;
+      width: calc(100% - 8px); } }
+  @media screen and (max-width: 767px) {
+    .component-row__sidebar-right .agenda-box-pattern.portrait,
+    .component-row__sidebar-left .agenda-box-pattern.portrait {
+      margin: 4px 0;
+      width: 100%; } }
+.component-row__sidebar-right .agenda-box-pattern.simple-display,
+.component-row__sidebar-left .agenda-box-pattern.simple-display {
+  margin: 4px 4px 4px 0px;
+  width: 100%;
+  min-height: 210px; }
+  .component-row__sidebar-right .agenda-box-pattern.simple-display .agenda-box-pattern__wrapper,
+  .component-row__sidebar-left .agenda-box-pattern.simple-display .agenda-box-pattern__wrapper {
+    height: 150px; }
+  @media screen and (max-width: 991px) {
+    .component-row__sidebar-right .agenda-box-pattern.simple-display,
+    .component-row__sidebar-left .agenda-box-pattern.simple-display {
+      margin: 4px;
+      width: calc(100% - 8px); } }
+  @media screen and (max-width: 767px) {
+    .component-row__sidebar-right .agenda-box-pattern.simple-display,
+    .component-row__sidebar-left .agenda-box-pattern.simple-display {
+      margin: 4px 0;
+      width: 100%; } }
+.component-row__sidebar-right .agenda-box-pattern:not(.portrait):not(.simple-display),
+.component-row__sidebar-left .agenda-box-pattern:not(.portrait):not(.simple-display) {
+  margin: 4px 4px 4px 0px;
+  width: 100%;
+  min-height: 210px; }
+  .component-row__sidebar-right .agenda-box-pattern:not(.portrait):not(.simple-display) .agenda-box-pattern__wrapper,
+  .component-row__sidebar-left .agenda-box-pattern:not(.portrait):not(.simple-display) .agenda-box-pattern__wrapper {
+    height: 150px; }
+  @media screen and (max-width: 991px) {
+    .component-row__sidebar-right .agenda-box-pattern:not(.portrait):not(.simple-display),
+    .component-row__sidebar-left .agenda-box-pattern:not(.portrait):not(.simple-display) {
+      margin: 4px;
+      width: calc(100% - 8px); } }
+  @media screen and (max-width: 767px) {
+    .component-row__sidebar-right .agenda-box-pattern:not(.portrait):not(.simple-display),
+    .component-row__sidebar-left .agenda-box-pattern:not(.portrait):not(.simple-display) {
+      margin: 4px 0;
+      width: 100%; } }
+
+@media screen and (min-width: 992px) {
+  .component-row.box-effects .component-row__center .agenda-box-pattern {
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -khtml-transition: all 0.4s ease-in-out 0s;
+    -moz-transition: all 0.4s ease-in-out 0s;
+    -ms-transition: all 0.4s ease-in-out 0s;
+    -o-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s; }
+    .component-row.box-effects .component-row__center .agenda-box-pattern.portrait {
+      width: calc(33.3% - 38px); } }
+    @media screen and (min-width: 992px) and (max-width: 991px) {
+      .component-row.box-effects .component-row__center .agenda-box-pattern.portrait {
+        width: calc(50% - 38px); } }
+    @media screen and (min-width: 992px) and (max-width: 767px) {
+      .component-row.box-effects .component-row__center .agenda-box-pattern.portrait {
+        width: 100% !important; } }
+@media screen and (min-width: 992px) {
+      .component-row.box-effects .component-row__center .agenda-box-pattern.portrait.from-smaller {
+        -webkit-transition: all 0.4s ease-in-out 0s;
+        -khtml-transition: all 0.4s ease-in-out 0s;
+        -moz-transition: all 0.4s ease-in-out 0s;
+        -ms-transition: all 0.4s ease-in-out 0s;
+        -o-transition: all 0.4s ease-in-out 0s;
+        transition: all 0.4s ease-in-out 0s; }
+      .component-row.box-effects .component-row__center .agenda-box-pattern.portrait.from-bigger, .component-row.box-effects .component-row__center .agenda-box-pattern.portrait.from-bigger.from-smaller {
+        -webkit-transition: all 0.4s ease-in-out 0s;
+        -khtml-transition: all 0.4s ease-in-out 0s;
+        -moz-transition: all 0.4s ease-in-out 0s;
+        -ms-transition: all 0.4s ease-in-out 0s;
+        -o-transition: all 0.4s ease-in-out 0s;
+        transition: all 0.4s ease-in-out 0s; }
+      .component-row.box-effects .component-row__center .agenda-box-pattern.portrait.make-bigger {
+        -webkit-transition: all 0.4s ease-in-out 0s;
+        -khtml-transition: all 0.4s ease-in-out 0s;
+        -moz-transition: all 0.4s ease-in-out 0s;
+        -ms-transition: all 0.4s ease-in-out 0s;
+        -o-transition: all 0.4s ease-in-out 0s;
+        transition: all 0.4s ease-in-out 0s;
+        width: calc(43.3% - 38px) !important; }
+      .component-row.box-effects .component-row__center .agenda-box-pattern.portrait.make-smaller {
+        -webkit-transition: all 0.4s ease-in-out 0s;
+        -khtml-transition: all 0.4s ease-in-out 0s;
+        -moz-transition: all 0.4s ease-in-out 0s;
+        -ms-transition: all 0.4s ease-in-out 0s;
+        -o-transition: all 0.4s ease-in-out 0s;
+        transition: all 0.4s ease-in-out 0s;
+        width: calc(23.3% - 38px) !important; }
+      .component-row.box-effects .component-row__center .agenda-box-pattern.portrait:hover .component-preview-cards__veil {
+        opacity: 0; }
+    .component-row.box-effects .component-row__center .agenda-box-pattern.simple-display {
+      width: calc(33.3% - 38px); } }
+    @media screen and (min-width: 992px) and (max-width: 991px) {
+      .component-row.box-effects .component-row__center .agenda-box-pattern.simple-display {
+        width: calc(50% - 38px); } }
+    @media screen and (min-width: 992px) and (max-width: 767px) {
+      .component-row.box-effects .component-row__center .agenda-box-pattern.simple-display {
+        width: 100% !important; } }
+@media screen and (min-width: 992px) {
+      .component-row.box-effects .component-row__center .agenda-box-pattern.simple-display.from-smaller {
+        -webkit-transition: all 0.4s ease-in-out 0s;
+        -khtml-transition: all 0.4s ease-in-out 0s;
+        -moz-transition: all 0.4s ease-in-out 0s;
+        -ms-transition: all 0.4s ease-in-out 0s;
+        -o-transition: all 0.4s ease-in-out 0s;
+        transition: all 0.4s ease-in-out 0s; }
+      .component-row.box-effects .component-row__center .agenda-box-pattern.simple-display.from-bigger, .component-row.box-effects .component-row__center .agenda-box-pattern.simple-display.from-bigger.from-smaller {
+        -webkit-transition: all 0.4s ease-in-out 0s;
+        -khtml-transition: all 0.4s ease-in-out 0s;
+        -moz-transition: all 0.4s ease-in-out 0s;
+        -ms-transition: all 0.4s ease-in-out 0s;
+        -o-transition: all 0.4s ease-in-out 0s;
+        transition: all 0.4s ease-in-out 0s; }
+      .component-row.box-effects .component-row__center .agenda-box-pattern.simple-display.make-bigger {
+        -webkit-transition: all 0.4s ease-in-out 0s;
+        -khtml-transition: all 0.4s ease-in-out 0s;
+        -moz-transition: all 0.4s ease-in-out 0s;
+        -ms-transition: all 0.4s ease-in-out 0s;
+        -o-transition: all 0.4s ease-in-out 0s;
+        transition: all 0.4s ease-in-out 0s;
+        width: calc(43.3% - 38px) !important; }
+      .component-row.box-effects .component-row__center .agenda-box-pattern.simple-display.make-smaller {
+        -webkit-transition: all 0.4s ease-in-out 0s;
+        -khtml-transition: all 0.4s ease-in-out 0s;
+        -moz-transition: all 0.4s ease-in-out 0s;
+        -ms-transition: all 0.4s ease-in-out 0s;
+        -o-transition: all 0.4s ease-in-out 0s;
+        transition: all 0.4s ease-in-out 0s;
+        width: calc(23.3% - 38px) !important; }
+      .component-row.box-effects .component-row__center .agenda-box-pattern.simple-display:hover .component-preview-cards__veil {
+        opacity: 0; }
+    .component-row.box-effects .component-row__center .agenda-box-pattern.portrait.box-force-full-width, .component-row.box-effects .component-row__center .agenda-box-pattern.simple-display.box-force-full-width, .component-row.box-effects .component-row__center .agenda-box-pattern:not(.portrait):not(.simple-display) {
+      width: calc(100% - 98px); } }
+    @media screen and (min-width: 992px) and (max-width: 991px) {
+      .component-row.box-effects .component-row__center .agenda-box-pattern.portrait.box-force-full-width, .component-row.box-effects .component-row__center .agenda-box-pattern.simple-display.box-force-full-width, .component-row.box-effects .component-row__center .agenda-box-pattern:not(.portrait):not(.simple-display) {
+        width: calc(100% - 98px); } }
+    @media screen and (min-width: 992px) and (max-width: 767px) {
+      .component-row.box-effects .component-row__center .agenda-box-pattern.portrait.box-force-full-width, .component-row.box-effects .component-row__center .agenda-box-pattern.simple-display.box-force-full-width, .component-row.box-effects .component-row__center .agenda-box-pattern:not(.portrait):not(.simple-display) {
+        width: 100% !important; } }
+@media screen and (min-width: 992px) {
+      .component-row.box-effects .component-row__center .agenda-box-pattern.portrait.box-force-full-width:hover .component-preview-cards__veil, .component-row.box-effects .component-row__center .agenda-box-pattern.simple-display.box-force-full-width:hover .component-preview-cards__veil, .component-row.box-effects .component-row__center .agenda-box-pattern:not(.portrait):not(.simple-display):hover .component-preview-cards__veil {
+        opacity: 0; } }

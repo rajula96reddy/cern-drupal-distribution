@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cern_gallery
+label: 'Image gallery'
+icon_uuid: null
+description: 'A image gallery'
+behavior_plugins: {  }

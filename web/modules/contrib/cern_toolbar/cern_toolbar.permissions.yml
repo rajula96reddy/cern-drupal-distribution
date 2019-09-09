@@ -1,0 +1,4 @@
+
+administer cern toolbar:
+  title: 'Administer CERN Toolbar'
+  description: 'Allow to change CERN Toolbar settings'

@@ -1,0 +1,13 @@
+<?php
+
+function cern_paragraph_hero_header_preprocess_pattern_header_blocks(&$variables) {
+
+  foreach ($variables['items']['field_p_header_blocks_blocks']['#items'] as $header_block) {
+    /** @var \Drupal\paragraphs\Entity\Paragraph $header_block */
+    $time =  $header_block->entity->get('field_p_header_block_slide_timer')->getValue();
+    if ($time != NULL) {
+      $variables['#attached']['drupalSettings']['cern_hero_header']['slide_time'][] = $time[0]['value'] * 1000;
+    }
+  }
+}
+

@@ -1,0 +1,75 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_background.field_p_background_cds_media
+    - field.field.paragraph.cern_background.field_p_background_color
+    - field.field.paragraph.cern_background.field_p_background_hasveil
+    - field.field.paragraph.cern_background.field_p_background_image
+    - field.field.paragraph.cern_background.field_p_background_type
+    - field.field.paragraph.cern_background.field_p_background_video
+    - paragraphs.paragraphs_type.cern_background
+  module:
+    - cern_cds_media
+    - color_field
+    - ds
+    - file
+    - image
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_background
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+    regions:
+      cds_media:
+        - field_p_background_cds_media
+      video:
+        - field_p_background_video
+      image:
+        - field_p_background_image
+      color:
+        - field_p_background_color
+id: paragraph.cern_background.default
+targetEntityType: paragraph
+bundle: cern_background
+mode: default
+content:
+  field_p_background_cds_media:
+    type: CernCdsMediaDefaultFormatter
+    weight: 0
+    region: cds_media
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_p_background_color:
+    weight: 3
+    label: above
+    settings:
+      opacity: '1'
+      format: hex
+    third_party_settings: {  }
+    type: color_field_formatter_text
+    region: color
+  field_p_background_image:
+    weight: 2
+    label: above
+    settings:
+      image_style: ''
+    third_party_settings: {  }
+    type: image_url
+    region: image
+  field_p_background_video:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: file_default
+    region: video
+hidden:
+  field_p_background_hasveil: true
+  field_p_background_type: true

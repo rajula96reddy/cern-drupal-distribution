@@ -1,0 +1,18 @@
+# Margin Pattern
+#
+margin:
+  label: "Margin"
+  description: "A margin between two components"
+  fields:
+    select:
+      description: "Value that define the margin size"
+      label: Size
+      preview: "margin"
+      type: text
+  libraries:
+    -
+      margin:
+        css:
+          component:
+            css/margin.component.css: {}
+  use: "@cern_components/molecules/margin/margin.html.twig"

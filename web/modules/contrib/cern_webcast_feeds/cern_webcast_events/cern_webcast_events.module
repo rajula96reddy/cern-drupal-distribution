@@ -1,0 +1,14 @@
+<?php
+
+/**
+ *  Implement hook_theme().
+ */
+function cern_webcast_events_theme($existing, $type, $theme, $path) {
+    return [
+      'field__node__field_webcast_event_image' => [
+        'template' => 'field--node--field-webcast-event-image',
+        'path' => drupal_get_path('module', 'cern_webcast_events') .'/templates',
+        'base hook' => 'field',
+      ]
+    ];
+}

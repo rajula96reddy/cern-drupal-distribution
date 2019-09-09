@@ -1,0 +1,34 @@
+background:
+  label: "Background of the component"
+  description: "Once placed inside the component it will be used as the background with different options like color, image or video"
+  fields:
+    cds_media:
+      description: "Field CDS Media"
+      label: "CDS Media"
+      preview: ""
+      type: cds_media
+    video:
+      description: "File of type mp4 or ogg"
+      label: "Video File"
+      preview: "https://videos.cern.ch/api/files/6b2c54a9-8b78-4066-be17-deec9a1fe906/slave_720p.mp4"
+      type: video
+    image:
+      description: "Field of type image with a jpg, jpeg or png formats"
+      label: "Image"
+      preview: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/CERN-aerial_1.jpg/1200px-CERN-aerial_1.jpg"
+      type: image
+    color:
+      description: "Field of color type"
+      label: "Color field"
+      preview: "#000"
+      type: color
+
+  libraries:
+    - background:
+        css:
+          component:
+            css/background.component.css: {}
+        js:
+          js/background.js: {}
+
+  use: "@cern_components/atoms/background/background.html.twig"

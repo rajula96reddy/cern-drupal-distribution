@@ -1,0 +1,11 @@
+id: cern_avatar
+label: Avatar
+ui_limit: "news_page|cern_card\r\nnews_page|cern_featured\r\nnews_page|full"
+properties:
+  content:
+    value: "<p>[node:field_p_news_display_byline:entity:field_avatar]</p>\r\n"
+    format: cern_full_html
+type: token
+type_label: 'Token field'
+entities:
+  node: node

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_agenda_box_link
+    - paragraphs.paragraphs_type.cern_agenda_box
+  module:
+    - link
+id: paragraph.cern_agenda_box.field_p_agenda_box_link
+field_name: field_p_agenda_box_link
+entity_type: paragraph
+bundle: cern_agenda_box
+label: Link
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

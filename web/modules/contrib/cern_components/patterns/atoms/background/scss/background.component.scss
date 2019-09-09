@@ -1,0 +1,98 @@
+.background__veil {
+  height: 100%;
+  position: absolute;
+  min-width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.9) 100%);
+}
+
+.background-component {
+  min-height: 100%;
+  position: absolute;
+  min-width: 101%;
+  top: 0;
+  left: -1px;
+  overflow: hidden;
+  z-index: 0;
+  &.background {
+    &__video {
+      background: black;
+      video {
+        position: absolute;
+        min-width: 100%;
+        min-height: 100%;
+        margin: auto;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -khtml-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+    }
+    &__cds_media {
+      a {
+        cursor: pointer;
+        display: block;
+      }
+      video,
+      img {
+        min-width: 100%;
+        min-height: 100%;
+      }
+      figcaption {
+        display: none;
+      }
+      figure.cds-image {
+        img {
+          position: absolute !important;
+          min-width: 100%;
+          min-height: 100%;
+          margin: auto;
+          top: 50% !important;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -khtml-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+        }
+      }
+      figure.cds-video {
+        iframe {
+          position: absolute;
+          min-width: 100%;
+          min-height: 100%;
+          margin: auto;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -khtml-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width:991px) {
+  .background-component {
+    &.background__cds_media {
+      video,
+      img {
+        width: auto !important;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    }
+  }
+}

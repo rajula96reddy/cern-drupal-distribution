@@ -1,0 +1,6 @@
+.cern-page-display-page .wrapper-center > h2, .cern-page-display-page > h2,
+.cern-view-display-page .wrapper-center > h2,
+.cern-view-display-page > h2 {
+  text-align: center;
+  font-size: 39px;
+  margin-bottom: 20px; }

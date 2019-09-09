@@ -1,0 +1,11 @@
+excluded:
+  - core.base_field_override.paragraph.cern_featured_banner.moderation_state
+  - core.entity_form_display.paragraph.cern_divisions.default
+  - core.entity_view_display.paragraph.cern_divisions.default
+  - field.field.paragraph.cern_divisions.field_p_divisions_background
+  - field.field.paragraph.cern_divisions.field_p_divisions_bg_text
+  - field.field.paragraph.cern_divisions.field_p_divisions_color_text
+  - field.field.paragraph.cern_divisions.field_p_divisions_link
+  - field.field.paragraph.cern_divisions.field_p_divisions_position_text
+  - field.field.paragraph.cern_divisions.field_p_divisions_text
+required: true

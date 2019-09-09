@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_row_display
+    - paragraphs.paragraphs_type.cern_section
+  module:
+    - options
+id: paragraph.cern_section.field_p_row_display
+field_name: field_p_row_display
+entity_type: paragraph
+bundle: cern_section
+label: Display
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: centered
+default_value_callback: ''
+settings: {  }
+field_type: list_string

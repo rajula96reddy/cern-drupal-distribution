@@ -1,0 +1,25 @@
+name: 'CERN Author info'
+type: module
+core: 8.x
+version: '1.2'
+dependencies:
+  - allowed_formats
+  - cern_paragraph_types
+  - content_translation
+  - ctools
+  - ds
+  - field
+  - field_formatter_class
+  - field_group
+  - file
+  - filefield_paths
+  - image
+  - language
+  - paragraphs
+  - path
+  - pathauto
+  - smart_trim
+  - taxonomy
+  - text
+description: 'Author info paragraph'
+package: 'CERN Components'

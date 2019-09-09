@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Tags
+vid: cern_tags
+description: 'Vocabulary for tagging content'
+hierarchy: 0
+weight: 0

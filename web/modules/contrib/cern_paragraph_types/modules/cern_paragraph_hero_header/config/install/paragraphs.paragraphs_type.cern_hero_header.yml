@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cern_hero_header
+label: 'Hero header'
+icon_uuid: null
+description: 'Hero header paragraph'
+behavior_plugins: {  }

@@ -1,0 +1,62 @@
+.preview-list-component .preview-list-image {
+  width: 300px;
+  height: 170px;
+  background: #ddd;
+  margin-right: 15px;
+  float: left;
+  overflow: hidden;
+  background-image: url(../images/cern.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%; }
+.preview-list-component .preview-list-news-info {
+  float: left;
+  width: calc(100% - 315px); }
+  .preview-list-component .preview-list-news-info .preview-list-topic {
+    display: inline; }
+    .preview-list-component .preview-list-news-info .preview-list-topic a {
+      color: black; }
+  .preview-list-component .preview-list-news-info .preview-list-title {
+    margin-top: 5px; }
+  .preview-list-component .preview-list-news-info .preview-list-strap {
+    margin-bottom: 2rem; }
+  .preview-list-component .preview-list-news-info .preview-list-news-format {
+    display: inline; }
+    .preview-list-component .preview-list-news-info .preview-list-news-format * {
+      display: inline; }
+    .preview-list-component .preview-list-news-info .preview-list-news-format a {
+      color: black; }
+  .preview-list-component .preview-list-news-info .preview-list-topic,
+  .preview-list-component .preview-list-news-info .preview-list-date {
+    display: inline; }
+    .preview-list-component .preview-list-news-info .preview-list-topic:before,
+    .preview-list-component .preview-list-news-info .preview-list-date:before {
+      content: '|';
+      position: relative;
+      display: inline-block;
+      margin: 0 5px; }
+
+@media only screen and (max-width: 991px) {
+  .preview-list-component .preview-list-news-info .preview-list-title {
+    font-size: 2rem; } }
+@media only screen and (max-width: 767px) {
+  .preview-list-component .preview-list-image {
+    width: 170px; }
+  .preview-list-component .preview-list-news-info {
+    float: left;
+    width: calc(100% - 185px); } }
+@media only screen and (max-width: 500px) {
+  .preview-list-component .preview-list-image,
+  .preview-list-component .preview-list-news-info {
+    width: 100%;
+    float: none;
+    margin: 0;
+    position: relative; }
+  .preview-list-component .preview-list-news-info .preview-list-topic {
+    position: absolute;
+    top: -34px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 3px 10px; }
+    .preview-list-component .preview-list-news-info .preview-list-topic a {
+      color: white; } }

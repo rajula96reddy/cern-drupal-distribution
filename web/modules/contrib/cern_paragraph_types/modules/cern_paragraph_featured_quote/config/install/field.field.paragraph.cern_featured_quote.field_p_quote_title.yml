@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_quote_title
+    - paragraphs.paragraphs_type.cern_featured_quote
+id: paragraph.cern_featured_quote.field_p_quote_title
+field_name: field_p_quote_title
+entity_type: paragraph
+bundle: cern_featured_quote
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

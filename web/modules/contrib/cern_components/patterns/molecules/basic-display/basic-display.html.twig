@@ -1,0 +1,59 @@
+{#
+ * @file
+ * Basic Full Content Display Pattern Twig.
+#}
+
+{# Breadcrumbs #}
+{# <div class="basic-node-full-content-breadcrumbs">
+  {{ drupal_block('system_breadcrumb_block') }}
+  <hr />
+</div> #}
+
+{# Left content #}
+{# <div class="basic-node-full-content-social-buttons">
+  <div> {{ drupal_block('social_sharing_block') }}</div>  
+</div> #}
+
+{# Center content #}
+<div class="basic-node-center-content">
+
+  {# Title field #}
+  {% if title | render %}
+    <h1 class="basic-node-full-content-title">
+      {{ title }}
+    </h1>
+  {% endif %}
+  {# Strap field #}
+  {% if strap | render %}
+    <h2 class="basic-node-full-content-strap">
+      {{ strap }}
+    </h2>
+  {% endif %}
+  {# Image field #}
+  {% if image | render %}
+    <div class="basic-node-full-content-image">
+      {{ image }}
+    </div>
+    {% if caption | render %}
+      <p class="basic-node-full-content-caption cern-caption">
+        {{ caption }}
+      </p>
+    {% endif %}
+  {% endif %}
+  {# Body field #}
+  {% if body | render %}
+    <div class="basic-node-full-content-body clearfix full-html-markup full-text-animation">
+      {{ body }}
+    </div>
+  {% endif %}
+</div>
+
+{# Center content #}
+<div class="basic-node-center-component">
+  {# Component field #}
+  {% if component | render %}
+    <div class="basic-node-full-content-component">
+      {{ component }}
+    </div>
+  {% endif %}
+</div>

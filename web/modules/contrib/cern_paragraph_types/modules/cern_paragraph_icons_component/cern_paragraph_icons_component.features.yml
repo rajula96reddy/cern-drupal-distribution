@@ -1,0 +1,10 @@
+excluded:
+  - core.base_field_override.paragraph.cern_icons_component.created
+  - core.base_field_override.paragraph.cern_icons_component.moderation_state
+  - core.base_field_override.paragraph.cern_icons_component.status
+  - core.base_field_override.paragraph.cern_icons_component.uid
+  - core.base_field_override.paragraph.cern_icon_component.created
+  - core.base_field_override.paragraph.cern_icon_component.moderation_state
+  - core.base_field_override.paragraph.cern_icon_component.status
+  - core.base_field_override.paragraph.cern_icon_component.uid
+required: true

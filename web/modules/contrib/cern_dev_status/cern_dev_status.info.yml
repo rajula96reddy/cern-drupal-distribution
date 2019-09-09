@@ -1,0 +1,7 @@
+name: CERN Dev Status
+type: module
+description: Displays a banner at the bottom of the website and applies styles according to its development status. Prevents anonymous users to access the website by checking their IP.
+core: 8.x
+package: CERN
+configure: cern_dev_status.settings
+version: "1.5.3"

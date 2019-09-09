@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - language
+    - taxonomy
+id: series_vocabulary
+label: 'Series Vocabulary'
+type: 'canonical_entities:taxonomy_term'
+pattern: 'series/[term:name]'
+selection_criteria:
+  b2ff8989-d20b-45e6-9e2d-07f1984700ad:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      cern_series: cern_series
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: b2ff8989-d20b-45e6-9e2d-07f1984700ad
+  c3184e45-3b1f-4197-be0d-164a31ce86fb:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'taxonomy_term:langcode:language'
+    uuid: c3184e45-3b1f-4197-be0d-164a31ce86fb
+selection_logic: and
+weight: -6
+relationships:
+  'taxonomy_term:langcode:language':
+    label: Language

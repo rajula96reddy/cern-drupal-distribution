@@ -1,0 +1,14 @@
+.faq-box-pattern h3 a {
+  display: block;
+  position: relative; }
+  .faq-box-pattern h3 a span {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+
+.cern-view-display-more_faq .view-content .views-row > div.faq-box-pattern {
+  position: relative !important;
+  bottom: -20px !important;
+  padding-right: 10px !important; }

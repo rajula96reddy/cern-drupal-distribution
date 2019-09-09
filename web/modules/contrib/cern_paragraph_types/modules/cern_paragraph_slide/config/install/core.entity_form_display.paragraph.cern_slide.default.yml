@@ -1,0 +1,91 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_slide.field_p_slide_caption
+    - field.field.paragraph.cern_slide.field_p_slide_cds_item
+    - field.field.paragraph.cern_slide.field_p_slide_image
+    - field.field.paragraph.cern_slide.field_p_slide_med_type
+    - field.field.paragraph.cern_slide.field_p_slide_video
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.cern_slide
+  module:
+    - cern_cds_media
+    - content_moderation
+    - field_group
+    - file
+    - image
+    - text
+third_party_settings:
+  field_group:
+    group_content_and_configuration:
+      children:
+        - field_p_slide_med_type
+        - field_p_slide_image
+        - field_p_slide_video
+        - field_p_slide_caption
+        - field_p_slide_cds_item
+      parent_name: ''
+      weight: 20
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Content and configuration'
+id: paragraph.cern_slide.default
+targetEntityType: paragraph
+bundle: cern_slide
+mode: default
+content:
+  field_p_slide_caption:
+    weight: 104
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_p_slide_cds_item:
+    weight: 105
+    settings: {  }
+    third_party_settings: {  }
+    type: CernCdsMediaDefaultWidget
+    region: content
+  field_p_slide_image:
+    weight: 102
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_p_slide_med_type:
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_p_slide_video:
+    weight: 103
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

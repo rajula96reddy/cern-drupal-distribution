@@ -1,0 +1,50 @@
+{#
+ * @file
+ * FAQ Box pattern.
+#}
+
+
+
+{# Set default classes #}
+{% 
+  set classes = [
+    "faq-box-pattern"
+  ] 
+%}
+
+{# Create attributes for the card #}
+{% set attributes = create_attribute() %}
+{% set attributes = attributes.addClass(classes) %}
+
+{# Adding background to attributes #}
+{% if background | render %}
+  {% set attributes = attributes.addClass(classes).setAttribute('data-background', "url('" ~ background | get_img_src ~ "') no-repeat center center / cover") %}
+{% endif %}
+
+
+{# FAQ Box #}
+  <div class="faq-cards__veil"></div>
+<div {{ attributes }}>
+	{# Link #}
+
+  {% if link|render %}
+    <div class="faq-box-link">
+      <h3>
+        {% if link | render | get_tag_attribute("a", "href") %}
+
+          {{ link|openlink }}
+          <span>{{ link|render|striptags|raw }}</span>
+          {{ link|closelink }}
+
+        {% else %}
+
+          {{ link }}
+
+        {% endif %}
+      </h3>
+    </div>
+  {% endif %}
+
+
+
+</div>

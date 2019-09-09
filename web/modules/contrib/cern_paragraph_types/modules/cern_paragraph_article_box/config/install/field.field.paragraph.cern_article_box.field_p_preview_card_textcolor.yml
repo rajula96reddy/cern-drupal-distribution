@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_preview_card_textcolor
+    - paragraphs.paragraphs_type.cern_article_box
+  module:
+    - color_field
+id: paragraph.cern_article_box.field_p_preview_card_textcolor
+field_name: field_p_preview_card_textcolor
+entity_type: paragraph
+bundle: cern_article_box
+label: 'Text color'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

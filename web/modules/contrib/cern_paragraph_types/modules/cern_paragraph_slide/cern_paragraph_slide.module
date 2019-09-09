@@ -1,0 +1,38 @@
+<?php
+
+
+function cern_paragraph_slide_field_widget_entity_reference_paragraphs_form_alter(&$element, &$form_state, $context) {
+  if (isset($element['subform']['field_p_slide_med_type'])) {
+    $parents = $element['subform']['#parents'];
+    $parents[] = 'field_p_slide_med_type';
+    $name = array_shift($parents);
+    $name .= '[' . implode('][', $parents) . ']';
+    $element['subform']['field_p_slide_image']['#states'] = [
+      'visible' => [
+        'select[name="'.$name.'"]' => ['value' => 'image']
+      ],
+    ];
+
+    $element['subform']['field_p_slide_cds_item']['#states'] = [
+      'visible' => [
+        'select[name="'.$name.'"]' => ['value' => 'cds']
+      ]
+    ];
+
+    $element['subform']['field_p_slide_video']['#states'] = [
+      'visible' => [
+        'select[name="'.$name.'"]' => ['value' => 'video']
+      ]
+    ];
+
+    $element['subform']['field_p_slide_caption']['#states'] = [
+      'visible' => [
+        [
+          ['select[name="'.$name.'"]' => ['value' => 'video']],
+          'or',
+          ['select[name="'.$name.'"]' => ['value' => 'image']]
+        ]
+      ]
+    ];
+  }
+}

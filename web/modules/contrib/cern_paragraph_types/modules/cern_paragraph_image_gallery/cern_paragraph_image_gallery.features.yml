@@ -1,0 +1,3 @@
+excluded:
+  - core.base_field_override.paragraph.cern_gallery.moderation_state
+required: true

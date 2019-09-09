@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Callout blocks pattern.
+ */
+#}
+{% set arialabel = title | render | striptags ~ ' ' ~ subtitle | render | striptags %}
+
+{{ variants.bg_color.color }}
+<div class="component-slide">
+    {% if image | render is not empty %}
+        <div class="header-block__image component-slide__image">
+            {{ image }}
+            {% if caption is not empty %}
+                <div class="component-slide__caption">
+                    <div class="component-slide__caption_image_counter">Image:
+                        <span class="counter"></span></div>
+                    {{ caption }}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if video | get_link_href is not empty %}
+        <div class="header-block__video component-slide__video">
+            {{ pattern('video_item', {'video': video|get_link_href, 'autoplay': true, 'loop': true, 'mimetype': video|get_link_type }) }}
+            {% if caption is not empty %}
+                <div class="component-slide__caption">
+                    <div class="component-slide__caption_image_counter">Image:
+                        <span class="counter"></span></div>
+                    {{ caption }}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>

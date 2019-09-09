@@ -1,0 +1,48 @@
+name: 'CERN Section'
+description: 'Section paragraphs'
+package: 'CERN Components'
+type: module
+core: 8.x
+version: '1.8'
+dependencies:
+  - block
+  - block_content
+  - cern_paragraph_agenda_box
+  - cern_paragraph_agenda_item
+  - cern_paragraph_article_box
+  - cern_paragraph_author_info
+  - cern_paragraph_background
+  - cern_paragraph_call_action_button
+  - cern_paragraph_featured_banner
+  - cern_paragraph_featured_quote
+  - cern_paragraph_hero_header
+  - cern_paragraph_icons_component
+  - cern_paragraph_image_gallery
+  - cern_paragraph_margin_component
+  - cern_paragraph_resource_box
+  - cern_paragraph_slider
+  - cern_paragraph_text_component
+  - cern_paragraph_thumbnail_box
+  - cern_paragraph_timeline
+  - cern_paragraph_types
+  - color_field
+  - content_moderation
+  - content_translation
+  - ds
+  - entity_reference_revisions
+  - field
+  - field_formatter_class
+  - field_group
+  - file
+  - filefield_paths
+  - image
+  - language
+  - node
+  - options
+  - paragraphs
+  - path
+  - scheduler
+  - text
+  - user
+  - views
+  - viewsreference

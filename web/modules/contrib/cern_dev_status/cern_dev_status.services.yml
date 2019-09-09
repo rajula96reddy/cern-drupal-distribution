@@ -1,0 +1,5 @@
+services:
+  cern_dev_status_event_subscriber:
+    class: Drupal\cern_dev_status\EventSubscriber\CernDevStatusSubscriber
+    tags:
+      - {name: event_subscriber}

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_background_hasveil
+    - paragraphs.paragraphs_type.cern_background
+id: paragraph.cern_background.field_p_background_hasveil
+field_name: field_p_background_hasveil
+entity_type: paragraph
+bundle: cern_background
+label: 'Has veil'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

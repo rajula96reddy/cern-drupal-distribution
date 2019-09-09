@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_p_preview_card_med_type
+field_name: field_p_preview_card_med_type
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: cds
+      label: CDS
+    -
+      value: image
+      label: Image
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

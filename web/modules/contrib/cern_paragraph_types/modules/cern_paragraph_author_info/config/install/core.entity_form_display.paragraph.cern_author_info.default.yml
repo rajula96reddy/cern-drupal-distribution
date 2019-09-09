@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_author_info.field_p_peoples_profile_author
+    - paragraphs.paragraphs_type.cern_author_info
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_content_and_configuration:
+      children:
+        - field_p_peoples_profile_author
+      parent_name: ''
+      weight: 20
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Content and configuration'
+id: paragraph.cern_author_info.default
+targetEntityType: paragraph
+bundle: cern_author_info
+mode: default
+content:
+  field_p_peoples_profile_author:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

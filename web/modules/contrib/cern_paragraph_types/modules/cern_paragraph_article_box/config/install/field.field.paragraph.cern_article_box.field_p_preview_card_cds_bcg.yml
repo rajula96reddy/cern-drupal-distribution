@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_preview_card_cds_bcg
+    - paragraphs.paragraphs_type.cern_article_box
+  module:
+    - cern_cds_media
+id: paragraph.cern_article_box.field_p_preview_card_cds_bcg
+field_name: field_p_preview_card_cds_bcg
+entity_type: paragraph
+bundle: cern_article_box
+label: 'CDS Background image '
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: CernCdsMedia

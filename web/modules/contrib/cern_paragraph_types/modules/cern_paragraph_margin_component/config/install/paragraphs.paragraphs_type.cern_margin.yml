@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cern_margin
+label: 'Margin Component'
+icon_uuid: null
+description: 'A margin between two components'
+behavior_plugins: {  }

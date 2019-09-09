@@ -1,0 +1,34 @@
+{% 
+    set classes = [
+    "component-media-content",
+    "box-pattern",
+    variants.display.value,
+    variants.type.value,
+    ]
+%}
+{% set attributes = create_attribute() %}
+{% set attributes = attributes.addClass(classes).setAttribute('style', "background-image:url('" ~ background | get_img_src ~ "'); background-repeat: no-repeat; background-position: center center; background-size: cover; background-color: " ~ variants.bg_color.color ~ ";") %}
+
+<div{{ attributes }}>
+  {% if background | render %}
+    <div class="component-media-content__veil"></div>
+  {% endif %}
+  <div class="component-media-content__wrapper">
+    <div class="component-media-content__subwrapper">
+      <div class="component-media-content__icon">
+        <div class="type_video">video</div>
+        <div class="type_image">image</div>
+      </div>
+      <div class="component-media-content__title">
+        {# Link field for component  #}
+        {% if link | render %}
+          <h3>
+            {{ link|openlink }}
+            <span>{{ link|render|striptags }}</span>
+            {{ link|closelink }}
+          </h3>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

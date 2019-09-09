@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_row_left_column_views
+    - paragraphs.paragraphs_type.cern_section
+  module:
+    - viewsreference
+id: paragraph.cern_section.field_p_row_left_column_views
+field_name: field_p_row_left_column_views
+entity_type: paragraph
+bundle: cern_section
+label: 'Left column views'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: 0
+  plugin_types:
+    page: page
+    block: block
+    default: 0
+    feed: 0
+  preselect_views:
+    articles: 0
+    block_content: 0
+    comments_recent: 0
+    content: 0
+    content_recent: 0
+    files: 0
+    frontpage: 0
+    listado_cris: 0
+    scheduler_scheduled_content: 0
+    taxonomy_term: 0
+    user_admin_people: 0
+    who_s_new: 0
+    who_s_online: 0
+field_type: viewsreference

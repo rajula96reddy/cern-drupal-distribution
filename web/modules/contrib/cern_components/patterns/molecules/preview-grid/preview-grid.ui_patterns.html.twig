@@ -1,0 +1,19 @@
+{#
+ * @file
+ * Preview Grid pattern.
+#}
+
+
+{# Preview Grid #}
+<div class="`preview-grid-component">
+	{# Image field #}
+	{% if image|render %} <div class="preview-grid-image"> {{image}} </div> {% endif %}
+	{# Topic field #}
+	{% if topic|render %} <div class="preview-grid-topic"> {{topic}} </div> {% endif %}
+	{# Title field #}
+	{% if title|render %} <div class="preview-grid-title"> {{title}} </div> {% endif %}
+	{# News Format field #}
+	{% if news_format|render %} <div class="preview-grid-news-format"> {{news_format}} </div> {% endif %}
+	{# Date field #}
+	{% if date|render %} <div class="preview-grid-date"> {{date}} </div> {% endif %}
+</div>

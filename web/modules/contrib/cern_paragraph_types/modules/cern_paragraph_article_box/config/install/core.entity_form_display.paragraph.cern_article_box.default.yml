@@ -1,0 +1,149 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_article_box.field_p_preview_card_background
+    - field.field.paragraph.cern_article_box.field_p_preview_card_bgcolor
+    - field.field.paragraph.cern_article_box.field_p_preview_card_category
+    - field.field.paragraph.cern_article_box.field_p_preview_card_cds_bcg
+    - field.field.paragraph.cern_article_box.field_p_preview_card_date
+    - field.field.paragraph.cern_article_box.field_p_preview_card_display
+    - field.field.paragraph.cern_article_box.field_p_preview_card_link
+    - field.field.paragraph.cern_article_box.field_p_preview_card_med_type
+    - field.field.paragraph.cern_article_box.field_p_preview_card_textcolor
+    - field.field.paragraph.cern_article_box.field_p_preview_card_type
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.cern_article_box
+  module:
+    - cern_cds_media
+    - color_field
+    - content_moderation
+    - datetime
+    - field_group
+    - image
+    - link
+third_party_settings:
+  field_group:
+    group_preview_card_settings:
+      children:
+        - field_p_preview_card_bgcolor
+        - field_p_preview_card_textcolor
+        - field_p_preview_card_type
+        - field_p_preview_card_display
+      parent_name: group_content_and_configuration
+      weight: 107
+      format_type: details
+      format_settings:
+        label: 'Box settings'
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
+      label: 'Box settings'
+    group_content_and_configuration:
+      children:
+        - field_p_preview_card_med_type
+        - field_p_preview_card_background
+        - field_p_preview_card_cds_bcg
+        - field_p_preview_card_category
+        - field_p_preview_card_date
+        - field_p_preview_card_link
+        - group_preview_card_settings
+      parent_name: ''
+      weight: 0
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Content and configuration'
+id: paragraph.cern_article_box.default
+targetEntityType: paragraph
+bundle: cern_article_box
+mode: default
+content:
+  field_p_preview_card_background:
+    weight: 102
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_p_preview_card_bgcolor:
+    weight: 5
+    settings:
+      default_colors: '#0855A0,#59ADFF,#0D87FF,#2DS77F,#0A6CCC,#2C97FF,#128AFF,#B26F00,#FFA612,#6B05EB,#FF1248,#E86C05,#FFDA06,#F2A530,#FFCC7F,#FFAE33,#7F6640,#CC8B28,#D7D7D7,#1C2C38,#292929,#FFFFFF,#000000'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  field_p_preview_card_category:
+    weight: 104
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_p_preview_card_cds_bcg:
+    weight: 103
+    settings: {  }
+    third_party_settings: {  }
+    type: CernCdsMediaDefaultWidget
+    region: content
+  field_p_preview_card_date:
+    weight: 105
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_p_preview_card_display:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_p_preview_card_link:
+    weight: 106
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_p_preview_card_med_type:
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_p_preview_card_textcolor:
+    weight: 6
+    settings:
+      default_colors: '#0855A0,#59ADFF,#0D87FF,#2DS77F,#0A6CCC,#2C97FF,#128AFF,#B26F00,#FFA612,#6B05EB,#FF1248,#E86C05,#FFDA06,#F2A530,#FFCC7F,#FFAE33,#7F6640,#CC8B28,#D7D7D7,#1C2C38,#292929,#FFFFFF,#000000'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  field_p_preview_card_type:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_p_preview_card_title: true
+  status: true
+  uid: true

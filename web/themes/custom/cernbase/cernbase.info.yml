@@ -1,0 +1,27 @@
+name: CERN BASE
+type: theme
+description: "CERN BASE theme"
+core: 8.x
+version: "1.7"
+base theme: bootstrap
+hidden: true
+
+# libraries
+libraries:
+  - cernbase/global-styling
+
+ckeditor_stylesheets:
+  - css/components/ckeditor.css
+
+# regions
+regions:
+  header: "Header"
+  content: "Main content"
+  left: "Left sidebar"
+  right: "Right sidebar"
+  contentfooter: "Content footer"
+  footercolumn1: "Footer: column 1"
+  footercolumn2: "Footer: column 2"
+  footercolumn3: "Footer: column 3"
+  footercolumn4: "Footer: column 4"
+  hidden: "Hidden blocks"

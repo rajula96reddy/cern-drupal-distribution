@@ -1,0 +1,206 @@
+/* TITLE */
+@media only screen and (max-width: 991px) {
+  .text-component-page {
+    padding: 0 3%; } }
+.text-component-title {
+  font-weight: bold;
+  margin: 4rem 0; }
+
+/* IMAGE */
+.text-component-page figure {
+  overflow: hidden; }
+
+.text-component-page figure img {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-color: #111 !important;
+  width: 100%; }
+
+.text-component-page figcaption {
+  /* background: #111;
+    color: #eee; */
+  margin-top: 0;
+  padding: 0.5em 0em;
+  margin-bottom: 2em;
+  font-size: 12px; }
+
+/* BREAKOUT RIGHT & ALIGN RIGHT */
+.text-component-page .align-right,
+.text-component-page .breakout-right {
+  float: right;
+  margin-left: 3%;
+  clear: right; }
+  .text-component-page .align-right img,
+  .text-component-page .breakout-right img {
+    width: 100%; }
+
+/* BREAKOUT LEFT & ALIGN LEFT */
+.text-component-page .align-left,
+.text-component-page .breakout-left {
+  float: left;
+  margin-right: 3%;
+  clear: left; }
+  .text-component-page .align-left img,
+  .text-component-page .breakout-left img {
+    width: 100%; }
+
+/* BREAKOUT */
+.text-component-page .breakout-left,
+.text-component-page .breakout-right {
+  width: 60%; }
+
+.text-component-page .breakout-both {
+  width: auto;
+  clear: both; }
+
+/* ALIGN */
+.text-component-page .align-left,
+.text-component-page .align-right {
+  width: 46%; }
+
+/* BREAKOUT RIGHT */
+.text-component-page .breakout-right,
+.text-component-page .breakout-both {
+  margin-right: -30% !important; }
+
+/* BREAKOUT LEFT */
+.text-component-page .breakout-left,
+.text-component-page .breakout-both {
+  margin-left: -30% !important; }
+
+/* TEXT COLUMNS */
+.text-component-page .column-right.image-breakout {
+  float: right;
+  width: 65%; }
+
+.text-component-page .column-right.image-align {
+  float: right;
+  width: 51%; }
+
+.text-component-page .column-left.image-breakout {
+  float: left;
+  width: 65%; }
+
+.text-component-page .column-left.image-align {
+  float: left;
+  width: 51%; }
+
+/* margin on section columns */
+.component-row__column .text-component-page {
+  padding: 0; }
+
+@media only screen and (min-width: 1701px) and (max-width: 1900px) {
+  .text-component-page .breakout-left,
+  .text-component-page .breakout-both {
+    margin-left: -24% !important; }
+
+  .text-component-page .breakout-right,
+  .text-component-page .breakout-both {
+    margin-right: -24% !important; }
+
+  .text-component-page .breakout-left,
+  .text-component-page .breakout-right {
+    width: 65%; }
+
+  .text-component-page .column-right.image-breakout {
+    float: right;
+    width: 56%; }
+
+  .text-component-page .column-left.image-breakout {
+    float: left;
+    width: 56%; } }
+@media only screen and (min-width: 1501px) and (max-width: 1700px) {
+  .text-component-page .breakout-left,
+  .text-component-page .breakout-both {
+    margin-left: -15% !important; }
+
+  .text-component-page .breakout-right,
+  .text-component-page .breakout-both {
+    margin-right: -15% !important; }
+
+  .text-component-page .breakout-left,
+  .text-component-page .breakout-right {
+    width: 55%; }
+
+  .text-component-page .column-right.image-breakout {
+    float: right;
+    width: 57%; }
+
+  .text-component-page .column-left.image-breakout {
+    float: left;
+    width: 57%; } }
+@media only screen and (min-width: 1366px) and (max-width: 1500px) {
+  .text-component-page .breakout-left,
+  .text-component-page .breakout-both {
+    margin-left: -7% !important; }
+
+  .text-component-page .breakout-right,
+  .text-component-page .breakout-both {
+    margin-right: -7% !important; }
+
+  .text-component-page .breakout-left,
+  .text-component-page .breakout-right {
+    width: 50%; }
+
+  .text-component-page .column-right.image-breakout {
+    float: right;
+    width: 54%; }
+
+  .text-component-page .column-left.image-breakout {
+    float: left;
+    width: 54%; } }
+@media only screen and (min-width: 720px) and (max-width: 1365px) {
+  .text-component-page .breakout-left,
+  .text-component-page .breakout-both {
+    margin-left: 0% !important; }
+
+  .text-component-page .breakout-right,
+  .text-component-page .breakout-both {
+    margin-right: 0% !important; }
+
+  .text-component-page .breakout-left,
+  .text-component-page .breakout-right {
+    width: 45%; }
+
+  .text-component-page .column-right.image-breakout {
+    float: right;
+    width: 51%; }
+
+  .text-component-page .column-left.image-breakout {
+    float: left;
+    width: 51%; } }
+@media only screen and (max-width: 719px) {
+  .text-component-page .breakout-left,
+  .text-component-page .breakout-both {
+    margin-left: 0% !important; }
+
+  .text-component-page .breakout-right,
+  .text-component-page .breakout-both {
+    margin-right: 0% !important; }
+
+  .text-component-page .breakout-left,
+  .text-component-page .breakout-right {
+    width: 100%; }
+
+  .text-component-page .column-right.image-breakout {
+    float: right;
+    width: 100%; }
+
+  .text-component-page .column-left.image-breakout {
+    float: left;
+    width: 100%; }
+
+  .text-component-page .align-left,
+  .text-component-page .align-right {
+    width: 100%; }
+
+  .text-component-page .column-right.image-align {
+    float: none;
+    width: 100%;
+    clear: both; }
+
+  .text-component-page .column-left.image-align {
+    float: none;
+    width: 100%;
+    clear: both; } }

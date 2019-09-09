@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: menu_block
+label: 'Mega Menu block'
+revision: 1
+description: 'CERN Mega Menu Block'

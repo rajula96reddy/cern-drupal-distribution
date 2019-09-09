@@ -1,0 +1,37 @@
+{% set title_attributes = create_attribute() %}
+
+<div class="icons_component__wrapper">
+
+  {% if title | render is not empty %}
+    {% if variants.component_title_cl.color %}
+      {% set title_attributes = title_attributes.setAttribute('style', "color:" ~ variants.component_title_cl.color) %}
+    {% endif %}
+    <h2 {{ title_attributes }}>{{ title }}</h2>
+  {% endif %}
+
+  {% for icon in icons %}
+
+    {% if loop.first == true %}
+      <div class="row">
+      {% endif %}
+
+      {% if loop.index0 is divisible by(4) %}
+
+        {{ icon }}
+      </div>
+      <div class="row">
+
+      {% else %}
+
+        {{ icon }}
+
+      {% endif %}
+
+      {% if loop.last == true %}
+      </div>
+    {% endif %}
+
+  {% endfor %}
+
+  {{ call_to_action }}
+</div>

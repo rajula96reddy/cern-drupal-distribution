@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_hero_header.field_p_header_blocks_blocks
+    - field.field.paragraph.cern_hero_header.field_p_header_blocks_down_btn
+    - paragraphs.paragraphs_type.cern_hero_header
+  module:
+    - paragraphs
+id: paragraph.cern_hero_header.default
+targetEntityType: paragraph
+bundle: cern_hero_header
+mode: default
+content:
+  field_p_header_blocks_blocks:
+    type: entity_reference_paragraphs
+    weight: 1
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_p_header_blocks_down_btn:
+    weight: 0
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

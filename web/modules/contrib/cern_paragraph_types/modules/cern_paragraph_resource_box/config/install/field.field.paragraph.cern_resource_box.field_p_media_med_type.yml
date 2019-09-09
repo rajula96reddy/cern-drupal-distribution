@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_media_med_type
+    - paragraphs.paragraphs_type.cern_resource_box
+  module:
+    - options
+id: paragraph.cern_resource_box.field_p_media_med_type
+field_name: field_p_media_med_type
+entity_type: paragraph
+bundle: cern_resource_box
+label: 'Select Media Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Related card pattern.
+ */
+#}
+{% 
+    set classes = [
+    "component-related_content",
+    variants.display.value,
+    ]  
+%}
+{% set attributes = create_attribute() %}
+{% set attributes = attributes.addClass(classes) %}
+
+<div{{ attributes}}>
+{# Break up the individual items in to the appropriate template var. #}
+  {% if items.0 and items.0.title %}
+    {% for item in items %}
+      {{ pattern('related-card', item) }}
+    {% endfor %}
+  {% else %}
+    {{ items }}
+  {% endif %}
+</div>
+

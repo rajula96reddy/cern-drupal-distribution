@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Event Category'
+vid: cern_event_category
+description: 'Vocabulary for tagging events content by type'
+hierarchy: 0
+weight: 0

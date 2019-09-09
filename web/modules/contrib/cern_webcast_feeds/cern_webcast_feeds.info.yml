@@ -1,0 +1,14 @@
+name: 'CERN Webcast Feeds'
+type: module
+description: 'Imports events from Webcast website (http://webcast.cern.ch) to Drupal websites'
+core: 8.x
+package: CERN
+dependencies:
+  - cern_webcast_events
+  - datetime
+  - feeds
+  - node
+  - options
+  - user
+  - views
+version: 1.0

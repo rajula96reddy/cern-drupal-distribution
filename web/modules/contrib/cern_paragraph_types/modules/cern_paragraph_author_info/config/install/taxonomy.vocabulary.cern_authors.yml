@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Byline
+vid: cern_authors
+description: 'Vocabulary for tagging and displaying byline information'
+hierarchy: 1
+weight: 0

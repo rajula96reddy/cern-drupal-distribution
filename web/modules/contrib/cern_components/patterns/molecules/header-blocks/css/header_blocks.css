@@ -1,0 +1,28 @@
+.cern-component-header-blocks span.component-header__scroll {
+    z-index: 10;
+    text-align: center;
+    background: url(../images/arrow-blue.png) no-repeat 50% 50% white;
+    width: 46px;
+    height: 46px;
+    border-radius: 100%;
+    box-shadow: 0px 0px 1px 7px rgba(255, 255, 255, 0.5);
+    text-indent: -5000px;
+    cursor: pointer;
+}
+
+a.endof-cern-header-blocks {
+    display: block;
+}
+
+/*
+.cern-component-header-blocks h3.header-block__name a span,
+.cern-component-header-blocks span.header-block__subhead p {
+    text-shadow: 0 0 85px rgba(8, 85, 160, 0.5), 0 0 5px rgba(8, 85, 160, 0.5);
+}
+*/
+
+/* .component-row.component-row__display__fluid .owl-carousel,
+.component-row.component-row__display__fluid .owl-carousel .owl-stage-outer,
+.component-row.component-row__display__fluid .owl-carousel .owl-stage-outer .owl-stage{
+    height: calc(100vh - 40px);
+} */

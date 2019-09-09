@@ -1,0 +1,30 @@
+# Slide Pattern
+#
+slide:
+  label: "Slide"
+  description: "A single slider slide"
+  fields:
+    image:
+      description: "Slide image."
+      label: Image
+      preview:
+        alt: "this is a sample image"
+        theme: image
+        uri: "http://dummy-images.com/abstract/dummy-1280x768-Stripes-plain.jpg"
+      type: image
+    video:
+      description: "Slide video."
+      label: Video
+      type: text
+    caption:
+      description: "Slide caption."
+      label: Caption
+      preview: "LHC Project"
+      type: text
+  libraries:
+    -
+      preview_card:
+        css:
+          component:
+            css/slide.component.css: {}
+  use: "@cern_components/molecules/slide/slide.html.twig"

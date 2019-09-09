@@ -1,0 +1,28 @@
+excluded:
+  - core.base_field_override.node.webcast_event.promote
+  - node.type.webcast_event
+  - core.entity_form_display.node.webcast_event.default
+  - core.entity_view_display.node.webcast_event.default
+  - core.entity_view_display.node.webcast_event.teaser
+  - field.field.node.webcast_event.feeds_item
+  - field.field.node.webcast_event.field_webcast_event_category
+  - field.field.node.webcast_event.field_webcast_event_category_id
+  - field.field.node.webcast_event.field_webcast_event_end_date
+  - field.field.node.webcast_event.field_webcast_event_wc_ical
+  - field.field.node.webcast_event.field_webcast_event_wc_link
+  - field.field.node.webcast_event.field_webcast_event_room
+  - field.field.node.webcast_event.field_webcast_event_start_date
+  - field.field.node.webcast_event.field_webcast_event_timezone
+  - field.field.node.webcast_event.field_webcast_event_type
+  - field.storage.node.field_webcast_event_category
+  - field.storage.node.field_webcast_event_category_id
+  - field.storage.node.field_webcast_event_end_date
+  - field.storage.node.field_webcast_event_wc_ical
+  - field.storage.node.field_webcast_event_wc_link
+  - field.storage.node.field_webcast_event_room
+  - field.storage.node.field_webcast_event_start_date
+  - field.storage.node.field_webcast_event_timezone
+  - field.storage.node.field_webcast_event_type
+  - views.view.webcast_events_block
+  - views.view.webcast_events_block_with_details
+required: true

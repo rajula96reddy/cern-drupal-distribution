@@ -1,0 +1,117 @@
+.progress {
+  -webkit-box-shadow: 0 0 0 0;
+  -khtml-box-shadow: 0 0 0 0;
+  -moz-box-shadow: 0 0 0 0;
+  -ms-box-shadow: 0 0 0 0;
+  -o-box-shadow: 0 0 0 0;
+  box-shadow: 0 0 0 0;
+  -webkit-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #ddd;
+  margin-bottom: 15px;
+  overflow: hidden;
+  height: auto; }
+  .progress.progress-lg {
+    height: 1.5rem; }
+  .progress.progress-md {
+    height: 1rem; }
+  .progress.progress-sm {
+    height: 0.625rem; }
+  .progress.progress-xs {
+    height: 0.25rem; }
+  .progress-wrapper {
+    position: relative;
+    padding-top: 15px; }
+  .progress-inverse {
+    background-color: #555555; }
+  .progress-heading {
+    font-size: 14px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin: 0 0 2px;
+    padding: 0; }
+  .progress-bar {
+    -webkit-box-shadow: 0 0 0 0;
+    -khtml-box-shadow: 0 0 0 0;
+    -moz-box-shadow: 0 0 0 0;
+    -ms-box-shadow: 0 0 0 0;
+    -o-box-shadow: 0 0 0 0;
+    box-shadow: 0 0 0 0;
+    -webkit-border-radius: 0;
+    -khtml-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    -webkit-transition: width 0.6s ease;
+    -khtml-transition: width 0.6s ease;
+    -moz-transition: width 0.6s ease;
+    -ms-transition: width 0.6s ease;
+    -o-transition: width 0.6s ease;
+    transition: width 0.6s ease;
+    height: 100%;
+    padding: 4px 0 3px; }
+    .progress-bar.bg-primary {
+      background: #0855a0; }
+    .progress-bar.bg-green {
+      background: #5cb85c; }
+    .progress-bar.bg-info {
+      background: #5bc0de; }
+    .progress-bar.bg-yellow {
+      background: #f0ad4e; }
+    .progress-bar.bg-warning {
+      background: #d9534f; }
+    .progress-bar.bg-purple {
+      background: #801096; }
+  .progress-text {
+    margin-bottom: 0; }
+  .progress-text .mark {
+    float: left;
+    width: 50%;
+    background: transparent; }
+  .progress-text .mark.right {
+    text-align: right; }
+  .progress-tooltip {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: .25rem .375rem;
+    line-height: 1;
+    font-size: 12px;
+    position: relative;
+    bottom: 8px;
+    border-radius: 3px;
+    margin-left: -15px; }
+  .progress-tooltip:after {
+    top: 100%;
+    left: 10px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(51, 51, 51, 0);
+    border-top-color: rgba(0, 0, 0, 0.8);
+    border-width: 5px; }
+  .progress-label {
+    display: inline-block;
+    color: #555555;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 12px;
+    font-size: 1.2rem; }
+  .progress-percentage {
+    display: inline-block;
+    color: #555555;
+    font-size: 12px;
+    font-size: 1.2rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0; }

@@ -1,0 +1,9 @@
+excluded:
+  - core.base_field_override.paragraph.cern_hero_header.created
+  - core.base_field_override.paragraph.cern_hero_header.status
+  - core.base_field_override.paragraph.cern_hero_header.uid
+  - core.base_field_override.paragraph.cern_hero_header.moderation_state
+  - core.entity_form_display.paragraph.cern_header_blocks.default
+  - core.entity_view_display.paragraph.cern_header_blocks.default
+  - field.field.paragraph.cern_header_blocks.field_p_header_blocks_blocks
+required: true

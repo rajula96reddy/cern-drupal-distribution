@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_agenda_timezone
+    - paragraphs.paragraphs_type.cern_agenda_item
+id: paragraph.cern_agenda_item.field_p_agenda_timezone
+field_name: field_p_agenda_timezone
+entity_type: paragraph
+bundle: cern_agenda_item
+label: Timezone
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

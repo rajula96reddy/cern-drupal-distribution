@@ -1,0 +1,5 @@
+cern_profile_displayname.settings:
+  title: CERN Profile Display Real Name
+  parent: user.admin_index
+  description: 'Configuration for display the real name'
+  route_name: cern_profile_displayname.settings

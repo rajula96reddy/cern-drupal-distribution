@@ -1,0 +1,103 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_agenda_box.field_p_agenda_box_background
+    - field.field.paragraph.cern_agenda_box.field_p_agenda_box_bgcolor
+    - field.field.paragraph.cern_agenda_box.field_p_agenda_box_cds_bcg
+    - field.field.paragraph.cern_agenda_box.field_p_agenda_box_display
+    - field.field.paragraph.cern_agenda_box.field_p_agenda_box_end_date
+    - field.field.paragraph.cern_agenda_box.field_p_agenda_box_link
+    - field.field.paragraph.cern_agenda_box.field_p_agenda_box_med_type
+    - field.field.paragraph.cern_agenda_box.field_p_agenda_box_start_date
+    - field.field.paragraph.cern_agenda_box.field_p_agenda_box_text
+    - field.field.paragraph.cern_agenda_box.field_p_agenda_box_text_color
+    - paragraphs.paragraphs_type.cern_agenda_box
+  module:
+    - cern_cds_media
+    - datetime
+    - ds
+    - field_formatter_class
+    - image
+    - link
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_agenda_box
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+    regions:
+      background:
+        - field_p_agenda_box_background
+        - field_p_agenda_box_cds_bcg
+      start_date:
+        - field_p_agenda_box_start_date
+      end_date:
+        - field_p_agenda_box_end_date
+      link:
+        - field_p_agenda_box_link
+id: paragraph.cern_agenda_box.default
+targetEntityType: paragraph
+bundle: cern_agenda_box
+mode: default
+content:
+  field_p_agenda_box_background:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: background
+  field_p_agenda_box_cds_bcg:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: CernCdsMediaDefaultFormatter
+    region: background
+  field_p_agenda_box_end_date:
+    weight: 3
+    label: hidden
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: end_date
+  field_p_agenda_box_link:
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: 50
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: link
+    region: link
+  field_p_agenda_box_start_date:
+    weight: 2
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: datetime_default
+    region: start_date
+hidden:
+  field_p_agenda_box_bgcolor: true
+  field_p_agenda_box_display: true
+  field_p_agenda_box_med_type: true
+  field_p_agenda_box_text: true
+  field_p_agenda_box_text_color: true

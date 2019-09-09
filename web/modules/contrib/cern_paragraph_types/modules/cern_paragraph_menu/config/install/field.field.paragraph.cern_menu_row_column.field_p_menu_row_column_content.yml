@@ -1,0 +1,96 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_menu_row_column_content
+    - paragraphs.paragraphs_type.cern_menu_column_content
+    - paragraphs.paragraphs_type.cern_menu_row_column
+  module:
+    - entity_reference_revisions
+id: paragraph.cern_menu_row_column.field_p_menu_row_column_content
+field_name: field_p_menu_row_column_content
+entity_type: paragraph
+bundle: cern_menu_row_column
+label: 'Column content'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      cern_menu_column_content: cern_menu_column_content
+    target_bundles_drag_drop:
+      cern_menu_column_content:
+        enabled: true
+        weight: 24
+      cern_agenda:
+        weight: 25
+        enabled: false
+      cern_call_action:
+        weight: 26
+        enabled: false
+      cern_divisions:
+        weight: 27
+        enabled: false
+      cern_gallery:
+        weight: 28
+        enabled: false
+      cern_header_block:
+        weight: 29
+        enabled: false
+      cern_header_blocks:
+        weight: 30
+        enabled: false
+      cern_margin:
+        weight: 31
+        enabled: false
+      cern_media:
+        weight: 32
+        enabled: false
+      cern_menu:
+        weight: 33
+        enabled: false
+      cern_menu_row:
+        weight: 34
+        enabled: false
+      cern_menu_row_column:
+        weight: 35
+        enabled: false
+      cern_peoples_profile:
+        weight: 36
+        enabled: false
+      cern_preview_card:
+        weight: 37
+        enabled: false
+      cern_preview_list:
+        weight: 38
+        enabled: false
+      cern_quote:
+        weight: 39
+        enabled: false
+      cern_related_card:
+        weight: 40
+        enabled: false
+      cern_related_content:
+        weight: 41
+        enabled: false
+      cern_row:
+        weight: 42
+        enabled: false
+      cern_slide:
+        weight: 43
+        enabled: false
+      cern_slider:
+        weight: 44
+        enabled: false
+      cern_text:
+        weight: 45
+        enabled: false
+      reference_component:
+        weight: 46
+        enabled: false
+field_type: entity_reference_revisions

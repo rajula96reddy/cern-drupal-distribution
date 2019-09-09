@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cern_slide
+label: Slide
+icon_uuid: null
+description: 'A single slider slide'
+behavior_plugins: {  }

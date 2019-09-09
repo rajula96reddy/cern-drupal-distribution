@@ -1,0 +1,24 @@
+# Slide Pattern
+#
+related_content:
+  label: "Related Content"
+  description: "A group of related card"
+  fields:
+    items:
+      type: collection
+      label: Related items
+      description: Each block is a related card
+      preview:
+        -
+          image: http://lorempixel.com/900/500/sports/1
+        -
+          image: http://lorempixel.com/900/500/sports/2
+        -
+          image: http://lorempixel.com/900/500/sports/6
+  libraries:
+    -
+      related_card:
+        css:
+          component:
+            css/component-related_content.css: {}
+  use: "@cern_components/molecules/related-content/related-content.html.twig"

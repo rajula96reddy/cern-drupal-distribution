@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_menu_row_link
+    - paragraphs.paragraphs_type.cern_menu_row
+id: paragraph.cern_menu_row.field_p_menu_row_link
+field_name: field_p_menu_row_link
+entity_type: paragraph
+bundle: cern_menu_row
+label: Link
+description: 'The link which will appear on top'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:menu_link_content'
+  handler_settings:
+    target_bundles:
+      menu_link_content: menu_link_content
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

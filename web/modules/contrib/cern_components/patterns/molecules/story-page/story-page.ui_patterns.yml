@@ -1,0 +1,34 @@
+story_page:
+  label: "Story page"
+  description: "Default story page node render"
+  fields:
+    legacy_title:
+      label: "Legacy Title"
+      description: "Legacy Title from Migration"
+    legacy_image:
+      label: "Legacy Image"
+      description: "Legacy Image from Migration"
+    legacy_byline:
+      label: "Legacy Byline"
+      description: "Legacy Byline from Migration"
+    legacy_strap:
+      label: "Legacy Strap"
+      description: "Legacy Strap from Migration"
+    legacy_body:
+      label: "Legacy Body"
+      description: "Legacy Body from Migration"
+    legacy_tags:
+      label: "Legacy Tags"
+      description: "Legacy Tags from Migration"
+    components:
+      label: "Components"
+      description: "Web Components"
+  libraries:
+    -
+      story-page:
+        css:
+          component:
+            css/story-page.component.css: {}
+        js:
+          js/story-page.component.js: {}
+  use: "@cern_components/molecules/story-page/story-page.html.twig"

@@ -1,0 +1,51 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.webcast_event.feeds_item
+    - field.field.node.webcast_event.field_webcast_embed_link_camera
+    - field.field.node.webcast_event.field_webcast_embed_link_slides
+    - field.field.node.webcast_event.field_webcast_event_abstract
+    - field.field.node.webcast_event.field_webcast_event_category
+    - field.field.node.webcast_event.field_webcast_event_category_id
+    - field.field.node.webcast_event.field_webcast_event_end_date
+    - field.field.node.webcast_event.field_webcast_event_id
+    - field.field.node.webcast_event.field_webcast_event_image
+    - field.field.node.webcast_event.field_webcast_event_indico_link
+    - field.field.node.webcast_event.field_webcast_event_restricted
+    - field.field.node.webcast_event.field_webcast_event_room
+    - field.field.node.webcast_event.field_webcast_event_speakers
+    - field.field.node.webcast_event.field_webcast_event_start_date
+    - field.field.node.webcast_event.field_webcast_event_timezone
+    - field.field.node.webcast_event.field_webcast_event_wc_ical
+    - field.field.node.webcast_event.field_webcast_event_wc_link
+    - node.type.webcast_event
+  module:
+    - user
+id: node.webcast_event.teaser
+targetEntityType: node
+bundle: webcast_event
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  feeds_item: true
+  field_webcast_embed_link_camera: true
+  field_webcast_embed_link_slides: true
+  field_webcast_event_abstract: true
+  field_webcast_event_category: true
+  field_webcast_event_category_id: true
+  field_webcast_event_end_date: true
+  field_webcast_event_id: true
+  field_webcast_event_image: true
+  field_webcast_event_indico_link: true
+  field_webcast_event_restricted: true
+  field_webcast_event_room: true
+  field_webcast_event_speakers: true
+  field_webcast_event_start_date: true
+  field_webcast_event_timezone: true
+  field_webcast_event_wc_ical: true
+  field_webcast_event_wc_link: true

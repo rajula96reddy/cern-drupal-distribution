@@ -1,0 +1,13 @@
+<?php
+
+
+function cern_jira_page_bottom(array &$page_bottom) {
+  if(\Drupal\user\Entity\User::load(\Drupal::currentUser()->id())->hasRole('administrator')){
+    $page_bottom['cern_jira'] = array(
+      '#markup' => '<script type="text/javascript" src="https://its.cern.ch/jira/s/30ac668c0114b530f34c0184d539ec4b-T/c12gv7/73019/b6b48b2829824b869586ac216d119363/2.0.23/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=52f018c3"></script>',
+    );
+  }
+
+}
+
+

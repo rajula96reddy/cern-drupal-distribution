@@ -1,0 +1,126 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - cern_webcast_feeds
+label: 'Webcast Feed'
+id: webcast
+description: 'Webcast Feed'
+import_period: 86400
+fetcher: webcast
+fetcher_configuration:
+  api_key: 
+  secret_key: 
+parser: webcast
+parser_configuration: {  }
+processor: 'entity:node'
+processor_configuration:
+  update_existing: 2
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+  authorize: true
+  skip_hash_check: false
+  values:
+    type: webcast_event
+mappings:
+  -
+    target: field_webcast_event_abstract
+    map:
+      value: abstract
+    settings:
+      format: full_html
+  -
+    target: field_webcast_embed_link_camera
+    map:
+      value: embedLinkCamera
+    unique: {  }
+  -
+    target: field_webcast_embed_link_slides
+    map:
+      value: embedLinkSlides
+    unique: {  }
+  -
+    target: field_webcast_event_end_date
+    map:
+      value: endDateTime
+    settings:
+      timezone: UTC
+  -
+    target: field_webcast_event_indico_link
+    map:
+      value: eventLink
+    unique: {  }
+  -
+    target: field_webcast_event_wc_ical
+    map:
+      value: iCal
+    unique: {  }
+  -
+    target: field_webcast_event_image
+    map:
+      value: image
+    unique: {  }
+  -
+    target: field_webcast_event_category
+    map:
+      value: category
+    unique: {  }
+  -
+    target: field_webcast_event_category_id
+    map:
+      value: categoryId
+    unique: {  }
+  -
+    target: field_webcast_event_restricted
+    map:
+      value: restricted
+  -
+    target: field_webcast_event_speakers
+    map:
+      value: speakers
+    unique: {  }
+  -
+    target: field_webcast_event_room
+    map:
+      value: room
+    unique: {  }
+  -
+    target: field_webcast_event_start_date
+    map:
+      value: startDateTime
+    settings:
+      timezone: UTC
+  -
+    target: title
+    map:
+      value: title
+    unique: {  }
+  -
+    target: field_webcast_event_id
+    map:
+      value: id
+    unique:
+      value: '1'
+  -
+    target: field_webcast_event_timezone
+    map:
+      value: timezone
+    unique: {  }
+  -
+    target: field_webcast_event_wc_link
+    map:
+      value: webcastLink
+    unique: {  }
+  -
+    target: field_webcast_event_type
+    map:
+      value: type
+    unique: {  }
+  -
+    target: feeds_item
+    map:
+      url: webcastLink
+      guid: id
+    unique:
+      url: '1'

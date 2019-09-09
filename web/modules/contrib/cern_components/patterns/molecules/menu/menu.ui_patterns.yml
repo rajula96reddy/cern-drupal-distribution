@@ -1,0 +1,18 @@
+# Media content Pattern
+#
+menu:
+  label: "Menu"
+  description: "Mega Menu which allows to put menu items, blocks and views."
+  fields:
+    menu:
+      description: "The block object with the menu items"
+      label: "Menu"
+  libraries:
+    -
+      media:
+        css:
+          component:
+            css/menu.component.css: {}
+        js:
+          js/menu.component.js: {}
+  use: "@cern_components/molecules/menu/menu.html.twig"

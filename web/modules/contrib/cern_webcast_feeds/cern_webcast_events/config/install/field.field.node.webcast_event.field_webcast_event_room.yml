@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webcast_event_room
+    - node.type.webcast_event
+id: node.webcast_event.field_webcast_event_room
+field_name: field_webcast_event_room
+entity_type: node
+bundle: webcast_event
+label: Room
+description: 'This field contains the "Room" of the event.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

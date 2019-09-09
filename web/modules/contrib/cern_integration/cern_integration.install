@@ -1,0 +1,10 @@
+<?php
+
+
+function cern_integration_install() {
+  drupal_set_message(t('CERN Integration module installed successfully.'));
+}
+
+function cern_integration_uninstall() {
+  drupal_set_message(t('CERN Integration module was uninstalled successfully.'));
+}

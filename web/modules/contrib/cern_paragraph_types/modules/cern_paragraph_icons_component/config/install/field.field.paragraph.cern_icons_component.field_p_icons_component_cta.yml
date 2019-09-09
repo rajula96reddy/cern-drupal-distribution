@@ -1,0 +1,153 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_icons_component_cta
+    - paragraphs.paragraphs_type.cern_call_action_button
+    - paragraphs.paragraphs_type.cern_icons_component
+  module:
+    - entity_reference_revisions
+id: paragraph.cern_icons_component.field_p_icons_component_cta
+field_name: field_p_icons_component_cta
+entity_type: paragraph
+bundle: cern_icons_component
+label: 'Call to action'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      cern_call_action_button: cern_call_action_button
+    target_bundles_drag_drop:
+      cern_agenda:
+        weight: 26
+        enabled: false
+      cern_call_action_banner:
+        weight: 27
+        enabled: false
+      cern_divisions:
+        weight: 28
+        enabled: false
+      cern_gallery:
+        weight: 29
+        enabled: false
+      cern_header_block:
+        weight: 30
+        enabled: false
+      cern_header_blocks:
+        weight: 31
+        enabled: false
+      cern_icon_component:
+        weight: 32
+        enabled: false
+      cern_icons_component:
+        weight: 33
+        enabled: false
+      cern_margin:
+        weight: 34
+        enabled: false
+      cern_media:
+        weight: 35
+        enabled: false
+      cern_menu:
+        weight: 36
+        enabled: false
+      cern_menu_column_content:
+        weight: 37
+        enabled: false
+      cern_menu_row:
+        weight: 38
+        enabled: false
+      cern_menu_row_column:
+        weight: 39
+        enabled: false
+      cern_peoples_profile:
+        weight: 40
+        enabled: false
+      cern_preview_card:
+        weight: 41
+        enabled: false
+      cern_preview_list:
+        weight: 42
+        enabled: false
+      cern_quote:
+        weight: 43
+        enabled: false
+      cern_agenda_box:
+        weight: 44
+        enabled: false
+      cern_related_card:
+        weight: 44
+        enabled: false
+      cern_related_content:
+        weight: 45
+        enabled: false
+      cern_agenda_item:
+        weight: 45
+        enabled: false
+      cern_row:
+        weight: 46
+        enabled: false
+      cern_article_box:
+        weight: 46
+        enabled: false
+      cern_slide:
+        weight: 47
+        enabled: false
+      cern_author_info:
+        weight: 47
+        enabled: false
+      cern_background:
+        weight: 48
+        enabled: false
+      cern_slider:
+        weight: 48
+        enabled: false
+      cern_text:
+        weight: 49
+        enabled: false
+      cern_call_action:
+        weight: 49
+        enabled: false
+      reference_component:
+        weight: 50
+        enabled: false
+      cern_call_action_button:
+        enabled: true
+        weight: 51
+      cern_featured_banner:
+        weight: 53
+        enabled: false
+      cern_featured_quote:
+        weight: 54
+        enabled: false
+      cern_header_frame:
+        weight: 58
+        enabled: false
+      cern_hero_header:
+        weight: 59
+        enabled: false
+      cern_page_navigation:
+        weight: 68
+        enabled: false
+      cern_resource_box:
+        weight: 75
+        enabled: false
+      cern_scrolling_menu:
+        weight: 77
+        enabled: false
+      cern_section:
+        weight: 78
+        enabled: false
+      cern_thumbnail_box:
+        weight: 82
+        enabled: false
+      cern_timeline:
+        weight: 83
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,23 @@
+# Quote Pattern
+#
+quote:
+  label: "Quote"
+  description: "A single quote"
+  fields:
+    title:
+      description: "Quote title."
+      label: Title
+      preview: "This measurement is so far the culmination point of 10 years of hard work by the BASE team."
+      type: text
+    author:
+      description: "Quote author."
+      label: Author
+      preview: "Stefan Ulmer"
+      type: text
+  libraries:
+    -
+      quote:
+        css:
+          component:
+            css/quote.component.css: {}
+  use: "@cern_components/molecules/quote/quote.html.twig"

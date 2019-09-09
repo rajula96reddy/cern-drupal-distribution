@@ -1,0 +1,12 @@
+name: 'CERN Jira Feedback integration'
+type: module
+description: "Adds Feedback code to connect with Jira. Used only by drupal-admins during the pilot phase to gather administrators feedback"
+dependencies:
+  - block
+  - block_content
+package: CERN
+version: '8.x-1.0'
+core: '8.x'
+project: 'cern_jira'
+datestamp: 1510404815
+

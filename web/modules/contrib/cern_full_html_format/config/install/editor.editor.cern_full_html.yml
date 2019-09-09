@@ -1,0 +1,83 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.cern_full_html
+  module:
+    - ckeditor
+format: cern_full_html
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Formatting
+          items:
+            - Bold
+            - Italic
+            - Underline
+            - Strike
+            - Superscript
+            - Subscript
+            - '-'
+            - RemoveFormat
+        -
+          name: Linking
+          items:
+            - DrupalLink
+            - DrupalUnlink
+        -
+          name: Lists
+          items:
+            - BulletedList
+            - NumberedList
+        -
+          name: Media
+          items:
+            - Blockquote
+            - CernCdsMedia
+            - DrupalImage
+            - Table
+            - HorizontalRule
+        -
+          name: 'Block Formatting'
+          items:
+            - Font
+            - FontSize
+            - Format
+            - TextColor
+            - BGColor
+            - JustifyLeft
+            - JustifyCenter
+            - JustifyRight
+            - JustifyBlock
+            - Indent
+            - Outdent
+        -
+          name: Tools
+          items:
+            - ShowBlocks
+            - Source
+            - Maximize
+            - PasteFromWord
+            - Paste
+        -
+          name: Styles
+          items:
+            - Styles
+  plugins:
+    stylescombo:
+      styles: "p.ckeditorseparator.ck-megamenu-paragraphs|MEGAMENU\r\np.cern-btn|Button for MegaMenu Block\r\np.ckeditorseparator.ck-clean-paragraphs|CLEANERS\r\np.clearboth|Break columns\r\np.no-column|Clear Paragraph  styles\r\ndiv.blockquote.no-column|Clear Blockquote styles\r\np.ckeditorseparator.ck-columns-paragraphs|COLUMN PARAGRAPHS\r\np.column-right.image-breakout|Right Col. / breakout IMG\r\np.column-left.image-breakout|Left Col./ breakout IMG\r\np.column-right.image-align|Right Col./ align IMG\r\np.column-left.image-align|Left Col./ align IMG\r\np.ckeditorseparator.ck-bloquotes-paragraphs|BLOCKQUOTES\r\ndiv.blockquote|Full BlockQuote\r\ndiv.blockquote.column-right.image-breakout|Right BQ / breakout IMG\r\ndiv.blockquote.column-left.image-breakout|Left BQ / breakout IMG\r\ndiv.blockquote.column-right.image-align|Right BQ / align IMG\r\ndiv.blockquote.column-left.image-align|Left BQ / align IMG\r\np.ckeditorseparator.ck-images-paragraphs|LOCAL IMAGES\r\ndiv.breakout-left|Breackout-Left\r\ndiv.breakout-right|Breackout-Right\r\ndiv.align-left|Align-Left\r\ndiv.align-right|Align-Right\r\np.ckeditorseparator.ck-others|OTHERS\r\np.ml-2|MarginLeft Paragraph\r\nspan.cern-tag|Tag\r\nspan.upper-cern-tag|Uppercase Tag\r\nspan.line-of-lines|Custom lines"
+    language:
+      language_list: un
+    colorbutton:
+      colors: ''
+image_upload:
+  status: true
+  scheme: public
+  directory: inline-images
+  max_size: '5 MB'
+  max_dimensions:
+    width: null
+    height: null

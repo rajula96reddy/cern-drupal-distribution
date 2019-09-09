@@ -1,0 +1,66 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_icon_component.field_p_icon_component_icon
+    - field.field.paragraph.cern_icon_component.field_p_icon_component_icon_cl
+    - field.field.paragraph.cern_icon_component.field_p_icon_component_text
+    - field.field.paragraph.cern_icon_component.field_p_icon_component_text_cl
+    - paragraphs.paragraphs_type.cern_icon_component
+  module:
+    - color_field
+    - field_group
+third_party_settings:
+  field_group:
+    group_color_settings:
+      children:
+        - field_p_icon_component_icon_cl
+        - field_p_icon_component_text_cl
+      parent_name: ''
+      weight: 2
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Color settings'
+id: paragraph.cern_icon_component.default
+targetEntityType: paragraph
+bundle: cern_icon_component
+mode: default
+content:
+  field_p_icon_component_icon:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_p_icon_component_icon_cl:
+    weight: 2
+    settings:
+      default_colors: '#0855A0,#59ADFF,#0D87FF,#2DS77F,#0A6CCC,#2C97FF,#128AFF,#B26F00,#FFA612,#6B05EB,#FF1248,#E86C05,#FFDA06,#F2A530,#FFCC7F,#FFAE33,#7F6640,#CC8B28,#D7D7D7,#1C2C38,#292929,#FFFFFF,#000000'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  field_p_icon_component_text:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_p_icon_component_text_cl:
+    weight: 3
+    settings:
+      default_colors: '#0855A0,#59ADFF,#0D87FF,#2DS77F,#0A6CCC,#2C97FF,#128AFF,#B26F00,#FFA612,#6B05EB,#FF1248,#E86C05,#FFDA06,#F2A530,#FFCC7F,#FFAE33,#7F6640,#CC8B28,#D7D7D7,#1C2C38,#292929,#FFFFFF,#000000'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+hidden:
+  created: true
+  moderation_state: true
+  status: true
+  translation: true
+  uid: true

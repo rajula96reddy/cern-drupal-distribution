@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cern_thumbnail_box
+label: 'Thumbnail box'
+icon_uuid: null
+description: 'A single thumbnail box'
+behavior_plugins: {  }

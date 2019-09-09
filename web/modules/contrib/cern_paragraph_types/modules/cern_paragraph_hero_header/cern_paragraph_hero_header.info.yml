@@ -1,0 +1,15 @@
+name: 'CERN Hero header'
+type: module
+core: 8.x
+version: '1.1'
+dependencies:
+  - cern_paragraph_hero_frame
+  - cern_paragraph_types
+  - content_translation
+  - ds
+  - entity_reference_revisions
+  - field
+  - language
+  - paragraphs
+description: 'Hero header paragraph'
+package: CERN Components

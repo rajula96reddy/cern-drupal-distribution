@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_icon_component_text
+    - paragraphs.paragraphs_type.cern_icon_component
+id: paragraph.cern_icon_component.field_p_icon_component_text
+field_name: field_p_icon_component_text
+entity_type: paragraph
+bundle: cern_icon_component
+label: Text
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

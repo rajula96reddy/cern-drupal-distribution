@@ -1,0 +1,118 @@
+// out: ../../css/views/common-views.css, compress: false, sourceMap: false, autoprefixer: false, groupmedia: false
+@import '../variables.scss';
+
+/* .cern-view-display-page {
+  .view-content {
+    h1,
+    h2,
+    h3,
+    h4 {
+      @include transition(all 0.3s ease-in-out 0s);
+    }
+    a {
+      @include transition(all 0.3s ease-in-out 0s);
+    }
+  }
+} */
+.cern-page-display-page,
+.cern-view-display-page:not(.view-general-search):not(.cern-view-display-resources):not(.resources-mosaic):not(.cern-view-display-feature_events):not(.cern-view-display-past_events):not(.cern-view-display-all_news):not(.cern-view-display-faq_page):not(.cern-view-display-page_taxonomies) {
+  &>h2 {
+    margin: 3rem 0 !important;
+  }
+
+  .views-exposed-form .form-inline {
+    margin: 0 -10px;
+
+    .form-item {
+      vertical-align: top;
+
+      &:first-child {
+        display: block;
+        text-align: center;
+        position: relative;
+
+        @media only screen and (max-width: 767px) {
+          padding: 0 10px;
+        }
+
+        &>input {
+          width: 98%;
+          margin: 0 auto 15px auto;
+          height: 40px;
+          padding-left: 40px;
+        }
+
+        & select {
+          width: 98%;
+          padding-left: 40px;
+
+          @media only screen and (max-width: 767px) {
+            width: 100%;
+          }
+        }
+
+        &:before {
+          content: 'O';
+          font-family: "cern-icons";
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          position: absolute;
+          left: 8px;
+          width: 25px;
+          height: 25px;
+          top: 8px;
+          text-align: center;
+          line-height: 21px;
+          font-weight: 500;
+          padding-right: 2px;
+          font-size: 46px;
+          color: #0855a0;
+        }
+
+        label {
+          display: none;
+        }
+      }
+
+      &>input {
+        display: block;
+      }
+
+      &:not(:first-child) {
+        width: calc((100% / 4) - 30px);
+        margin: 10px;
+
+        @media only screen and (max-width: 767px) {
+          width: 100%;
+          margin: 0;
+          padding: 0 10px;
+        }
+
+        input {
+          width: 100%;
+        }
+
+        div.select-wrapper select {
+          width: 100%;
+        }
+      }
+    }
+
+    .form-actions {
+      width: calc((100% / 4) - 40px);
+      margin: 10px;
+      vertical-align: bottom;
+      text-align: right;
+
+      @media only screen and (max-width: 767px) {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

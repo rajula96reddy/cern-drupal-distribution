@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cern_featured_quote
+label: 'Featured quote'
+icon_uuid: null
+description: 'Featured quote paragraph'
+behavior_plugins: {  }

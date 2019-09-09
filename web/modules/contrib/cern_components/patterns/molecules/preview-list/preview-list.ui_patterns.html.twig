@@ -1,0 +1,70 @@
+{#
+ * @file
+ * Preview List pattern.
+#}
+
+{# Preview List #}
+<div class="preview-list-component clearfix">
+  {# Image field #}
+    {% if listing_cds_image | render %}
+    {% set image_url = listing_cds_image|get_img_src %}
+  {% else %}
+    {% if listing_image | render %}
+      {% set image_url = listing_image | render %}
+    {% else %}
+      {% if image | render %}
+        {% if 'cds-image' in image|render|render %}
+          {% set cds_id = image | render | get_tag_attribute('figure', 'id') %}
+          {% set image_url = '//cds.cern.ch/images/' ~ cds_id ~ '/file?size=medium' %}
+        {% else %}
+          {% set image_url = image | render %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+  {% set img_attributes = create_attribute() %}
+  {% set img_attributes = img_attributes.addClass('preview-list-image') %}
+  {% if image_url %}
+    {% set img_attributes = img_attributes.setAttribute('style', "background: #dddddd url("~ image_url ~") no-repeat center center / cover") %}
+  {% endif %}
+  <div {{ img_attributes }}>
+    {# {% if image|render %}{{image | get_img_src}}{% endif %} #}
+  </div>
+
+  {# Text Field #}
+  <div class="preview-list-news-info">
+    {# Title field #}
+    {% if title | render %}
+      <h3 class="preview-list-title">
+        {{title}}
+      </h3>
+    {% endif %}
+    {# Strap field #}
+    {% if strap | render %}
+      <div class="preview-list-strap">
+        <p>
+          {{strap}}
+        </p>
+      </div>
+    {% endif %}
+    {# News Format field #}
+    {% if news_format | render %}
+      <div class="preview-list-news-format">
+        {{news_format}}
+      </div>
+    {% endif %}
+    {# Topic field #}
+    {% if topic | render %}
+      <div class="preview-list-topic">
+        {{topic}}
+      </div>
+    {% endif %}
+    {# Date field #}
+    {% if date | render %}
+      <div class="preview-list-date">
+        {{date}}
+      </div>
+    {% endif %}
+  </div>
+</div>

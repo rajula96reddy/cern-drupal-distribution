@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cern_call_action_button
+label: 'Call to action button'
+icon_uuid: null
+description: 'Call to action button paragraph'
+behavior_plugins: {  }

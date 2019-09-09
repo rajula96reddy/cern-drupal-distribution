@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.indico_event
+  module:
+    - text
+id: node.indico_event.body
+field_name: body
+entity_type: node
+bundle: indico_event
+label: Description
+description: 'This field contains the description of the event.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

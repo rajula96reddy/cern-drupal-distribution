@@ -1,0 +1,62 @@
+{#
+ * @file
+ * FAQ Full Content Display Pattern Twig.
+#}
+
+{# Header content #}
+<div class="faq-node-header-content">
+  <div class="row">
+    <div class="col-md-12 loading-cds">
+      {# Image field #}
+      <div class="faq-node-full-content-image">
+        {% if image | render %}
+          <div class="faq-node-header-content-image" style="display: none;">
+            {{ image }}
+          </div>
+        {% endif %}
+        <div class="faq-node-header-content-texts">
+          {# Breadcrumbs #}
+          <div class="faq-node-full-content-breadcrumbs">
+            {{ drupal_block('system_breadcrumb_block') }}
+          </div>
+          {# Title field #}
+          {% if title | render %}
+            <h1 class="faq-node-full-content-title">
+              {{ title }}
+            </h1>
+          {% endif %}
+          {# Caption field #}
+          {% if caption | render %}
+            <div class="faq-node-full-content-caption cern-caption">
+              <hr/>
+              <p>{{ caption }}</p>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{# Center content #}
+<div class="faq-node-center-content cern-lazy-in container mt-3">
+  <div class="row">
+    <div class="col-md-12">
+      {# Body field #}
+      {% if body | render %}
+        <div class="faq-node-full-content-body clearfix full-html-markup full-text-animation">
+          {{ body }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{# Left content #}
+{# <div class="faq-node-full-content-social-buttons container" > 
+  {{ drupal_block('social_sharing_block') }}
+</div>  #}
+
+{# <div class="faq-node-footer-content faq-node-view-content mt-4">
+	{{ drupal_block('views_block:faq-more_faq') }}</div>
+</div> #}

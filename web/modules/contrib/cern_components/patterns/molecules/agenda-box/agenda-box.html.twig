@@ -1,0 +1,127 @@
+{#
+ * @file
+ * Agenda Box pattern.
+#}
+
+{% 
+  set classes = [
+    "agenda-box-pattern",
+    "box-pattern",
+    variants.display.value,
+    cern_node_type
+  ] 
+%}
+
+{% set attributes = create_attribute() %}
+{% set attributes = attributes.addClass(classes) %}
+
+{% set attributes_bgcolor = create_attribute() %}
+{% set attributes_bgcolor = attributes_bgcolor.addClass(classes) %}
+
+{% set attributes_textcolor = create_attribute() %}
+
+{% if background | render %}
+  {% set attributes = attributes.addClass(classes).setAttribute('style', "background:url('" ~ background | get_img_src ~ "') no-repeat center center / cover") %}
+{% endif %}
+
+{% if variants.bgcolor.color %}
+  {% set attributes_bgcolor = attributes_bgcolor.addClass(classes).setAttribute('style', "background-color: " ~ variants.bgcolor.color ~ "") %}
+{% endif %}
+
+{% if variants.text_color.color %}
+  {% set attributes_textcolor = attributes_textcolor.setAttribute('style', "color: " ~ variants.text_color.color ~ "") %}
+{% endif %}
+
+{# Agenda Box #}
+<div {{ attributes }} {{ attributes_bgcolor }}>
+  {% if background | render %}
+    <div class="component-related_card__veil"></div>
+  {% endif %}
+  <div class="agenda-box-pattern__box-wrapper">
+    {% if start_date | render and end_date | render %}
+      <div class="agenda-box-date-wrapper" {{ attributes_textcolor }}>
+        <span class="agenda-box-week-day">{{ start_date|format_date_field('custom', 'l') }}</span>
+        <div class="agenda-box-event-dates">
+          <span class="agenda-box-event-dates-1">{{ start_date|format_date_field('custom', 'j') }}</span> <span class="agenda-box-event-dates-2">{{ start_date|format_date_field('custom', 'M') }}</span><span class="agenda-box-event-dates-3">/{{ start_date|format_date_field('custom', 'y') }}</span>
+        </div>
+        <div class="agenda-box-event-time">
+          <span class="agenda-box-start-time">
+            {{ start_date|format_date_field('custom', 'H:i') }}
+            {% if start_date | format_date_field('custom', 'j M') == end_date | format_date_field('custom', 'j M') %}
+              -
+              {{ end_date|format_date_field('custom', 'H:i') }}
+            {% endif %}
+          </span>
+          {% if timezone | render %}
+            <span class="agenda-box-time-zone">({{ timezone }})</span>
+          {% endif %}
+          <br/>
+          {% if start_date | format_date_field('custom', 'j M') != end_date | format_date_field('custom', 'j M') %}
+            <span>
+              <b>{{ 'Ends:' | t | upper }}</b>
+            </span>
+            <b>{{ end_date|format_date_field('custom', 'j M') }}</b>/{{ end_date|format_date_field('custom', 'y') }}
+            <span>
+              <b>&nbsp;{{ end_date|format_date_field('custom', 'H:i') }}</b>
+            </span>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Link field #}
+    {% if link | render %}
+      <div class="agenda-box-link mb-1 mt-1">
+        <h3>
+          {{ link|openlink }}
+          <span class="text-color" {{ attributes_textcolor }}>{{ link|render|striptags|raw }}</span>
+          {{ link|closelink }}
+        </h3>
+      </div>
+    {% endif %}
+
+    {# Body field #}
+    {% if body | render %}
+      <div class="agenda-box-body" {{ attributes_textcolor }}>
+        {{ body }}
+      </div>
+    {% endif %}
+
+    {# Content Type field #}
+    {% if content_type | render %}
+      {% set ct = '' %}
+      {% if content_type | render | striptags | trim == "Event Page" %}
+        {% set ct = 'Event' %}
+      {% endif %}
+      {% if content_type | render | striptags | trim == "Indico Event" %}
+        {% set ct = 'Event' %}
+      {% endif %}
+      {% if content_type | render | striptags | trim == "Webcast Event" %}
+        {% set ct = 'Webcast' %}
+      {% endif %}
+      <div class="agenda-box-content-type">
+        {{ ct|t }}
+      </div>
+    {% endif %}
+
+    {# Place field #}
+    {% if place | render %}
+      <div class="agenda-box-place">
+        {{place}}
+      </div>
+    {% endif %}
+
+    {% if ics_link | render %}
+      <div class="agenda-box-cal-wrapper">
+        <div class="agenda-box-cal-button">
+          {% if content_type | render | striptags | trim == "Event Page" %}
+            {{ ics_link|openlink({'aria-label': arialabel}) }}
+            {{ ics_link|closelink }}
+          {% else %}
+            <a href="{{ ics_link | render }}" target="_blank"></a>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>

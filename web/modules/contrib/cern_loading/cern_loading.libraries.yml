@@ -1,0 +1,6 @@
+cernloading:
+  css:
+    layout:
+      css/cern_loading.css: {}
+  js:
+    js/cern_loading.js: {}
