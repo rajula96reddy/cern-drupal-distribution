@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: cern_featured_banner
-label: 'Featured banner'
-icon_uuid: null
-description: 'Featured banner paragraph'
-behavior_plugins: {  }

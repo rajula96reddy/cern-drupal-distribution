@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: cern_section
-label: Section
-icon_uuid: null
-description: 'Section paragraph'
-behavior_plugins: {  }

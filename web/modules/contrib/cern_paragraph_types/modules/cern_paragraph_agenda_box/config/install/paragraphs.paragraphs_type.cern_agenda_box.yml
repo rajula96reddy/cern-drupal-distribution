@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: cern_agenda_box
-label: 'Agenda box'
-icon_uuid: null
-description: 'Agenda box paragraph'
-behavior_plugins: {  }

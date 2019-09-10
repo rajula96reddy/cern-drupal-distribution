@@ -20,8 +20,9 @@
         "gitlab-domains": ["gitlab.cern.ch"]
     },
     "require": {
-        "composer/installers": "1.6.0",
+        "composer/installers": "1.7.0",
         "cweagans/composer-patches": "1.6.6",
+        "drupal/adminimal_theme":"1.4",
         "drupal/admin_toolbar": "1.27",
         "drupal/allowed_formats": "1.1",
         "drupal/bootstrap": "3.20",

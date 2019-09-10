@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: cern_author_info
-label: 'Author info'
-icon_uuid: null
-description: 'Author info paragraph'
-behavior_plugins: {  }

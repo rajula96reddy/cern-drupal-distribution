@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: cern_article_box
-label: 'Article box'
-icon_uuid: null
-description: 'Article box paragraph'
-behavior_plugins: {  }

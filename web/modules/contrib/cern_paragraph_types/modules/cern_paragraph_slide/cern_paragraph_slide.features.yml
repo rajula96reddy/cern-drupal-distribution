@@ -1,3 +1,0 @@
-excluded:
-  - core.base_field_override.paragraph.cern_slide.moderation_state
-required: true

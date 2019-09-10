@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: cern_text
-label: 'Text Component'
-icon_uuid: null
-description: 'Text component paragraph'
-behavior_plugins: {  }

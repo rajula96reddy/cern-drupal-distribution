@@ -1,9 +1,0 @@
-name: 'CERN CDS Media Plugin'
-description: 'Provides the CERN CDS Media Plugin in the CKEditor.'
-type: module
-core: 8.x
-version: '1.1'
-package: CERN Basic Elements
-dependencies:
-  - drupal:ckeditor
-  - field

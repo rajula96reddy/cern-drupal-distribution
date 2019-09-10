@@ -1,7 +1,0 @@
-cern_toolbar.cern_toolbar_settings_form:
-  path: '/admin/config/user-interface/cern-toolbar'
-  defaults:
-    _form: '\Drupal\cern_toolbar\Form\CernToolbarSettingsForm'
-    _title: 'CERN Toolbar Settings'
-  requirements:
-    _permission: 'administer cern toolbar'

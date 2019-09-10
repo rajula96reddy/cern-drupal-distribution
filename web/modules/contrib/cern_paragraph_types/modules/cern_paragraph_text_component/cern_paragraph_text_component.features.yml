@@ -1,3 +1,0 @@
-excluded:
-  - core.base_field_override.paragraph.cern_text.moderation_state
-required: true

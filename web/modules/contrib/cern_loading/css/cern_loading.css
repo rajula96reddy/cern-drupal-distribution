@@ -1,7 +1,0 @@
-#cern-global-loading-layout {
-  background: #333333 url("../images/loader.gif") no-repeat center center/220px auto;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 1001;
-  top: 0; }

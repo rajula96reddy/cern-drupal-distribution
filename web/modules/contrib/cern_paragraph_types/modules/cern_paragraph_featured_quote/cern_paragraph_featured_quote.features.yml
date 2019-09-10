@@ -1,7 +1,0 @@
-excluded:
-  - core.base_field_override.paragraph.cern_featured_quote.moderation_state
-  - core.entity_form_display.paragraph.cern_quote.default
-  - core.entity_view_display.paragraph.cern_quote.default
-  - field.field.paragraph.cern_quote.field_p_quote_author
-  - field.field.paragraph.cern_quote.field_p_quote_title
-required: true

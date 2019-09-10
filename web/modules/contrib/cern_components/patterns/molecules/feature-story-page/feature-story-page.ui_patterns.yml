@@ -1,8 +1,0 @@
-feature_story_page:
-  label: "Feature story page"
-  description: "Default feature story page node render"
-  fields:
-    components:
-      label: "Components"
-      description: "Web Components"
-  use: "@cern_components/molecules/feature-story-page/feature-story-page.html.twig"
