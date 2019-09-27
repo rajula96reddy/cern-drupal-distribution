@@ -146,7 +146,7 @@
             "drush/Commands/{$name}": ["type:drupal-drush"]
         },
         "patches": {
-            "drupal/no-multisite-module-theme-install": {
+            "drupal/core": {
                 "Move module/theme installation relative path": "patches/no-multisite-modules-themes-install-2718105-3.patch"
             }
         },
