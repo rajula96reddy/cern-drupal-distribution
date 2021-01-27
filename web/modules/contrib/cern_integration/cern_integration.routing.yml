@@ -1,6 +1,0 @@
-cern_integration.settings:
-  path: '/_site'
-  defaults:
-    _title: 'CERN Infrastructure'
-  requirements:
-    _permission: 'administer site configuration'

@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: hep_trusted
-label: 'HEP Trusted'
-weight: 5
-is_admin: null
-permissions: {  }

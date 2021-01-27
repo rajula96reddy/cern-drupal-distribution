@@ -1,9 +1,0 @@
-name: 'CERN Indico Feeds'
-type: module
-description: 'Imports events from Indico website (http://indico.cern.ch) to Drupal websites'
-core: 8.x
-package: CERN
-dependencies:
-  - cern_indico_events
-  - feeds
-version: 1.0

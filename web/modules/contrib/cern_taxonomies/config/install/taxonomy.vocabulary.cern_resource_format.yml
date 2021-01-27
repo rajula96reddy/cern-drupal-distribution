@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: 'Resource Format'
-vid: cern_resource_format
-description: 'Vocabulary for tagging resource content by type'
-hierarchy: 0
-weight: 0
