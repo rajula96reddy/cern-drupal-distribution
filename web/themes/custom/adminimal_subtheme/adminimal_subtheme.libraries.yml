@@ -1,7 +1,0 @@
-global-styling:
-  version: VERSION
-  css:
-    base:
-      css/adminimal-subtheme.css: {}
-  js:
-    js/adminimal_subtheme.js: {}
