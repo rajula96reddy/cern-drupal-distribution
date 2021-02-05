@@ -14,12 +14,12 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => 'No version set (parsed as 1.0.0)',
-    'version' => '1.0.0.0',
+    'pretty_version' => '8.9.13.x-dev',
+    'version' => '8.9.13.9999999-dev',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '3ff7d617b5d6cfbf92444f52710a2523cc318d69',
     'name' => 'drupal/recommended-project',
   ),
   'versions' => 
@@ -1518,12 +1518,12 @@ private static $installed = array (
     ),
     'drupal/recommended-project' => 
     array (
-      'pretty_version' => 'No version set (parsed as 1.0.0)',
-      'version' => '1.0.0.0',
+      'pretty_version' => '8.9.13.x-dev',
+      'version' => '8.9.13.9999999-dev',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '3ff7d617b5d6cfbf92444f52710a2523cc318d69',
     ),
     'drupal/redirect' => 
     array (
@@ -2867,6 +2867,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '8b261c9fc0481b4e9fa9d01c6ca70867b5d5e819',
+    ),
+    'wikimedia/composer-merge-plugin' => 
+    array (
+      'pretty_version' => 'dev-feature/composer-v2',
+      'version' => 'dev-feature/composer-v2',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3f4c1e914be5ba7b9e84434a69f3bb835bff2ac1',
     ),
     'zendframework/zend-diactoros' => 
     array (

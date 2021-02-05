@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a219a4492df39be7478b6a8b432740a1",
+    "content-hash": "f928be7d136397c18b463519733311da",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -14318,6 +14318,69 @@
                 "source": "https://github.com/whitehat101/apr1-md5/tree/master"
             },
             "time": "2015-02-11T11:06:42+00:00"
+        },
+        {
+            "name": "wikimedia/composer-merge-plugin",
+            "version": "dev-feature/composer-v2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcaskill/composer-merge-plugin.git",
+                "reference": "3f4c1e914be5ba7b9e84434a69f3bb835bff2ac1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcaskill/composer-merge-plugin/zipball/3f4c1e914be5ba7b9e84434a69f3bb835bff2ac1",
+                "reference": "3f4c1e914be5ba7b9e84434a69f3bb835bff2ac1",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.1||^2.0",
+                "php": ">=7.2.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.1||^2.0",
+                "php-parallel-lint/php-parallel-lint": "~1.1.0",
+                "phpunit/phpunit": "^8.5||^9.0",
+                "squizlabs/php_codesniffer": "~3.5.4"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5.x-dev"
+                },
+                "class": "Wikimedia\\Composer\\MergePlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Wikimedia\\Composer\\": "src/"
+                }
+            },
+            "scripts": {
+                "coverage": [
+                    "phpunit --log-junit=reports/unitreport.xml --coverage-text --coverage-html=reports/coverage --coverage-clover=reports/coverage.xml",
+                    "phpcs --encoding=utf-8 --standard=PSR2 --report-checkstyle=reports/checkstyle-phpcs.xml --report-full --extensions=php src/* tests/phpunit/*"
+                ],
+                "test": [
+                    "composer validate --no-interaction",
+                    "parallel-lint src tests",
+                    "phpunit",
+                    "phpcs --encoding=utf-8 --standard=PSR2 --extensions=php src/* tests/phpunit/*"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bryan Davis",
+                    "email": "bd808@wikimedia.org"
+                }
+            ],
+            "description": "Composer plugin to merge multiple composer.json files",
+            "support": {
+                "source": "https://github.com/mcaskill/composer-merge-plugin/tree/feature/composer-v2"
+            },
+            "time": "2021-02-01T20:12:37+00:00"
         }
     ],
     "packages-dev": [],
@@ -14334,7 +14397,8 @@
         "drupal/filefield_paths": 10,
         "drupal/rules": 15,
         "drupal/webform_analysis": 10,
-        "drupal/workbench_access": 10
+        "drupal/workbench_access": 10,
+        "wikimedia/composer-merge-plugin": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
