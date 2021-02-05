@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '3ff7d617b5d6cfbf92444f52710a2523cc318d69',
+    'reference' => '9073bb440b41c0733235a426d1170d281ea20fde',
     'name' => 'drupal/recommended-project',
   ),
   'versions' => 
@@ -287,87 +287,6 @@ private static $installed = array (
       array (
       ),
       'reference' => '8.x-1.1',
-    ),
-    'drupal/cern-cds-media' => 
-    array (
-      'pretty_version' => '2.1.3',
-      'version' => '2.1.3.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '57ba9f56ce31d754e1d89117fcdd65ae816ce22c',
-    ),
-    'drupal/cern-components' => 
-    array (
-      'pretty_version' => '2.7.10',
-      'version' => '2.7.10.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '8cc5c011dbb200e748718701212882dcda5563ff',
-    ),
-    'drupal/cern-dev-status' => 
-    array (
-      'pretty_version' => '2.0.3',
-      'version' => '2.0.3.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '50a2dcafc5ba1d130dd270cff17718f03e4cc3b5',
-    ),
-    'drupal/cern-display-formats' => 
-    array (
-      'pretty_version' => '1.4.5',
-      'version' => '1.4.5.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '57b5b7cc346f4094359efbb53f9cb21cfedbaaf3',
-    ),
-    'drupal/cern-full-html-format' => 
-    array (
-      'pretty_version' => '2.0.3',
-      'version' => '2.0.3.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '862c0ffe8ed690dc622d72d22292c83f42c77bb6',
-    ),
-    'drupal/cern-landing-page' => 
-    array (
-      'pretty_version' => '2.2.3',
-      'version' => '2.2.3.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '7f2e2fae22215d2f1b886eb677e9dafdecdc9033',
-    ),
-    'drupal/cern-loading' => 
-    array (
-      'pretty_version' => '2.1.2',
-      'version' => '2.1.2.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '7192a53bc4b2d6a4187c3abf1fef6df1d1df1744',
-    ),
-    'drupal/cern-paragraph-types' => 
-    array (
-      'pretty_version' => '2.2.2',
-      'version' => '2.2.2.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'c62b7f8d71029a6cd6535ef87d465e5e858f74a5',
-    ),
-    'drupal/cern-toolbar' => 
-    array (
-      'pretty_version' => '2.2.2',
-      'version' => '2.2.2.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '51e6b5293d8628c03c124c46b1b81e972279393c',
     ),
     'drupal/ckeditor' => 
     array (
@@ -1523,7 +1442,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '3ff7d617b5d6cfbf92444f52710a2523cc318d69',
+      'reference' => '9073bb440b41c0733235a426d1170d281ea20fde',
     ),
     'drupal/redirect' => 
     array (
