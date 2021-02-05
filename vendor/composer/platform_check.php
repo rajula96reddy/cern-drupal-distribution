@@ -4,11 +4,13 @@
 
 $issues = array();
 
-if (!(PHP_VERSION_ID >= 70008)) {
-    $issues[] = 'Your Composer dependencies require a PHP version ">= 7.0.8". You are running ' . PHP_VERSION  .  '.';
+if (!(PHP_VERSION_ID >= 70205)) {
+    $issues[] = 'Your Composer dependencies require a PHP version ">= 7.2.5". You are running ' . PHP_VERSION  .  '.';
 }
 
 $missingExtensions = array();
+extension_loaded('ctype') || $missingExtensions[] = 'ctype';
+extension_loaded('curl') || $missingExtensions[] = 'curl';
 extension_loaded('date') || $missingExtensions[] = 'date';
 extension_loaded('dom') || $missingExtensions[] = 'dom';
 extension_loaded('filter') || $missingExtensions[] = 'filter';
@@ -17,6 +19,7 @@ extension_loaded('hash') || $missingExtensions[] = 'hash';
 extension_loaded('json') || $missingExtensions[] = 'json';
 extension_loaded('libxml') || $missingExtensions[] = 'libxml';
 extension_loaded('mbstring') || $missingExtensions[] = 'mbstring';
+extension_loaded('openssl') || $missingExtensions[] = 'openssl';
 extension_loaded('pcre') || $missingExtensions[] = 'pcre';
 extension_loaded('pdo') || $missingExtensions[] = 'pdo';
 extension_loaded('session') || $missingExtensions[] = 'session';
@@ -24,6 +27,8 @@ extension_loaded('simplexml') || $missingExtensions[] = 'simplexml';
 extension_loaded('spl') || $missingExtensions[] = 'spl';
 extension_loaded('tokenizer') || $missingExtensions[] = 'tokenizer';
 extension_loaded('xml') || $missingExtensions[] = 'xml';
+extension_loaded('xmlwriter') || $missingExtensions[] = 'xmlwriter';
+extension_loaded('zlib') || $missingExtensions[] = 'zlib';
 
 if ($missingExtensions) {
     $issues[] = 'Your Composer dependencies require the following PHP extensions to be installed: ' . implode(', ', $missingExtensions);

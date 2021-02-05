@@ -1,0 +1,37 @@
+diff --git a/src/Plugin/Field/FieldWidget/InlineParagraphsWidget.php b/src/Plugin/Field/FieldWidget/InlineParagraphsWidget.php
+index 785bdfe..7812796 100644
+--- a/src/Plugin/Field/FieldWidget/InlineParagraphsWidget.php
++++ b/src/Plugin/Field/FieldWidget/InlineParagraphsWidget.php
+@@ -643,7 +643,12 @@ class InlineParagraphsWidget extends WidgetBase {
+         ];
+ 
+         field_group_attach_groups($element['subform'], $context);
+-        $element['subform']['#pre_render'][] = 'field_group_form_pre_render';
++        if (function_exists('field_group_form_pre_render')) {
++          $element['subform']['#pre_render'][] = 'field_group_form_pre_render';
++        }
++        if (function_exists('field_group_form_process')) {
++          $element['subform']['#process'][] = 'field_group_form_process';
++        }
+       }
+ 
+       if ($item_mode == 'edit') {
+diff --git a/src/Plugin/Field/FieldWidget/ParagraphsWidget.php b/src/Plugin/Field/FieldWidget/ParagraphsWidget.php
+index c878071..bd22985 100644
+--- a/src/Plugin/Field/FieldWidget/ParagraphsWidget.php
++++ b/src/Plugin/Field/FieldWidget/ParagraphsWidget.php
+@@ -758,7 +758,12 @@ class ParagraphsWidget extends WidgetBase {
+         ];
+ 
+         field_group_attach_groups($element['subform'], $context);
+-        $element['subform']['#pre_render'][] = 'field_group_form_pre_render';
++        if (function_exists('field_group_form_pre_render')) {
++          $element['subform']['#pre_render'][] = 'field_group_form_pre_render';
++        }
++        if (function_exists('field_group_form_process')) {
++          $element['subform']['#process'][] = 'field_group_form_process';
++        }
+       }
+ 
+       if ($item_mode == 'edit') {
+

@@ -1,0 +1,13 @@
+diff --git a/js/webform_analysis.charts.js b/js/webform_analysis.charts.js
+index 9faa2e0..d8db369 100644
+--- a/js/webform_analysis.charts.js
++++ b/js/webform_analysis.charts.js
+@@ -11,7 +11,7 @@
+ 
+       var webformcharts = settings.webformcharts;
+ 
+-      google.charts.load('current', {packages: webformcharts.packages});
++      google.charts.load('46', {packages: webformcharts.packages});
+ 
+       google.charts.setOnLoadCallback(function () {
+ 

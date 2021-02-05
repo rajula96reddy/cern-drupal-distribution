@@ -1,0 +1,15 @@
+domain_301_redirect.settings:
+  path: '/admin/config/search/domain-301-redirect'
+  defaults:
+    _form: '\Drupal\domain_301_redirect\Form\Domain301RedirectConfigForm'
+    _title: 'Domain 301 Redirect'
+  requirements:
+    _permission: 'administer site configuration'
+
+domain_301_redirect.check:
+  path: '/domain-301-redirect-check'
+  defaults:
+    _controller: '\Drupal\domain_301_redirect\Controller\Domain301RedirectController::check'
+    _title: 'Domain 301 Redirect Check'
+  requirements:
+    _custom_access: '\Drupal\domain_301_redirect\Controller\Domain301RedirectController::access'

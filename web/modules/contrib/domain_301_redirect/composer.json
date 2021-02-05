@@ -1,0 +1,13 @@
+{
+  "name": "drupal/domain_301_redirect",
+  "type": "drupal-module",
+  "description": "Allows you to 301 redirect any domain to the main domain associated with a site.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "http://drupal.org/project/domain_301_redirect",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/domain_301_redirect",
+    "source": "http://cgit.drupalcode.org/domain_301_redirect"
+  }
+}

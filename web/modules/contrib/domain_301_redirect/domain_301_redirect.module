@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * @file
+ * This module allows you to 301 redirect all domains to one specific domain.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function domain_301_redirect_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.domain_301_redirect':
+      $output = '';
+      $output .= t('The Domain 301 Redirect module allows sites to 301 redirect to a domain that is marked as the main domain. This means you can have all subdomains and other domains 301 redirect to a domain that you choose as the main domain. This provides great SEO benefit.');
+      return ['#markup' => $output];
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function domain_301_redirect_cron() {
+  $config = \Drupal::config('domain_301_redirect.settings');
+
+  $enabled = $config->get('enabled');
+  $domain = $config->get('domain');
+  $check_period = $config->get('check_period');
+  $last_checked = $config->get('last_checked');
+  $reenable = $config->get('check_reenable');
+  $disabled_by_check = $config->get('disabled_by_check');
+
+  // If the redirect is enabled (or has been previously disabled) and we are
+  // checking for domain availability on cron, then attempt to request the test
+  // url using the redirect domain.
+  if (($enabled || ($disabled_by_check && $reenable)) && !empty($check_period) && $last_checked < time() - $check_period) {
+    if (!preg_match('|^https?://|', $domain)) {
+      $domain = 'http://' . $domain;
+    }
+    $domain_parts = parse_url($domain);
+    $domain = $domain_parts['scheme'] . '://' . $domain_parts['host'];
+
+    $manager = Drupal::service('domain_301_redirect.manager');
+    $config = \Drupal::configFactory()->getEditable('domain_301_redirect.settings');
+    if (!$manager->checkDomain($domain)) {
+      $config
+        ->set('enabled', 0)
+        ->set('disabled_by_check', TRUE);
+      \Drupal::logger('domain_301_redirect')->error('The domain %domain no longer points to this site. Domain 301 redirection was disabled.', ['%domain' => $domain]);
+    }
+    else {
+      \Drupal::logger('domain_301_redirect')->info('Domain 301 redirect check passed.');
+      // If the redirect was disabled by cron, and it has now passed,
+      // re-enable it.
+      if (!$enabled && $reenable && $disabled_by_check) {
+        $config
+          ->set('enabled', 1)
+          ->set('disabled_by_check', FALSE);
+        \Drupal::logger('domain_301_redirect')->error('The domain %domain has become available again. Domain 301 redirection was re-enabled.', ['%domain' => $domain]);
+      }
+    }
+
+    $config
+      ->set('redirect_last_checked', time())
+      ->save();
+  }
+}

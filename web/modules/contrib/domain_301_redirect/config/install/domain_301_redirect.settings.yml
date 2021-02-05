@@ -1,0 +1,10 @@
+enabled: 0
+domain: ''
+check_period: 10800
+domain_check_retries: 3
+domain_check_reenable: true
+disabled_by_check: false
+last_checked: 0
+loop_max_redirects: 3
+applicability: 0
+pages: ''

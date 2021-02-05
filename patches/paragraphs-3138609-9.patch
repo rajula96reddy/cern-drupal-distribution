@@ -1,0 +1,40 @@
+diff --git a/src/Plugin/Field/FieldWidget/InlineParagraphsWidget.php b/src/Plugin/Field/FieldWidget/InlineParagraphsWidget.php
+index cc9a92a..4d6df93 100644
+--- a/src/Plugin/Field/FieldWidget/InlineParagraphsWidget.php
++++ b/src/Plugin/Field/FieldWidget/InlineParagraphsWidget.php
+@@ -652,12 +652,12 @@ class InlineParagraphsWidget extends WidgetBase {
+         if (method_exists(FormatterHelper::class, 'formProcess')) {
+           $element['subform']['#process'][] = [FormatterHelper::class, 'formProcess'];
+         }
+-        elseif (function_exists('field_group_form_pre_render')) {
+-          $element['subform']['#pre_render'][] = 'field_group_form_pre_render';
+-        }
+         elseif (function_exists('field_group_form_process')) {
+           $element['subform']['#process'][] = 'field_group_form_process';
+         }
++        if (function_exists('field_group_form_pre_render')) {
++          $element['subform']['#pre_render'][] = 'field_group_form_pre_render';
++        }
+       }
+ 
+       if ($item_mode == 'edit') {
+diff --git a/src/Plugin/Field/FieldWidget/ParagraphsWidget.php b/src/Plugin/Field/FieldWidget/ParagraphsWidget.php
+index e6decde..8b0772a 100644
+--- a/src/Plugin/Field/FieldWidget/ParagraphsWidget.php
++++ b/src/Plugin/Field/FieldWidget/ParagraphsWidget.php
+@@ -770,12 +770,12 @@ class ParagraphsWidget extends WidgetBase {
+         if (method_exists(FormatterHelper::class, 'formProcess')) {
+           $element['subform']['#process'][] = [FormatterHelper::class, 'formProcess'];
+         }
+-        elseif (function_exists('field_group_form_pre_render')) {
+-          $element['subform']['#pre_render'][] = 'field_group_form_pre_render';
+-        }
+         elseif (function_exists('field_group_form_process')) {
+           $element['subform']['#process'][] = 'field_group_form_process';
+         }
++        if (function_exists('field_group_form_pre_render')) {
++          $element['subform']['#pre_render'][] = 'field_group_form_pre_render';
++        }
+       }
+ 
+       if ($item_mode == 'edit') {

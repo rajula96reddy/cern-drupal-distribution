@@ -1,0 +1,13 @@
+{
+    "name": "drupal/migrate_devel",
+    "type": "drupal-module",
+    "description": "Migrate Development Tools",
+    "homepage": "https://www.drupal.org/project/migrate_devel",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/migrate_devel"
+    },
+    "conflict": {
+      "drupal/core": ">=9",
+      "drush/drush": ">=9"
+    }
+}

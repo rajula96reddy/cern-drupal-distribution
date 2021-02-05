@@ -1,0 +1,10 @@
+services:
+  domain_301_redirect.event_subscriber:
+    class: Drupal\domain_301_redirect\EventSubscriber\DomainRedirectEventSubscriber
+    arguments: ['@config.factory', '@request_stack', '@current_user', '@path.matcher', '@path.alias_manager']
+    tags:
+      - { name: event_subscriber }
+
+  domain_301_redirect.manager:
+    class: Drupal\domain_301_redirect\Domain301RedirectManager
+    arguments: ['@config.factory', '@request_stack', '@private_key', '@http_client']

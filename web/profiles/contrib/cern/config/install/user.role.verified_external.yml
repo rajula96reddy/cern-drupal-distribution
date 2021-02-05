@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: verified_external
+label: 'Verified External'
+weight: 6
+is_admin: null
+permissions: {  }
