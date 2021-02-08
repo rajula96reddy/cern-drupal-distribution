@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - cern_cds_media
+    - paragraphs
+id: paragraph.field_p_slide_cds_item
+field_name: field_p_slide_cds_item
+entity_type: paragraph
+type: CernCdsMedia
+settings: {  }
+module: cern_cds_media
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

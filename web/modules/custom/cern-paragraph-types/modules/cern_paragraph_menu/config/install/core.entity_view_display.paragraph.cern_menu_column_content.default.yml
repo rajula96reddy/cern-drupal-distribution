@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_menu_column_content.field_p_menu_column_content_blck
+    - field.field.paragraph.cern_menu_column_content.field_p_menu_column_content_link
+    - field.field.paragraph.cern_menu_column_content.field_p_menu_column_content_view
+    - paragraphs.paragraphs_type.cern_menu_column_content
+  module:
+    - viewsreference
+id: paragraph.cern_menu_column_content.default
+targetEntityType: paragraph
+bundle: cern_menu_column_content
+mode: default
+content:
+  field_p_menu_column_content_blck:
+    weight: 2
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_p_menu_column_content_link:
+    weight: 0
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_p_menu_column_content_view:
+    weight: 1
+    label: hidden
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    type: viewsreference_formatter
+    region: content
+hidden: {  }

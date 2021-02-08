@@ -1,0 +1,392 @@
+.cern-component-header-blocks .component-header__carousel {
+  clear: both; }
+  .cern-component-header-blocks .component-header__carousel:before, .cern-component-header-blocks .component-header__carousel:after {
+    content: "";
+    display: table; }
+  .cern-component-header-blocks .component-header__carousel:after {
+    clear: both; }
+
+@font-face {
+  font-family: "sourcesans-regular";
+  src: url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/regular.eot?") format("eot"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/regular.woff2") format("woff2"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/regular.woff") format("woff"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/regular.ttf") format("truetype"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/regular.svg#sourcesans-regular") format("svg"); }
+@font-face {
+  font-family: "sourcesans-semibold";
+  src: url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/semibold.eot?") format("eot"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/semibold.woff2") format("woff2"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/semibold.woff") format("woff"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/semibold.ttf") format("truetype"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/semibold.svg#sourcesans-semibold") format("svg"); }
+@font-face {
+  font-family: "sourcesans-bold";
+  src: url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/bold.eot?") format("eot"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/bold.woff2") format("woff2"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/bold.woff") format("woff"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/bold.ttf") format("truetype"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/bold.svg#sourcesans-bold") format("svg"); }
+@font-face {
+  font-family: "sourcesans-light";
+  src: url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/light.eot?") format("eot"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/light.woff2") format("woff2"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/light.woff") format("woff"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/light.ttf") format("truetype"), url("//framework.web.cern.ch/framework/3.0/fonts/sourcesanspro/light.svg#sourcesans-light") format("svg"); }
+@font-face {
+  font-family: "opensans-regular";
+  src: url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/regular.eot?") format("eot"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/regular.woff2") format("woff2"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/regular.woff") format("woff"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/regular.ttf") format("truetype"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/regular.svg#opensans-regular") format("svg"); }
+@font-face {
+  font-family: "opensans-semibold";
+  src: url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/semibold.eot?") format("eot"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/semibold.woff2") format("woff2"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/semibold.woff") format("woff"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/semibold.ttf") format("truetype"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/semibold.svg#opensans-semibold") format("svg"); }
+@font-face {
+  font-family: "opensans-bold";
+  src: url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/bold.eot?") format("eot"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/bold.woff2") format("woff2"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/bold.woff") format("woff"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/bold.ttf") format("truetype"), url("//framework.web.cern.ch/framework/3.0/fonts/open-sans/bold.svg#opensans-bold") format("svg"); }
+@font-face {
+  font-family: "cern-icons";
+  src: url("//framework.web.cern.ch/framework/3.0/fonts/cern/cern.eot?") format("eot"), url("//framework.web.cern.ch/framework/3.0/fonts/cern/cern.woff2") format("woff2"), url("//framework.web.cern.ch/framework/3.0/fonts/cern/cern.woff") format("woff"), url("//framework.web.cern.ch/framework/3.0/fonts/cern/cern.ttf") format("truetype"), url("//framework.web.cern.ch/framework/3.0/fonts/cern/cern.svg#cern-icons") format("svg"); }
+.component-row__display__fluid .cern-component-header-blocks .component-header__carousel .owl-item {
+  margin: 0; }
+  .component-row__display__fluid .cern-component-header-blocks .component-header__carousel .owl-item.active {
+    margin: 0px -2px -2px -2px;
+    width: calc(100vw + 4px) !important; }
+
+.cern-component-header-blocks *,
+.cern-component-header-blocks *::after,
+.cern-component-header-blocks *::before {
+  box-sizing: border-box; }
+.cern-component-header-blocks.component-header {
+  height: 100%;
+  width: 100%;
+  position: relative; }
+.cern-component-header-blocks .component-header__carousel {
+  height: 100%;
+  width: 100%;
+  font-family: 'sourcesans-regular';
+  position: relative; }
+  .cern-component-header-blocks .component-header__carousel .owl-stage-outer {
+    height: 100%;
+    width: 100%; }
+  .cern-component-header-blocks .component-header__carousel .owl-stage {
+    height: 100%;
+    width: 100%; }
+  .cern-component-header-blocks .component-header__carousel .owl-item {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    filter: alpha(opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -webkit-opacity: 0;
+    -khtml-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0; }
+    .cern-component-header-blocks .component-header__carousel .owl-item.active {
+      filter: alpha(opacity=100);
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+      -webkit-opacity: 1;
+      -khtml-opacity: 1;
+      -moz-opacity: 1;
+      -ms-opacity: 1;
+      -o-opacity: 1;
+      opacity: 1; }
+  .cern-component-header-blocks .component-header__carousel .header-block {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%; }
+    .cern-component-header-blocks .component-header__carousel .header-block__veil {
+      min-height: 100%;
+      position: absolute;
+      z-index: 0;
+      min-width: 100%;
+      background-color: rgba(13, 13, 13, 0.5);
+      z-index: 0; }
+    .cern-component-header-blocks .component-header__carousel .header-block .background__image,
+    .cern-component-header-blocks .component-header__carousel .header-block .background__cds_media {
+      position: absolute;
+      min-height: 100%;
+      min-width: 100%; }
+      .cern-component-header-blocks .component-header__carousel .header-block .background__image figure.cds-image img,
+      .cern-component-header-blocks .component-header__carousel .header-block .background__cds_media figure.cds-image img {
+        position: absolute !important; }
+    .cern-component-header-blocks .component-header__carousel .header-block__video {
+      min-height: 100%; }
+    .cern-component-header-blocks .component-header__carousel .header-block__title {
+      position: relative;
+      z-index: 10;
+      padding: 0 10%;
+      right: 0;
+      left: 0;
+      margin: 120px auto 0;
+      color: white;
+      text-shadow: 1px 0px 1px black, 0px 1px 1px black, -1px 0px 1px black, 0px -1px 1px black, 0 0 1px black; }
+      @media only screen and (max-width: 991px) and (min-width: 768px) {
+        .cern-component-header-blocks .component-header__carousel .header-block__title {
+          margin: 8rem auto 0; } }
+      .cern-component-header-blocks .component-header__carousel .header-block__title h3.header-block__name {
+        font-family: opensans-bold;
+        font-weight: 500;
+        font-size: 39px;
+        line-height: 1;
+        margin: 0 0 50px;
+        position: relative;
+        text-align: center; }
+        .cern-component-header-blocks .component-header__carousel .header-block__title h3.header-block__name a {
+          position: relative; }
+          .cern-component-header-blocks .component-header__carousel .header-block__title h3.header-block__name a:after {
+            -webkit-transition: all 0.3s ease-in-out 0s;
+            -khtml-transition: all 0.3s ease-in-out 0s;
+            -moz-transition: all 0.3s ease-in-out 0s;
+            -ms-transition: all 0.3s ease-in-out 0s;
+            -o-transition: all 0.3s ease-in-out 0s;
+            transition: all 0.3s ease-in-out 0s;
+            content: "";
+            display: block;
+            height: 2px;
+            position: absolute;
+            width: 0px;
+            left: 0;
+            margin: auto;
+            bottom: -10px; }
+          .cern-component-header-blocks .component-header__carousel .header-block__title h3.header-block__name a:hover:after {
+            width: 100%; }
+        .cern-component-header-blocks .component-header__carousel .header-block__title h3.header-block__name__underline {
+          content: "";
+          display: block;
+          height: 2px;
+          position: absolute;
+          width: 135px;
+          right: 0;
+          left: 0;
+          margin: auto;
+          bottom: -23px; }
+      @media only screen and (max-width: 991px) {
+        .cern-component-header-blocks .component-header__carousel .header-block__title h3.header-block__name {
+          font-size: calc(100vh / 20);
+          margin-bottom: calc(100vh / 20); } }
+    .cern-component-header-blocks .component-header__carousel .header-block__subhead {
+      color: white; }
+      .cern-component-header-blocks .component-header__carousel .header-block__subhead hr {
+        width: 135px;
+        border-top-width: 2px; }
+      @media only screen and (max-width: 991px) {
+        .cern-component-header-blocks .component-header__carousel .header-block__subhead p {
+          margin: 0 0 5px; }
+        .cern-component-header-blocks .component-header__carousel .header-block__subhead h1,
+        .cern-component-header-blocks .component-header__carousel .header-block__subhead h2,
+        .cern-component-header-blocks .component-header__carousel .header-block__subhead h3 {
+          font-size: calc(100vh / 20) !important; } }
+    .cern-component-header-blocks .component-header__carousel .header-block ol.breadcrumb {
+      text-align: center;
+      background: transparent; }
+      .cern-component-header-blocks .component-header__carousel .header-block ol.breadcrumb li:not(:first-child):before {
+        content: '\6a';
+        font-family: "cern-icons";
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        position: relative;
+        top: 5px;
+        font-size: 1.3em;
+        padding: 0; }
+      .cern-component-header-blocks .component-header__carousel .header-block ol.breadcrumb li a:hover {
+        text-decoration: none; }
+      .cern-component-header-blocks .component-header__carousel .header-block ol.breadcrumb * {
+        color: inherit; }
+        .cern-component-header-blocks .component-header__carousel .header-block ol.breadcrumb *:before {
+          color: inherit; }
+    .cern-component-header-blocks .component-header__carousel .header-block b.highlight {
+      background: #0855a0; }
+  .cern-component-header-blocks .component-header__carousel .owl-dots {
+    position: absolute;
+    left: 10%;
+    bottom: 25px; }
+    .cern-component-header-blocks .component-header__carousel .owl-dots .owl-dot {
+      -webkit-border-radius: 50%;
+      -khtml-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      border-radius: 50%;
+      height: 18px;
+      margin: 0 10px;
+      width: 18px;
+      position: relative;
+      top: 2px; }
+      .cern-component-header-blocks .component-header__carousel .owl-dots .owl-dot span {
+        -webkit-border-radius: 50%;
+        -khtml-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        border-radius: 50%;
+        filter: alpha(opacity=100);
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        -webkit-opacity: 1;
+        -khtml-opacity: 1;
+        -moz-opacity: 1;
+        -ms-opacity: 1;
+        -o-opacity: 1;
+        opacity: 1;
+        height: 8px;
+        margin: 3px auto 0;
+        padding: 0;
+        width: 8px; }
+      .cern-component-header-blocks .component-header__carousel .owl-dots .owl-dot.active, .cern-component-header-blocks .component-header__carousel .owl-dots .owl-dot:hover {
+        border: 2px solid;
+        top: 0; }
+.cern-component-header-blocks .component-header__scroll {
+  display: block;
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin: auto;
+  bottom: 15px; }
+
+body.has-header.toolbar-fixed .cern-component-header-blocks.component-header {
+  height: calc(100vh - 39px); }
+body.has-header.toolbar-fixed.toolbar-vertical .cern-component-header-blocks.component-header {
+  height: calc(100vh - 39px); }
+body.has-header.toolbar-fixed:not(.toolbar-vertical).toolbar-tray-open .cern-component-header-blocks.component-header {
+  height: calc(100vh - 78px); }
+body.has-header.cern-toolbar .cern-component-header-blocks.component-header {
+  height: calc(100vh - 40px); }
+@media only screen and (max-width: 767px) {
+  body.has-header.cern-toolbar.toolbar-vertical .cern-component-header-blocks.component-header {
+    height: calc(100vh - 79px); } }
+body.has-header.cern-toolbar.toolbar-fixed .cern-component-header-blocks.component-header {
+  height: calc(100vh - 79px); }
+body.has-header.cern-toolbar.toolbar-fixed.toolbar-vertical .cern-component-header-blocks.component-header {
+  height: calc(100vh - 79px); }
+body.has-header.cern-toolbar:not(.toolbar-vertical).toolbar-tray-open .cern-component-header-blocks.component-header {
+  height: calc(100vh - 118px); }
+
+body.has-header.toolbar-fixed .is_full_height .cern-component-header-blocks.component-header {
+  height: calc(100vh - 39px); }
+body.has-header.toolbar-fixed .is_half_height .cern-component-header-blocks.component-header {
+  height: calc((100vh - 39px) / 2);
+  min-height: calc((100vh - 39px) / 2); }
+body.has-header.toolbar-fixed.toolbar-vertical .is_full_height .cern-component-header-blocks.component-header {
+  height: calc(100vh - 39px); }
+body.has-header.toolbar-fixed.toolbar-vertical .is_half_height .cern-component-header-blocks.component-header {
+  height: calc((100vh - 39px) / 2);
+  min-height: calc((100vh - 39px) / 2); }
+body.has-header.toolbar-fixed:not(.toolbar-vertical).toolbar-tray-open .is_full_height .cern-component-header-blocks.component-header {
+  height: calc(100vh - 78px); }
+body.has-header.toolbar-fixed:not(.toolbar-vertical).toolbar-tray-open .is_half_height .cern-component-header-blocks.component-header {
+  height: calc((100vh - 78px) / 2);
+  min-height: calc((100vh - 78px) / 2); }
+body.has-header.cern-toolbar .is_full_height .cern-component-header-blocks.component-header {
+  height: calc(100vh - 40px); }
+body.has-header.cern-toolbar .is_half_height .cern-component-header-blocks.component-header {
+  height: calc((100vh + 130px) / 2);
+  min-height: calc((100vh + 130px) / 2); }
+  body.has-header.cern-toolbar .is_half_height .cern-component-header-blocks.component-header .header-block__title {
+    height: 30vh; }
+@media only screen and (max-width: 767px) {
+  body.has-header.cern-toolbar.toolbar-vertical .is_full_height .cern-component-header-blocks.component-header {
+    height: calc(100vh - 79px); }
+    body.has-header.cern-toolbar.toolbar-vertical .is_full_height .cern-component-header-blocks.component-header .header-block__title {
+      height: 60vh; }
+  body.has-header.cern-toolbar.toolbar-vertical .is_half_height .cern-component-header-blocks.component-header {
+    height: calc((100vh - 79px)/ 2); }
+    body.has-header.cern-toolbar.toolbar-vertical .is_half_height .cern-component-header-blocks.component-header .header-block__title {
+      height: 25vh; } }
+body.has-header.cern-toolbar.toolbar-fixed .is_full_height .cern-component-header-blocks.component-header {
+  height: calc(100vh - 79px); }
+  body.has-header.cern-toolbar.toolbar-fixed .is_full_height .cern-component-header-blocks.component-header .header-block__title {
+    height: 60vh; }
+body.has-header.cern-toolbar.toolbar-fixed .is_half_height .cern-component-header-blocks.component-header {
+  height: calc((100vh + 80px) / 2);
+  min-height: calc((100vh + 80px) / 2); }
+  body.has-header.cern-toolbar.toolbar-fixed .is_half_height .cern-component-header-blocks.component-header .header-block__title {
+    height: 25vh; }
+body.has-header.cern-toolbar.toolbar-fixed.toolbar-vertical .is_full_height .cern-component-header-blocks.component-header {
+  height: calc(100vh - 79px); }
+  body.has-header.cern-toolbar.toolbar-fixed.toolbar-vertical .is_full_height .cern-component-header-blocks.component-header .header-block__title {
+    height: 60vh; }
+body.has-header.cern-toolbar.toolbar-fixed.toolbar-vertical .is_half_height .cern-component-header-blocks.component-header {
+  height: calc((100vh + 80px) / 2);
+  min-height: calc((100vh + 80px) / 2); }
+  body.has-header.cern-toolbar.toolbar-fixed.toolbar-vertical .is_half_height .cern-component-header-blocks.component-header .header-block__title {
+    height: 25vh; }
+body.has-header.cern-toolbar:not(.toolbar-vertical).toolbar-tray-open .is_full_height .cern-component-header-blocks.component-header {
+  height: calc(100vh - 118px); }
+  body.has-header.cern-toolbar:not(.toolbar-vertical).toolbar-tray-open .is_full_height .cern-component-header-blocks.component-header .header-block__title {
+    height: 60vh; }
+body.has-header.cern-toolbar:not(.toolbar-vertical).toolbar-tray-open .is_half_height .cern-component-header-blocks.component-header {
+  height: calc((100vh + 80px) / 2);
+  min-height: calc((100vh + 80px) / 2); }
+  body.has-header.cern-toolbar:not(.toolbar-vertical).toolbar-tray-open .is_half_height .cern-component-header-blocks.component-header .header-block__title {
+    height: 30vh; }
+body.has-header.no-admin-toolbar .is_full_height .cern-component-header-blocks.component-header {
+  height: calc(100vh - 39px) !important; }
+  body.has-header.no-admin-toolbar .is_full_height .cern-component-header-blocks.component-header .header-block__title {
+    height: 60vh; }
+body.has-header.no-admin-toolbar .is_half_height .cern-component-header-blocks.component-header .header-block__title {
+  height: 25vh; }
+body:not(.has-header) .is_full_height .cern-component-header-blocks.component-header .header-block__title {
+  padding: 5% 0 0 0;
+  margin: 60px auto 0; }
+@media only screen and (max-width: 1071px) {
+  body:not(.has-header) .is_half_height .cern-component-header-blocks {
+    height: 45vh; } }
+body:not(.has-header) .is_half_height .cern-component-header-blocks.component-header .header-block__title {
+  margin: 60px auto 0; }
+
+@media only screen and (max-width: 991px) and (min-width: 767px) {
+  .cern-component-header-blocks {
+    position: relative; } }
+@media only screen and (max-width: 767px) {
+  .cern-component-header-blocks {
+    position: relative; }
+    .cern-component-header-blocks .component-header__carousel .header-block__title {
+      margin: 100px auto 0;
+      padding: 0 5%; }
+    .cern-component-header-blocks .component-header__carousel .header-block__name {
+      font-size: 40px;
+      font-size: 4rem; }
+    .cern-component-header-blocks .component-header__carousel .header-block__subhead {
+      line-height: 1.2;
+      font-size: 14px; }
+    .cern-component-header-blocks .component-header__carousel .owl-controls,
+    .cern-component-header-blocks .component-header__carousel .owl-dots {
+      position: absolute;
+      left: 5px;
+      bottom: 25px;
+      right: 0;
+      margin: auto;
+      text-align: left; }
+      .cern-component-header-blocks .component-header__carousel .owl-controls .owl-page,
+      .cern-component-header-blocks .component-header__carousel .owl-controls .owl-dot,
+      .cern-component-header-blocks .component-header__carousel .owl-dots .owl-page,
+      .cern-component-header-blocks .component-header__carousel .owl-dots .owl-dot {
+        height: 25px;
+        margin: 0 2px;
+        width: 25px;
+        top: 0; }
+        .cern-component-header-blocks .component-header__carousel .owl-controls .owl-page span,
+        .cern-component-header-blocks .component-header__carousel .owl-controls .owl-dot span,
+        .cern-component-header-blocks .component-header__carousel .owl-dots .owl-page span,
+        .cern-component-header-blocks .component-header__carousel .owl-dots .owl-dot span {
+          height: 17px;
+          width: 17px; }
+        .cern-component-header-blocks .component-header__carousel .owl-controls .owl-page.active, .cern-component-header-blocks .component-header__carousel .owl-controls .owl-page:hover,
+        .cern-component-header-blocks .component-header__carousel .owl-controls .owl-dot.active,
+        .cern-component-header-blocks .component-header__carousel .owl-controls .owl-dot:hover,
+        .cern-component-header-blocks .component-header__carousel .owl-dots .owl-page.active,
+        .cern-component-header-blocks .component-header__carousel .owl-dots .owl-page:hover,
+        .cern-component-header-blocks .component-header__carousel .owl-dots .owl-dot.active,
+        .cern-component-header-blocks .component-header__carousel .owl-dots .owl-dot:hover {
+          top: -1px;
+          border: 1px solid; }
+    .cern-component-header-blocks .component-header__scroll {
+      transform: scale(0.7, 0.7);
+      bottom: 5%; }
+
+  body:not(.has-header) .cern-component-header-blocks .component-header__carousel .header-block__title {
+    margin: 35px auto 0; } }
+@media screen and (max-width: 479px) {
+  .cern-component-header-blocks .component-header__carousel .owl-dots {
+    bottom: 45px; }
+
+  .component-header__scroll {
+    display: none; }
+
+  /* dots on half-height header */
+  .is_half_height .cern-component-header-blocks .component-header__carousel .owl-dots {
+    bottom: 25px !important; } }
+@media screen and (max-height: 360px) {
+  .cern-component-header-blocks .component-header__scroll {
+    display: none; } }
+.header-block {
+  color: transparent; }
+  .header-block .header-block__title {
+    color: white; }
+
+/*# sourceMappingURL=header-component.css.map */

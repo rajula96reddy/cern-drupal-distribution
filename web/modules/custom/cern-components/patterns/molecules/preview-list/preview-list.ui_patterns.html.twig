@@ -1,0 +1,94 @@
+{#
+ * @file
+ * Preview List pattern.
+#}
+
+{% set topic_classes = create_attribute() %}
+{% set topic_classes = topic_classes.addClass('preview-list-topic') %}
+
+{% set date_classes = create_attribute() %}
+{% set date_classes = date_classes.addClass('preview-list-date') %}
+
+{# Preview List #}
+<div class="preview-list-component clearfix">
+	{# Image field #}
+	{% if listing_cds_image | render %}
+		{% set image_url = listing_cds_image|get_img_src %}
+	{% else %}
+		{% if listing_image | render %}
+			{% set image_url = listing_image | render %}
+		{% else %}
+			{% if image | render %}
+				{% if 'cds-image' in image|render|render %}
+					{% set cds_id = image | render | get_tag_attribute('figure', 'id') %}
+					{% set image_url = '//cds.cern.ch/images/' ~ cds_id ~ '/file?size=medium' %}
+				{% else %}
+					{% set image_url = image | render %}
+				{% endif %}
+			{% endif %}
+		{% endif %}
+	{% endif %}
+
+	{% set img_attributes = create_attribute() %}
+	{% set img_attributes = img_attributes.addClass('preview-list-image') %}
+	{% if image_url %}
+		{% set img_attributes = img_attributes.setAttribute('style', "background: #dddddd url("~ image_url ~") no-repeat center center / cover") %}
+	{% endif %}
+	<div {{ img_attributes }}>
+		{# {% if image|render %}{{image | get_img_src}}{% endif %} #}
+	</div>
+
+	{# Text Field #}
+	<div class="preview-list-news-info">
+		{# Title field #}
+		{% if title | render %}
+			<h3 class="preview-list-title">
+				{{title}}
+			</h3>
+		{% endif %}
+		{# Strap field #}
+		{% if strap | render %}
+			<div class="preview-list-strap">
+				<p>
+					{{strap}}
+				</p>
+			</div>
+		{% endif %}
+		{# News Format field #}
+		{% if news_format | render %}
+			<div class="preview-list-news-format">
+				{{news_format}}
+			</div>
+		{% endif %}
+		{# Topic field #}
+		{% if topic | render %}
+		{% if news_format | render %}
+		<div{{ topic_classes.addClass('has-separator')}} >
+			{% else %}
+			<div {{ topic_classes }}>
+				{% endif %}
+				{{topic}}
+			</div>
+			{% endif %}
+			{# Date field #}
+			{% if date | render %}
+			{% if topic or news_format %}
+			<div {{date_classes.addClass('has-separator') }} >
+				{% else %}
+				<div {{date_classes}} >
+
+					{% endif %}
+					{{date}}
+				</div>
+				{% endif %}
+			</div>
+		</div>
+
+
+		<div class="preview-list-responsive">
+			{% include '@cern_components/molecules/preview-card/preview-card.html.twig'
+				with {'background_url': image_url,
+				'category': topic,
+			}
+			%}
+		</div>

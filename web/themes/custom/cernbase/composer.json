@@ -1,0 +1,22 @@
+{
+    "name": "drupal/cern-base-theme",
+    "description": "Base theme of all CERN Drupal themes",
+    "version": "2.6.3",
+    "type": "drupal-custom-theme",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Konstantinos Platis",
+            "email": "konstantinos.platis@cern.ch"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "drupal/bootstrap": "^3.23"
+    }
+}

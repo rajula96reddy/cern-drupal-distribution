@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_margin_size
+    - paragraphs.paragraphs_type.cern_margin
+  module:
+    - options
+id: paragraph.cern_margin.field_p_margin_size
+field_name: field_p_margin_size
+entity_type: paragraph
+bundle: cern_margin
+label: Size
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -49,10 +49,14 @@
             "type": "vcs",                                                                            
             "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-toolbar.git"        
         },
-	    {
-	    "type":"vcs",
-	    "url":"https://github.com/mcaskill/composer-merge-plugin"
-	    }
+        {                                                                                              
+            "type": "vcs",                                                                            
+            "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-indico-feeds.git"        
+        },
+        {                                                                                              
+            "type": "vcs",                                                                            
+            "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-webcast-feeds.git"        
+        }  
     ],
     "require": {
         "composer/installers": "^1.2",
@@ -65,10 +69,12 @@
         "drupal/cern-dev-status": "^2.0",
         "drupal/cern-display-formats": "^1.4",
         "drupal/cern-full-html-format": "^2.0",
+        "drupal/cern-indico-feeds": "^2.0",
         "drupal/cern-landing-page": "^2.2",
         "drupal/cern-loading": "^2.1",
         "drupal/cern-paragraph-types": "^2.2",
         "drupal/cern-toolbar": "^2.2",
+        "drupal/cern-webcast-feeds": "^2.0",
         "drupal/ckeditor_font": "^1.1",
         "drupal/codesnippet": "^1.7",
         "drupal/color_field": "^2.4",
@@ -152,7 +158,7 @@
         "drupal/workbench": "^1.3",
         "drupal/workbench_access": "^1.0@beta",
         "drupal/workbench_moderation": "^1.6",
-        "wikimedia/composer-merge-plugin": "dev-feature/composer-v2 as 1.5.0"
+        "wikimedia/composer-merge-plugin": "1.4.1"
     },
     "conflict": {
         "drupal/drupal": "*"

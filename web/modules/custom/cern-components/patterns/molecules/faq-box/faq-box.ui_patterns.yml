@@ -1,0 +1,26 @@
+# FAQ Box Pattern
+#
+faq_box:
+  label: "FAQ Box"
+  description: "A faq box item"
+  fields:
+    link:
+      description: "Link"
+      label: Link
+      preview: ""
+      type: text
+    background:
+      description: "Background image."
+      label: Background image
+      preview:
+        alt: "this is a sample image"
+        theme: image
+        uri: "http://dummy-images.com/nature/dummy-1280x768-Copper-plain.jpg"
+      type: image
+  libraries:
+    -
+      faq:
+        css:
+          component:
+            css/faq-box.component.css: {}
+  use: "@cern_components/molecules/faq-box/faq-box.html.twig"

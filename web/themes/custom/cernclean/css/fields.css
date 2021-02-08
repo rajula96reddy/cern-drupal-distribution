@@ -1,0 +1,14 @@
+.field ul li *:not(li):not(ul) {
+  display: inline; }
+.field ol li:before {
+  display: none; }
+.field.field--type-entity-reference a {
+  padding: 3px 8px 0px;
+  font-weight: normal;
+  margin-right: 5px; }
+.field table a {
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  text-decoration: none; }
+
+/*# sourceMappingURL=fields.css.map */

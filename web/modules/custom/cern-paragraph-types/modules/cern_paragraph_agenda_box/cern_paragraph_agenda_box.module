@@ -1,0 +1,21 @@
+<?php
+
+
+function cern_paragraph_agenda_box_field_widget_entity_reference_paragraphs_form_alter(&$element, &$form_state, $context) {
+  if (isset($element['subform']['field_p_agenda_box_med_type'])) {
+    $parents = $element['subform']['#parents'];
+    $parents[] = 'field_p_agenda_box_med_type';
+    $name = array_shift($parents);
+    $name .= '[' . implode('][', $parents) . ']';
+    $element['subform']['field_p_agenda_box_background']['#states'] = [
+        'visible' => [
+            'select[name="'.$name.'"]' => ['value' => 'image']
+        ],
+    ];
+    $element['subform']['field_p_agenda_box_cds_bcg']['#states'] = [
+        'visible' => [
+            'select[name="'.$name.'"]' => ['value' => 'cds']
+        ]
+    ];
+  }
+}

@@ -1,0 +1,36 @@
+{% 
+    set classes = [
+    "component-call-to-action__wrapper"
+    ]
+%}
+
+{% if (variants.icon.value == 1) %}
+  {%  set classes = classes|merge(["has-icon"]) %}
+{% endif %}
+
+{% set attributes = create_attribute() %}
+{% set attributes = attributes.addClass(classes) %}
+
+{% set attributesbgcolor = create_attribute() %}
+{% if variants.bg_color.color is not empty %}
+  {% set attributesbgcolor = attributesbgcolor.setAttribute('style', 'background:' ~ variants.bg_color.color | get_rgba(variants.bg_color.opacity)) %}
+{% else %}
+  {% set attributes = attributes.addClass('simple-link') %}
+{% endif %}
+
+{% set attributestxtcolor = create_attribute() %}
+{% if variants.color_text.color is not empty %}
+  {% set attributestxtcolor = attributestxtcolor.setAttribute('style', 'color:' ~ variants.color_text.color) %}
+{% endif %}
+
+<div class="component-call-to-action {{variants.align.value}}">
+
+  <div{{ attributes }} {{attributesbgcolor}}>
+    {% if link | render is not empty %}
+      {{ link|openlink }}
+      <span{{ attributestxtcolor }}>{{ link|render|striptags|raw }}</span>
+      {{ link|closelink }}
+    {% endif %}
+  </div>
+
+</div>

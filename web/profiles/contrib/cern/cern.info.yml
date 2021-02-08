@@ -39,7 +39,6 @@ dependencies:
   - page_cache
   - path
   - quickedit
-  - redis
   - rdf
   - search
   - shortcut

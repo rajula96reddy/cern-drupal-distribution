@@ -1,0 +1,510 @@
+/* USED IN VIEWS THAT RENDER AGENDA BOX COMPONENT */
+/* OTHER EVENTS IN SIDEBAR OF EVENT PAGE */
+.cern-view-display-block.cern-view-display-other_events .view-header h2 {
+  font-size: 30px; }
+.cern-view-display-block.cern-view-display-other_events .view-footer {
+  text-align: right;
+  margin-top: 1rem; }
+  .cern-view-display-block.cern-view-display-other_events .view-footer a {
+    position: relative;
+    padding-right: 15px;
+    font-weight: bold; }
+    .cern-view-display-block.cern-view-display-other_events .view-footer a:after {
+      -webkit-transition: all 0.3s ease-in-out 0s;
+      -khtml-transition: all 0.3s ease-in-out 0s;
+      -moz-transition: all 0.3s ease-in-out 0s;
+      -ms-transition: all 0.3s ease-in-out 0s;
+      -o-transition: all 0.3s ease-in-out 0s;
+      transition: all 0.3s ease-in-out 0s;
+      content: '\j';
+      font-size: 40px;
+      font-size: 4rem;
+      font-family: "cern-icons";
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      display: inline-block;
+      vertical-align: bottom;
+      position: absolute;
+      top: 1px;
+      right: 0px;
+      left: auto;
+      line-height: 19px;
+      width: 9px;
+      text-indent: -16px; }
+    .cern-view-display-block.cern-view-display-other_events .view-footer a:hover:after {
+      right: -5px;
+      left: auto; }
+.cern-view-display-block.cern-view-display-other_events .view-content .views-row {
+  margin-bottom: 15px; }
+  .cern-view-display-block.cern-view-display-other_events .view-content .views-row * {
+    color: white !important; }
+  .cern-view-display-block.cern-view-display-other_events .view-content .views-row .agenda-box-pattern {
+    background: #0855a0;
+    margin: 0;
+    float: none; }
+    .cern-view-display-block.cern-view-display-other_events .view-content .views-row .agenda-box-pattern .agenda-box-event-time {
+      display: none; }
+    .cern-view-display-block.cern-view-display-other_events .view-content .views-row .agenda-box-pattern .agenda-box-cal-wrapper {
+      display: none; }
+
+/* UPCOMING EVENTS */
+@media screen and (min-width: 992px) {
+  .cern-view-display-block.cern-view-display-upcoming_events {
+    padding: 0 100px; } }
+.cern-view-display-block.cern-view-display-upcoming_events .view-content.owl-carousel:before {
+  content: ' ';
+  height: 2px;
+  width: 4000px;
+  display: block;
+  position: absolute;
+  top: 7px;
+  background: transparent;
+  left: -1500px;
+  border-top: 2px dotted #e6e6e6; }
+.cern-view-display-block.cern-view-display-upcoming_events > h2 {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 3rem; }
+.cern-view-display-block.cern-view-display-upcoming_events .more-link {
+  text-align: right;
+  margin-top: 0rem; }
+  @media screen and (min-width: 992px) {
+    .cern-view-display-block.cern-view-display-upcoming_events .more-link {
+      margin-right: -95px; } }
+  .cern-view-display-block.cern-view-display-upcoming_events .more-link a {
+    position: relative;
+    padding-right: 15px;
+    font-weight: bold; }
+    .cern-view-display-block.cern-view-display-upcoming_events .more-link a:after {
+      -webkit-transition: all 0.3s ease-in-out 0s;
+      -khtml-transition: all 0.3s ease-in-out 0s;
+      -moz-transition: all 0.3s ease-in-out 0s;
+      -ms-transition: all 0.3s ease-in-out 0s;
+      -o-transition: all 0.3s ease-in-out 0s;
+      transition: all 0.3s ease-in-out 0s;
+      content: '\j';
+      font-size: 40px;
+      font-size: 4rem;
+      font-family: "cern-icons";
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      display: inline-block;
+      vertical-align: bottom;
+      position: absolute;
+      top: 1px;
+      right: 0px;
+      left: auto;
+      line-height: 19px;
+      width: 9px;
+      text-indent: -16px; }
+    .cern-view-display-block.cern-view-display-upcoming_events .more-link a:hover:after {
+      right: -5px;
+      left: auto; }
+.cern-view-display-block.cern-view-display-upcoming_events .owl-nav {
+  position: relative; }
+  @media screen and (min-width: 992px) {
+    .cern-view-display-block.cern-view-display-upcoming_events .owl-nav {
+      margin: 0 -100px; } }
+  .cern-view-display-block.cern-view-display-upcoming_events .owl-nav .owl-prev {
+    position: absolute;
+    left: 0;
+    top: -200px;
+    background: transparent; }
+    .cern-view-display-block.cern-view-display-upcoming_events .owl-nav .owl-prev:after {
+      content: 'd';
+      display: block;
+      color: #0855a0;
+      font-family: "cern-icons";
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font-size: 40px; }
+    .cern-view-display-block.cern-view-display-upcoming_events .owl-nav .owl-prev.disabled:after {
+      color: black; }
+  .cern-view-display-block.cern-view-display-upcoming_events .owl-nav .owl-next {
+    position: absolute;
+    right: 0;
+    top: -200px;
+    background: transparent; }
+    .cern-view-display-block.cern-view-display-upcoming_events .owl-nav .owl-next:after {
+      content: 'c';
+      display: block;
+      color: #0855a0;
+      font-family: "cern-icons";
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font-size: 40px; }
+    .cern-view-display-block.cern-view-display-upcoming_events .owl-nav .owl-next.disabled:after {
+      color: black; }
+@media screen and (max-width: 991px) {
+  .cern-view-display-block.cern-view-display-upcoming_events .owl-nav {
+    margin: 15px; }
+    .cern-view-display-block.cern-view-display-upcoming_events .owl-nav .owl-prev {
+      position: static; }
+    .cern-view-display-block.cern-view-display-upcoming_events .owl-nav .owl-next {
+      position: static; } }
+.cern-view-display-block.cern-view-display-upcoming_events .agenda-box-pattern {
+  padding: 20px 32px;
+  background: transparent !important; }
+  .cern-view-display-block.cern-view-display-upcoming_events .agenda-box-pattern * {
+    color: black; }
+  .cern-view-display-block.cern-view-display-upcoming_events .agenda-box-pattern:before {
+    content: " " close-quote;
+    width: 0;
+    height: 0;
+    border: 4px solid #cacaca;
+    display: block;
+    border-radius: 100%;
+    position: absolute;
+    top: 0px; }
+  .cern-view-display-block.cern-view-display-upcoming_events .agenda-box-pattern .agenda-box-pattern__box-wrapper {
+    align-self: flex-start; }
+  .cern-view-display-block.cern-view-display-upcoming_events .agenda-box-pattern .agenda-box-event-time,
+  .cern-view-display-block.cern-view-display-upcoming_events .agenda-box-pattern .agenda-box-cal-wrapper {
+    display: none; }
+  .cern-view-display-block.cern-view-display-upcoming_events .agenda-box-pattern .agenda-box-date-wrapper .agenda-box-week-day {
+    display: none; }
+
+@media screen and (max-width: 991px) {
+  .cern-view-display-block.cern-view-display-upcoming_events .view-content.owl-carousel:before {
+    content: none; }
+  .cern-view-display-block.cern-view-display-upcoming_events .owl-item:not(.active) * {
+    display: none; }
+  .cern-view-display-block.cern-view-display-upcoming_events .owl-item.active .carousel-cern-item.row .views-row {
+    height: auto !important; }
+    .cern-view-display-block.cern-view-display-upcoming_events .owl-item.active .carousel-cern-item.row .views-row .agenda-box-pattern {
+      min-height: 0 !important; }
+    .cern-view-display-block.cern-view-display-upcoming_events .owl-item.active .carousel-cern-item.row .views-row .agenda-box-pattern:before {
+      content: none; } }
+@media screen and (max-width: 767px) {
+  .cern-view-display-block.cern-view-display-upcoming_events .owl-item.active .carousel-cern-item.row:before {
+    left: 35px; } }
+@media screen and (max-width: 991px) {
+  .bubbly-button {
+    display: none; } }
+@media screen and (min-width: 992px) {
+  .bubbly-button {
+    display: inline-block;
+    padding: 4px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: white;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+    top: 4px;
+    left: 0;
+    margin-left: calc(33.333333% + 36px);
+    z-index: 1;
+    position: absolute;
+    /*     &:before {
+        top: -100px;
+    }
+    &:after {
+        top: 100px;
+    } */ }
+    .bubbly-button:focus {
+      outline: 0; }
+    .bubbly-button:before {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 200px;
+      height: 100px;
+      left: -95px;
+      z-index: -1000;
+      transition: all ease-in-out 0.5s;
+      background-repeat: no-repeat; }
+    .bubbly-button:after {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 140px;
+      height: 50px;
+      left: -65px;
+      z-index: -1000;
+      transition: all ease-in-out 0.5s;
+      background-repeat: no-repeat; }
+    .bubbly-button:before {
+      display: none;
+      animation: none;
+      top: -80px;
+    /* background-image:
+    radial-gradient(circle, darkorange 20%, transparent 20%),
+  radial-gradient(circle,  transparent 20%, darkorange 20%, transparent 30%),
+  radial-gradient(circle, darkorange 20%, transparent 20%),
+  radial-gradient(circle, darkorange 20%, transparent 20%),
+  radial-gradient(circle,  transparent 10%, darkorange 15%, transparent 20%),
+  radial-gradient(circle, darkorange 20%, transparent 20%),
+  radial-gradient(circle, darkorange 20%, transparent 20%),
+  radial-gradient(circle, darkorange 20%, transparent 20%),
+  radial-gradient(circle, darkorange 20%, transparent 20%); */
+      background-size: 10% 10%, 15% 15%, 12% 12%, 10% 10%, 14% 14%, 10% 10%, 15% 15%, 10% 10%, 14% 14%; }
+    .bubbly-button:after {
+      display: none;
+      animation: none;
+      top: 0;
+    /* background-image:
+  radial-gradient(circle, darkorange 20%, transparent 20%),
+  radial-gradient(circle, darkorange 20%, transparent 20%),
+  radial-gradient(circle,  transparent 10%, darkorange 15%, transparent 20%),
+  radial-gradient(circle, darkorange 20%, transparent 20%),
+  radial-gradient(circle, darkorange 20%, transparent 20%),
+  radial-gradient(circle, darkorange 20%, transparent 20%),
+  radial-gradient(circle, darkorange 20%, transparent 20%); */
+      background-size: 22% 22%, 28% 28%, 28% 28%, 25% 25%, 20% 20%, 28% 28%, 20% 20%, 30% 30%, 30% 30%; }
+    .bubbly-button:active {
+      transform: scale(0.9); }
+    .bubbly-button.animate:before {
+      display: block;
+      animation: topBubbles cubic-bezier(0.19, 1, 0.22, 1) 2s forwards; }
+    .bubbly-button.animate:after {
+      display: block;
+      animation: bottomBubbles cubic-bezier(0.19, 1, 0.22, 1) 2s forwards; }
+
+  @keyframes topBubbles {
+    0% {
+      background-position: 50% 90%, 50% 90%, 50% 90%, 50% 90%, 50% 90%, 50% 90%, 50% 90%, 55% 90%, 50% 90%; }
+    100% {
+      background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+      background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+    /* 100% {
+        background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+    } */ }
+  @keyframes bottomBubbles {
+    0% {
+      background-position: 50% -10%, 50% 10%, 50% 10%, 55% -10%, 50% -10%, 50% -10%, 50% -10%, 50% 0%, 50% 0%; }
+    65% {
+      opacity: 1;
+      background-size: 0% 0%, 0% 0%, 10% 10%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 10% 10%; }
+    100% {
+      background-position: 0% 90%, 20% 90%, 19% 92%, 45% 70%, 60% 120%, 75% 80%, 95% 70%, 105% 10%, 105% 6%;
+      opacity: 0;
+      background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%; } } }
+/* ALL EVENTS PAGE VIEWS */
+.cern-view-display-page.cern-view-display-feature_events > h2,
+.cern-view-display-page.cern-view-display-past_events > h2,
+.event-grid > h2 {
+  margin: 3rem 0 !important; }
+.cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline,
+.cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline,
+.event-grid form.views-exposed-form .form-inline {
+  margin: 0 -10px; }
+  .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-item > input,
+  .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-item > input,
+  .event-grid form.views-exposed-form .form-inline .form-item > input {
+    display: block; }
+  .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-item:not(:first-child),
+  .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-item:not(:first-child),
+  .event-grid form.views-exposed-form .form-inline .form-item:not(:first-child) {
+    margin: 10px;
+    /* label {
+        font-size: 1.3rem;
+        font-family: "opensans-regular";
+    } */ }
+    .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-item:not(:first-child) input,
+    .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-item:not(:first-child) input,
+    .event-grid form.views-exposed-form .form-inline .form-item:not(:first-child) input {
+      width: 100%; }
+    .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-item:not(:first-child) div.select-wrapper select,
+    .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-item:not(:first-child) div.select-wrapper select,
+    .event-grid form.views-exposed-form .form-inline .form-item:not(:first-child) div.select-wrapper select {
+      width: 100%; }
+  .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-actions,
+  .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-actions,
+  .event-grid form.views-exposed-form .form-inline .form-actions {
+    width: calc((100% / 4) - 40px);
+    margin: 10px;
+    vertical-align: bottom;
+    text-align: right; }
+    .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-actions button,
+    .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-actions button,
+    .event-grid form.views-exposed-form .form-inline .form-actions button {
+      width: 100%;
+      /* background: #999999;
+      border-color: #999999;
+      &:hover, &:active, &:focus {
+          background: #999999;
+          border-color: #999999;
+      } */ }
+.cern-view-display-page.cern-view-display-feature_events .view-header,
+.cern-view-display-page.cern-view-display-past_events .view-header,
+.event-grid .view-header {
+  margin: 50px 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "opensans-bold";
+  color: black; }
+  .cern-view-display-page.cern-view-display-feature_events .view-header a,
+  .cern-view-display-page.cern-view-display-past_events .view-header a,
+  .event-grid .view-header a {
+    color: black; }
+    .cern-view-display-page.cern-view-display-feature_events .view-header a:not(.active),
+    .cern-view-display-page.cern-view-display-past_events .view-header a:not(.active),
+    .event-grid .view-header a:not(.active) {
+      opacity: 0.6; }
+.cern-view-display-page.cern-view-display-feature_events .view-footer,
+.cern-view-display-page.cern-view-display-past_events .view-footer,
+.event-grid .view-footer {
+  text-align: right; }
+.cern-view-display-page.cern-view-display-feature_events .view-content,
+.cern-view-display-page.cern-view-display-past_events .view-content,
+.event-grid .view-content {
+  margin: 0 -15px; }
+  .cern-view-display-page.cern-view-display-feature_events .view-content .views-row,
+  .cern-view-display-page.cern-view-display-past_events .view-content .views-row,
+  .event-grid .view-content .views-row {
+    margin-bottom: 15px;
+    width: calc(33.3333% - 30px);
+    float: left;
+    margin: 0 15px 50px; }
+    .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern,
+    .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern,
+    .event-grid .view-content .views-row .agenda-box-pattern {
+      background: transparent;
+      padding: 30px 30px 60px 30px;
+      border: 0;
+      box-shadow: 0 1px 3px 0 #bfbfbf; }
+      .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern .agenda-box-link h2 a:before,
+      .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern .agenda-box-link h3 a:before,
+      .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern .agenda-box-link h2 a:before,
+      .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern .agenda-box-link h3 a:before,
+      .event-grid .view-content .views-row .agenda-box-pattern .agenda-box-link h2 a:before,
+      .event-grid .view-content .views-row .agenda-box-pattern .agenda-box-link h3 a:before {
+        content: unset; }
+      .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern .agenda-box-pattern__box-wrapper,
+      .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern .agenda-box-pattern__box-wrapper,
+      .event-grid .view-content .views-row .agenda-box-pattern .agenda-box-pattern__box-wrapper {
+        align-self: flex-start; }
+      .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern .agenda-box-cal-button,
+      .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern .agenda-box-cal-button,
+      .event-grid .view-content .views-row .agenda-box-pattern .agenda-box-cal-button {
+        border-radius: 0; }
+        .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern .agenda-box-cal-button a.btn,
+        .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern .agenda-box-cal-button a.btn,
+        .event-grid .view-content .views-row .agenda-box-pattern .agenda-box-cal-button a.btn {
+          border-radius: 0;
+          padding: 2px; }
+          .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern .agenda-box-cal-button a.btn:before,
+          .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern .agenda-box-cal-button a.btn:before,
+          .event-grid .view-content .views-row .agenda-box-pattern .agenda-box-cal-button a.btn:before {
+            left: 2px; }
+      .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-cal-wrapper,
+      .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-cal-wrapper,
+      .event-grid .view-content .views-row .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-cal-wrapper {
+        padding-right: 5px; }
+      .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern .agenda-box-week-day,
+      .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern .agenda-box-content-type,
+      .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern .agenda-box-audience,
+      .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern .agenda-box-place,
+      .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern .agenda-box-week-day,
+      .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern .agenda-box-content-type,
+      .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern .agenda-box-audience,
+      .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern .agenda-box-place,
+      .event-grid .view-content .views-row .agenda-box-pattern .agenda-box-week-day,
+      .event-grid .view-content .views-row .agenda-box-pattern .agenda-box-content-type,
+      .event-grid .view-content .views-row .agenda-box-pattern .agenda-box-audience,
+      .event-grid .view-content .views-row .agenda-box-pattern .agenda-box-place {
+        font-family: "sourcesans-regular";
+        font-size: 1.5rem; }
+        .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern .agenda-box-week-day *,
+        .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern .agenda-box-content-type *,
+        .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern .agenda-box-audience *,
+        .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern .agenda-box-place *,
+        .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern .agenda-box-week-day *,
+        .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern .agenda-box-content-type *,
+        .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern .agenda-box-audience *,
+        .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern .agenda-box-place *,
+        .event-grid .view-content .views-row .agenda-box-pattern .agenda-box-week-day *,
+        .event-grid .view-content .views-row .agenda-box-pattern .agenda-box-content-type *,
+        .event-grid .view-content .views-row .agenda-box-pattern .agenda-box-audience *,
+        .event-grid .view-content .views-row .agenda-box-pattern .agenda-box-place * {
+          font-family: "sourcesans-regular";
+          font-size: 1.5rem; }
+    .cern-view-display-page.cern-view-display-feature_events .view-content .views-row .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-cal-wrapper .agenda-box-cal-button,
+    .cern-view-display-page.cern-view-display-past_events .view-content .views-row .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-cal-wrapper .agenda-box-cal-button,
+    .event-grid .view-content .views-row .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-cal-wrapper .agenda-box-cal-button {
+      background: transparent; }
+
+@media only screen and (max-width: 991px) {
+  .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-item,
+  .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-item,
+  .event-grid form.views-exposed-form .form-inline .form-item {
+    display: inline-block; }
+    .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-item:first-child,
+    .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-item:first-child,
+    .event-grid form.views-exposed-form .form-inline .form-item:first-child {
+      margin: 10px 5px 10px 5px; }
+      .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-item:first-child:before,
+      .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-item:first-child:before,
+      .event-grid form.views-exposed-form .form-inline .form-item:first-child:before {
+        left: 0px; }
+  .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-actions,
+  .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-actions,
+  .event-grid form.views-exposed-form .form-inline .form-actions {
+    display: inline-block;
+    margin: 10px; }
+  .cern-view-display-page.cern-view-display-feature_events .view-content,
+  .cern-view-display-page.cern-view-display-past_events .view-content,
+  .event-grid .view-content {
+    margin: 0 -15px; }
+    .cern-view-display-page.cern-view-display-feature_events .view-content .views-row,
+    .cern-view-display-page.cern-view-display-past_events .view-content .views-row,
+    .event-grid .view-content .views-row {
+      margin-bottom: 15px;
+      width: calc(50% - 30px); } }
+@media only screen and (max-width: 767px) {
+  .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline,
+  .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline,
+  .event-grid form.views-exposed-form .form-inline {
+    margin: 0; }
+    .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-item:first-child,
+    .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-item:first-child,
+    .event-grid form.views-exposed-form .form-inline .form-item:first-child {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      display: block; }
+      .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-item:first-child:nth-last-child(n) ~ .form-item,
+      .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-item:first-child:nth-last-child(n) ~ .form-item,
+      .event-grid form.views-exposed-form .form-inline .form-item:first-child:nth-last-child(n) ~ .form-item {
+        width: 100%; }
+      .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-item:first-child > input,
+      .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-item:first-child > input,
+      .event-grid form.views-exposed-form .form-inline .form-item:first-child > input {
+        width: 100%; }
+      .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-item:first-child:before,
+      .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-item:first-child:before,
+      .event-grid form.views-exposed-form .form-inline .form-item:first-child:before {
+        left: -5px; }
+    .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-item:not(:first-child),
+    .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-item:not(:first-child),
+    .event-grid form.views-exposed-form .form-inline .form-item:not(:first-child) {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      display: block; }
+    .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-actions,
+    .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-actions,
+    .event-grid form.views-exposed-form .form-inline .form-actions {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      display: block; }
+      .cern-view-display-page.cern-view-display-feature_events form.views-exposed-form .form-inline .form-actions button,
+      .cern-view-display-page.cern-view-display-past_events form.views-exposed-form .form-inline .form-actions button,
+      .event-grid form.views-exposed-form .form-inline .form-actions button {
+        width: auto; }
+  .cern-view-display-page.cern-view-display-feature_events .view-content,
+  .cern-view-display-page.cern-view-display-past_events .view-content,
+  .event-grid .view-content {
+    margin: 0; }
+    .cern-view-display-page.cern-view-display-feature_events .view-content .views-row,
+    .cern-view-display-page.cern-view-display-past_events .view-content .views-row,
+    .event-grid .view-content .views-row {
+      margin: 0 0 15px 0;
+      width: 100%; } }
+
+/*# sourceMappingURL=agenda-views.css.map */

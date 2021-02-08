@@ -1,0 +1,15 @@
+excluded:
+  - core.base_field_override.paragraph.cern_related_card.created
+  - core.base_field_override.paragraph.cern_related_card.status
+  - core.base_field_override.paragraph.cern_related_card.uid
+  - core.entity_form_display.paragraph.cern_related_card.default
+  - core.entity_view_display.paragraph.cern_related_card.default
+  - field.field.paragraph.cern_related_card.field_p_related_card_bg_text
+  - field.field.paragraph.cern_related_card.field_p_related_card_color_text
+  - field.field.paragraph.cern_related_card.field_p_related_card_date
+  - field.field.paragraph.cern_related_card.field_p_related_card_display
+  - field.field.paragraph.cern_related_card.field_p_related_card_format
+  - field.field.paragraph.cern_related_card.field_p_related_card_link
+  - field.field.paragraph.cern_related_card.field_p_related_card_profile_img
+  - field.field.paragraph.cern_related_card.field_p_related_card_text
+required: true

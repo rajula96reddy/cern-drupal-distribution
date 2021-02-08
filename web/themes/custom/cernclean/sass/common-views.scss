@@ -1,0 +1,30 @@
+// out: ../css/common-views.css, compress: false, sourceMap: false, autoprefixer: false, groupmedia: false
+// mixins variables
+@import 'variables.scss';
+
+//.cern-view-display-page {
+//  .view-content {
+//    @include font-size(1.4);
+//    line-height: 22px;
+//
+//    h1,
+//    h2,
+//    h3,
+//    h4 {
+//      margin: 0;
+//    }
+//
+//    a {
+//      @include font-size(3.0);
+//      @include transition(all 0.3s ease-in-out 0s);
+//      line-height: 36px;
+//      margin: 0;
+//
+//      * {
+//        @include font-size(3.0);
+//        line-height: 36px;
+//        margin: 0;
+//      }
+//    }
+//  }
+//}

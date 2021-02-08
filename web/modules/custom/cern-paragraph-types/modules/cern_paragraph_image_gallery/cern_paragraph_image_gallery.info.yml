@@ -1,0 +1,20 @@
+name: 'CERN Image Gallery'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+version: '1.0'
+dependencies:
+  - cern_cds_media
+  - cern_paragraph_types
+  - content_moderation
+  - ds
+  - field
+  - field_formatter_class
+  - field_group
+  - file
+  - filefield_paths
+  - image
+  - language
+  - paragraphs
+description: 'Image Gallery paragraph'
+package: CERN Components

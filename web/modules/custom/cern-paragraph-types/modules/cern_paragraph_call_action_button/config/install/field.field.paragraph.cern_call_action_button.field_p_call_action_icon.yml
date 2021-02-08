@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_call_action_icon
+    - paragraphs.paragraphs_type.cern_call_action_button
+id: paragraph.cern_call_action_button.field_p_call_action_icon
+field_name: field_p_call_action_icon
+entity_type: paragraph
+bundle: cern_call_action_button
+label: Icon
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

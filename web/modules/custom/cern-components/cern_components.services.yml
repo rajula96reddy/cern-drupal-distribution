@@ -1,0 +1,6 @@
+services:
+  cern_components.twig.extension:
+    class: Drupal\cern_components\TwigExtension\CernComponentsTwigExtension
+    arguments: ['@request_stack', '@renderer']
+    tags:
+      - {name: twig.extension}

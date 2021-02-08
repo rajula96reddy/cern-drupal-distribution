@@ -1,0 +1,202 @@
+/**
+ * Styles of blocks in CERN Theme
+ *
+ * Includes styles of custom blocks / menu blocks / view blocks
+ */
+.region-left > section, .region-right > section, .component-row__sidebar-right > section, .component-row__sidebar-left > section {
+  margin-bottom: 30px; }
+  .region-left > section:first-child, .region-right > section:first-child, .component-row__sidebar-right > section:first-child, .component-row__sidebar-left > section:first-child {
+    margin-top: 30px; }
+  .region-left > section:not(.without-shadow), .region-right > section:not(.without-shadow), .component-row__sidebar-right > section:not(.without-shadow), .component-row__sidebar-left > section:not(.without-shadow) {
+    box-shadow: 0 0 2px 1px lightgrey;
+    padding: 15px 25px;
+    margin-bottom: 30px; }
+    .region-left > section:not(.without-shadow):first-child, .region-right > section:not(.without-shadow):first-child, .component-row__sidebar-right > section:not(.without-shadow):first-child, .component-row__sidebar-left > section:not(.without-shadow):first-child {
+      margin-top: 30px; }
+  .region-left > section > div.field, .region-right > section > div.field, .component-row__sidebar-right > section > div.field, .component-row__sidebar-left > section > div.field {
+    margin-bottom: 20px; }
+    .region-left > section > div.field ul, .region-right > section > div.field ul, .component-row__sidebar-right > section > div.field ul, .component-row__sidebar-left > section > div.field ul {
+      margin: unset; }
+  .region-left > section > div.form-group .view > h1, .region-right > section > div.form-group .view > h1, .component-row__sidebar-right > section > div.form-group .view > h1, .component-row__sidebar-left > section > div.form-group .view > h1 {
+    display: none; }
+  .region-left > section > div.form-group .view:not(.vertical-boxes) .view-content, .region-right > section > div.form-group .view:not(.vertical-boxes) .view-content, .component-row__sidebar-right > section > div.form-group .view:not(.vertical-boxes) .view-content, .component-row__sidebar-left > section > div.form-group .view:not(.vertical-boxes) .view-content {
+    margin-bottom: 20px;
+    padding: 0; }
+    .region-left > section > div.form-group .view:not(.vertical-boxes) .view-content .views-row, .region-right > section > div.form-group .view:not(.vertical-boxes) .view-content .views-row, .component-row__sidebar-right > section > div.form-group .view:not(.vertical-boxes) .view-content .views-row, .component-row__sidebar-left > section > div.form-group .view:not(.vertical-boxes) .view-content .views-row {
+      padding: unset; }
+      .region-left > section > div.form-group .view:not(.vertical-boxes) .view-content .views-row .views-field, .region-right > section > div.form-group .view:not(.vertical-boxes) .view-content .views-row .views-field, .component-row__sidebar-right > section > div.form-group .view:not(.vertical-boxes) .view-content .views-row .views-field, .component-row__sidebar-left > section > div.form-group .view:not(.vertical-boxes) .view-content .views-row .views-field {
+        margin: 10px 0; }
+.region-left > nav, .region-right > nav, .component-row__sidebar-right > nav, .component-row__sidebar-left > nav {
+  padding: 0;
+  margin-bottom: 30px; }
+  .region-left > nav .dropdown-menu, .region-right > nav .dropdown-menu, .component-row__sidebar-right > nav .dropdown-menu, .component-row__sidebar-left > nav .dropdown-menu {
+    position: relative;
+    z-index: 250; }
+  .region-left > nav > ul.menu, .region-right > nav > ul.menu, .component-row__sidebar-right > nav > ul.menu, .component-row__sidebar-left > nav > ul.menu {
+    padding: 25px; }
+    .region-left > nav > ul.menu > li, .region-right > nav > ul.menu > li, .component-row__sidebar-right > nav > ul.menu > li, .component-row__sidebar-left > nav > ul.menu > li {
+      margin: 0 0 10px; }
+      .region-left > nav > ul.menu > li > a, .region-left > nav > ul.menu > li > span, .region-right > nav > ul.menu > li > a, .region-right > nav > ul.menu > li > span, .component-row__sidebar-right > nav > ul.menu > li > a, .component-row__sidebar-right > nav > ul.menu > li > span, .component-row__sidebar-left > nav > ul.menu > li > a, .component-row__sidebar-left > nav > ul.menu > li > span {
+        padding: unset;
+        cursor: pointer;
+        font-size: 21px;
+        font-size: 2.1rem; }
+        .region-left > nav > ul.menu > li > a:after, .region-left > nav > ul.menu > li > span:after, .region-right > nav > ul.menu > li > a:after, .region-right > nav > ul.menu > li > span:after, .component-row__sidebar-right > nav > ul.menu > li > a:after, .component-row__sidebar-right > nav > ul.menu > li > span:after, .component-row__sidebar-left > nav > ul.menu > li > a:after, .component-row__sidebar-left > nav > ul.menu > li > span:after {
+          display: none; }
+      .region-left > nav > ul.menu > li > ul li a, .region-left > nav > ul.menu > li > ul li span, .region-right > nav > ul.menu > li > ul li a, .region-right > nav > ul.menu > li > ul li span, .component-row__sidebar-right > nav > ul.menu > li > ul li a, .component-row__sidebar-right > nav > ul.menu > li > ul li span, .component-row__sidebar-left > nav > ul.menu > li > ul li a, .component-row__sidebar-left > nav > ul.menu > li > ul li span {
+        padding: 5px 0 8px 20px;
+        cursor: pointer; }
+        .region-left > nav > ul.menu > li > ul li a:before, .region-left > nav > ul.menu > li > ul li span:before, .region-right > nav > ul.menu > li > ul li a:before, .region-right > nav > ul.menu > li > ul li span:before, .component-row__sidebar-right > nav > ul.menu > li > ul li a:before, .component-row__sidebar-right > nav > ul.menu > li > ul li span:before, .component-row__sidebar-left > nav > ul.menu > li > ul li a:before, .component-row__sidebar-left > nav > ul.menu > li > ul li span:before {
+          -webkit-transition: color 0.6s ease-in-out 0s, left 0.6s ease-in-out 0s;
+          -khtml-transition: color 0.6s ease-in-out 0s, left 0.6s ease-in-out 0s;
+          -moz-transition: color 0.6s ease-in-out 0s, left 0.6s ease-in-out 0s;
+          -ms-transition: color 0.6s ease-in-out 0s, left 0.6s ease-in-out 0s;
+          -o-transition: color 0.6s ease-in-out 0s, left 0.6s ease-in-out 0s;
+          transition: color 0.6s ease-in-out 0s, left 0.6s ease-in-out 0s;
+          font-size: 36px;
+          font-size: 3.6rem;
+          content: '\j';
+          float: left;
+          font-family: 'cern-icons';
+          display: block;
+          top: -10px;
+          left: -12px;
+          position: absolute;
+          transform: rotate(0deg); }
+        .region-left > nav > ul.menu > li > ul li a:hover:before, .region-left > nav > ul.menu > li > ul li span:hover:before, .region-right > nav > ul.menu > li > ul li a:hover:before, .region-right > nav > ul.menu > li > ul li span:hover:before, .component-row__sidebar-right > nav > ul.menu > li > ul li a:hover:before, .component-row__sidebar-right > nav > ul.menu > li > ul li span:hover:before, .component-row__sidebar-left > nav > ul.menu > li > ul li a:hover:before, .component-row__sidebar-left > nav > ul.menu > li > ul li span:hover:before {
+          left: -4px; }
+  .region-left > nav nav.navbar, .region-right > nav nav.navbar, .component-row__sidebar-right > nav nav.navbar, .component-row__sidebar-left > nav nav.navbar {
+    margin-bottom: 30px;
+    padding: 0; }
+    .region-left > nav nav.navbar.navbar.main-menu > .container-fluid > .navbar-header, .region-right > nav nav.navbar.navbar.main-menu > .container-fluid > .navbar-header, .component-row__sidebar-right > nav nav.navbar.navbar.main-menu > .container-fluid > .navbar-header, .component-row__sidebar-left > nav nav.navbar.navbar.main-menu > .container-fluid > .navbar-header {
+      display: none; }
+    .region-left > nav nav.navbar.navbar.main-menu > .container-fluid > .collapse, .region-right > nav nav.navbar.navbar.main-menu > .container-fluid > .collapse, .component-row__sidebar-right > nav nav.navbar.navbar.main-menu > .container-fluid > .collapse, .component-row__sidebar-left > nav nav.navbar.navbar.main-menu > .container-fluid > .collapse {
+      display: block; }
+    .region-left > nav nav.navbar.main-menu, .region-right > nav nav.navbar.main-menu, .component-row__sidebar-right > nav nav.navbar.main-menu, .component-row__sidebar-left > nav nav.navbar.main-menu {
+      background-color: transparent;
+      border-color: transparent; }
+      .region-left > nav nav.navbar.main-menu ul.navbar-nav, .region-right > nav nav.navbar.main-menu ul.navbar-nav, .component-row__sidebar-right > nav nav.navbar.main-menu ul.navbar-nav, .component-row__sidebar-left > nav nav.navbar.main-menu ul.navbar-nav {
+        float: none;
+        padding: 25px; }
+        .region-left > nav nav.navbar.main-menu ul.navbar-nav > li > a, .region-left > nav nav.navbar.main-menu ul.navbar-nav > li > span, .region-right > nav nav.navbar.main-menu ul.navbar-nav > li > a, .region-right > nav nav.navbar.main-menu ul.navbar-nav > li > span, .component-row__sidebar-right > nav nav.navbar.main-menu ul.navbar-nav > li > a, .component-row__sidebar-right > nav nav.navbar.main-menu ul.navbar-nav > li > span, .component-row__sidebar-left > nav nav.navbar.main-menu ul.navbar-nav > li > a, .component-row__sidebar-left > nav nav.navbar.main-menu ul.navbar-nav > li > span {
+          font-size: 21px;
+          font-size: 2.1rem;
+          cursor: pointer;
+          padding: unset;
+          line-height: inherit; }
+          .region-left > nav nav.navbar.main-menu ul.navbar-nav > li > a:after, .region-left > nav nav.navbar.main-menu ul.navbar-nav > li > span:after, .region-right > nav nav.navbar.main-menu ul.navbar-nav > li > a:after, .region-right > nav nav.navbar.main-menu ul.navbar-nav > li > span:after, .component-row__sidebar-right > nav nav.navbar.main-menu ul.navbar-nav > li > a:after, .component-row__sidebar-right > nav nav.navbar.main-menu ul.navbar-nav > li > span:after, .component-row__sidebar-left > nav nav.navbar.main-menu ul.navbar-nav > li > a:after, .component-row__sidebar-left > nav nav.navbar.main-menu ul.navbar-nav > li > span:after {
+            display: none; }
+      .region-left > nav nav.navbar.main-menu ul.dropdown-menu, .region-right > nav nav.navbar.main-menu ul.dropdown-menu, .component-row__sidebar-right > nav nav.navbar.main-menu ul.dropdown-menu, .component-row__sidebar-left > nav nav.navbar.main-menu ul.dropdown-menu {
+        display: contents; }
+      .region-left > nav nav.navbar.main-menu ul .caret, .region-right > nav nav.navbar.main-menu ul .caret, .component-row__sidebar-right > nav nav.navbar.main-menu ul .caret, .component-row__sidebar-left > nav nav.navbar.main-menu ul .caret {
+        display: none; }
+      .region-left > nav nav.navbar.main-menu ul a, .region-left > nav nav.navbar.main-menu ul span, .region-right > nav nav.navbar.main-menu ul a, .region-right > nav nav.navbar.main-menu ul span, .component-row__sidebar-right > nav nav.navbar.main-menu ul a, .component-row__sidebar-right > nav nav.navbar.main-menu ul span, .component-row__sidebar-left > nav nav.navbar.main-menu ul a, .component-row__sidebar-left > nav nav.navbar.main-menu ul span {
+        white-space: normal; }
+    .region-left > nav nav.navbar > h2, .region-right > nav nav.navbar > h2, .component-row__sidebar-right > nav nav.navbar > h2, .component-row__sidebar-left > nav nav.navbar > h2 {
+      margin-bottom: 30px; }
+    .region-left > nav nav.navbar > ul, .region-right > nav nav.navbar > ul, .component-row__sidebar-right > nav nav.navbar > ul, .component-row__sidebar-left > nav nav.navbar > ul {
+      padding: 15px 25px; }
+      .region-left > nav nav.navbar > ul.dropdown-menu, .region-right > nav nav.navbar > ul.dropdown-menu, .component-row__sidebar-right > nav nav.navbar > ul.dropdown-menu, .component-row__sidebar-left > nav nav.navbar > ul.dropdown-menu {
+        padding: 0; }
+    .region-left > nav nav.navbar ul:not(.contextual-links), .region-right > nav nav.navbar ul:not(.contextual-links), .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links), .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) {
+      list-style: none;
+      margin: 0; }
+      .region-left > nav nav.navbar ul:not(.contextual-links) li, .region-right > nav nav.navbar ul:not(.contextual-links) li, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li {
+        font-size: 16px;
+        font-size: 1.6rem;
+        font-family: 'opensans-regular';
+        margin: 0 0 10px;
+        float: unset; }
+        .region-left > nav nav.navbar ul:not(.contextual-links) li a, .region-left > nav nav.navbar ul:not(.contextual-links) li span, .region-right > nav nav.navbar ul:not(.contextual-links) li a, .region-right > nav nav.navbar ul:not(.contextual-links) li span, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li a, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li span, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li a, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li span {
+          display: inline-block;
+          position: relative;
+          padding: 5px 0 8px 20px;
+          cursor: pointer; }
+          .region-left > nav nav.navbar ul:not(.contextual-links) li a .caret, .region-left > nav nav.navbar ul:not(.contextual-links) li span .caret, .region-right > nav nav.navbar ul:not(.contextual-links) li a .caret, .region-right > nav nav.navbar ul:not(.contextual-links) li span .caret, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li a .caret, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li span .caret, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li a .caret, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li span .caret {
+            display: none; }
+          .region-left > nav nav.navbar ul:not(.contextual-links) li a:hover, .region-left > nav nav.navbar ul:not(.contextual-links) li a:focus, .region-left > nav nav.navbar ul:not(.contextual-links) li span:hover, .region-left > nav nav.navbar ul:not(.contextual-links) li span:focus, .region-right > nav nav.navbar ul:not(.contextual-links) li a:hover, .region-right > nav nav.navbar ul:not(.contextual-links) li a:focus, .region-right > nav nav.navbar ul:not(.contextual-links) li span:hover, .region-right > nav nav.navbar ul:not(.contextual-links) li span:focus, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li a:hover, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li a:focus, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li span:hover, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li span:focus, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li a:hover, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li a:focus, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li span:hover, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li span:focus {
+            text-decoration: none; }
+          .region-left > nav nav.navbar ul:not(.contextual-links) li a:after, .region-left > nav nav.navbar ul:not(.contextual-links) li span:after, .region-right > nav nav.navbar ul:not(.contextual-links) li a:after, .region-right > nav nav.navbar ul:not(.contextual-links) li span:after, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li a:after, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li span:after, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li a:after, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li span:after {
+            -webkit-transition: all 0.6s ease-in-out 0s;
+            -khtml-transition: all 0.6s ease-in-out 0s;
+            -moz-transition: all 0.6s ease-in-out 0s;
+            -ms-transition: all 0.6s ease-in-out 0s;
+            -o-transition: all 0.6s ease-in-out 0s;
+            transition: all 0.6s ease-in-out 0s;
+            background: transparent;
+            border-bottom: 2px solid;
+            content: '';
+            display: block;
+            height: 2px;
+            width: 0%;
+            position: absolute;
+            left: 0;
+            margin: 0 0 0 20px;
+            max-width: calc(100% - 20px); }
+          .region-left > nav nav.navbar ul:not(.contextual-links) li a:hover, .region-left > nav nav.navbar ul:not(.contextual-links) li a.is-active, .region-left > nav nav.navbar ul:not(.contextual-links) li span:hover, .region-left > nav nav.navbar ul:not(.contextual-links) li span.is-active, .region-right > nav nav.navbar ul:not(.contextual-links) li a:hover, .region-right > nav nav.navbar ul:not(.contextual-links) li a.is-active, .region-right > nav nav.navbar ul:not(.contextual-links) li span:hover, .region-right > nav nav.navbar ul:not(.contextual-links) li span.is-active, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li a:hover, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li a.is-active, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li span:hover, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li span.is-active, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li a:hover, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li a.is-active, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li span:hover, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li span.is-active {
+            background: none; }
+            .region-left > nav nav.navbar ul:not(.contextual-links) li a:hover:before, .region-left > nav nav.navbar ul:not(.contextual-links) li a.is-active:before, .region-left > nav nav.navbar ul:not(.contextual-links) li span:hover:before, .region-left > nav nav.navbar ul:not(.contextual-links) li span.is-active:before, .region-right > nav nav.navbar ul:not(.contextual-links) li a:hover:before, .region-right > nav nav.navbar ul:not(.contextual-links) li a.is-active:before, .region-right > nav nav.navbar ul:not(.contextual-links) li span:hover:before, .region-right > nav nav.navbar ul:not(.contextual-links) li span.is-active:before, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li a:hover:before, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li a.is-active:before, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li span:hover:before, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li span.is-active:before, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li a:hover:before, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li a.is-active:before, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li span:hover:before, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li span.is-active:before {
+              left: -4px; }
+            .region-left > nav nav.navbar ul:not(.contextual-links) li a:hover:after, .region-left > nav nav.navbar ul:not(.contextual-links) li a.is-active:after, .region-left > nav nav.navbar ul:not(.contextual-links) li span:hover:after, .region-left > nav nav.navbar ul:not(.contextual-links) li span.is-active:after, .region-right > nav nav.navbar ul:not(.contextual-links) li a:hover:after, .region-right > nav nav.navbar ul:not(.contextual-links) li a.is-active:after, .region-right > nav nav.navbar ul:not(.contextual-links) li span:hover:after, .region-right > nav nav.navbar ul:not(.contextual-links) li span.is-active:after, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li a:hover:after, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li a.is-active:after, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li span:hover:after, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li span.is-active:after, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li a:hover:after, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li a.is-active:after, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li span:hover:after, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li span.is-active:after {
+              width: 100%; }
+        .region-left > nav nav.navbar ul:not(.contextual-links) li ul, .region-right > nav nav.navbar ul:not(.contextual-links) li ul, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul {
+          display: block;
+          margin: 5px 0 0; }
+          .region-left > nav nav.navbar ul:not(.contextual-links) li ul li, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li {
+            font-size: 16px;
+            font-size: 1.6rem;
+            font-family: 'sourcesans-light';
+            margin: 0;
+            padding: 5px 0px 5px 20px;
+            display: table; }
+            .region-left > nav nav.navbar ul:not(.contextual-links) li ul li a, .region-left > nav nav.navbar ul:not(.contextual-links) li ul li span, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li a, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li span, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li a, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li span, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li a, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li span {
+              display: inline-block;
+              position: relative;
+              cursor: pointer;
+              font-family: 'opensans-regular'; }
+              .region-left > nav nav.navbar ul:not(.contextual-links) li ul li a:before, .region-left > nav nav.navbar ul:not(.contextual-links) li ul li span:before, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li a:before, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li span:before, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li a:before, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li span:before, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li a:before, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li span:before {
+                -webkit-transition: color 0.6s ease-in-out 0s, left 0.6s ease-in-out 0s;
+                -khtml-transition: color 0.6s ease-in-out 0s, left 0.6s ease-in-out 0s;
+                -moz-transition: color 0.6s ease-in-out 0s, left 0.6s ease-in-out 0s;
+                -ms-transition: color 0.6s ease-in-out 0s, left 0.6s ease-in-out 0s;
+                -o-transition: color 0.6s ease-in-out 0s, left 0.6s ease-in-out 0s;
+                transition: color 0.6s ease-in-out 0s, left 0.6s ease-in-out 0s;
+                font-size: 36px;
+                font-size: 3.6rem;
+                content: '\j';
+                float: left;
+                font-family: 'cern-icons';
+                display: block;
+                top: -10px;
+                left: -12px;
+                position: absolute;
+                transform: rotate(0deg); }
+              .region-left > nav nav.navbar ul:not(.contextual-links) li ul li a:after, .region-left > nav nav.navbar ul:not(.contextual-links) li ul li span:after, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li a:after, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li span:after, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li a:after, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li span:after, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li a:after, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li span:after {
+                -webkit-transition: all 0.6s ease-in-out 0s;
+                -khtml-transition: all 0.6s ease-in-out 0s;
+                -moz-transition: all 0.6s ease-in-out 0s;
+                -ms-transition: all 0.6s ease-in-out 0s;
+                -o-transition: all 0.6s ease-in-out 0s;
+                transition: all 0.6s ease-in-out 0s;
+                background: transparent;
+                border-bottom: 2px solid;
+                content: '';
+                display: block;
+                height: 2px;
+                width: 0%;
+                position: absolute;
+                bottom: 3px;
+                left: 0;
+                margin: 0 0 0 20px;
+                max-width: calc(100% - 20px); }
+              .region-left > nav nav.navbar ul:not(.contextual-links) li ul li a:hover, .region-left > nav nav.navbar ul:not(.contextual-links) li ul li a.is-active, .region-left > nav nav.navbar ul:not(.contextual-links) li ul li span:hover, .region-left > nav nav.navbar ul:not(.contextual-links) li ul li span.is-active, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li a:hover, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li a.is-active, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li span:hover, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li span.is-active, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li a:hover, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li a.is-active, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li span:hover, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li span.is-active, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li a:hover, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li a.is-active, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li span:hover, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li span.is-active {
+                background: none; }
+                .region-left > nav nav.navbar ul:not(.contextual-links) li ul li a:hover:before, .region-left > nav nav.navbar ul:not(.contextual-links) li ul li a.is-active:before, .region-left > nav nav.navbar ul:not(.contextual-links) li ul li span:hover:before, .region-left > nav nav.navbar ul:not(.contextual-links) li ul li span.is-active:before, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li a:hover:before, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li a.is-active:before, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li span:hover:before, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li span.is-active:before, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li a:hover:before, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li a.is-active:before, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li span:hover:before, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li span.is-active:before, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li a:hover:before, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li a.is-active:before, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li span:hover:before, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li span.is-active:before {
+                  left: -4px; }
+                .region-left > nav nav.navbar ul:not(.contextual-links) li ul li a:hover:after, .region-left > nav nav.navbar ul:not(.contextual-links) li ul li a.is-active:after, .region-left > nav nav.navbar ul:not(.contextual-links) li ul li span:hover:after, .region-left > nav nav.navbar ul:not(.contextual-links) li ul li span.is-active:after, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li a:hover:after, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li a.is-active:after, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li span:hover:after, .region-right > nav nav.navbar ul:not(.contextual-links) li ul li span.is-active:after, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li a:hover:after, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li a.is-active:after, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li span:hover:after, .component-row__sidebar-right > nav nav.navbar ul:not(.contextual-links) li ul li span.is-active:after, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li a:hover:after, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li a.is-active:after, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li span:hover:after, .component-row__sidebar-left > nav nav.navbar ul:not(.contextual-links) li ul li span.is-active:after {
+                  width: 100%; }
+
+footer .field--name-field-visible-title {
+  display: none; }
+
+/*# sourceMappingURL=blocks.css.map */

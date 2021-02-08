@@ -1,0 +1,10 @@
+name: 'CERN Paragraph Types'
+description: 'A common set of re-usable paragraph types. This module is usually bundled with the CERN Page content type.'
+package: CERN Components
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+version: 2.2.3
+dependencies:
+  - paragraphs
+  - cern_components(>=8.x-2.7.0)

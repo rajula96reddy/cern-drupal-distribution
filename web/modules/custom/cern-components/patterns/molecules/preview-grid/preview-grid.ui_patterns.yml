@@ -1,0 +1,41 @@
+# Preview Grid Pattern
+#
+preview_grid:
+  label: "Preview Grid"
+  description: "A preview grid pattern"
+  fields:
+    image:
+      description: "Preview Grid Image"
+      label: Image
+      preview:
+        alt: "this is a sample image"
+        theme: image
+        uri: "http://dummy-images.com/abstract/dummy-1280x768-Stones-plain.jpg"
+      type: image
+    topic:
+      description: "Preview Grid Topic"
+      label: Topic
+      preview: "Topic term"
+      type: text
+    title:
+      description: "Preview Grid Title"
+      label: Title
+      preview: "Gravitational Waves: An Entirely New Window to Cosmos"
+      type: text
+    news_format:
+      description: "Preview Grid News Format"
+      label: News Format
+      preview: "News Format"
+      type: text
+    date:
+      description: "Created date"
+      label: Date
+      preview: "29 AUG/17"
+      type: date
+  libraries:
+    -
+      divisions:
+        css:
+          component:
+            css/preview-grid.component.css: {}
+  use: "@cern_components/molecules/preview-grid/preview-grid.ui_patterns.html.twig"

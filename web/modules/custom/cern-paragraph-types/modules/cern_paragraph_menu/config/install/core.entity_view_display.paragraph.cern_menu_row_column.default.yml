@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_menu_row_column.field_p_menu_row_column_close
+    - field.field.paragraph.cern_menu_row_column.field_p_menu_row_column_content
+    - field.field.paragraph.cern_menu_row_column.field_p_menu_row_column_span
+    - field.field.paragraph.cern_menu_row_column.field_p_menu_row_column_span_md
+    - field.field.paragraph.cern_menu_row_column.field_p_menu_row_column_span_sm
+    - paragraphs.paragraphs_type.cern_menu_row_column
+  module:
+    - entity_reference_revisions
+id: paragraph.cern_menu_row_column.default
+targetEntityType: paragraph
+bundle: cern_menu_row_column
+mode: default
+content:
+  field_p_menu_row_column_close:
+    weight: 1
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_p_menu_row_column_content:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_p_menu_row_column_span: true
+  field_p_menu_row_column_span_md: true
+  field_p_menu_row_column_span_sm: true

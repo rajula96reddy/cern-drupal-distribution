@@ -1,0 +1,39 @@
+name: 'CERN Landing Page'
+type: module
+description: 'Provides the Landing Page content type and related configuration. A long-form story telling page.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'CERN Components'
+version: 2.2.4
+dependencies:
+  - allowed_formats
+  - block
+  - cern_cds_media
+  - cern_paragraph_scrolling_menu
+  - cern_paragraph_section
+  - color_field
+  - content_moderation
+  - ds
+  - entity_reference_revisions
+  - field
+  - field_formatter_class
+  - field_group
+  - file
+  - filefield_paths
+  - image
+  - language
+  - layout_discovery
+  - menu_ui
+  - node
+  - options
+  - paragraphs
+  - path
+  - pathauto
+  - rdf
+  - scheduler
+  - 'system (>= 8.3.x)'
+  - taxonomy
+  - text
+  - user
+  - views
+  - viewsreference

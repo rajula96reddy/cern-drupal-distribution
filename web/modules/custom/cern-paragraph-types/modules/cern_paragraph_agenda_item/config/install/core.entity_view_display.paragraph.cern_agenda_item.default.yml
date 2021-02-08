@@ -1,0 +1,98 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_agenda_item.field_p_agenda_details
+    - field.field.paragraph.cern_agenda_item.field_p_agenda_end_date
+    - field.field.paragraph.cern_agenda_item.field_p_agenda_ics_link
+    - field.field.paragraph.cern_agenda_item.field_p_agenda_start_date
+    - field.field.paragraph.cern_agenda_item.field_p_agenda_timezone
+    - field.field.paragraph.cern_agenda_item.field_p_agenda_title
+    - paragraphs.paragraphs_type.cern_agenda_item
+  module:
+    - datetime
+    - ds
+    - link
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_agenda
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+    regions:
+      start_date:
+        - field_p_agenda_start_date
+      end_date:
+        - field_p_agenda_end_date
+      ics_link:
+        - field_p_agenda_ics_link
+      timezone:
+        - field_p_agenda_timezone
+      title:
+        - field_p_agenda_title
+      details:
+        - field_p_agenda_details
+id: paragraph.cern_agenda_item.default
+targetEntityType: paragraph
+bundle: cern_agenda_item
+mode: default
+content:
+  field_p_agenda_details:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: details
+  field_p_agenda_end_date:
+    weight: 1
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    type: datetime_default
+    region: end_date
+  field_p_agenda_ics_link:
+    weight: 2
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: ics_link
+  field_p_agenda_start_date:
+    weight: 0
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: start_date
+  field_p_agenda_timezone:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: timezone
+  field_p_agenda_title:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: title
+hidden: {  }

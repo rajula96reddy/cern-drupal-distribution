@@ -1,0 +1,19 @@
+{#
+ * @file
+ * FAQ List Display Pattern Twig.
+#}
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h4 class="panel-title">
+			<a class="collapsed">{{ title }}</a>
+		</h4>
+	</div>
+	<div class="panel-collapse collapse"
+			 aria-expanded="false"
+			 id={{ "collapse"~ nhash }}>
+		<div class="panel-body">
+			{{ body }}
+		</div>
+	</div>
+</div>

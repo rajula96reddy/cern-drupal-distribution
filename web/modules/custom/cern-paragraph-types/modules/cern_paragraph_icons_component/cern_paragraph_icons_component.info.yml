@@ -1,0 +1,19 @@
+name: 'CERN icons component'
+description: 'A paragraph with title, icon bundle with text and call to action button'
+package: CERN Components
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - cern_paragraph_call_action_button
+  - color_field
+  - ds
+  - entity_reference_revisions
+  - field
+  - field_formatter_class
+  - field_group
+  - language
+  - options
+  - paragraphs
+  - smart_trim
+version: '1.1'

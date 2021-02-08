@@ -1,0 +1,14 @@
+<div id="component-profile">
+  {% if image | render %}
+    <div class="profile-image">{{ image }}</div>
+  {% endif %}
+
+  {% if name | render %}
+    <div class="profile-author">By
+      {{ name }}</div>
+  {% endif %}
+
+  {% if profile | render %}
+    <span>{{ profile }}</span>
+  {% endif %}
+</div>

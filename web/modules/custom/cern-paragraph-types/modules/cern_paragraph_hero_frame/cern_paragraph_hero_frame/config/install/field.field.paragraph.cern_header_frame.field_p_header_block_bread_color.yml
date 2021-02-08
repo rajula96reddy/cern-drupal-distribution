@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_header_block_bread_color
+    - paragraphs.paragraphs_type.cern_header_frame
+  module:
+    - color_field
+id: paragraph.cern_header_frame.field_p_header_block_bread_color
+field_name: field_p_header_block_bread_color
+entity_type: paragraph
+bundle: cern_header_frame
+label: 'Breadcrumb Color'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

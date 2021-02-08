@@ -1,0 +1,103 @@
+# News Node Display Pattern
+#
+news_display:
+  label: "News Full content"
+  description: "Display for News content type"
+  fields:
+    title:
+      description: "Node title"
+      label: Title
+      preview: "Lorem Ipsum"
+      type: text
+    strap:
+      description: "Node strap"
+      label: Strap
+      preview: "Lorem Ipsum"
+      type: text
+    publication_date:
+      description: "Node created date."
+      label: Publication date
+      preview: "29 AUGUST,2017"
+      type: date
+    author:
+      description: "Node author"
+      label: Author
+      preview: "By Lorem Ipsum"
+      type: text
+    image:
+      description: "Media image."
+      label: Image
+      preview:
+        alt: "this is a sample image"
+        theme: image
+        uri: "http://dummy-images.com/abstract/dummy-1280x768-Stones-plain.jpg"
+      type: image
+    caption:
+      description: "Node caption"
+      label: Caption
+      preview: "Lorem Ipsum"
+      type: text
+    body:
+      description: "Node body"
+      label: Body
+      preview: "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit."
+      type: text
+    component:
+      description: "Node components"
+      label: Components
+      preview: "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit."
+      type: component
+    topic:
+      description: "Node topic"
+      label: Topic
+      preview: "By Lorem Ipsum"
+      type: text
+    news_format:
+      description: "Node format"
+      label: News Format
+      preview: "By Lorem Ipsum"
+      type: text
+    file:
+      description: "Node file"
+      label: File
+      preview: "By Lorem Ipsum"
+      type: text
+    margin_body:
+      description: "Body options"
+      label: Body Margin
+      preview: "By Lorem Ipsum"
+      type: text
+    format_id:
+      description: "News format ID"
+      label: News format ID
+      preview: "4"
+      type: text
+    topic_id:
+      description: "Topic ID"
+      label: Topic ID
+      preview: "7"
+      type: text
+    tags:
+      description: "Node tags"
+      label: Tags
+      preview: "By Lorem Ipsum"
+      type: text
+    avatar:
+      description: "Byline image"
+      label: Avatar
+      preview: "By Lorem Ipsum"
+      type: text
+    bio:
+      description: "Byline Bio"
+      label: Bio
+      preview: "By Lorem Ipsum"
+      type: text
+  libraries:
+    -
+      news-display:
+        css:
+          component:
+            css/news-display.component.css: {}
+        js:
+          js/news-display.component.js: {}
+  use: "@cern_components/molecules/news-display/news-display.html.twig"

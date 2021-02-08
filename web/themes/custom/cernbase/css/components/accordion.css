@@ -1,0 +1,83 @@
+.accordion-cern .panel {
+  border: 0;
+  margin: 37px 0 !important;
+  position: relative;
+  padding-bottom: 22px; }
+  .accordion-cern .panel:after {
+    content: "";
+    background: #c1c1c1;
+    display: block;
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -5px; }
+.accordion-cern .panel-heading {
+  font-size: 18px;
+  font-size: 1.8rem;
+  background: none;
+  border: 0;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  line-height: 25px;
+  width: 100%;
+  display: inline-block; }
+  .accordion-cern .panel-heading h1,
+  .accordion-cern .panel-heading h2,
+  .accordion-cern .panel-heading h3,
+  .accordion-cern .panel-heading h4 {
+    margin: 0;
+    padding: 0; }
+  .accordion-cern .panel-heading a {
+    font-size: 18px;
+    font-size: 1.8rem;
+    color: #222222;
+    display: block;
+    padding: 0;
+    margin: 0;
+    padding: 0 40px 0 0;
+    border-bottom: 0;
+    position: relative;
+    font-weight: 500; }
+    .accordion-cern .panel-heading a:hover, .accordion-cern .panel-heading a:focus, .accordion-cern .panel-heading a:selected {
+      color: #222222;
+      text-decoration: none; }
+    .accordion-cern .panel-heading a:after {
+      content: "+";
+      width: 30px;
+      margin: 0;
+      padding: 0;
+      font-size: 30px;
+      font-size: 3rem;
+      font-family: 'sourcesans-regular';
+      line-height: 20px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-weight: 100;
+      color: #222222; }
+    .accordion-cern .panel-heading a.is-open:after {
+      content: "-"; }
+.accordion-cern .panel-collapse {
+  margin: 0;
+  color: #555; }
+  .accordion-cern .panel-collapse h1,
+  .accordion-cern .panel-collapse h2,
+  .accordion-cern .panel-collapse h3,
+  .accordion-cern .panel-collapse h4,
+  .accordion-cern .panel-collapse h5 {
+    font-size: 1.6rem;
+    font-weight: bold; }
+  .accordion-cern .panel-collapse.in {
+    border-bottom: 0; }
+  .accordion-cern .panel-collapse .panel-body {
+    border-top-color: transparent !important;
+    padding: 0 !important;
+    margin: 5px 0;
+    font-size: 16px;
+    font-size: 1.6rem;
+    line-height: 22px; }
+    .accordion-cern .panel-collapse .panel-body p:last-child {
+      margin: 0; }

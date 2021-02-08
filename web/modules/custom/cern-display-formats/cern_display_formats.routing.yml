@@ -1,0 +1,9 @@
+cern_display_formats.admin_settings_form:
+  path: '/admin/config/display-formats/settings'
+  defaults:
+    _form: '\Drupal\cern_display_formats\Form\DisplayFormatsSettingsForm'
+    _title: 'Display Formats'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE

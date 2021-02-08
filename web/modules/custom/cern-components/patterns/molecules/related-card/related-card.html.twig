@@ -1,0 +1,98 @@
+{%
+  set classes = [
+    "component-related_card",
+    "box-pattern",
+    variants.display.value,
+    cern_node_type
+  ]
+%}
+
+{% set attributes = create_attribute() %}
+{% set attributes = attributes.addClass(classes) %}
+
+{% set attributes_bgcolor = create_attribute() %}
+{% set attributes_bgcolor = attributes_bgcolor.addClass(classes) %}
+
+{% set attributes_textcolor = create_attribute() %}
+
+{% if background | render %}
+  {% set attributes = attributes.addClass(classes).setAttribute('style', "background:url('" ~ background | get_img_src ~ "') no-repeat center center / cover") %}
+{% endif %}
+
+{% if variants.bg_text.color %}
+  {% set attributes_bgcolor = attributes_bgcolor.addClass(classes)
+.setAttribute('style', "background-color: " ~ variants.bg_text.color|get_rgba(variants.bg_text.opacity) ~ "") %}
+{% endif %}
+
+{% if variants.color_text.color %}
+  {% set attributes_textcolor = attributes_textcolor.addClass(classes).setAttribute('style', "color: " ~ variants.color_text.color ~ "") %}
+{% endif %}
+
+
+<div {{ attributes }} {{ attributes_bgcolor }}>
+  {# Adds link to wrap the box #}
+
+  {% if background | render %}
+    <div class="component-related_card__veil"></div>
+  {% endif %}
+  <div class="component-related_card__wrapper">
+    <div class="component-related_card__content">
+
+      {# Thumbnail field #}
+      {% if profile | render %}
+        {% set profileAttributes = create_attribute() %}
+        {% set profileClasses = ["component-related_card__content__profile"] %}
+        {% set profileAttributes = profileAttributes.addClass(profileClasses).setAttribute('style', "background:url('" ~ profile|get_img_src ~ "') no-repeat center center / cover") %}
+        <div {{ profileAttributes }}></div>
+      {% endif %}
+
+      {# Link field #}
+      <div class="component-related_card__content__link">
+        {% if link | render is not empty %}
+          <h3>
+            {% if link | render | get_tag_attribute("a", "href") %}
+
+              {{ link|openlink }}
+              <span class="text-color" {{ attributes_textcolor }}>
+                {{ link|render|striptags|length > 60 ?
+									 link|render|striptags|htmlspecialchars|slice(0,60) ~ '...' :
+									 link|render|striptags|htmlspecialchars }}
+              </span>
+              {{ link|closelink }}
+
+            {% else %}
+
+              {{ link|length > 60 ?
+							link|htmlspecialchars|slice(0,60) ~ '...' :
+							link }}
+
+            {% endif %}
+
+          </h3>
+        {% endif %}
+      </div>
+
+      {# Format field #}
+      {% if format | render %}
+        <div class="component-related_card__content__format" {{ attributes_textcolor }}>
+          {{ format }}
+        </div>
+      {% endif %}
+
+      {# Text field #}
+      <div class="component-related_card__content__text" {{ attributes_textcolor }}>
+        {% if text | render is not empty %}
+          {{ text }}
+        {% endif %}
+      </div>
+
+      {# Date field  #}
+      {% if date | render %}
+        <div class="preview-card__date" {{ attributes_textcolor }}>
+          {{ date }}
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</div>

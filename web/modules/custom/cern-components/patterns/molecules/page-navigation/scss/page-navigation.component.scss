@@ -1,0 +1,163 @@
+body.open-cern-menu #page-navigation {
+    display: none !important;
+}
+
+.subMenu {
+    height: 74px;
+    width: calc(100vh - 250px);
+    background: transparent;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    position: fixed !important;
+    right: calc(((-100vh + 100px) / 2) + 88px + 25px) !important;
+    top: 52%;
+    color: black;
+    z-index: 200;
+    padding-top: 20px;
+}
+
+.page-navigation-progress {
+    content: '';
+    width: 100%;
+    height: 3px;
+    background: darkorange;
+    display: block;
+    z-index: 9001;
+    top: 20px;
+    position: absolute;
+    
+    -webkit-transition: width 0.3s ease-in-out 0s;
+    -khtml-transition: width 0.3s ease-in-out 0s;
+    -moz-transition: width 0.3s ease-in-out 0s;
+    -ms-transition: width 0.3s ease-in-out 0s;
+    -o-transition: width 0.3s ease-in-out 0s;
+    transition: width 0.3s ease-in-out 0s;
+}
+
+.page-navigation-progress:after {
+    content: ' ';
+    width: 0px;
+    height: 0px;
+    display: block;
+    border: 4px solid darkorange;
+    border-radius: 100%;
+    position: absolute;
+    top: -3px;
+    left: 100%;
+}
+
+.subNavBtn {
+    display: block;
+    height: 35px;
+    width: 14.2%;
+    float: left;
+    margin: 0px 0px 0 0;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 10px 0 0 0;
+    text-align: center;
+    /* color: #222; */
+    /* color: transparent; */
+    /* text-shadow: 1px 0px 1px black, 0px 1px 1px black, -1px 0px 1px black, 0px -1px 1px black, 0 0 1px black; */
+    color: white;
+    border-top: 2px dotted #444;
+    position: relative;
+    font-size: 0.9em;
+    /* font-weight: 600; */
+    line-height: 26px;
+    a {
+        text-shadow: 0px 0px 0.8px black, 0px 0px 0.8px black, 0px 0px 0.8px black, 0px 0px 0.8px black, 0 0 0.8px black;
+        color: #e4dede; 
+    }
+}
+/* .subNavBtn:hover, .subNavBtn:focus {
+    color: transparent;
+} */
+
+.subMenu div.inner .subNavBtn span {
+    display: inline-block;
+    padding: 3px 5% 5px 5%;  
+    transform: rotate(180deg);
+    font-weight: lighter;
+    
+/*     -webkit-transition: color 0.3s, background-color 0.3s;
+    -khtml-transition: color 0.3s, background-color 0.3s;
+    -moz-transition: color 0.3s, background-color 0.3s;
+    -ms-transition: color 0.3s, background-color 0.3s;
+    -o-transition: color 0.3s, background-color 0.3s;
+    transition: color 0.3s, background-color 0.3s; */
+}
+/* .subMenu:hover {
+    background: rgba(0,0,0,0.6);
+} */
+ .subMenu div.inner .subNavBtn span:hover {
+    /* text-shadow: 1px 0px 1px black, 0px 1px 1px black, -1px 0px 1px black, 0px -1px 1px black, 0 0 1px black; */
+    //color: white;
+    /* border-radius: 1px; */
+} 
+
+/* .subMenu:hover div.inner a.subNavBtn:hover, .subMenu:hover div.inner a.subNavBtn:focus {
+    color: #222;
+} */
+
+.subNavBtn a:hover,.subNavBtn a:focus ,.subNavBtn a:active {
+    color: white !important;
+    text-decoration: none;
+    background: transparent !important;
+}
+
+.subNavBtn.background--dark {
+    color: #f2f2f2;
+    text-shadow: 0px 0 1px black;
+}
+
+.subNavBtn.background--light {
+    color: #222;
+    text-shadow: 0px 0 0px white;
+}
+
+.subNavBtn.active {
+    background: transparent;
+    font-weight: bold;
+    //letter-spacing: 1px;
+    * {
+        color: white !important;
+        font-weight: bold !important;
+    }
+}
+
+/* .subNavBtn.active::after {
+    content: ' ';
+    width: 0px;
+    height: 0px;
+    display: block;
+    border: 4px solid darkorange;
+    border-radius: 100%;
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    right: 50%;
+} */
+
+
+@media only screen and (max-width: 989px), screen and (max-height: 750px) {
+    .subMenu {
+        height: 0px;
+        right: calc(((-100vh + 100px) / 2) + 85px) !important;
+    }
+    .subNavBtn {
+        color: transparent !important;
+        text-shadow: unset !important;
+        overflow-y: hidden !important;
+        height: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+
+.force-relative {
+    top: 0 !important;
+    margin-top: 0 !important;
+    position: relative !important;
+}

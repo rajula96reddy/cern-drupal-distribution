@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_header_block_link
+    - paragraphs.paragraphs_type.cern_header_frame
+  module:
+    - link
+id: paragraph.cern_header_frame.field_p_header_block_link
+field_name: field_p_header_block_link
+entity_type: paragraph
+bundle: cern_header_frame
+label: Link
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

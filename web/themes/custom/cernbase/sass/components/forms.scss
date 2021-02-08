@@ -1,0 +1,666 @@
+// out: ../../css/components/form.css, compress: false, sourceMap: false, autoprefixer: false, groupmedia: false
+// mixins variables
+@import '../variables.scss';
+
+// contact page
+.contact-form {
+  max-width: 1140px;
+  margin: 0 auto 30px;
+}
+
+@media only screen and (max-width: 1140px) {
+  .contact-form {
+    margin: 0 5% 30px;
+  }
+}
+
+// contact inputs
+.form-control {
+  @include box-shadow(0, 0, 0, rgba(0, 0, 0, 0));
+  @include border-radius(0);
+  color: $ocean-blue;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid $ocean-blue;
+  height: 35px;
+  padding: 5px;
+  min-width: 30px;
+
+  &:focus {
+    @include box-shadow(0, 0, 0, rgba(0, 0, 0, 0));
+    background: $grey-light;
+    border-bottom: 1px solid $black;
+  }
+}
+
+.input-group-addon {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid $ocean-blue;
+}
+
+.filter-wrapper {
+  background-color: transparent;
+  border: 0;
+  @include border-radius(0);
+  @include box-shadow(0, 0, 0, rgba(0, 0, 0, 0));
+}
+
+.form-required:after {
+  float: right;
+  margin: 5px 0 0 5px;
+}
+
+.select-wrapper:after {
+  color: $ocean-blue;
+}
+
+// labels
+.form-wrapper,
+.form-item {
+  label {
+    font-family: $font-secondary-semibold;
+    font-weight: normal;
+    @include font-size(1.0);
+    color: rgba(0, 0, 0, 0.4);
+    padding-left: 0;
+    position: relative; //
+    // bottom: -5px;
+    display: block;
+  }
+}
+
+// labels on filters
+.view-filters {
+
+  .form-wrapper,
+  .form-item {
+    label {
+      margin-bottom: 5px;
+      bottom: -5px;
+    }
+  }
+}
+
+// fielset fieldsets
+.form-composite {
+  legend {
+    span {
+      &.visually-hidden {
+        padding: 0;
+      }
+    }
+  }
+
+  .fieldset-wrapper {
+    padding: 0 0 15px; //
+
+    // columns
+    .webform-options-display-two-columns,
+    .webform-options-display-three-columns {
+      @extend %clearfix;
+      display: block;
+      float: left;
+      margin: 5px 0 15px;
+    }
+  }
+}
+
+// des-styling select on browsers that allows
+@supports (appearance:none) {
+  .select-wrapper {
+    position: relative;
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      padding-right: 25px;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      right: 8px;
+      bottom: calc(50% - 5px);
+      width: 10px;
+      height: 5px;
+      position: absolute;
+      pointer-events: none;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 5px 5px 0 5px;
+      border-color: $ocean-blue transparent transparent transparent;
+    }
+  }
+}
+
+@supports (-webkit-appearance:none) {
+  .select-wrapper {
+    position: relative;
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      padding-right: 25px;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      right: 8px;
+      bottom: calc(50% - 5px);
+      width: 10px;
+      height: 5px;
+      position: absolute;
+      pointer-events: none;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 5px 5px 0 5px;
+      border-color: $ocean-blue transparent transparent transparent;
+    }
+  }
+}
+
+@supports (-moz-appearance:none) {
+  .select-wrapper {
+    position: relative;
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      padding-right: 25px;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      right: 8px;
+      bottom: calc(50% - 5px);
+      width: 10px;
+      height: 5px;
+      position: absolute;
+      pointer-events: none;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 5px 5px 0 5px;
+      border-color: $ocean-blue transparent transparent transparent;
+    }
+  }
+}
+
+// Style checkbox and radio buttons in browsers that allows
+@supports (appearance:none) {
+
+  input[type=checkbox],
+  input[type=radio],
+  input[type=checkbox]#edit-delete {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    margin-right: 0.25em;
+    padding: 0;
+    background: #fff;
+    border: 1px solid #B5B5B5;
+    width: 16px !important;
+    height: 16px !important;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: background 0.5s ease;
+    outline: none;
+  }
+
+  input[type=checkbox]#edit-delete {
+    margin-bottom: 0;
+  }
+
+  input[type=radio] {
+    border-radius: 50%;
+  }
+
+  input[type=checkbox]:hover,
+  input[type=checkbox]:focus,
+  input[type=radio]:hover,
+  input[type=radio]:focus {
+    border-color: $black;
+    cursor: pointer;
+  }
+
+  input[type=checkbox]#edit-delete:hover,
+  input[type=checkbox]#edit-delete:focus {
+    border-color: #D01616;
+    cursor: pointer;
+  }
+
+  input[type=checkbox]:checked,
+  input[type=checkbox]:disabled:checked,
+  input[type=radio]:checked,
+  input[type=radio]:disabled:checked {
+    background: $ocean-blue;
+    box-shadow: inset 0px 0px 0px 3px #fff;
+  }
+
+  input[type=checkbox]#edit-delete:checked,
+  input[type=checkbox]#edit-delete:disabled:checked {
+    background: #D01616;
+    box-shadow: inset 0px 0px 0px 3px #fff;
+  }
+
+  input[type=checkbox]:disabled,
+  input[type=radio]:disabled {
+    opacity: .5;
+    background: #E2E2E2;
+  }
+
+  input[type=checkbox]#edit-delete:disabled {
+    opacity: .5;
+    background: #E88181;
+  }
+
+  input[type=checkbox]:disabled:hover {
+    border-color: #B5B5B5;
+    cursor: default;
+  }
+
+  input[type=checkbox]:disabled:hover,
+  input[type=radio]:disabled:hover {
+    border-color: #B5B5B5;
+    cursor: default;
+    /*cursor: not-allowed;*/
+  }
+}
+
+@supports (-webkit-appearance:none) {
+
+  input[type=checkbox],
+  input[type=radio],
+  input[type=checkbox]#edit-delete {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    margin-right: 0.25em;
+    padding: 0;
+    background: #fff;
+    border: 1px solid #B5B5B5;
+    width: 16px !important;
+    height: 16px !important;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: background 0.5s ease;
+    outline: none;
+  }
+
+  input[type=checkbox]#edit-delete {
+    margin-bottom: 0;
+  }
+
+  input[type=radio] {
+    border-radius: 50%;
+  }
+
+  input[type=checkbox]:hover,
+  input[type=checkbox]:focus,
+  input[type=radio]:hover,
+  input[type=radio]:focus {
+    border-color: $black;
+    cursor: pointer;
+  }
+
+  input[type=checkbox]#edit-delete:hover,
+  input[type=checkbox]#edit-delete:focus {
+    border-color: #D01616;
+    cursor: pointer;
+  }
+
+  input[type=checkbox]:checked,
+  input[type=checkbox]:disabled:checked,
+  input[type=radio]:checked,
+  input[type=radio]:disabled:checked {
+    background: $ocean-blue;
+    box-shadow: inset 0px 0px 0px 3px #fff;
+  }
+
+  input[type=checkbox]#edit-delete:checked,
+  input[type=checkbox]#edit-delete:disabled:checked {
+    background: #D01616;
+    box-shadow: inset 0px 0px 0px 3px #fff;
+  }
+
+  input[type=checkbox]:disabled,
+  input[type=radio]:disabled {
+    opacity: .5;
+    background: #E2E2E2;
+  }
+
+  input[type=checkbox]#edit-delete:disabled {
+    opacity: .5;
+    background: #E88181;
+  }
+
+  input[type=checkbox]:disabled:hover {
+    border-color: #B5B5B5;
+    cursor: default;
+  }
+
+  input[type=checkbox]:disabled:hover,
+  input[type=radio]:disabled:hover {
+    border-color: #B5B5B5;
+    cursor: default;
+    /*cursor: not-allowed;*/
+  }
+}
+
+@supports (-moz-appearance:none) {
+
+  input[type=checkbox],
+  input[type=radio],
+  input[type=checkbox]#edit-delete {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    margin-right: 0.25em;
+    padding: 0;
+    background: #fff;
+    border: 1px solid #B5B5B5;
+    width: 16px !important;
+    height: 16px !important;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: background 0.5s ease;
+    outline: none;
+  }
+
+  input[type=checkbox]#edit-delete {
+    margin-bottom: 0;
+  }
+
+  input[type=radio] {
+    border-radius: 50%;
+  }
+
+  input[type=checkbox]:hover,
+  input[type=checkbox]:focus,
+  input[type=radio]:hover,
+  input[type=radio]:focus {
+    border-color: $black;
+    cursor: pointer;
+  }
+
+  input[type=checkbox]#edit-delete:hover,
+  input[type=checkbox]#edit-delete:focus {
+    border-color: #D01616;
+    cursor: pointer;
+  }
+
+  input[type=checkbox]:checked,
+  input[type=checkbox]:disabled:checked,
+  input[type=radio]:checked,
+  input[type=radio]:disabled:checked {
+    background: $ocean-blue;
+    box-shadow: inset 0px 0px 0px 3px #fff;
+  }
+
+  input[type=checkbox]#edit-delete:checked,
+  input[type=checkbox]#edit-delete:disabled:checked {
+    background: #D01616;
+    box-shadow: inset 0px 0px 0px 3px #fff;
+  }
+
+  input[type=checkbox]:disabled,
+  input[type=radio]:disabled {
+    opacity: .5;
+    background: #E2E2E2;
+  }
+
+  input[type=checkbox]#edit-delete:disabled {
+    opacity: .5;
+    background: #E88181;
+  }
+
+  input[type=checkbox]:disabled:hover {
+    border-color: #B5B5B5;
+    cursor: default;
+  }
+
+  input[type=checkbox]:disabled:hover,
+  input[type=radio]:disabled:hover {
+    border-color: #B5B5B5;
+    cursor: default;
+    /*cursor: not-allowed;*/
+  }
+}
+
+.radio label,
+.checkbox label {
+  padding: 6px 0 0 25px;
+}
+
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  margin-left: -25px;
+}
+
+// autocomplete icon
+.form-autocomplete {
+  .input-group {
+    position: relative;
+    width: 100%;
+
+    input {
+      padding: 0 40px 0 0;
+      width: 100%;
+    }
+
+    .input-group-addon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 10;
+      width: 40px;
+      height: 100%;
+      border: 0;
+
+      .ajax-progress {
+        top: calc(50% - 7px);
+      }
+    }
+  }
+}
+
+// multiple field table
+button.tabledrag-toggle-weight {
+  float: right;
+  margin: 0 0 5px;
+}
+
+.field-multiple-table {
+  border: 1px solid #ddd;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+
+  &>thead>tr>th,
+  &>tbody>tr>th,
+  &>tfoot>tr>th,
+  &>thead>tr>td,
+  &>tbody>tr>td,
+  &>tfoot>tr>td {
+    border: 1px solid #ddd;
+  }
+
+  &>thead>tr>th,
+  &>thead>tr>td {
+    border-bottom-width: 2px;
+  }
+
+  tr.odd {
+    background-color: #f9f9f9;
+  }
+}
+
+// form validation
+.has-warning,
+.has-error {
+
+  .form-control,
+  .form-control:focus {
+    @include box-shadow(0, 0, 0, rgba(0, 0, 0, 0));
+  }
+}
+
+// comments
+#comment-form {
+  max-width: 1140px;
+  margin: 0 auto 30px;
+}
+
+.indented {
+  padding: 0 0 0 50px;
+}
+
+// buttons
+.button,
+.btn-primary,
+.btn,
+.btn-default {
+  @include transition(all 0.3s ease-in-out 0s);
+
+  .icon {
+    margin-top: 0px;
+    position: relative;
+    top: 3px;
+  }
+
+  &.icon-before {
+    .icon {
+      margin-right: 7px;
+    }
+  }
+}
+
+.btn {
+  @include border-radius(6px);
+  padding: 9px 12px 6px;
+
+  &.btn-lg {
+    padding: 12px 16px 10px;
+
+    &.icon-before {
+      .icon {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &.btn-sm {
+    padding: 10px 10px 5px;
+
+    &.icon-before {
+      .icon {
+        margin-right: 4px;
+      }
+    }
+  }
+
+  &.btn-xs {
+    padding: 4px 5px 1px;
+
+    &.icon-before {
+      .icon {
+        margin-right: 1px;
+      }
+    }
+  }
+}
+
+button+button {
+  margin: 0 0 0 10px;
+}
+
+//type search ONLY FOR THE CONTENT WRAPPER
+main .form-type-search {
+  @extend %clearfix;
+
+  .input-group {
+    display: block;
+  }
+
+  .input-group-btn {
+    display: block;
+    position: absolute;
+    width: auto;
+    top: -5px;
+    left: 0;
+    z-index: 10;
+
+    .btn {
+      background: transparent;
+      border: 0;
+      color: $gray-dark;
+      padding: 9px 4px 6px;
+
+      .glyphicon-search {
+        @include font-size(1.8);
+      }
+    }
+  }
+
+  .form-search {
+    display: block;
+    float: right;
+    width: 100%;
+    padding: 0 0 0 40px;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.search-help-link {
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+// radio y checkbox
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0;
+}
+
+// required
+.form-required:after {
+  float: none;
+}
+
+.form-required:after {
+  float: right;
+}
+
+.form-required:after {
+  // background-image: url(../images/required.svg);
+  // -webkit-background-size: 10px 7px;
+  // background-size: 10px 7px;
+  background: url("../../images/required.svg") no-repeat center center / 10px 7px;
+  content: "";
+  display: inline-block;
+  line-height: 1;
+  height: 7px;
+  width: 10px;
+  margin: 5px 0 0 5px;
+  float: none;
+}

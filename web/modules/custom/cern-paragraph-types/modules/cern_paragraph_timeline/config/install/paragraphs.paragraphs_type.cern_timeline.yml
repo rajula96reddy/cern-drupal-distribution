@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cern_timeline
+label: Timeline
+icon_uuid: null
+description: 'A component to embed CERN Timeline through an iframe'
+behavior_plugins: {  }

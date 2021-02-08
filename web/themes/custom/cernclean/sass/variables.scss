@@ -1,0 +1,91 @@
+// mixins library
+@import 'mixins.scss';
+//
+// Variables
+// --------------------------------------------------
+$white: #ffffff;
+$black: #000000;
+// Grays
+// -------------------------
+// $gray-darker: lighten(#000, 13.5%); // #222
+// $gray-dark: lighten(#000, 20%); // #333
+// $gray: lighten(#000, 33.5%); // #555
+// $gray-light: lighten(#000, 60%); // #999
+// $gray-lighter: lighten(#000, 93.5%); // #eee
+$grey-dark: #191919;
+$grey-light: #f8f8f8;
+$grey-light-footer: #d7d7d7;
+//
+// corporate colors
+// -------------------------
+$ocean-blue: #0855a0;
+$blue: #0855a0;
+$orange: #f3a530;
+//
+// Section colors
+// -------------------------
+$variant-blue: rgba(8, 85, 160, 0.05);
+$code-green: #21a870;
+$code-orange: $orange;
+//
+// Font Family
+// -------------------------
+$font-primary: 'sourcesans-regular';
+$font-primary-semibold: 'sourcesans-semibold';
+$font-primary-bold: 'sourcesans-bold';
+$font-primary-light: 'sourcesans-light';
+$font-secondary: 'opensans-regular';
+$font-secondary-semibold: 'opensans-semibold';
+$font-secondary-bold: 'opensans-bold';
+$font-icon: 'cern-icons';
+//
+// Styles
+// -------------------------
+%footer-boxes-title {
+  color: $grey-light-footer;
+  font-family: 'opensans-bold';
+  @include font-size(1.8);
+  line-height: 20px;
+  margin: 0;
+  padding: 0 0 30px;
+  position: relative;
+  text-transform: uppercase;
+  @media only screen and (max-width: 1023px) {}
+  @media only screen and (max-width: 767px) {}
+  &:after {
+    background: $grey-light-footer;
+    content: "";
+    display: block;
+    height: 2px;
+    width: 38px;
+    position: absolute;
+    left: 0;
+    bottom: 18px;
+  }
+}
+
+%page-title {
+  border: 0;
+  color: $grey-dark;
+  font-family: 'sourcesans-bold';
+  @include font-size(4.0);
+  line-height: 50px;
+  margin: 0 auto 20px;
+  padding: 0;
+}
+
+//
+// Bootstrap variables
+// -------------------------
+//** Background color for `<body>`.
+// $body-bg:               $grey-dark;
+//** Global text color on `<body>`.
+// $text-color:            $black;
+//** Number of columns in the grid.
+$grid-columns: 12;
+//** Padding between columns. Gets divided in half for the left and right.
+$grid-gutter-width: 0px;
+// border radius
+$border-radius-base: 0px !default;
+$border-radius-large: 0px !default;
+$border-radius-small: 0px !default;

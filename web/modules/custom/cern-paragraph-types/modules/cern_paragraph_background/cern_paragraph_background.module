@@ -1,0 +1,36 @@
+<?php
+
+
+function cern_paragraph_background_field_widget_entity_reference_paragraphs_form_alter(&$element, &$form_state, $context) {
+    if (isset($element['subform']['field_p_background_type'])) {
+        $parents = $element['subform']['#parents'];
+        $parents[] = 'field_p_background_type';
+        $name = array_shift($parents);
+        $name .= '[' . implode('][', $parents) . ']';
+        $element['subform']['field_p_background_color']['#states'] = [
+            'visible' => [
+                'select[name="'.$name.'"]' => ['value' => 'Color']
+            ],
+        ];
+        $element['subform']['field_p_background_image']['#states'] = [
+            'visible' => [
+                'select[name="'.$name.'"]' => ['value' => 'Image']
+            ]
+        ];
+        $element['subform']['field_p_background_video']['#states'] = [
+            'visible' => [
+                'select[name="'.$name.'"]' => ['value' => 'Video']
+            ]
+        ];
+        $element['subform']['field_p_background_cds_media']['#states'] = [
+            'visible' => [
+                'select[name="'.$name.'"]' => ['value' => 'CDS']
+            ]
+        ];
+        $element['subform']['field_p_background_video_url']['#states'] = [
+            'visible' => [
+                'select[name="'.$name.'"]' => ['value' => 'VidURL']
+            ]
+        ];
+    }
+}

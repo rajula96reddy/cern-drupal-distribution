@@ -1,0 +1,25 @@
+name: 'CERN Featured banner'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+version: '1.0'
+dependencies:
+  - allowed_formats
+  - cern_cds_media
+  - cern_paragraph_types
+  - color_field
+  - content_moderation
+  - ds
+  - field
+  - field_formatter_class
+  - field_group
+  - file
+  - filefield_paths
+  - image
+  - language
+  - link
+  - options
+  - paragraphs
+  - text
+description: 'Featured banner paragraph'
+package: 'CERN Components'

@@ -1,0 +1,39 @@
+{% if variants.type.value is not empty %}
+  {% if variants.hasveil.value == 1 %}
+    <div class="background__veil"></div>
+  {% endif %}
+  {% if variants.type.value == 'Image' %}
+    {% if image | render is not empty %}
+      {% set attributes_bg_image = create_attribute() %}
+      {% set attributes_bg_image = attributes_bg_image.setAttribute('style', "background:url('" ~ image | get_img_src ~ "') no-repeat center top / cover; height: 100%;") %}
+      <div class="background-component background__image" {{ attributes_bg_image }}></div>
+    {% endif %}
+  {% elseif variants.type.value == 'Color' %}
+    {% if color | render is not empty %}
+      {% set color_keys = color | keys %}
+      {% set hex_color = color[color_keys.0].0 ['#markup'] %}
+      {% set attributes = create_attribute() %}
+      {% set attributes = attributes.setAttribute('style', "background-color:" ~ hex_color|get_rgba(1) ~ "; height: 100%;") %}
+      <div class="background-component background__color" {{ attributes }}></div>
+    {% endif %}
+  {% elseif variants.type.value == 'Video' %}
+    {% if video | get_link_href is not empty %}
+      <div class="background-component background__video" style="height: 100%;">
+        {{ pattern('video_item', {'video': video|get_link_href, 'controls': false, 'muted': true, 'autoplay': true, 'loop': true, 'mimetype': video|get_link_type }) }}
+      </div>
+    {% endif %}
+  {% elseif variants.type.value == 'CDS' %}
+    {% if cds_media | get_link_href is not empty %}
+      <div class="background-component background__cds_media" style="height: 100%;">
+        {{ cds_media|raw }}
+      </div>
+      {# {% set attributes_cds_bg_image = create_attribute() %}
+            {% set attributes_cds_bg_image = attributes_cds_bg_image.setAttribute('style', "background:url('" ~ cds_media | get_img_src ~ "') no-repeat center center / cover; height: 100%;") %}
+            <div class="background-component background__image" {{ attributes_cds_bg_image }}></div> #}
+    {% endif %}
+  {% elseif variants.type.value == 'VidURL' %}
+    <div class="background-component background__video_url">
+      <iframe src="{{ video_url }}" allow="autoplay" frameborder="0"></iframe>
+    </div>
+  {% endif %}
+{% endif %}

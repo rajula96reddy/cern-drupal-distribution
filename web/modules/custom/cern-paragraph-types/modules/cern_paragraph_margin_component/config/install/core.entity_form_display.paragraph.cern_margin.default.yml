@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_margin.field_p_margin_bgcolor
+    - field.field.paragraph.cern_margin.field_p_margin_size
+    - paragraphs.paragraphs_type.cern_margin
+  module:
+    - color_field
+id: paragraph.cern_margin.default
+targetEntityType: paragraph
+bundle: cern_margin
+mode: default
+content:
+  field_p_margin_bgcolor:
+    weight: 1
+    settings:
+      default_colors: '#0855A0,#59ADFF,#0D87FF,#2DS77F,#0A6CCC,#2C97FF,#128AFF,#B26F00,#FFA612,#6B05EB,#FF1248,#E86C05,#FFDA06,#F2A530,#FFCC7F,#FFAE33,#7F6640,#CC8B28,#D7D7D7,#1C2C38,#292929,#FFFFFF,#000000'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  field_p_margin_size:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

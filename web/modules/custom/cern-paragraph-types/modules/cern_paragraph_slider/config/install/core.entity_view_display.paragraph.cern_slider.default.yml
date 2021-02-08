@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_slider.field_p_slider_items
+    - paragraphs.paragraphs_type.cern_slider
+  module:
+    - ds
+    - entity_reference_revisions
+    - field_formatter_class
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_slider
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+    regions:
+      items:
+        - field_p_slider_items
+id: paragraph.cern_slider.default
+targetEntityType: paragraph
+bundle: cern_slider
+mode: default
+content:
+  field_p_slider_items:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      ds:
+        ds_limit: ''
+      field_formatter_class:
+        class: ''
+    region: items
+hidden: {  }

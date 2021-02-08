@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_media_display
+    - paragraphs.paragraphs_type.cern_resource_box
+  module:
+    - options
+id: paragraph.cern_resource_box.field_p_media_display
+field_name: field_p_media_display
+entity_type: paragraph
+bundle: cern_resource_box
+label: Display
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: landscape
+default_value_callback: ''
+settings: {  }
+field_type: list_string

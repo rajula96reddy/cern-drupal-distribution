@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_margin.field_p_margin_bgcolor
+    - field.field.paragraph.cern_margin.field_p_margin_size
+    - paragraphs.paragraphs_type.cern_margin
+  module:
+    - ds
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_margin
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+    regions: {  }
+id: paragraph.cern_margin.default
+targetEntityType: paragraph
+bundle: cern_margin
+mode: default
+content: {  }
+hidden:
+  field_p_margin_bgcolor: true
+  field_p_margin_size: true

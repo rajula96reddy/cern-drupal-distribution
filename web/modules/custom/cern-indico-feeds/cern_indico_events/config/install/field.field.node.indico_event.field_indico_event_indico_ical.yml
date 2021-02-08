@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_indico_event_indico_ical
+    - node.type.indico_event
+id: node.indico_event.field_indico_event_indico_ical
+field_name: field_indico_event_indico_ical
+entity_type: node
+bundle: indico_event
+label: 'Indico iCal'
+description: 'This field contains the link to the iCal Indico event.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

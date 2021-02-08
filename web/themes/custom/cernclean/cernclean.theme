@@ -1,0 +1,201 @@
+<?php
+/**
+ * @file
+ * Functions to support theming in the CERN  theme.
+ */
+
+use Drupal\Core\Template\Attribute;
+
+/**
+ * Implements hook_preprocess_page() for block templates.
+ * Enable variables for the .html.twig
+ */
+function cernclean_preprocess_page(&$variables) {
+  //Loads the site configuration.
+  $config = \Drupal::config('system.site');
+
+  // Site settings global variable.
+  $variables['site_show'] = theme_get_setting('site_show');
+  $variables['site_show_name'] = theme_get_setting('site_show_name');
+  // Get the site name from the basic settings
+  $variables['site_name'] = $config->getRawData()['name'];
+  $variables['site_show_slogan'] = theme_get_setting('site_show_slogan');
+  // Get the site slogan from the basic settings
+  $variables['site_slogan'] = $config->getRawData()['slogan'];
+  $variables['site_dark_logo'] = theme_get_setting('site_dark_logo');
+  $fid = theme_get_setting('site_new_logo');
+  // Check if there is a uploaded logo
+  if (!empty($fid)) {
+    $file = file_load($fid[0]);
+    if ($file){
+      $file->setPermanent();
+      $file->save();
+      $variables['site_new_logo'] = file_url_transform_relative(file_create_url($file->getFileUri()));
+    }
+  }
+  // check if search is enabled and set check to show link
+  if (\Drupal::moduleHandler()->moduleExists('search')){
+    $variables['site_show_search'] = theme_get_setting('site_show_search');
+  }
+
+	//gets whether the footer first column is empty
+	$variables['footer_first_column_empty'] = empty($variables['page']['footercolumn1']);
+
+  return $variables;
+}
+
+/**
+ * Implements hook_preprocess_comment() as a preprocessor function for the comments template
+ *
+ * @param $variables
+ * @return mixed
+ */
+function cernclean_preprocess_comment(&$variables){
+	$variables['time_elapsed'] = t(time_elapsed_string($variables['new_indicator_timestamp']));
+
+	$comment = $variables['elements']['#comment'];
+	$account = $comment->getOwner();
+	$username = [
+			'#theme' => 'username',
+			'#account' => $account,
+	];
+	$author = \Drupal::service('renderer')->render($username);
+	$variables['submitted'] = t('Submitted by @username', ['@username' => $author]);
+	$variables['title'] = $comment->getSubject();
+	return $variables;
+}
+
+function time_elapsed_string($timestamp, $full = false) {
+	$now = new DateTime;
+	$ago = new DateTime;
+	$ago->setTimestamp($timestamp);
+	$diff = $now->diff($ago);
+
+	$diff->w = floor($diff->d / 7);
+	$diff->d -= $diff->w * 7;
+
+	$string = array(
+			'y' => 'year',
+			'm' => 'month',
+			'w' => 'week',
+			'd' => 'day',
+			'h' => 'hour',
+			'i' => 'minute',
+			's' => 'second',
+	);
+	foreach ($string as $k => &$v) {
+		if ($diff->$k) {
+			$v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+		} else {
+			unset($string[$k]);
+		}
+	}
+
+	if (!$full) $string = array_slice($string, 0, 1);
+	return $string ? implode(', ', $string) . ' ago' : 'just now';
+}
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ */
+function cernclean_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+
+	//CERN Theme settings
+	$form['cernclean_theme_settings'] = array(
+			'#type' => 'vertical_tabs',
+			'#title' => t('<h3>CERN Theme Settings</h3>
+											<p>In this form you can modify basic settings of the CERN theme</p>
+'),
+			'#weight' => -25,
+	);
+
+	//Header tab
+	$form['cernclean_theme_settings']['header'] = array(
+			'#type' => 'details',
+			'#group' => 'cernclean_theme_settings',
+			'#title' => t('Header'),
+			'#weight' => -10,
+			'#description' => t('Remember that you set the <strong>Site Name</strong> and <strong>Site Slogan</strong> 
+														on <a href="/admin/config/system/site-information">Basic page settings page</a>.<br />
+													'),
+	);
+
+	//Footer tab
+	$form['cernclean_theme_settings']['footer'] = array(
+			'#type' => 'details',
+			'#title' => t('Footer'),
+			'#group' => 'cernclean_theme_settings',
+			'#weight' => 10,
+	);
+
+
+	$form['cernclean_theme_settings']['header']['site_show'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show Site Settings'),
+    '#default_value' => theme_get_setting('site_show'),
+    '#weight' => -10,
+    '#access' => FALSE,
+  );
+
+  $form['cernclean_theme_settings']['header']['site_show_name'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show Site Name'),
+    '#default_value' => theme_get_setting('site_show_name'),
+    '#description' => t('Do you want the site name to be rendered on the header of the site?'),
+    '#weight' => -10,
+  );
+
+  $form['cernclean_theme_settings']['header']['site_show_slogan'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show Site Slogan'),
+		'#description' => t('Do you want the site slogan to be rendered on the header of the site?'),
+		'#default_value' => theme_get_setting('site_show_slogan'),
+    '#weight' => -10,
+  );
+  // show search link on main menu
+  $form['cernclean_theme_settings']['header']['site_show_search'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show Search link on Main menu'),
+    '#default_value' => theme_get_setting('site_show_search'),
+    '#description' => t('Remember to enable the search module. The link appears on the Main Menu only if it is active'),
+    '#weight' => -10,
+  );
+
+	$form['cernclean_theme_settings']['header']['site_new_logo'] = array(
+			'#type' => 'managed_file',
+			'#title' => t('Site Logo'),
+			'#upload_validators' => array (
+					'file_validate_extensions' => array('gif png jpg jpeg'),
+					'file_validate_size' => array (25600000),
+			),
+			'#upload_location' => 'public://logo',
+			'#default_value' => theme_get_setting('site_new_logo'),
+			'#required' => FALSE,
+			'#weight' => -10,
+	);
+
+  // dark logo
+  $form['cernclean_theme_settings']['footer']['site_dark_logo'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show Dark LOGO on footer'),
+    '#default_value' => theme_get_setting('site_dark_logo'),
+    '#description' => t('Select if you prefer a Dark CERN Logo on your site footer.'),
+    '#weight' => -10,
+  );
+
+	// revokes access from update and CDN form fields
+	$form['update']['#access'] = FALSE;
+	$form['cdn']['#access'] = FALSE;
+
+  /* Autocheck the bootstrap cdn to none */
+  if (isset($form['bootstrap'])) {
+    $form['#submit'][] = 'autocheckbootstrap';
+    $form_state->set('theme_settings', 'cernclean.settings');
+  }
+
+}
+
+function autocheckbootstrap($form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $settings = $form_state->get('theme_settings');
+  \Drupal::configFactory()->getEditable($settings)->set('cdn_provider', '')->save();
+}

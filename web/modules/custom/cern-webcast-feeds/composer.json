@@ -1,0 +1,27 @@
+{
+    "name": "drupal/cern-webcast-feeds",
+    "description": "Defines Webcast feeds for the CERN Drupal infrastructure",
+    "version": "2.0.4",
+    "type": "drupal-custom-module",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Konstantinos Platis",
+            "email": "konstantinos.platis@cern.ch"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "vcs",
+            "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-indico-feeds"
+        }
+    ],
+    "require": {
+        "drupal/feeds": "^3.0",
+        "drupal/cern-indico-feeds": "^2.0.5"
+    }
+}

@@ -1,0 +1,7 @@
+name: CERN Loading
+type: module
+description: 'Provides the CERN accelerator-style loader. Useful for big pages with long loading times.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: CERN Basic Elements
+version: 2.1.2

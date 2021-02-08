@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: image_slider
+label: 'Image slider'
+effects:
+  e96c0868-8c82-4366-8777-ba504d982020:
+    uuid: e96c0868-8c82-4366-8777-ba504d982020
+    id: image_scale
+    weight: 2
+    data:
+      width: null
+      height: 500
+      upscale: false

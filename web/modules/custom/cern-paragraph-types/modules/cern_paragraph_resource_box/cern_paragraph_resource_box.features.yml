@@ -1,0 +1,10 @@
+excluded:
+  - core.base_field_override.paragraph.cern_resource_box.moderation_state
+  - core.entity_form_display.paragraph.cern_media.default
+  - core.entity_view_display.paragraph.cern_media.default
+  - field.field.paragraph.cern_media.field_p_media_background
+  - field.field.paragraph.cern_media.field_p_media_bg_color
+  - field.field.paragraph.cern_media.field_p_media_display
+  - field.field.paragraph.cern_media.field_p_media_link
+  - field.field.paragraph.cern_media.field_p_media_type
+required: true

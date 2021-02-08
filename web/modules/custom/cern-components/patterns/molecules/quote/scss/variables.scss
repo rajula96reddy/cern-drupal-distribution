@@ -1,0 +1,41 @@
+// mixins library
+@import 'mixins.scss';
+//
+// Variables
+// --------------------------------------------------
+// corporate colors
+// -------------------------
+$blue: #0855a0;
+$orange: #f2a530;
+// Grays
+// -------------------------
+$grey-dark: #292929;
+$grey-medium: #4a4a4a;
+$grey-light: #bebebe;
+$grey-mlight:#cacaca;
+//
+// Section colors
+// -------------------------
+$error: #ff0000;
+$error-light: #faeaea;
+//
+// generic variables
+// -------------------------
+$white: #ffffff;
+$black: #000000;
+$black-medium:#1a1a1a;
+$body-bg: $white;
+$text-color: $black;
+$link-color: $blue;
+//
+//
+// Styles
+// -------------------------
+%quote {
+  border-top: 1px solid $grey-mlight;
+  border-bottom: 1px solid $grey-mlight;
+  font-size: 20px;
+  font-family: 'Source Sans Pro', sans-serif;
+  display: block;
+  line-height: 32px;
+}

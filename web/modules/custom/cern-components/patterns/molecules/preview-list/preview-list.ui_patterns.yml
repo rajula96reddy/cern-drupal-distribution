@@ -1,0 +1,65 @@
+# Preview List Pattern
+#
+preview_list:
+  label: "Preview List"
+  description: "A preview list pattern"
+  fields:
+    listing_cds_image:
+      description: "Listing CDS Image."
+      label: Listing CDS Image
+      preview:
+        alt: "this is a sample image"
+        theme: image
+        uri: "http://dummy-images.com/nature/dummy-1280x768-Copper-plain.jpg"
+      type: image
+    listing_image:
+      description: "Listing Image."
+      label: Listing Image
+      preview:
+        alt: "this is a sample image"
+        theme: image
+        uri: "http://dummy-images.com/nature/dummy-1280x768-Copper-plain.jpg"
+      type: image
+    image:
+      description: "Image"
+      label: Image
+      preview:
+        alt: "this is a sample image"
+        theme: image
+        uri: "http://dummy-images.com/abstract/dummy-1280x768-Stones-plain.jpg"
+      type: image
+    topic:
+      description: "Preview List Topic"
+      label: Topic
+      preview: "Topic term"
+      type: text
+    title:
+      description: "Preview List Title"
+      label: Title
+      preview: "Gravitational Waves: An Entirely New Window to Cosmos"
+      type: text   
+    strap:
+      description: "Preview List Strap"
+      label: Strap
+      preview: "The CERN council is the highest authority of the Organization and has responsibility for all-important decisions. It controls CERN’s activities in scientific"
+      type: text
+    news_format:
+      description: "Preview List News Format"
+      label: News Format
+      preview: "News Format"
+      type: text
+    date:
+      description: "Created date"
+      label: Date
+      preview: "29 AUG/17"
+      type: date
+  libraries:
+    -
+      divisions:
+        css:
+          component:
+            css/preview-list.component.css: {}
+            ../preview-card/css/component-preview-card.css: {}
+        js:
+          js/preview-list.js: {}
+  use: "@cern_components/molecules/preview-list/preview-list.ui_patterns.html.twig"

@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cern_menu_row
+label: 'Parent Link'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

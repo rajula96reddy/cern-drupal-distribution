@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cern_icon_component
+label: 'Icon Component'
+icon_uuid: null
+description: 'An icon with text component '
+behavior_plugins: {  }

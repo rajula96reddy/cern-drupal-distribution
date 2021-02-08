@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_related_card_date
+    - paragraphs.paragraphs_type.cern_thumbnail_box
+  module:
+    - datetime
+id: paragraph.cern_thumbnail_box.field_p_related_card_date
+field_name: field_p_related_card_date
+entity_type: paragraph
+bundle: cern_thumbnail_box
+label: Date
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

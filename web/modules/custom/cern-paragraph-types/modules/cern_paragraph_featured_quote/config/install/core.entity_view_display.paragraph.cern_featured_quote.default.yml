@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_featured_quote.field_p_quote_author
+    - field.field.paragraph.cern_featured_quote.field_p_quote_title
+    - paragraphs.paragraphs_type.cern_featured_quote
+  module:
+    - ds
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_quote
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+    regions:
+      title:
+        - field_p_quote_title
+      author:
+        - field_p_quote_author
+id: paragraph.cern_featured_quote.default
+targetEntityType: paragraph
+bundle: cern_featured_quote
+mode: default
+content:
+  field_p_quote_author:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: author
+  field_p_quote_title:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: title
+hidden: {  }

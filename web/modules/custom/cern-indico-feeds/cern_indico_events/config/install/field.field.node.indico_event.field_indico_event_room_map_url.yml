@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_indico_event_room_map_url
+    - node.type.indico_event
+id: node.indico_event.field_indico_event_room_map_url
+field_name: field_indico_event_room_map_url
+entity_type: node
+bundle: indico_event
+label: 'Room Map URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

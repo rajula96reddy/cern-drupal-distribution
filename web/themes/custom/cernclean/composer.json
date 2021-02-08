@@ -1,0 +1,26 @@
+{
+    "name": "drupal/cern-theme",
+    "description": "Defines the CERN theme",
+    "version": "2.6.9",
+    "type": "drupal-custom-theme",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Konstantinos Platis",
+            "email": "konstantinos.platis@cern.ch"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "vcs",
+            "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/themes/cernbase"
+        }
+    ],
+    "require": {
+        "drupal/cern-base-theme": "^2.6.1"
+    }
+}

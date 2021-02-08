@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.cern_menu_row
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.cern_menu_row
+target_entity_type_id: paragraph
+target_bundle: cern_menu_row
+default_langcode: site_default
+language_alterable: true

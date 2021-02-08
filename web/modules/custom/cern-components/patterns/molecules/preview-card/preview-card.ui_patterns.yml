@@ -1,0 +1,80 @@
+# Preview Card Pattern
+#
+preview_card:
+  label: "Preview Card"
+  description: "A block preview content"
+  fields:
+    listing_cds_background:
+      description: "Listing CDS Background image."
+      label: Listing CDS Image
+      preview:
+        alt: "this is a sample image"
+        theme: image
+        uri: "http://dummy-images.com/nature/dummy-1280x768-Copper-plain.jpg"
+      type: image
+    listing_background:
+      description: "Listing Background image."
+      label: Listing Image
+      preview:
+        alt: "this is a sample image"
+        theme: image
+        uri: "http://dummy-images.com/nature/dummy-1280x768-Copper-plain.jpg"
+      type: image
+    background:
+      description: "Background image."
+      label: Image
+      preview:
+        alt: "this is a sample image"
+        theme: image
+        uri: "http://dummy-images.com/nature/dummy-1280x768-Copper-plain.jpg"
+      type: image
+    title:
+      description: "Title"
+      label: Title
+      preview: "https://cern.ch"
+      type: url
+    featured_title:
+      description: "Featured Title"
+      label: Featured Title
+      preview: "https://cern.ch"
+      type: url
+    link:
+      description: "URI that points somewhere"
+      label: Link
+      preview: "https://cern.ch"
+      type: url
+    category:
+      description: "Card category."
+      label: Category
+      preview: "In theory"
+      type: text
+    news_format:
+      description: "News format."
+      label: News format
+      preview: "Opinion"
+      type: text
+    avatar:
+      description: "Byline."
+      label: Avatar
+      preview: "Name Surname"
+      type: text
+    author_name:
+      description: "Author."
+      label: Author Name
+      preview: "Name Surname"
+      type: text
+    date:
+      description: "Card date."
+      label: Date
+      preview: "15 March, 2017"
+      type: date
+
+  libraries:
+   -
+     preview_card:
+       css:
+         component:
+           css/component-preview-card.css: {}
+       js:
+         js/component-preview-card.js: {}
+  use: "@cern_components/molecules/preview-card/preview-card.html.twig"

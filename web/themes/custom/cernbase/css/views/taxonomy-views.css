@@ -1,0 +1,268 @@
+.cern-view-display-page.cern-view-display-page_taxonomies {
+  /*  .view-content {
+        margin: 1rem -8px;
+        .views-row {
+            width: calc(33.3% - 16px);
+            margin: 8px;
+            float: left;
+            .box-pattern {
+                margin: 0;
+                width: 100%;
+            }
+            .agenda-box-pattern {
+                padding: 0 20px 10px 40px;
+                background: transparent;
+                border: 1px solid #ddd;
+                .agenda-box-link {
+                    h2, h3{
+                        a {
+                          &:before {
+                              content: unset;
+                          }
+                        }
+                    }
+                }
+                .agenda-box-pattern__box-wrapper {
+                    align-self: flex-end;
+                }
+                .agenda-box-cal-button {
+                    display: none;
+                    a.btn {
+                        padding: 2px;
+                    }
+                }
+
+                .agenda-box-pattern__box-wrapper .agenda-box-cal-wrapper {
+                    padding-right: 5px
+                }
+
+                .agenda-box-week-day,
+                .agenda-box-content-type,
+                .agenda-box-audience,
+                .agenda-box-place {
+                    font-family: "sourcesans-regular";
+                    font-size: 1.5rem;
+                    * {
+                        font-family: "sourcesans-regular";
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+    } */
+}
+
+.cern-view-display-page.cern-view-display-page_taxonomies > h2 {
+  margin: 3rem 0 !important;
+}
+
+.cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline {
+  margin: 0 -10px;
+}
+
+.cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-item {
+  vertical-align: top;
+  width: calc((100% / 3) - 20px);
+  margin: 10px;
+}
+
+.cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-item input {
+  width: 100%;
+}
+
+.cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-item div.select-wrapper select {
+  width: 100%;
+}
+
+.cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-item > input {
+  display: block;
+}
+
+.cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-item:first-child {
+  display: inline-block;
+}
+
+.cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-item:first-child > input {
+  margin: 0;
+  height: 35px;
+  padding-left: 5px;
+}
+
+.cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-item:first-child:before {
+  content: none;
+}
+
+.cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-item:first-child label {
+  display: block;
+  text-align: left;
+}
+
+.cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-actions {
+  width: calc((100% / 3) - 40px);
+  margin: 10px;
+  vertical-align: bottom;
+  text-align: right;
+}
+
+.cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-actions button {
+  width: 100%;
+}
+
+.cern-view-display-page.cern-view-display-page_taxonomies .view-header {
+  font-weight: bold;
+}
+
+.cern-view-display-page.cern-view-display-page_taxonomies .view-header span {
+  color: #0855a0;
+}
+
+@media only screen and (max-width: 991px) {
+  .cern-view-display-page.cern-view-display-page_taxonomies {
+    /* .view-content {
+            margin: 1rem -8px;
+            .views-row {
+                width: calc(50% - 16px);
+                margin: 8px;
+                float: left;
+                .box-pattern {
+                    margin: 0;
+                    width: 100%;
+                }
+                .agenda-box-pattern {
+                    padding: 0 20px 10px 40px;
+                }
+            }
+        } */
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-item {
+    display: inline-block;
+    width: calc((100% / 3) - 23px);
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-actions {
+    display: inline-block;
+    text-align: right;
+    width: calc(100% - 20px);
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-actions button {
+    width: calc((100% / 3) - 23px);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline {
+    margin: 0;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-item:first-child > input {
+    width: 100%;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-item:first-child:before {
+    left: -5px;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-item:not(:first-child), .cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-item:first-child {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    display: block;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-actions {
+    display: block;
+    width: 100%;
+    margin: 0px;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies form.views-exposed-form .form-inline .form-actions button {
+    width: auto;
+  }
+}
+
+/* @media only screen and (max-width: 600px) {
+    .cern-view-display-page.cern-view-display-page_taxonomies {
+        .view-content {
+            margin: 1rem -8px;
+            .views-row {
+                width: calc(100% - 16px);
+                margin: 8px;
+                float: left;
+                .box-pattern {
+                    margin: 0;
+                    width: 100%;
+                }
+                .agenda-box-pattern {
+                    padding: 0 20px 10px 40px;
+                }
+            }
+        }
+    }
+} */
+.cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row {
+  margin: 0 0 25px 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content {
+    margin: 0;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row {
+    margin: 0 0 16px 0 !important;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .views-field .field-content {
+    display: block;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .views-field .field-content .box-pattern {
+    float: none !important;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern {
+    background: transparent;
+    padding: 30px 30px 30px 30px;
+    border: 1px solid #ddd;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern .agenda-box-link h2 a:before,
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern .agenda-box-link h3 a:before {
+    content: unset;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern .agenda-box-pattern__box-wrapper {
+    align-self: flex-start;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern .agenda-box-cal-button {
+    border-radius: 0;
+    display: none;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern .agenda-box-cal-button a.btn {
+    border-radius: 0;
+    padding: 2px;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern .agenda-box-cal-button a.btn:before {
+    left: 2px;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-cal-wrapper {
+    padding-right: 5px;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern .agenda-box-week-day,
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern .agenda-box-content-type,
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern .agenda-box-audience,
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern .agenda-box-place {
+    font-family: "sourcesans-regular";
+    font-size: 1.5rem;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern .agenda-box-week-day *,
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern .agenda-box-content-type *,
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern .agenda-box-audience *,
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern .agenda-box-place * {
+    font-family: "sourcesans-regular";
+    font-size: 1.5rem;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .agenda-box-pattern .agenda-box-pattern__box-wrapper .agenda-box-cal-wrapper .agenda-box-cal-button {
+    background: transparent;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .preview-list-component {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .box-pattern {
+    display: none !important;
+  }
+  .cern-view-display-page.cern-view-display-page_taxonomies .view-content .views-row .preview-list-component .preview-list-news-info .preview-list-title {
+    margin-top: -5px;
+  }
+}

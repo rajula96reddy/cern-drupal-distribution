@@ -1,0 +1,43 @@
+.views-element-container .cern-view-display-block.cern-view-display-related_stories_block {
+  margin-bottom: -30px; }
+
+.cern-view-display-block.cern-view-display-related_stories_block > h2 {
+  text-align: center;
+  margin: 3rem 0; }
+.cern-view-display-block.cern-view-display-related_stories_block .owl-theme .owl-nav.disabled + .owl-dots {
+  margin: 3rem 0; }
+.cern-view-display-block.cern-view-display-related_stories_block .owl-stage .owl-item:not(.active) {
+  opacity: 0; }
+.cern-view-display-block.cern-view-display-related_stories_block .carousel-cern-item.row {
+  margin: 0 -8px; }
+  .cern-view-display-block.cern-view-display-related_stories_block .carousel-cern-item.row .views-row {
+    margin: 8px;
+    width: calc(33.333% - 16px); }
+    .cern-view-display-block.cern-view-display-related_stories_block .carousel-cern-item.row .views-row .component-preview-cards {
+      margin: 0;
+      width: 100%; }
+@media screen and (max-width: 991px) {
+  .cern-view-display-block.cern-view-display-related_stories_block .carousel-cern-item.row {
+    margin: 0; }
+    .cern-view-display-block.cern-view-display-related_stories_block .carousel-cern-item.row .views-row {
+      margin: 16px 0;
+      width: 100%; }
+      .cern-view-display-block.cern-view-display-related_stories_block .carousel-cern-item.row .views-row .component-preview-cards {
+        margin: 0;
+        width: 100%; } }
+.cern-view-display-block.cern-view-display-related_stories_block .component-preview-cards {
+  /* width: calc(33.3% - 8px); */
+  min-height: 428px;
+  margin: 0px;
+  /*@media screen and (max-width: 991px) {
+      width: calc(50% - 8px);
+  } */ }
+  .cern-view-display-block.cern-view-display-related_stories_block .component-preview-cards .component-preview-cards__box_wrapper {
+    height: 368px; }
+  @media screen and (max-width: 991px) {
+    .cern-view-display-block.cern-view-display-related_stories_block .component-preview-cards {
+      margin: 0;
+      min-height: 428px;
+      width: 100%; }
+      .cern-view-display-block.cern-view-display-related_stories_block .component-preview-cards .component-preview-cards__box_wrapper {
+        height: 368px; } }

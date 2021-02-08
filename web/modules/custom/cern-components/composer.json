@@ -1,0 +1,27 @@
+{
+    "name": "drupal/cern-components",
+    "description": "Defines a set of re-usable patterns for the CERN Drupal infrastructure",
+    "version": "2.7.10",
+    "type": "drupal-custom-module",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Konstantinos Platis",
+            "email": "konstantinos.platis@cern.ch"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "drupal/components": "^1.1",
+        "drupal/ui_patterns": "^1.2",
+        "drupal/cern-full-html-format": "^2.0.2",
+        "drupal/twig_tweak": "^2.8",
+        "drupal/ds": "^3.9",
+        "drupal/field_group": "^3.1"
+    }
+}

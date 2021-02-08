@@ -1,0 +1,91 @@
+<?php
+
+\Drupal::moduleHandler()->loadInclude('cern_display_formats', 'inc', 'display_formats.theme');
+
+use Drupal\views\ViewExecutable;
+use \Drupal\views\Plugin\views\cache\CachePluginBase;
+
+/**
+ * Implements hook_theme().
+ *
+ * Sets a theme for each format
+ *
+ */
+function cern_display_formats_theme($existing, $type, $theme, $path) {
+    return array(
+        'horizontal_boxes' => array(
+            'file' => 'display_formats.theme.inc',
+        ),
+				'collision' => array(
+						'file' => 'display_formats.theme.inc',
+				),
+				'countdown' => array(
+					'file' => 'display_formats.theme.inc',
+				),
+        'teaser_list' => array(
+            'file' => 'display_formats.theme.inc',
+        ),
+				'vertical_boxes' => array(
+						'file' => 'display_formats.theme.inc',
+				),
+
+    );
+}
+
+/**
+ * Sets css classes and theming libraries before rendering the view
+ *
+ * @param ViewExecutable $view
+ */
+function cern_display_formats_views_pre_render(ViewExecutable $view){
+
+	$admin_form = \Drupal::config('cern_display_formats.adminsettings');	// gets the admin form
+
+	// get css classes
+	$css_classes = $view->display_handler->getOption('css_class');
+	$extra_class = '';
+	if ($view->display_handler->view->style_plugin->getPluginId() == "horizontal_boxes") {
+		$view->element['#attached']['library'][] = "cern_display_formats/horizontal-boxes-stylesheets";	//attaches the stylesheet
+		$extra_class = 'horizontal-boxes';
+	} elseif ($view->display_handler->view->style_plugin->getPluginId() == "collision") {
+		$extra_class = 'events-collision';
+	} elseif ($view->display_handler->view->style_plugin->getPluginId() == "countdown") {
+		$date_color =	$admin_form->get('countdown_date_color');
+		$link_color = $admin_form->get('countdown_link_color');
+		$place_color = $admin_form->get('countdown_place_color');
+		$title_color = $admin_form->get('countdown_title_color');
+		$view->element['#attached']['drupalSettings']['displayFormats']['countdown']['titleColor'] = $title_color;
+		$view->element['#attached']['drupalSettings']['displayFormats']['countdown']['dateColor'] = $date_color;
+		$view->element['#attached']['drupalSettings']['displayFormats']['countdown']['linkColor'] = $link_color;
+		$view->element['#attached']['drupalSettings']['displayFormats']['countdown']['placeColor'] = $place_color;
+		$view->element['#attached']['library'][] = 'cern_display_formats/countdown-stylesheets';
+		$extra_class = 'events-countdown';
+	} elseif ($view->display_handler->view->style_plugin->getPluginId() == "teaser_list") {
+		$extra_class =  'teaser-list';
+	} elseif ($view->display_handler->view->style_plugin->getPluginId() == "featured_banner") {
+		$link_color = $admin_form->get('featured_banner_link_color');
+		$subtext_color = $admin_form->get('featured_banner_subtext_color');
+		$background_color = $admin_form->get('featured_banner_background_color');
+		$view->element['#attached']['drupalSettings']['displayFormats']['featured_banner']['linkColor'] = $link_color;
+		$view->element['#attached']['drupalSettings']['displayFormats']['featured_banner']['subtextColor'] = $subtext_color;
+		$view->element['#attached']['drupalSettings']['displayFormats']['featured_banner']['backgroundColor'] = $background_color;
+		$view->element['#attached']['library'][] = "cern_display_formats/featured-banner-stylesheets";	//attaches the stylesheet
+		$extra_class =  'featured-banner';
+	} elseif ($view->display_handler->view->style_plugin->getPluginId() == "vertical_boxes") {
+		$extra_class = 'vertical-boxes';
+	} elseif ($view->display_handler->view->style_plugin->getPluginId() == "accordion") {
+		$view->element['#attached']['library'][] = 'cern_display_formats/accordion-stylesheets'; //attaches the stylesheet
+		$title_color = $admin_form->get('accordion_title_color');
+		$view->element['#attached']['drupalSettings']['displayFormats']['accordion']['titleColor'] = $title_color;
+		$extra_class = 'accordion-cern';
+	} elseif ($view->display_handler->view->style_plugin->getPluginId() == "card_grid") {
+		$extra_class =  'card-grid';
+	} elseif ($view->display_handler->view->style_plugin->getPluginId() == "event_grid") {
+		$view->element['#attached']['library'][] = "cern_display_formats/event-grid-stylesheets";	//attaches the stylesheet
+		$extra_class =  'event-grid';
+	}
+
+	// glues together the rest of the css classes with the extra class
+	$css_classes = implode( ' ', array( $css_classes, $extra_class) );
+	$view->display_handler->setOption('css_class', $css_classes);
+}

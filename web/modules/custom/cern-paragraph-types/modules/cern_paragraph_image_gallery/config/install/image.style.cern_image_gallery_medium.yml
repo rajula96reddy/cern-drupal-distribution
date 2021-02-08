@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: cern_image_gallery_medium
+label: 'Image gallery medium'
+effects:
+  05523daf-a081-4f23-a64e-0a01ffd66ad5:
+    uuid: 05523daf-a081-4f23-a64e-0a01ffd66ad5
+    id: image_scale
+    weight: 1
+    data:
+      width: 640
+      height: null
+      upscale: false

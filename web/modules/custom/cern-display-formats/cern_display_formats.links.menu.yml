@@ -1,0 +1,13 @@
+cern_display_formats.cern_exclusive:
+  title: 'CERN Exclusive'
+  parent: system.admin_config
+  description: 'Settings of modules exclusively built for CERN infrastructure'
+  route_name: cern_display_formats.admin_settings_form
+  weight: -30
+
+cern_display_formats.admin_settings_form:
+  title: 'Display Formats'
+  route_name: cern_display_formats.admin_settings_form
+  description: 'Administrative settings for CERN Display Formats'
+  parent: cern_display_formats.cern_exclusive
+  weight: 0

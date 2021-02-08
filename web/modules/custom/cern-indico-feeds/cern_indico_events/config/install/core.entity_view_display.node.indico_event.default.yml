@@ -1,0 +1,129 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.indico_event.body
+    - field.field.node.indico_event.feeds_item
+    - field.field.node.indico_event.field_indico_event_category
+    - field.field.node.indico_event.field_indico_event_category_id
+    - field.field.node.indico_event.field_indico_event_end_date
+    - field.field.node.indico_event.field_indico_event_indico_ical
+    - field.field.node.indico_event.field_indico_event_indico_link
+    - field.field.node.indico_event.field_indico_event_location
+    - field.field.node.indico_event.field_indico_event_room
+    - field.field.node.indico_event.field_indico_event_room_map_url
+    - field.field.node.indico_event.field_indico_event_start_date
+    - field.field.node.indico_event.field_indico_event_timezone
+    - field.field.node.indico_event.field_indico_event_type
+    - node.type.indico_event
+  module:
+    - datetime
+    - options
+    - text
+    - user
+id: node.indico_event.default
+targetEntityType: node
+bundle: indico_event
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_indico_event_category:
+    weight: 107
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_indico_event_category_id:
+    weight: 108
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_indico_event_end_date:
+    weight: 114
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_indico_event_indico_ical:
+    weight: 110
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_indico_event_indico_link:
+    weight: 109
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_indico_event_location:
+    weight: 105
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_indico_event_room:
+    weight: 106
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_indico_event_room_map_url:
+    weight: 111
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_indico_event_start_date:
+    weight: 113
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_indico_event_timezone:
+    weight: 104
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_indico_event_type:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  feeds_item: true

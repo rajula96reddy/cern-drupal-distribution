@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - language
+    - taxonomy
+id: authors_vocabulary
+label: 'Authors Vocabulary'
+type: 'canonical_entities:taxonomy_term'
+pattern: 'authors/[term:name]'
+selection_criteria:
+  d33843d6-0368-46b4-b78d-bf07da2c00d6:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      cern_authors: cern_authors
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: d33843d6-0368-46b4-b78d-bf07da2c00d6
+  32ab4506-dc68-40f6-b9fb-1fa1e53002c9:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'taxonomy_term:langcode:language'
+    uuid: 32ab4506-dc68-40f6-b9fb-1fa1e53002c9
+selection_logic: and
+weight: -9
+relationships:
+  'taxonomy_term:langcode:language':
+    label: Language

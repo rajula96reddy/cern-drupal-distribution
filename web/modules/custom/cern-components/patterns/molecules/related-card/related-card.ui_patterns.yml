@@ -1,0 +1,51 @@
+# Slide Pattern
+#
+related_card:
+  label: "Related Card"
+  description: "A single related card"
+  fields:
+    background:
+      description: "Related card background image."
+      label: Background image
+      preview:
+        alt: "This is a sample image"
+        theme: image
+        uri: "http://dummy-images.com/buildings/dummy-1280x768-Roof-plain.jpg"
+      type: image
+    link:
+      description: "URI that points somewhere"
+      label: Link
+      preview: "https://cern.ch"
+      type: url
+    text:
+      description: "Related card text."
+      label: Text
+      preview: "The CERN council is the highest authority of the Organization and has responsibility for all-important decisions. It controls CERN’s activities in scientific…"
+      type: text
+    profile:
+      description: "Related card profile image"
+      label: Profile image
+      preview:
+        alt: "This is a sample image"
+        theme: image
+        uri: "http://dummy-images.com/buildings/dummy-1280x768-Roof-plain.jpg"
+      type: image
+    date:
+      description: "Event start date"
+      label: Date
+      preview: "29 AUG/17"
+      type: date
+    format:
+      description: "Format"
+      label: Format
+      preview: "It controls CERN’s activities in scientific…"
+      type: text
+  libraries:
+    -
+      related_card:
+        css:
+          component:
+            css/component-related_card.css: {}
+        js:
+          js/component-related-card.js: {}
+  use: "@cern_components/molecules/related-card/related-card.html.twig"

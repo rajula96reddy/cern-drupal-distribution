@@ -1,0 +1,21 @@
+<?php
+
+
+function cern_paragraph_thumbnail_box_field_widget_entity_reference_paragraphs_form_alter(&$element, &$form_state, $context) {
+  if (isset($element['subform']['field_p_related_card_med_type'])) {
+    $parents = $element['subform']['#parents'];
+    $parents[] = 'field_p_related_card_med_type';
+    $name = array_shift($parents);
+    $name .= '[' . implode('][', $parents) . ']';
+    $element['subform']['field_p_related_card_profile_img']['#states'] = [
+        'visible' => [
+            'select[name="'.$name.'"]' => ['value' => 'image']
+        ],
+    ];
+    $element['subform']['field_p_related_card_cds_thumb']['#states'] = [
+        'visible' => [
+            'select[name="'.$name.'"]' => ['value' => 'cds']
+        ]
+    ];
+  }
+}

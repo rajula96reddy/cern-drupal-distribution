@@ -1,0 +1,5 @@
+excluded:
+  - core.base_field_override.paragraph.cern_background.created
+  - core.base_field_override.paragraph.cern_background.status
+  - core.base_field_override.paragraph.cern_background.uid
+required: true

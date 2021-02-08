@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: landing_page
+label: 'Landing Page'
+type: 'canonical_entities:node'
+pattern: '[node:menu-link:parents:join-path]/[node:source:title]'
+selection_criteria:
+  ab81d96d-ef46-46da-be56-8c98db818721:
+    id: node_type
+    bundles:
+      landing_page: landing_page
+    negate: false
+    context_mapping:
+      node: node
+    uuid: ab81d96d-ef46-46da-be56-8c98db818721
+  f555d034-984e-4849-b65c-dbd6e004ea0a:
+    id: language
+    langcodes:
+      en: en
+      fr: fr
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: f555d034-984e-4849-b65c-dbd6e004ea0a
+selection_logic: and
+weight: -5
+relationships:
+  'node:langcode:language':
+    label: Language

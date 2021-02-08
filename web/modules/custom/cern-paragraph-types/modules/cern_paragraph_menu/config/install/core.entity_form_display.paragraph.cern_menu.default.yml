@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_menu.field_p_menu_row
+    - paragraphs.paragraphs_type.cern_menu
+  module:
+    - content_moderation
+    - paragraphs
+id: paragraph.cern_menu.default
+targetEntityType: paragraph
+bundle: cern_menu
+mode: default
+content:
+  field_p_menu_row:
+    type: entity_reference_paragraphs
+    weight: 0
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

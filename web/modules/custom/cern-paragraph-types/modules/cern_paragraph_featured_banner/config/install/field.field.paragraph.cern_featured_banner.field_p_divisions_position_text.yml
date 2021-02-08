@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_divisions_position_text
+    - paragraphs.paragraphs_type.cern_featured_banner
+  module:
+    - options
+id: paragraph.cern_featured_banner.field_p_divisions_position_text
+field_name: field_p_divisions_position_text
+entity_type: paragraph
+bundle: cern_featured_banner
+label: 'Text block position'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

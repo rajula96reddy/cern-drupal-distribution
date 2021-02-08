@@ -1,0 +1,25 @@
+<div {{ attributes }}>
+    <h1>
+        <a href="//home.cern" title="{{ 'CERN' | t }}">
+            {{ 'CERN' | t }}
+            <span>{{ 'Accelerating science' | t }}</span>
+        </a>
+    </h1>
+    <ul>
+        <li class="signin"> 
+            {% if not logged_in %}
+                {% if (toolbar_links['#items'] | length) > 1 %}
+                    <a class="cern-signin">{{ 'Sign in' | t }}</a>
+                {% else %}
+                    {{ toolbar_links.0 }}     
+                {% endif %}
+            {% else %}
+                <a class="cern-signin sign-out">{{ 'Sign out' | t }}</a>
+            {% endif %}
+            <div class="item-list item-list-length-{{ toolbar_links['#items'] | length }}">
+                {{ toolbar_links }}
+            </div>
+        </li>
+        <li>{{ directory_link }}</li>
+    </ul>
+</div>

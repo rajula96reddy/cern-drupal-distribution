@@ -1,0 +1,12 @@
+icons:
+  label: "Icons"
+  description: "A bundle of title, icons and call to action"
+  fields:
+    title:
+      label: "Title"
+    icons:
+      label: "Icons"
+    call_to_action:
+      label: "Call to action"
+  use: "@cern_components/molecules/icons/icons.html.twig"
+

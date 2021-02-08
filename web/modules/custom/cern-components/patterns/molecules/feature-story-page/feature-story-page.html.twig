@@ -1,0 +1,12 @@
+{# main content #}
+<div class="layout layout__region featured-story-page-node-layout-content">
+  <div class="field--items">
+    {% set countcomponents = 0 %}
+    {% for component in components | iterate_element %}
+      <div class="field--item">
+        {{ component }}
+        {% set countcomponents = countcomponents + 1 %}
+      </div>
+    {% endfor %}
+  </div>
+</div>

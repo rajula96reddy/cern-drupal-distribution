@@ -1,0 +1,48 @@
+{#
+ * @file
+ * Agenda coming Soon pattern.
+#}
+
+
+{# Agenda coming soon #}
+<div class="agenda-coming-soon" {{ attributes }} {{ attributes_bgcolor }}>
+  {% if date | render %}
+    <div class="agenda-coming-soon-date">
+      <h2>{{ date|format_date_field('custom', 'j M') }}</h2>
+    </div>
+  {% endif %}
+  {% if title | render %}
+    <div class="agenda-coming-soon-link">
+      <h3>
+        {{title}}
+      </h3>
+    </div>
+  {% endif %}
+  {# Place field #}
+  {% if place | render %}
+    <h4 class="agenda-coming-soon-place">
+      {{place}}
+    </h4>
+  {% endif %}
+
+  <div class="agenda-coming-soon-countdown" data-countdown-start-date="{{ date|format_date_field('custom', 'U') }}">
+    <ul class="clock">
+      <li>
+        <h1 class="days"></h1>
+        <h4 class="days-label"></h4>
+      </li>
+      <li>
+        <h1 class="hours"></h1>
+        <h4 class="hours-label"></h4>
+      </li>
+      <li>
+        <h1 class="mins"></h1>
+        <h4 class="mins-label"></h4>
+      </li>
+      <li class="last">
+        <h1 class="secs"></h1>
+        <h4 class="secs-label"></h4>
+      </li>
+    </ul>
+  </div>
+</div>

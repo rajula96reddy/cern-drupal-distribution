@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_preview_card_type
+    - paragraphs.paragraphs_type.cern_article_box
+  module:
+    - options
+id: paragraph.cern_article_box.field_p_preview_card_type
+field_name: field_p_preview_card_type
+entity_type: paragraph
+bundle: cern_article_box
+label: Type
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,18 @@
+
+{% if title %}
+    <h3>{{ title }}</h3>
+{% endif %}
+
+{% for row in rows %}
+    {% set row_classes = [default_row_class ? 'horizontal-boxes-row views-row col-md-4',] %}
+    {% if loop.first != true and loop.index0  is divisible by(3) %}
+        </div>
+    {% endif %}
+    {% if loop.index0 is divisible by(3) %}
+        <div class="carousel-cern-item row">
+    {% endif %}
+    <div{{ row.attributes.addClass(row_classes) }}>{{ row.content }}</div>
+    {% if loop.last == true %}
+        </div>
+    {% endif %}
+{% endfor %}

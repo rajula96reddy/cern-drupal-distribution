@@ -1,0 +1,32 @@
+# Divisions Pattern
+#
+divisions:
+  label: "Divisions"
+  description: "A division / banner block"
+  fields:
+    background:
+      description: "Division/banner image background."
+      label: Background image
+      preview:
+        alt: "this is a sample image"
+        theme: image
+        uri: "http://dummy-images.com/buildings/dummy-1280x768-Roof-plain.jpg"
+      type: image
+    link:
+      description: "URI that points somewhere"
+      label: Link
+      preview: "https://cern.ch"
+      type: url
+    text:
+      description: "Division/banner text."
+      label: Text
+      preview: "The CERN council is the highest authority of the Organization and has responsibility for all-important decisions. It controls CERN’s activities in scientific…"
+      type: text    
+  libraries:
+    - divisions-library:
+        css:
+          component:
+            css/divisions.component.css: {}
+        js:
+          js/divisions.js: {}
+  use: "@cern_components/molecules/divisions/divisions.html.twig"

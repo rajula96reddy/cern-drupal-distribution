@@ -1,0 +1,14 @@
+name: 'CERN Featured quote'
+description: 'Featured quote paragraph'
+package: CERN Components
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+version: '1.0'
+dependencies:
+  - cern_paragraph_types
+  - ds
+  - field
+  - field_group
+  - language
+  - paragraphs

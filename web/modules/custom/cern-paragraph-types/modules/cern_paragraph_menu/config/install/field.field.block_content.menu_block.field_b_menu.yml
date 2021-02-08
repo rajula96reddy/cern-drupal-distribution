@@ -1,0 +1,93 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.menu_block
+    - field.storage.block_content.field_b_menu
+    - paragraphs.paragraphs_type.cern_menu
+  module:
+    - entity_reference_revisions
+id: block_content.menu_block.field_b_menu
+field_name: field_b_menu
+entity_type: block_content
+bundle: menu_block
+label: 'Menu Layout'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      cern_menu: cern_menu
+    target_bundles_drag_drop:
+      cern_agenda:
+        weight: 23
+        enabled: false
+      cern_call_action:
+        weight: 24
+        enabled: false
+      cern_divisions:
+        weight: 25
+        enabled: false
+      cern_gallery:
+        weight: 26
+        enabled: false
+      cern_header_block:
+        weight: 27
+        enabled: false
+      cern_header_blocks:
+        weight: 28
+        enabled: false
+      cern_margin:
+        weight: 29
+        enabled: false
+      cern_media:
+        weight: 30
+        enabled: false
+      cern_menu:
+        enabled: true
+        weight: 31
+      cern_menu_row:
+        weight: 32
+        enabled: false
+      cern_menu_row_column:
+        weight: 33
+        enabled: false
+      cern_peoples_profile:
+        weight: 34
+        enabled: false
+      cern_preview_card:
+        weight: 35
+        enabled: false
+      cern_preview_list:
+        weight: 36
+        enabled: false
+      cern_quote:
+        weight: 37
+        enabled: false
+      cern_related_card:
+        weight: 38
+        enabled: false
+      cern_related_content:
+        weight: 39
+        enabled: false
+      cern_row:
+        weight: 40
+        enabled: false
+      cern_slide:
+        weight: 41
+        enabled: false
+      cern_slider:
+        weight: 42
+        enabled: false
+      cern_text:
+        weight: 43
+        enabled: false
+      reference_component:
+        weight: 44
+        enabled: false
+field_type: entity_reference_revisions

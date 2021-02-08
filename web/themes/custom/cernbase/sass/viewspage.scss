@@ -1,0 +1,15 @@
+// out: ../css/viewspage.css, compress: false, sourceMap: false, autoprefixer: false, groupmedia: false
+// mixins variables
+@import 'variables.scss';
+
+.cern-page-display-page,
+.cern-view-display-page {
+
+    //padding-bottom: 50px;
+    .wrapper-center>h2,
+    &>h2 {
+        text-align: center;
+        font-size: 39px;
+        margin-bottom: 20px
+    }
+}

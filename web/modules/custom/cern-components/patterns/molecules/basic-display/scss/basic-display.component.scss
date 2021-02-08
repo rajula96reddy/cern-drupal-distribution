@@ -1,0 +1,325 @@
+.basic-node-center-content {
+    h2.basic-node-full-content-strap {
+        font-family: "opensans-semibold";
+        font-size: 20px;
+    }
+}
+
+// BREADCRUMBS
+.basic-node-full-content-breadcrumbs {
+    color: black;
+    width: 100%;
+    ol.breadcrumb {
+        background: transparent;
+        li {
+            color: black;
+            &:not(:first-child):before {
+                content: '\6a';
+                font-family: "cern-icons";
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                position: relative;
+                top: 5px;
+                font-size: 1.3em;
+                padding: 0;
+            }
+            a {
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+// SOCIAL NETWORKS
+.basic-node-full-content-social-buttons {
+    position: fixed;
+    left: 0;
+    z-index: 2;
+    top: 250px;
+    .social-media-sharing {
+        ul {
+            display: block;
+            li {
+                display: table;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+.basic-node-full-content-image {
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 1071px) {
+    .basic-node-full-content-social-buttons {
+        position: static;
+        .social-media-sharing {
+            ul {
+                display: inline-flex;
+                li {
+                    display: inline;
+                    margin-bottom: 0px;
+                    margin-right: 0px;
+                    a {
+                        &.facebook-share:after,
+                        &.linkedin:after,
+                        &.twitter:after,
+                        &.google-plus:after,
+                        &.email:after {
+                            display: block;
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// TEXT CONTENT 
+.basic-node-center-content {
+    &.text-margin-left {
+        margin-left: 14%;
+    }
+    &.text-margin-right {
+        margin-right: 14%;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        width: 100%;
+    }
+    blockquote {
+        margin: 1.5em 0;
+    }
+}
+
+// IMAGE 
+.basic-node-center-content figure img {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-color: #111 !important;
+    width: 100%;
+}
+
+.basic-node-full-content-body {
+    margin-top: 3rem;
+}
+
+// BREAKOUT RIGHT & ALIGN RIGHT 
+.basic-node-center-content .align-right,
+.basic-node-center-content .breakout-right {
+    float: right;
+    margin-left: 3%;
+    clear: right;
+    img {
+        width: 100%
+    }
+}
+
+// BREAKOUT LEFT & ALIGN LEFT */
+.basic-node-center-content .align-left,
+.basic-node-center-content .breakout-left {
+    float: left;
+    margin-right: 3%;
+    clear: left;
+    img {
+        width: 100%
+    }
+}
+
+// BREAKOUT */
+.basic-node-center-content .breakout-left,
+.basic-node-center-content .breakout-right {
+    width: 60%;
+}
+
+.basic-node-center-content .breakout-both {
+    width: auto;
+    clear: both;
+}
+
+// ALIGN */
+.basic-node-center-content .align-left,
+.basic-node-center-content .align-right {
+    width: 46%;
+}
+
+// BREAKOUT RIGHT */
+.basic-node-center-content .breakout-right,
+.basic-node-center-content .breakout-both {
+    margin-right: -30% !important;
+}
+
+// BREAKOUT LEFT */
+.basic-node-center-content .breakout-left,
+.basic-node-center-content .breakout-both {
+    margin-left: -30% !important;
+}
+
+// TEXT COLUMNS */
+.basic-node-center-content .column-right.image-breakout {
+    float: right;
+    width: 65%;
+}
+
+.basic-node-center-content .column-right.image-align {
+    float: right;
+    width: 51%;
+}
+
+.basic-node-center-content .column-left.image-breakout {
+    float: left;
+    width: 65%;
+}
+
+.basic-node-center-content .column-left.image-align {
+    float: left;
+    width: 51%;
+}
+
+@media only screen and (min-width: 1701px) and (max-width: 1900px) {
+    .basic-node-center-content .breakout-left,
+    .basic-node-center-content .breakout-both {
+        margin-left: -24% !important;
+    }
+    .basic-node-center-content .breakout-right,
+    .basic-node-center-content .breakout-both {
+        margin-right: -24% !important;
+    }
+    .basic-node-center-content .breakout-left,
+    .basic-node-center-content .breakout-right {
+        width: 65%;
+    }
+    .basic-node-center-content .column-right.image-breakout {
+        float: right;
+        width: 56%;
+    }
+    .basic-node-center-content .column-left.image-breakout {
+        float: left;
+        width: 56%;
+    }
+}
+
+@media only screen and (min-width: 1501px) and (max-width: 1700px) {
+    .basic-node-center-content .breakout-left,
+    .basic-node-center-content .breakout-both {
+        margin-left: -15% !important;
+    }
+    .basic-node-center-content .breakout-right,
+    .basic-node-center-content .breakout-both {
+        margin-right: -15% !important;
+    }
+    .basic-node-center-content .breakout-left,
+    .basic-node-center-content .breakout-right {
+        width: 55%;
+    }
+    .basic-node-center-content .column-right.image-breakout {
+        float: right;
+        width: 57%;
+    }
+    .basic-node-center-content .column-left.image-breakout {
+        float: left;
+        width: 57%;
+    }
+}
+
+@media only screen and (min-width: 1366px) and (max-width: 1500px) {
+    .basic-node-center-content .breakout-left,
+    .basic-node-center-content .breakout-both {
+        margin-left: -7% !important;
+    }
+    .basic-node-center-content .breakout-right,
+    .basic-node-center-content .breakout-both {
+        margin-right: -7% !important;
+    }
+    .basic-node-center-content .breakout-left,
+    .basic-node-center-content .breakout-right {
+        width: 50%;
+    }
+    .basic-node-center-content .column-right.image-breakout {
+        float: right;
+        width: 54%;
+    }
+    .basic-node-center-content .column-left.image-breakout {
+        float: left;
+        width: 54%;
+    }
+}
+
+@media only screen and (min-width: 720px) and (max-width: 1365px) {
+    .basic-node-center-content .breakout-left,
+    .basic-node-center-content .breakout-both {
+        margin-left: 0% !important;
+    }
+    .basic-node-center-content .breakout-right,
+    .basic-node-center-content .breakout-both {
+        margin-right: 0% !important;
+    }
+    .basic-node-center-content .breakout-left,
+    .basic-node-center-content .breakout-right {
+        width: 45%;
+    }
+    .basic-node-center-content .column-right.image-breakout {
+        float: right;
+        width: 51%;
+    }
+    .basic-node-center-content .column-left.image-breakout {
+        float: left;
+        width: 51%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .basic-node-center-content {
+        &.text-margin-left {
+            margin-left: 0%;
+        }
+        &.text-margin-right {
+            margin-right: 0%;
+        }
+    }
+}
+
+@media only screen and (max-width: 719px) {
+    .basic-node-center-content .breakout-left,
+    .basic-node-center-content .breakout-both {
+        margin-left: 0% !important;
+    }
+    .basic-node-center-content .breakout-right,
+    .basic-node-center-content .breakout-both {
+        margin-right: 0% !important;
+    }
+    .basic-node-center-content .breakout-left,
+    .basic-node-center-content .breakout-right {
+        width: 100%;
+    }
+    .basic-node-center-content .column-right.image-breakout {
+        float: right;
+        width: 100%;
+    }
+    .basic-node-center-content .column-left.image-breakout {
+        float: left;
+        width: 100%;
+    }
+    .basic-node-center-content .align-left,
+    .basic-node-center-content .align-right {
+        width: 100%;
+    }
+    .basic-node-center-content .column-right.image-align {
+        float: none;
+        width: 100%;
+        clear: both;
+    }
+    .basic-node-center-content .column-left.image-align {
+        float: none;
+        width: 100%;
+        clear: both;
+    }
+}

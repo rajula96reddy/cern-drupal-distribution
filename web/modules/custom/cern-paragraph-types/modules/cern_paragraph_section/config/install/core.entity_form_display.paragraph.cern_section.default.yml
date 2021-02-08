@@ -1,0 +1,438 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_section.field_p_row_background
+    - field.field.paragraph.cern_section.field_p_row_box_effects
+    - field.field.paragraph.cern_section.field_p_row_display
+    - field.field.paragraph.cern_section.field_p_row_effects
+    - field.field.paragraph.cern_section.field_p_row_header
+    - field.field.paragraph.cern_section.field_p_row_height
+    - field.field.paragraph.cern_section.field_p_row_hidden
+    - field.field.paragraph.cern_section.field_p_row_lazy
+    - field.field.paragraph.cern_section.field_p_row_left_c_block_layout
+    - field.field.paragraph.cern_section.field_p_row_left_column
+    - field.field.paragraph.cern_section.field_p_row_left_column_blocks
+    - field.field.paragraph.cern_section.field_p_row_left_column_content
+    - field.field.paragraph.cern_section.field_p_row_left_column_views
+    - field.field.paragraph.cern_section.field_p_row_main
+    - field.field.paragraph.cern_section.field_p_row_main_c_block_layout
+    - field.field.paragraph.cern_section.field_p_row_main_column_blocks
+    - field.field.paragraph.cern_section.field_p_row_main_column_content
+    - field.field.paragraph.cern_section.field_p_row_main_column_views
+    - field.field.paragraph.cern_section.field_p_row_right_c_block_layout
+    - field.field.paragraph.cern_section.field_p_row_right_column
+    - field.field.paragraph.cern_section.field_p_row_right_column_blocks
+    - field.field.paragraph.cern_section.field_p_row_right_column_content
+    - field.field.paragraph.cern_section.field_p_row_right_column_views
+    - field.field.paragraph.cern_section.field_p_row_scroll_menu_title
+    - field.field.paragraph.cern_section.field_p_row_show_in_scroll
+    - field.field.paragraph.cern_section.field_p_row_show_title
+    - field.field.paragraph.cern_section.field_p_row_title
+    - field.field.paragraph.cern_section.field_p_row_title_color
+    - paragraphs.paragraphs_type.cern_section
+  module:
+    - color_field
+    - content_moderation
+    - entity_reference_revisions
+    - field_group
+    - paragraphs
+    - viewsreference
+third_party_settings:
+  field_group:
+    group_asd:
+      children:
+        - group_tab_01
+        - group_tab_02
+        - group_content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: horizontal
+      label: asd
+      region: content
+    group_tab_01:
+      children:
+        - field_p_row_hidden
+        - field_p_row_header
+        - field_p_row_title
+        - field_p_row_title_color
+        - field_p_row_show_title
+        - field_p_row_scroll_menu_title
+        - field_p_row_show_in_scroll
+        - field_p_row_display
+        - field_p_row_height
+        - field_p_row_effects
+        - field_p_row_lazy
+        - field_p_row_box_effects
+      parent_name: group_asd
+      weight: 2
+      format_type: tab
+      format_settings:
+        label: Display
+        formatter: open
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+      label: Display
+      region: content
+    group_tab_02:
+      children:
+        - field_p_row_background
+      parent_name: group_asd
+      weight: 8
+      format_type: tab
+      format_settings:
+        label: Background
+        formatter: closed
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+      label: Background
+      region: content
+    group_content:
+      children:
+        - group_columns
+      parent_name: group_asd
+      weight: 9
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Content
+      region: content
+    group_columns:
+      children:
+        - group_column_left
+        - group_column_right
+        - group_column_center
+      parent_name: group_content
+      weight: 52
+      format_type: accordion
+      format_settings:
+        id: ''
+        classes: ''
+        effect: none
+      label: Columns
+      region: content
+    group_column_left:
+      children:
+        - field_p_row_left_column
+        - field_p_row_left_column_content
+        - field_p_row_left_column_views
+        - field_p_row_left_column_blocks
+        - field_p_row_left_c_block_layout
+      parent_name: group_columns
+      weight: 52
+      format_type: accordion_item
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        required_fields: true
+        description: ''
+      label: 'Column left'
+      region: content
+    group_column_center:
+      children:
+        - field_p_row_main
+        - field_p_row_main_column_content
+        - field_p_row_main_column_views
+        - field_p_row_main_column_blocks
+        - field_p_row_main_c_block_layout
+      parent_name: group_columns
+      weight: 53
+      format_type: accordion_item
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        required_fields: true
+        description: ''
+      label: 'Column center'
+      region: content
+    group_column_right:
+      children:
+        - field_p_row_right_column
+        - field_p_row_right_column_content
+        - field_p_row_right_column_views
+        - field_p_row_right_column_blocks
+        - field_p_row_right_c_block_layout
+      parent_name: group_columns
+      weight: 52
+      format_type: accordion_item
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        required_fields: true
+        description: ''
+      label: 'Column right'
+      region: content
+id: paragraph.cern_section.default
+targetEntityType: paragraph
+bundle: cern_section
+mode: default
+content:
+  field_p_row_background:
+    type: entity_reference_paragraphs
+    weight: 51
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_p_row_box_effects:
+    weight: 50
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_p_row_display:
+    weight: 46
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_p_row_effects:
+    weight: 48
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_p_row_header:
+    weight: 40
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_p_row_hidden:
+    weight: -10
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_p_row_height:
+    weight: 47
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_p_row_lazy:
+    weight: 49
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_p_row_left_c_block_layout:
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_p_row_left_column:
+    type: entity_reference_paragraphs
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  field_p_row_left_column_blocks:
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_autocomplete
+    region: content
+  field_p_row_left_column_content:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_p_row_left_column_views:
+    weight: 4
+    settings:
+      match_operator: CONTAINS
+      size: '60'
+      placeholder: ''
+    third_party_settings: {  }
+    type: viewsreference_autocomplete
+    region: content
+  field_p_row_main:
+    type: entity_reference_paragraphs
+    weight: 30
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  field_p_row_main_c_block_layout:
+    weight: 34
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_p_row_main_column_blocks:
+    weight: 33
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_autocomplete
+    region: content
+  field_p_row_main_column_content:
+    weight: 31
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_p_row_main_column_views:
+    weight: 32
+    settings:
+      match_operator: CONTAINS
+      size: '60'
+      placeholder: ''
+    third_party_settings: {  }
+    type: viewsreference_autocomplete
+    region: content
+  field_p_row_right_c_block_layout:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_p_row_right_column:
+    type: entity_reference_paragraphs
+    weight: 22
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  field_p_row_right_column_blocks:
+    weight: 25
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_autocomplete
+    region: content
+  field_p_row_right_column_content:
+    weight: 23
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_p_row_right_column_views:
+    weight: 24
+    settings:
+      match_operator: CONTAINS
+      size: '60'
+      placeholder: ''
+    third_party_settings: {  }
+    type: viewsreference_autocomplete
+    region: content
+  field_p_row_scroll_menu_title:
+    weight: 44
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_p_row_show_in_scroll:
+    weight: 45
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_p_row_show_title:
+    weight: 43
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_p_row_title:
+    weight: 41
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_p_row_title_color:
+    weight: 42
+    settings:
+      default_colors: '#0855A0,#59ADFF,#0D87FF,#2DS77F,#0A6CCC,#2C97FF,#128AFF,#B26F00,#FFA612,#6B05EB,#FF1248,#E86C05,#FFDA06,#F2A530,#FFCC7F,#FFAE33,#7F6640,#CC8B28,#D7D7D7,#1C2C38,#292929,#FFFFFF,#000000'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 1
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

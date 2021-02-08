@@ -1,0 +1,100 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cern_article_box.field_p_preview_card_background
+    - field.field.paragraph.cern_article_box.field_p_preview_card_bgcolor
+    - field.field.paragraph.cern_article_box.field_p_preview_card_category
+    - field.field.paragraph.cern_article_box.field_p_preview_card_cds_bcg
+    - field.field.paragraph.cern_article_box.field_p_preview_card_date
+    - field.field.paragraph.cern_article_box.field_p_preview_card_display
+    - field.field.paragraph.cern_article_box.field_p_preview_card_link
+    - field.field.paragraph.cern_article_box.field_p_preview_card_med_type
+    - field.field.paragraph.cern_article_box.field_p_preview_card_textcolor
+    - field.field.paragraph.cern_article_box.field_p_preview_card_type
+    - paragraphs.paragraphs_type.cern_article_box
+  module:
+    - cern_cds_media
+    - datetime
+    - ds
+    - field_formatter_class
+    - image
+    - link
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_preview_card
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+    regions:
+      background:
+        - field_p_preview_card_background
+        - field_p_preview_card_cds_bcg
+      link:
+        - field_p_preview_card_link
+      category:
+        - field_p_preview_card_category
+      date:
+        - field_p_preview_card_date
+id: paragraph.cern_article_box.default
+targetEntityType: paragraph
+bundle: cern_article_box
+mode: default
+content:
+  field_p_preview_card_background:
+    weight: 0
+    label: above
+    settings:
+      image_style: ''
+    third_party_settings: {  }
+    type: image_url
+    region: background
+  field_p_preview_card_category:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: category
+  field_p_preview_card_cds_bcg:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: CernCdsMediaDefaultFormatter
+    region: background
+  field_p_preview_card_date:
+    weight: 4
+    label: above
+    settings:
+      timezone_override: ''
+      date_format: 'Y-m-d\TH:i:s'
+    third_party_settings: {  }
+    type: datetime_custom
+    region: date
+  field_p_preview_card_link:
+    weight: 2
+    label: above
+    settings:
+      trim_length: 49
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: link
+    region: link
+hidden:
+  field_p_preview_card_bgcolor: true
+  field_p_preview_card_display: true
+  field_p_preview_card_med_type: true
+  field_p_preview_card_textcolor: true
+  field_p_preview_card_title: true
+  field_p_preview_card_type: true

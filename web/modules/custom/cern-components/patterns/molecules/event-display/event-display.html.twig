@@ -1,0 +1,238 @@
+{#
+ * @file
+ * Event Full Content Display Pattern Twig.
+#}
+
+{% if urlExists('/events') %}
+  {# First breadcrumbs #}
+  <div class="row mt-2">
+    <div class="col-md-12 event-node-full-content-first-breadcrumbs">
+      <a href="/events">
+        {{ 'Events'|trans }}
+      </a>
+      {% if cern_node_type == "webcast_event" %}
+        <a href="/events?type=2">
+          {{ 'Webcast'|trans }}
+        </a>
+      {% endif %}
+      {% if cern_node_type == "event_page" %}
+        <a href="/events?type=1">
+          {{ 'Event'|trans }}
+        </a>
+      {% endif %}
+      {% if cern_node_type == "indico_event" %}
+        <a href="/events?type=1">
+          {{ 'Event'|trans }}
+        </a>
+      {% endif %}
+    </div>
+    <div class="col-md-12">
+      <hr class="event-page-hr-separator"/>
+    </div>
+  </div>
+{% endif %}
+
+{# Main content #}
+<div class="row event-node-center-content clearfix">
+  <div class="col-md-12 event-node-full-content-left mb-4">
+    <div class="event-node-full-content-event-dates  mb-2">
+      {# Start date #}
+      <div class="component-event-calendar">
+        <div class="component-event-box1">
+          {% if start_date | render %}
+            {{ start_date|format_date_field('custom', 'l') }}
+          {% endif %}
+          {% if start_date | render %}
+            <div class="component-event-dates">
+              <span class="component-event-dates-1">{{ start_date|format_date_field('custom', 'j M') }}</span><span class="component-event-dates-2">/{{ start_date|format_date_field('custom', 'y') }}</span>
+            </div>
+          {% endif %}
+          <div class="component-event-time">
+            {% if start_date | render %}
+              {{ start_date|format_date_field('custom', 'H:i') }}
+            {% endif %}
+            {% if start_date | format_date_field('custom', 'j M') == end_date | format_date_field('custom', 'j M') %}
+              {% if end_date | render %}-
+                {{ end_date|format_date_field('custom', 'H:i') }}
+              {% endif %}
+            {% endif %}
+            {% if timezone | render %}
+              <span>({{ timezone }})</span>
+            {% endif %}
+            <br/>
+            {% if start_date | format_date_field('custom', 'j M') != end_date | format_date_field('custom', 'j M') %}
+              {% if end_date | render %}
+                <span>{{ 'Ends:' | t }}</span>
+                {{ end_date|format_date_field('custom', 'j M') }}/{{ end_date|format_date_field('custom', 'y') }}
+                <span>{{ end_date|format_date_field('custom', 'H:i') }}</span>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+        {% if ics_link | render %}
+          <div class="component-event-box2">
+            <div class="component-event-button">
+              {{ ics_link|openlink({'aria-label': arialabel}) }}
+              <span>{% trans %}Import to my calendar{% endtrans %}</span>
+              {{ ics_link|closelink }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    {# Title field #}
+    {% if title | render %}
+      <h1 class="event-node-full-content-title">
+        {{ title }}
+      </h1>
+    {% endif %}
+    {# Audience field #}
+    {% if audience | render %}
+      <p class="event-node-full-content-audience">
+        {{ audience }}
+      </p>
+    {% endif %}
+    {# Speaker field #}
+    {% if speaker | render %}
+      <div class="event-node-full-content-speaker">
+        <div class="hard-text">
+          <p>{{ 'By: '|trans }}&nbsp;</p>
+        </div>
+        <div class="custom-text">
+          {% if cern_node_type == "webcast_event" or cern_node_type == "indico_event" %}
+            <p>{{ speaker }}</p>
+          {% else %}
+            {{ speaker }}
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+    {# Link field #}
+    {% if link | render %}
+      <div class="event-node-full-content-place">
+        {% if link | render %}
+					<div class="hard-text">
+						{# If the link is a URL (not plain text)#}
+						{% if is_url(link) %}
+							<p>
+								<a href="{{ link | get_url_link }}" target="_blank">{{ 'Go to Indico Event'|trans }}</a>
+							</p>
+						{% else %}
+							<p>
+								<a href="{{ link }}" target="_blank">{{ 'Go to Indico Event'|trans }}</a>
+							</p>
+						{% endif %}
+					</div>
+					<div class="custom-text">
+						<p></p>
+					</div>
+        {% endif %}
+      </div>
+    {% endif %}
+    {# Place field #}
+    {% if place | render or room | render %}
+      {# If the content type is webcast there is no margin-bottom #}
+      {% if cern_node_type == "webcast_event" %}
+      <div class="event-node-full-content-place">
+      {% else %}
+      <div class="event-node-full-content-place mb-2">
+      {% endif %}
+        {# "Where" text #}
+        <div class="hard-text">
+          <p>{{ 'Where: '|trans }}&nbsp;</p>
+        </div>
+        <div class="custom-text">
+            {% if map_room | render %}
+            <a href="{{ map_room }}"> {{ room }} </a> {% if room | render %} {% if place | render %} {{ 'at'|trans }} {% endif %} {% endif %} {{ place }}
+            {% else %}
+            {{ room }} {% if room | render %} {% if place | render %} {{ 'at'|trans }}{% endif %} {% endif %} {{ place }}
+            {% endif %}
+
+        </div>
+      </div>
+    {% endif %}
+    {# SLIDES #}
+    {% if slides | render %}
+      <div class="event-node-full-content-slides">
+        <div class="hard-text">
+          <p>{{ 'Slides: '|trans }}&nbsp;</p>
+        </div>
+        <div class="custom-text">
+          <p>
+            <a href="{{ slides }}" target="_blank">{{ 'Link to Slides'|trans }}</a>
+          </p>
+        </div>
+      </div>
+    {% endif %}
+    {# CAMERA #}
+    {% if camera | render %}
+      <div class="event-node-full-content-camera">
+        <div class="hard-text">
+          <p>{{ 'Camera: '|trans }}&nbsp;</p>
+        </div>
+        <div class="custom-text">
+          <p>
+            <a href="{{ camera }}" target="_blank">{{ 'Link to Camera'|trans }}</a>
+          </p>
+        </div>
+      </div>
+    {% endif %}
+    {# WEBCAST #}
+    {% if webcast | render and webcast_id | render %}
+      <div class="event-node-full-content-webcast mb-2">
+        <div class="hard-text">
+          <p>{{ 'Webcast: '|trans }}&nbsp;</p>
+        </div>
+        <div class="custom-text">
+          <p>
+            <a href="{{ webcast }}" target="_blank">{{ webcast_id }}</a>
+          </p>
+        </div>
+      </div>
+    {% endif %}
+
+    {# Image field #}
+    {% if image | render %}
+      <div class="event-node-full-content-image">
+        {{ image }}
+      </div>
+      {% if caption | render %}
+        <p class="event-node-full-content-caption cern-caption mb-3">
+          {{ caption }}
+        </p>
+      {% endif %}
+    {% endif %}
+
+    {# Image WEBCAST #}
+    {% if webcast_img | render %}
+      <div class="event-node-full-content-webcast-image mb-2">
+        <img src="{{ webcast_img }}"/>
+      </div>
+    {% endif %}
+    {# Body field #}
+
+    {% if body | render %}
+      <div class="event-node-full-content-body clearfix full-html-markup full-text-animation">
+        {{ body }}
+      </div>
+    {% endif %}
+    {# File field #}
+    {% if file | render %}
+      <div class="event-node-full-content-file mt-3">
+        <h4>{{"Files"|trans}}</h4>
+        {{ file }}
+      </div>
+    {% endif %}
+
+    {# External Links #}
+    {% if cern_node_type == "event_page" %}
+      {% if link | render %}
+        <div class="event-node-full-content-enternal-links mt-3">
+          <h4>{{"External links"|trans}}</h4>
+          {{ link|render }}
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>

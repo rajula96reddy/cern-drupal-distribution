@@ -1,0 +1,101 @@
+# Resource Node Display Pattern
+#
+resource_display:
+  label: "Resource Full content"
+  description: "Display for Resource content type"
+  fields:
+    title:
+      description: "Node title"
+      label: Title
+      preview: "Lorem Ipsum"
+      type: text
+    gallery:
+      description: "Media gallery."
+      label: Gallery
+      preview:
+        alt: "this is a sample image"
+        theme: image
+        uri: "http://dummy-images.com/abstract/dummy-1280x768-Stones-plain.jpg"
+      type: image
+    description:
+      description: "Node description"
+      label: Description
+      preview: "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit."
+      type: text
+    author:
+      description: "Node author"
+      label: Author
+      preview: "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit."
+      type: text
+    metadata:
+      description: "Node metadata"
+      label: Metadata
+      preview: "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit."
+      type: text
+    copyright:
+      description: "Node copyright"
+      label: Copyright
+      preview: "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit."
+      type: text
+    topic:
+      description: "Node topic"
+      label: Topic
+      preview: "By Lorem Ipsum"
+      type: text
+    resource_format:
+      description: "Resource format"
+      label: Resource Format
+      preview: "By Lorem Ipsum"
+      type: text
+    file:
+      description: "Node file"
+      label: File
+      preview: "By Lorem Ipsum"
+      type: text
+    tags:
+      description: "Node tags"
+      label: Tags
+      preview: "By Lorem Ipsum"
+      type: text
+    format_id:
+      description: "Resource format ID"
+      label: Resource format ID
+      preview: "4"
+      type: text
+    topic_id:
+      description: "Topic ID"
+      label: Topic ID
+      preview: "7"
+      type: text
+    cds_image:
+      description: "CDS Image"
+      label: CDS Image
+      preview: "7"
+      type: text
+    doc_image:
+      description: "Document image."
+      label: Document image
+      preview:
+        alt: "This is a sample image"
+        theme: image
+        uri: "http://dummy-images.com/buildings/dummy-1280x768-Roof-plain.jpg"
+      type: image
+    url:
+      description: "URL"
+      label: URL
+      preview: "https://google.es"
+      type: text
+    video:
+      description: "File of type mp4 or ogg"
+      label: "Video File"
+      preview: "https://videos.cern.ch/api/files/6b2c54a9-8b78-4066-be17-deec9a1fe906/slave_720p.mp4"
+      type: video
+  libraries:
+    -
+      resource-display:
+        css:
+          component:
+            css/resource-display.component.css: {}
+        js:
+          js/resource-display.component.js: {}
+  use: "@cern_components/molecules/resource-display/resource-display.html.twig"

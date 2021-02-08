@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - feeds.feed_type.indico
+  module:
+    - user
+id: feeds_feed.indico.default
+targetEntityType: feeds_feed
+bundle: indico
+mode: default
+content:
+  imported:
+    label: inline
+    type: timestamp
+    weight: 0
+    region: content
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+  next:
+    label: inline
+    type: timestamp
+    weight: 1
+    region: content
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+hidden:
+  source: true

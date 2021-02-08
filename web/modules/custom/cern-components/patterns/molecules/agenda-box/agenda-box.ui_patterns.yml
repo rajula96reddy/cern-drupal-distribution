@@ -1,0 +1,71 @@
+# Agenda Box Pattern
+#
+agenda_box:
+  label: "Agenda Box"
+  description: "An agenda box item"
+  fields:
+    background:
+      description: "Background image."
+      label: Background image
+      preview:
+        alt: "this is a sample image"
+        theme: image
+        uri: "http://dummy-images.com/nature/dummy-1280x768-Copper-plain.jpg"
+      type: image    
+    start_date:
+      description: "Event start date."
+      label: Start date
+      preview: "29 AUG/17"
+      type: date
+    end_date:
+      description: "Event end date."
+      label: End date
+      preview: "29 AUG/17"
+      type: date
+    timezone:
+      description: "Event Timezone"
+      label: Timezone
+      preview: "Europe/Zurich"
+      type: text
+    link:
+      description: "Link"
+      label: Link
+      preview: ""
+      type: text
+    ics_link:
+      description: "ICS Link"
+      label: ICS Link
+      preview: ""
+      type: text
+    body:
+      description: "Text."
+      label: Body
+      preview: ""
+      type: text
+    audience:
+      description: "Audience."
+      label: Audience
+      preview: "For Physics"
+      type: text
+    place:
+      description: "Place."
+      label: Place
+      preview: "place of the event"
+      type: text
+    text_color:
+      description: "Text color."
+      label: Text Color
+      preview: "Color of the text"
+      type: text
+    content_type:
+      description: "Content Type."
+      label: Content Type
+      preview: "Content type"
+      type: text
+  libraries:
+    -
+      agenda:
+        css:
+          component:
+            css/agenda-box.component.css: {}
+  use: "@cern_components/molecules/agenda-box/agenda-box.html.twig"

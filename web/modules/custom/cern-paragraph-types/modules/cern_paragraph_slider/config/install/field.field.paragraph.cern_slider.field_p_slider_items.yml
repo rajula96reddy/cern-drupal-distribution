@@ -1,0 +1,63 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_p_slider_items
+    - paragraphs.paragraphs_type.cern_slide
+    - paragraphs.paragraphs_type.cern_slider
+  module:
+    - entity_reference_revisions
+id: paragraph.cern_slider.field_p_slider_items
+field_name: field_p_slider_items
+entity_type: paragraph
+bundle: cern_slider
+label: Items
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      cern_slide: cern_slide
+    target_bundles_drag_drop:
+      cern_slider:
+        weight: 13
+        enabled: false
+      cern_agenda:
+        weight: 14
+        enabled: false
+      cern_call_action:
+        weight: 15
+        enabled: false
+      cern_divisions:
+        weight: 16
+        enabled: false
+      cern_gallery:
+        weight: 17
+        enabled: false
+      cern_header_block:
+        weight: 18
+        enabled: false
+      cern_header_blocks:
+        weight: 19
+        enabled: false
+      cern_media:
+        weight: 20
+        enabled: false
+      cern_peoples:
+        weight: 21
+        enabled: false
+      cern_preview_card:
+        weight: 22
+        enabled: false
+      cern_quote:
+        weight: 23
+        enabled: false
+      cern_slide:
+        enabled: true
+        weight: 24
+field_type: entity_reference_revisions

@@ -1,0 +1,13 @@
+name: 'CERN Scrolling menu'
+description: 'Scrolling menu paragraph'
+package: 'CERN Components'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - content_moderation
+  - ds
+  - field
+  - language
+  - paragraphs
+version: ' 1.3'

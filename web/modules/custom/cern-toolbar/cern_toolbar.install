@@ -1,0 +1,60 @@
+<?php
+use Drupal\locale\SourceString;
+
+/**
+ * Implements hook_install().
+ */
+function cern_toolbar_install() {
+  cern_toolbar_update_8101();
+}
+
+/**
+ * Add french translations.
+ */
+function cern_toolbar_update_8101() {
+  _cern_toolbar_add_translation('Accelerating science', 'fr', 'Accélérateur de science');
+  _cern_toolbar_add_translation('Sign in', 'fr', 'Connexion');
+  _cern_toolbar_add_translation('Sign out', 'fr', 'Se déconnecter');
+  _cern_toolbar_add_translation('As CERN account', 'fr', 'Comme compte CERN');
+  _cern_toolbar_add_translation('CERN Toolbar', 'fr', "Barre d'outils CERN");
+  _cern_toolbar_add_translation('Toolbar items', 'fr', "Articles de la barre d'outils");
+  _cern_toolbar_add_translation('As CERN account', 'fr', 'Comme compte CERN');
+  _cern_toolbar_add_translation('Signed in as: %fullname (%username) using %auth_level authentication', 'fr', "Connecté en tant que: %fullname (%username) en utilisant l'authentification %auth_level");
+  _cern_toolbar_add_translation('Signed in as:', 'fr', "Connecté en tant que:");
+  _cern_toolbar_add_translation('Signed in as: %username %federation', 'fr', "Connecté en tant que: %username %federation");
+  _cern_toolbar_add_translation('Signed in with a verified external account', 'fr', "Connecté avec un compte externe vérifié");
+  _cern_toolbar_add_translation('Signed in as: %email_address %federation', 'fr', "Connecté en tant que: %email_address %federation");
+  _cern_toolbar_add_translation('Sign out of your account', 'fr', "Déconnectez-vous de votre compte");
+  _cern_toolbar_add_translation('Directory', 'fr', "Liens utiles");
+  _cern_toolbar_add_translation('Search CERN resources and browse the directory', 'fr', "Recherche et liens utiles");
+}
+
+/**
+ * Helper to manually add a single translation string.
+ *
+ * @param string $source_string
+ *   Source string.
+ * @param string $langcode
+ *   The langcode.
+ * @param string $translated_string
+ *   Translated string.
+ */
+function _cern_toolbar_add_translation($source_string, $langcode, $translated_string) {
+  // Find existing source string.
+  $storage = \Drupal::service('locale.storage');
+  $string = $storage->findString(['source' => $source_string]);
+  if (is_null($string)) {
+    $string = new SourceString();
+    $string->setString($source_string);
+    $string->setStorage($storage);
+    $string->save();
+  }
+  // Create translation. If one already exists, it will be replaced.
+  $translation = $storage->createTranslation([
+    'lid' => $string->lid,
+    'language' => $langcode,
+    'translation' => $translated_string,
+  ]);
+
+  $translation->save();
+}
