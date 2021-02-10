@@ -13,7 +13,6 @@ dependencies:
   - cern_cds_media
   - cern_dev_status
   - cern_indico_events
-  - cern_integration
   - cern_toolbar
   - ckeditor
   - color
