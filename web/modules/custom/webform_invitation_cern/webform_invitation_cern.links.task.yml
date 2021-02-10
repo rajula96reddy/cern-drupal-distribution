@@ -1,0 +1,6 @@
+entity.webform.invitation_email:
+  title: 'Email Generate'
+  route_name: entity.webform.invitation_email
+  parent_id: entity.webform.invitation
+  weight: 40
+

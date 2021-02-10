@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cern_resource_format
+id: taxonomy_term.cern_resource_format.name
+field_name: name
+entity_type: taxonomy_term
+bundle: cern_resource_format
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

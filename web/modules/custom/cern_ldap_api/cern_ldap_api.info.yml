@@ -1,0 +1,7 @@
+name: CERN Ldap API
+type: module
+description: Provides a service API to access CERN LDAP, please note this module doesn't offer any interface and should be used only to develop advance modules
+core: 8.x
+package: CERN
+version: 0.1
+project: cern_ldap_api

@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - welcome_message_block
+  theme:
+    - cernclean
+id: welcomemessageblock
+theme: cernclean
+region: content
+weight: -1
+provider: null
+plugin: welcome_message_block
+settings:
+  id: welcome_message_block
+  label: 'Welcome Message Block'
+  provider: welcome_message_block
+  label_display: visible
+  welcome_message_block_settings: null
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

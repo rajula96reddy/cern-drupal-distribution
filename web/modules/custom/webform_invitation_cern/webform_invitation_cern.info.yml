@@ -1,0 +1,11 @@
+name: CERN Webform Invitation Email
+type: module
+description: Allow to generate invitation codes given a list of emails or e-groups, send them and also support confidential invitations.
+core: 8.x
+package: Webform
+version: 1.1
+dependencies:
+  - token:token
+  - cern_ldap_api:cern_ldap_api
+  - mailsystem
+  - webform_invitation

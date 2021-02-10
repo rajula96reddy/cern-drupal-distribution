@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - language
+    - taxonomy
+id: tags_vocabulary
+label: 'Tags Vocabulary'
+type: 'canonical_entities:taxonomy_term'
+pattern: 'tags/[term:name]'
+selection_criteria:
+  d23f5766-9a5e-404b-8abe-b1b743cbf6da:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      cern_tags: cern_tags
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: d23f5766-9a5e-404b-8abe-b1b743cbf6da
+  28125791-a7d2-4e33-a492-cb8ff2d3144f:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'taxonomy_term:langcode:language'
+    uuid: 28125791-a7d2-4e33-a492-cb8ff2d3144f
+selection_logic: and
+weight: -5
+relationships:
+  'taxonomy_term:langcode:language':
+    label: Language

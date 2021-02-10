@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - language
+    - taxonomy
+id: event_category_vocabulary
+label: 'Event Category Vocabulary'
+type: 'canonical_entities:taxonomy_term'
+pattern: 'event-category/[term:name]'
+selection_criteria:
+  802fb6d2-8a23-49d3-96e2-7732ed69b40a:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      cern_event_category: cern_event_category
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: 802fb6d2-8a23-49d3-96e2-7732ed69b40a
+  654026cf-f77f-485e-87f5-c75f8d64f66f:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'taxonomy_term:langcode:language'
+    uuid: 654026cf-f77f-485e-87f5-c75f8d64f66f
+selection_logic: and
+weight: -8
+relationships:
+  'taxonomy_term:langcode:language':
+    label: Language

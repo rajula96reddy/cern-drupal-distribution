@@ -1,0 +1,12 @@
+name: CERN Profile - Display Name
+type: module
+description: Overrides user login names with the SimpleSaml fullname attribute. Enables redirection to Profiles site.
+core: 8.x
+package: CERN Profiles
+dependencies:
+  - field
+  - image
+  - user
+  - simplesamlphp_auth
+configure: cern_profile_displayname.settings
+version: 1.0

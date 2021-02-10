@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Installation functions for the CERN Webform Invitation Email module.
+ */
+
+use Drupal\Core\Database\Database;
+
+/**
+ * Implements hook_schema().
+ */
+function webform_invitation_cern_install() {
+  // Extend the database schema from webform_invitation to also include email field
+  $spec = array(
+    'type' => 'varchar',
+    'description' => "Email associated with the code",
+    'length' => 254,
+    'not null' => FALSE,
+    'default' => NULL,
+  );
+  $schema = Database::getConnection()->schema();
+  $schema->addField('webform_invitation_codes', 'email', $spec);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function webform_invitation_cern_uninstall() {
+  // Remove the column added during the install
+  $schema = Database::getConnection()->schema();
+  $schema->dropField('webform_invitation_codes', 'email');
+}

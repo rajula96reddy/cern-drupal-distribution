@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Series
+vid: cern_series
+description: 'Vocabulary for tagging Stories'
+hierarchy: 0
+weight: 0

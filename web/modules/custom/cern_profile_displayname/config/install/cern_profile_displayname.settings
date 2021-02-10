@@ -1,0 +1,7 @@
+show_account_name: false 
+enable_redirect: true
+profiles_site: 'https://phonebook.cern.ch/phonebook/#personDetails/'
+enable_redirect_pages:
+  edit: true
+  contact: true
+  devel: true

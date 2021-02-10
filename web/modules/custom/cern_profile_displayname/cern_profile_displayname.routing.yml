@@ -1,0 +1,7 @@
+cern_profile_displayname.settings:
+  path: '/admin/config/people/cern-profile-displayname'
+  defaults:
+    _form: '\Drupal\cern_profile_displayname\Form\CernProfileDisplaynameSettingsForm'
+    _title: 'CERN Profile Displayname'
+  requirements:
+    _permission: 'administer cern_profile_displayname'
