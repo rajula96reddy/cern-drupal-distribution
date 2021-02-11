@@ -23,6 +23,14 @@
       },
       {
             "type": "vcs",
+            "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/themes/cern.git"
+      },
+      {
+            "type": "vcs",
+            "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/themes/cernbase.git"
+      },
+      {
+            "type": "vcs",
             "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/drupal-welcome-message-block.git"
       },
       {
@@ -78,6 +86,7 @@
         "drupal/bootstrap": "^3.9",
         "drupal/captcha": "^1.1",
         "drupal/cern-adminimal-subtheme": "^2.1",
+        "drupal/cern-base-theme": "^2.6",
         "drupal/cern-cds-media": "^2.1",
         "drupal/cern-components": "^2.7",
         "drupal/cern-dev-status": "^2.0",

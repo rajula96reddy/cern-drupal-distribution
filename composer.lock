@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "906ea9ca821ce8e47a0cb702b361cb33",
+    "content-hash": "b2eacc08a74a9b48c83e0485a132586b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1461,6 +1461,30 @@
             ],
             "description": "Applies overrides on the adminimal theme",
             "time": "2021-02-11T10:54:34+00:00"
+        },
+        {
+            "name": "drupal/cern-base-theme",
+            "version": "2.6.6",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/themes/cernbase.git",
+                "reference": "cb5ed2e618d84b10f0f7c4441ad0be5ce0a2c2d3"
+            },
+            "require": {
+                "drupal/bootstrap": "^3.23"
+            },
+            "type": "drupal-custom-theme",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Konstantinos Platis",
+                    "email": "konstantinos.platis@cern.ch"
+                }
+            ],
+            "description": "Base theme of all CERN Drupal themes",
+            "time": "2021-02-10T13:48:27+00:00"
         },
         {
             "name": "drupal/cern-cds-media",
