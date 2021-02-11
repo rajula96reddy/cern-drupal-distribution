@@ -21,6 +21,14 @@
             "type": "vcs",
             "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/themes/adminimal_subtheme.git"
       },
+      {
+            "type": "vcs",
+            "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/drupal-welcome-message-block.git"
+      },
+      {
+            "type": "vcs",
+            "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-profile-displayname.git"
+      },
 	    {                                         
             "type": "vcs",                        
             "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-full-html-format.git" 
@@ -74,11 +82,13 @@
         "drupal/cern-components": "^2.7",
         "drupal/cern-dev-status": "^2.0",
         "drupal/cern-display-formats": "^1.4",
+        "drupal/cern-drupal-welcome-message-block": "^1.1",
         "drupal/cern-full-html-format": "^2.0",
         "drupal/cern-indico-feeds": "^2.0",
         "drupal/cern-landing-page": "^2.2",
         "drupal/cern-loading": "^2.1",
         "drupal/cern-paragraph-types": "^2.2",
+        "drupal/cern-profile-displayname": "^2.1",
         "drupal/cern-toolbar": "^2.2",
         "drupal/cern-webcast-feeds": "^2.0",
         "drupal/ckeditor_font": "^1.1",
@@ -137,6 +147,7 @@
         "drupal/migrate_upgrade": "^3.1",
         "drupal/module_filter": "^3.1",
         "drupal/node_view_permissions": "^1.4",
+        "drupal/openid_connect": "^1.0",
         "drupal/panelbutton": "^1.3",
         "drupal/panelizer": "^4.4",
         "drupal/panels": "^4.6",
