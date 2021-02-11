@@ -1822,6 +1822,32 @@
         "description": "Overrides user login names with the SimpleSaml fullname attribute. Enables redirection to Profiles site."
     },
     {
+        "name": "drupal/cern-theme",
+        "version": "2.6.11",
+        "version_normalized": "2.6.11.0",
+        "source": {
+            "type": "git",
+            "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/themes/cern.git",
+            "reference": "38332c5687938b4c9368a05693071c884da02d14"
+        },
+        "require": {
+            "drupal/cern-base-theme": "^2.6.1"
+        },
+        "time": "2021-02-09T12:56:21+00:00",
+        "type": "drupal-custom-theme",
+        "installation-source": "source",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "Konstantinos Platis",
+                "email": "konstantinos.platis@cern.ch"
+            }
+        ],
+        "description": "Defines the CERN theme"
+    },
+    {
         "name": "drupal/cern-toolbar",
         "version": "2.2.3",
         "version_normalized": "2.2.3.0",

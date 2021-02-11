@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b2eacc08a74a9b48c83e0485a132586b",
+    "content-hash": "c1cd9f8ce2950e1fffef7dba9f1852a3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1759,6 +1759,30 @@
             ],
             "description": "Overrides user login names with the SimpleSaml fullname attribute. Enables redirection to Profiles site.",
             "time": "2021-02-11T10:01:34+00:00"
+        },
+        {
+            "name": "drupal/cern-theme",
+            "version": "2.6.11",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/themes/cern.git",
+                "reference": "38332c5687938b4c9368a05693071c884da02d14"
+            },
+            "require": {
+                "drupal/cern-base-theme": "^2.6.1"
+            },
+            "type": "drupal-custom-theme",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Konstantinos Platis",
+                    "email": "konstantinos.platis@cern.ch"
+                }
+            ],
+            "description": "Defines the CERN theme",
+            "time": "2021-02-09T12:56:21+00:00"
         },
         {
             "name": "drupal/cern-toolbar",
