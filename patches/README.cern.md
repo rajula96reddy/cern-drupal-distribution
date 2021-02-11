@@ -6,11 +6,6 @@ Prepare sites folder
 
 Patches for core
 -------------------------------------------------------------------------------
-patch -p1 < /mnt/data/upgrade/d8_cern_patches/multisite-modules-themes-install-2718105-3.patch 
-    [https://www.drupal.org/node/2718105] Install sites' modules in sites' directories
-    Added 2016-05-17 msalwero
-    OK
-
 patch -p1 < /mnt/data/upgrade/d8_cern_patches/allow_tokens_in_text_editor-2830210-14.patch
     [DRUPAL-302] [https://www.drupal.org/project/drupal/issues/2830210]
     Allow tokens to be used in Text Editor image upload directory path
@@ -52,11 +47,6 @@ patch -d modules/ckeditor_font/ -p1 < /mnt/data/upgrade/d8_cern_patches/ckeditor
 patch -d modules/panelbutton/ -p1 < /mnt/data/upgrade/d8_cern_patches/panelbutton-2756597.patch
   [https://www.drupal.org/project/panelbutton/issues/2756597]
   similar error as colorbutton and ckeditor_font
-  OK
-
-patch -d modules/simplesamlphp_auth -p1 < /mnt/data/upgrade/d8_cern_patches/simplesamlphp_auth-avoid_unexpected_redirect-2936889-12-d8.patch
-  [https://www.drupal.org/project/simplesamlphp_auth/issues/2936889] [DRUPAL-450]
-  Logout issue with session expired redirecting to / instead of visiting page
   OK
 
 patch -d modules/paragraphs -p1 < /mnt/data/upgrade/d8_cern_patches/experimental-widget-asymetric-translation-2904705-47.patch
