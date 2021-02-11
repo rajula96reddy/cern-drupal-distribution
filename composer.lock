@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a2bacede4610e24441fad8e83fc1de38",
+    "content-hash": "da367cd8d1fa411b823dc353eedeb017",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1437,6 +1437,30 @@
                 "source": "https://git.drupalcode.org/project/captcha",
                 "issues": "https://www.drupal.org/project/issues/captcha"
             }
+        },
+        {
+            "name": "drupal/cern-adminimal-subtheme",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/themes/adminimal_subtheme.git",
+                "reference": "a2ed5628d532fccb54abbeaf063db3944784bd76"
+            },
+            "require": {
+                "drupal/adminimal_theme": "^1.6"
+            },
+            "type": "drupal-custom-theme",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Konstantinos Platis",
+                    "email": "konstantinos.platis@cern.ch"
+                }
+            ],
+            "description": "Applies overrides on the adminimal theme",
+            "time": "2021-02-11T10:54:34+00:00"
         },
         {
             "name": "drupal/cern-cds-media",
