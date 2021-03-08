@@ -452,11 +452,14 @@ class Connection extends DatabaseConnection {
     // NO_AUTO_CREATE_USER is removed in MySQL 8.0.11
     // https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-11.html#mysqld-8-0-11-deprecation-removal
     $version_server = $pdo->getAttribute(\PDO::ATTR_SERVER_VERSION);
+    $txn_isolation = 'transaction_isolation';
     if (version_compare($version_server, '8.0.11', '<')) {
       $sql_mode .= ',NO_AUTO_CREATE_USER';
+      $txn_isolation = 'tx_isolation';
     }
     $connection_options['init_commands'] += [
       'sql_mode' => "SET sql_mode = '$sql_mode'",
+      'isolation' => "SET SESSION tx_isolation='READ-COMMITTED'",
     ];
 
     // Execute initial commands.
