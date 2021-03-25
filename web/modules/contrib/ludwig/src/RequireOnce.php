@@ -3,6 +3,7 @@
 namespace Drupal\ludwig;
 
 use GuzzleHttp\Exception\RequestException;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
  * Provides service for ludwig require_once calls.
@@ -13,6 +14,8 @@ use GuzzleHttp\Exception\RequestException;
  * their scripts (.module and/or .install files usually).
  */
 class RequireOnce {
+
+  use StringTranslationTrait;
 
   /**
    * The helper function for Ludwig integration.
@@ -44,7 +47,9 @@ class RequireOnce {
       require_once $require;
     }
     else {
-      throw new \Exception(sprintf('File not found: %s.', $require));
+      \Drupal::logger('ludwig')->error($this->t('File not found: @require.', [
+        '@require' => $require,
+      ]));
     }
   }
 

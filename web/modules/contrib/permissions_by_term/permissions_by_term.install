@@ -18,25 +18,28 @@ function permissions_by_term_schema() {
   // Specifications for tabe 'permissions_by_term_user'.
   $schema['permissions_by_term_user'] = [
     'description' => "Stores the tid's to which a user has permission by his uid.",
-    'fields' => [
-      'tid' => [
-        'type' => 'int',
+    'fields'      => [
+      'tid'            => [
+        'type'     => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
       ],
-      'uid' => [
-        'type' => 'int',
+      'uid'            => [
+        'type'     => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
       ],
-      'langcode' => [
-        'type' => 'varchar_ascii',
-        'length' => 12,
+      'langcode'       => [
+        'type'     => 'varchar_ascii',
+        'length'   => 12,
         'not null' => TRUE,
-        'default' => '',
+        'default'  => '',
       ],
     ],
-    'primary key' => [
+    'primary key'    => [
+      'tid',
+      'uid',
+      'langcode',
     ],
   ];
 
@@ -62,11 +65,13 @@ function permissions_by_term_schema() {
       ],
     ],
     'primary key' => [
+      'tid',
+      'rid',
+      'langcode',
     ],
   ];
 
   return $schema;
-
 }
 
 /**
@@ -203,4 +208,17 @@ function permissions_by_term_update_8153() {
 
   $schema->dropPrimaryKey('permissions_by_term_role');
   $schema->dropPrimaryKey('permissions_by_term_user');
+}
+
+/**
+ * Add composite primary key via unique table column combinations.
+ */
+function permissions_by_term_update_8230() {
+  $database = \Drupal::database();
+  $schema = $database->schema();
+
+  $schema->dropPrimaryKey('permissions_by_term_role');
+  $schema->addPrimaryKey('permissions_by_term_role', ['tid', 'rid', 'langcode']);
+  $schema->dropPrimaryKey('permissions_by_term_user');
+  $schema->addPrimaryKey('permissions_by_term_user', ['tid', 'uid', 'langcode']);
 }
