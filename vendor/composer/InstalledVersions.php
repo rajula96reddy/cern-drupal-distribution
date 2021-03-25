@@ -1,25 +1,36 @@
 <?php
 
+/*
+ * This file is part of Composer.
+ *
+ * (c) Nils Adermann <naderman@naderman.de>
+ *     Jordi Boggiano <j.boggiano@seld.be>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Composer;
 
+use Composer\Autoload\ClassLoader;
 use Composer\Semver\VersionParser;
 
-
-
-
-
-
+/**
+ * This class is copied in every Composer installed project and available to all
+ *
+ * To require it's presence, you can require `composer-runtime-api ^2.0`
+ */
 class InstalledVersions
 {
-private static $installed = array (
+    private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '8.9.13.x-dev',
-    'version' => '8.9.13.9999999-dev',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => '3ff7d617b5d6cfbf92444f52710a2523cc318d69',
+    'reference' => 'ee54ac5beb8e6d50593b7ea3413e037c689b40e7',
     'name' => 'drupal/recommended-project',
   ),
   'versions' => 
@@ -184,6 +195,15 @@ private static $installed = array (
       ),
       'reference' => '8.x-2.4',
     ),
+    'drupal/adminimal_theme' => 
+    array (
+      'pretty_version' => '1.6.0',
+      'version' => '1.6.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8.x-1.6',
+    ),
     'drupal/aggregator' => 
     array (
       'replaced' => 
@@ -288,14 +308,32 @@ private static $installed = array (
       ),
       'reference' => '8.x-1.1',
     ),
-    'drupal/cern-cds-media' => 
+    'drupal/cern-adminimal-subtheme' => 
     array (
-      'pretty_version' => '2.1.3',
-      'version' => '2.1.3.0',
+      'pretty_version' => '2.1.0',
+      'version' => '2.1.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '57ba9f56ce31d754e1d89117fcdd65ae816ce22c',
+      'reference' => 'a2ed5628d532fccb54abbeaf063db3944784bd76',
+    ),
+    'drupal/cern-base-theme' => 
+    array (
+      'pretty_version' => '2.6.6',
+      'version' => '2.6.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'cb5ed2e618d84b10f0f7c4441ad0be5ce0a2c2d3',
+    ),
+    'drupal/cern-cds-media' => 
+    array (
+      'pretty_version' => '2.1.4',
+      'version' => '2.1.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '211fb1be8dbb83df9dd791b6f75d8798bb99f290',
     ),
     'drupal/cern-components' => 
     array (
@@ -308,12 +346,12 @@ private static $installed = array (
     ),
     'drupal/cern-dev-status' => 
     array (
-      'pretty_version' => '2.0.3',
-      'version' => '2.0.3.0',
+      'pretty_version' => '2.0.5',
+      'version' => '2.0.5.0',
       'aliases' => 
       array (
       ),
-      'reference' => '50a2dcafc5ba1d130dd270cff17718f03e4cc3b5',
+      'reference' => 'faba2b40d7f34d718f0826dbb38250e42881e71a',
     ),
     'drupal/cern-display-formats' => 
     array (
@@ -324,23 +362,41 @@ private static $installed = array (
       ),
       'reference' => '57b5b7cc346f4094359efbb53f9cb21cfedbaaf3',
     ),
-    'drupal/cern-full-html-format' => 
+    'drupal/cern-drupal-welcome-message-block' => 
     array (
-      'pretty_version' => '2.0.3',
-      'version' => '2.0.3.0',
+      'pretty_version' => '1.1.0',
+      'version' => '1.1.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '862c0ffe8ed690dc622d72d22292c83f42c77bb6',
+      'reference' => 'c5a6c1b0b465429ffe2c3d5bac92b6fa39f668f6',
+    ),
+    'drupal/cern-full-html-format' => 
+    array (
+      'pretty_version' => '2.0.4',
+      'version' => '2.0.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4e4a15aa77576abadb8639f537e31d31edbc09a6',
+    ),
+    'drupal/cern-indico-feeds' => 
+    array (
+      'pretty_version' => '2.0.5',
+      'version' => '2.0.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8478ce54ec7267c82e3370c5e35642d8e0c11534',
     ),
     'drupal/cern-landing-page' => 
     array (
-      'pretty_version' => '2.2.3',
-      'version' => '2.2.3.0',
+      'pretty_version' => '2.2.4',
+      'version' => '2.2.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '7f2e2fae22215d2f1b886eb677e9dafdecdc9033',
+      'reference' => 'a6aa2903393d64b341900aa65c3e160afd39752f',
     ),
     'drupal/cern-loading' => 
     array (
@@ -353,21 +409,48 @@ private static $installed = array (
     ),
     'drupal/cern-paragraph-types' => 
     array (
-      'pretty_version' => '2.2.2',
-      'version' => '2.2.2.0',
+      'pretty_version' => '2.2.3',
+      'version' => '2.2.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c62b7f8d71029a6cd6535ef87d465e5e858f74a5',
+      'reference' => '5d9bd43e424dc7865ccd564544a1e07045f5c111',
+    ),
+    'drupal/cern-profile-displayname' => 
+    array (
+      'pretty_version' => '2.1.0',
+      'version' => '2.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1392ffebc377e627a22b6a817f2c342d126b93f2',
+    ),
+    'drupal/cern-theme' => 
+    array (
+      'pretty_version' => '2.6.11',
+      'version' => '2.6.11.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '38332c5687938b4c9368a05693071c884da02d14',
     ),
     'drupal/cern-toolbar' => 
     array (
-      'pretty_version' => '2.2.2',
-      'version' => '2.2.2.0',
+      'pretty_version' => '2.2.3',
+      'version' => '2.2.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => '51e6b5293d8628c03c124c46b1b81e972279393c',
+      'reference' => 'ab38a97568bfe8e7f985bde28fdfd847b89aa685',
+    ),
+    'drupal/cern-webcast-feeds' => 
+    array (
+      'pretty_version' => '2.0.4',
+      'version' => '2.0.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4f255383eec3c97d2b9de1c0bae98d23b16e0076',
     ),
     'drupal/ckeditor' => 
     array (
@@ -426,12 +509,12 @@ private static $installed = array (
     ),
     'drupal/colorbox' => 
     array (
-      'pretty_version' => '1.6.0',
-      'version' => '1.6.0.0',
+      'pretty_version' => '1.7.0',
+      'version' => '1.7.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8.x-1.6',
+      'reference' => '8.x-1.7',
     ),
     'drupal/colorbutton' => 
     array (
@@ -808,12 +891,12 @@ private static $installed = array (
     ),
     'drupal/ds' => 
     array (
-      'pretty_version' => '3.9.0',
-      'version' => '3.9.0.0',
+      'pretty_version' => '3.12.0',
+      'version' => '3.12.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8.x-3.9',
+      'reference' => '8.x-3.12',
     ),
     'drupal/dynamic_page_cache' => 
     array (
@@ -824,12 +907,21 @@ private static $installed = array (
     ),
     'drupal/easy_breadcrumb' => 
     array (
-      'pretty_version' => '1.13.0',
-      'version' => '1.13.0.0',
+      'pretty_version' => '1.15.0',
+      'version' => '1.15.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8.x-1.13',
+      'reference' => '8.x-1.15',
+    ),
+    'drupal/easychart' => 
+    array (
+      'pretty_version' => '3.4.0',
+      'version' => '3.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8.x-3.4',
     ),
     'drupal/editor' => 
     array (
@@ -865,12 +957,12 @@ private static $installed = array (
     ),
     'drupal/entity_reference_revisions' => 
     array (
-      'pretty_version' => '1.8.0',
-      'version' => '1.8.0.0',
+      'pretty_version' => '1.9.0',
+      'version' => '1.9.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8.x-1.8',
+      'reference' => '8.x-1.9',
     ),
     'drupal/externalauth' => 
     array (
@@ -883,21 +975,21 @@ private static $installed = array (
     ),
     'drupal/extlink' => 
     array (
-      'pretty_version' => '1.5.0',
-      'version' => '1.5.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '8.x-1.5',
-    ),
-    'drupal/facets' => 
-    array (
       'pretty_version' => '1.6.0',
       'version' => '1.6.0.0',
       'aliases' => 
       array (
       ),
       'reference' => '8.x-1.6',
+    ),
+    'drupal/facets' => 
+    array (
+      'pretty_version' => '1.7.0',
+      'version' => '1.7.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8.x-1.7',
     ),
     'drupal/fast_404' => 
     array (
@@ -910,12 +1002,12 @@ private static $installed = array (
     ),
     'drupal/features' => 
     array (
-      'pretty_version' => '3.11.0',
-      'version' => '3.11.0.0',
+      'pretty_version' => '3.12.0',
+      'version' => '3.12.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8.x-3.11',
+      'reference' => '8.x-3.12',
     ),
     'drupal/feeds' => 
     array (
@@ -1199,12 +1291,12 @@ private static $installed = array (
     ),
     'drupal/ludwig' => 
     array (
-      'pretty_version' => '1.6.0',
-      'version' => '1.6.0.0',
+      'pretty_version' => '1.7.0',
+      'version' => '1.7.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8.x-1.6',
+      'reference' => '8.x-1.7',
     ),
     'drupal/mailsystem' => 
     array (
@@ -1240,12 +1332,12 @@ private static $installed = array (
     ),
     'drupal/memcache' => 
     array (
-      'pretty_version' => '2.2.0',
-      'version' => '2.2.0.0',
+      'pretty_version' => '2.3.0',
+      'version' => '2.3.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8.x-2.2',
+      'reference' => '8.x-2.3',
     ),
     'drupal/menu_block' => 
     array (
@@ -1290,12 +1382,12 @@ private static $installed = array (
     ),
     'drupal/metatag' => 
     array (
-      'pretty_version' => '1.15.0',
-      'version' => '1.15.0.0',
+      'pretty_version' => '1.16.0',
+      'version' => '1.16.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8.x-1.15',
+      'reference' => '8.x-1.16',
     ),
     'drupal/migrate' => 
     array (
@@ -1370,12 +1462,12 @@ private static $installed = array (
     ),
     'drupal/module_filter' => 
     array (
-      'pretty_version' => '3.1.0',
-      'version' => '3.1.0.0',
+      'pretty_version' => '3.2.0',
+      'version' => '3.2.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8.x-3.1',
+      'reference' => '8.x-3.2',
     ),
     'drupal/node' => 
     array (
@@ -1392,6 +1484,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '8.x-1.4',
+    ),
+    'drupal/openid_connect' => 
+    array (
+      'pretty_version' => '1.0.0',
+      'version' => '1.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8.x-1.0',
     ),
     'drupal/options' => 
     array (
@@ -1477,12 +1578,12 @@ private static $installed = array (
     ),
     'drupal/permissions_by_term' => 
     array (
-      'pretty_version' => '2.29.0',
-      'version' => '2.29.0.0',
+      'pretty_version' => '2.31.0',
+      'version' => '2.31.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8.x-2.29',
+      'reference' => '8.x-2.31',
     ),
     'drupal/piwik' => 
     array (
@@ -1518,12 +1619,12 @@ private static $installed = array (
     ),
     'drupal/recommended-project' => 
     array (
-      'pretty_version' => '8.9.13.x-dev',
-      'version' => '8.9.13.9999999-dev',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => '3ff7d617b5d6cfbf92444f52710a2523cc318d69',
+      'reference' => 'ee54ac5beb8e6d50593b7ea3413e037c689b40e7',
     ),
     'drupal/redirect' => 
     array (
@@ -1536,12 +1637,12 @@ private static $installed = array (
     ),
     'drupal/require_login' => 
     array (
-      'pretty_version' => '2.1.0',
-      'version' => '2.1.0.0',
+      'pretty_version' => '2.4.0',
+      'version' => '2.4.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8.x-2.1',
+      'reference' => '8.x-2.4',
     ),
     'drupal/responsive_image' => 
     array (
@@ -1664,6 +1765,15 @@ private static $installed = array (
       array (
         0 => '8.9.13',
       ),
+    ),
+    'drupal/sticky' => 
+    array (
+      'pretty_version' => '1.1.0',
+      'version' => '1.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8.x-1.1',
     ),
     'drupal/syslog' => 
     array (
@@ -1824,12 +1934,12 @@ private static $installed = array (
     ),
     'drupal/webform' => 
     array (
-      'pretty_version' => '5.24.0',
-      'version' => '5.24.0.0',
+      'pretty_version' => '5.25.0',
+      'version' => '5.25.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8.x-5.24',
+      'reference' => '8.x-5.25',
     ),
     'drupal/webform_analysis' => 
     array (
@@ -1851,8 +1961,8 @@ private static $installed = array (
     ),
     'drupal/webform_ui' => 
     array (
-      'pretty_version' => '5.24.0',
-      'version' => '5.24.0.0',
+      'pretty_version' => '5.25.0',
+      'version' => '5.25.0.0',
       'aliases' => 
       array (
       ),
@@ -1901,12 +2011,12 @@ private static $installed = array (
     ),
     'drush/drush' => 
     array (
-      'pretty_version' => '8.4.6',
-      'version' => '8.4.6.0',
+      'pretty_version' => '8.4.8',
+      'version' => '8.4.8.0',
       'aliases' => 
       array (
       ),
-      'reference' => '4e48e11d7fe858eebe6c2fad71650c977d3f8900',
+      'reference' => 'b377b1896e344085d06bdbf671a465950a164d1e',
     ),
     'easyrdf/easyrdf' => 
     array (
@@ -1937,12 +2047,12 @@ private static $installed = array (
     ),
     'gettext/gettext' => 
     array (
-      'pretty_version' => 'v4.8.3',
-      'version' => '4.8.3.0',
+      'pretty_version' => 'v4.8.4',
+      'version' => '4.8.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '57ff4fb16647e78e80a5909fe3c190f1c3110321',
+      'reference' => '58bc0f7f37e78efb0f9758f93d4a0f669f0f84a1',
     ),
     'gettext/languages' => 
     array (
@@ -2135,12 +2245,12 @@ private static $installed = array (
     ),
     'phpmailer/phpmailer' => 
     array (
-      'pretty_version' => 'v6.2.0',
-      'version' => '6.2.0.0',
+      'pretty_version' => 'v6.3.0',
+      'version' => '6.3.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'e38888a75c070304ca5514197d4847a59a5c853f',
+      'reference' => '4a08cf4cdd2c38d12ee2b9fa69e5d235f37a6dcb',
     ),
     'psr/container' => 
     array (
@@ -2192,12 +2302,12 @@ private static $installed = array (
     ),
     'psy/psysh' => 
     array (
-      'pretty_version' => 'v0.10.6',
-      'version' => '0.10.6.0',
+      'pretty_version' => 'v0.10.7',
+      'version' => '0.10.7.0',
       'aliases' => 
       array (
       ),
-      'reference' => '6f990c19f91729de8b31e639d6e204ea59f19cf3',
+      'reference' => 'a395af46999a12006213c0c8346c9445eb31640c',
     ),
     'ralouphie/getallheaders' => 
     array (
@@ -2303,12 +2413,12 @@ private static $installed = array (
     ),
     'simplesamlphp/simplesamlphp-module-authorize' => 
     array (
-      'pretty_version' => 'v0.9.2',
-      'version' => '0.9.2.0',
+      'pretty_version' => 'v0.9.3',
+      'version' => '0.9.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c2607a5252ee1256b50ce7795e35513b116998d4',
+      'reference' => '0593bfcb84fca9d9133f415246ab8ca51b412c92',
     ),
     'simplesamlphp/simplesamlphp-module-authtwitter' => 
     array (
@@ -2384,12 +2494,12 @@ private static $installed = array (
     ),
     'simplesamlphp/simplesamlphp-module-discopower' => 
     array (
-      'pretty_version' => 'v0.9.1',
-      'version' => '0.9.1.0',
+      'pretty_version' => 'v0.9.3',
+      'version' => '0.9.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => '006c0617610f1bae11cf4d17e8ce4c509239a60e',
+      'reference' => 'c892926e8186d0a2c638f7032dfc30540c1f92fb',
     ),
     'simplesamlphp/simplesamlphp-module-exampleattributeserver' => 
     array (
@@ -2573,12 +2683,12 @@ private static $installed = array (
     ),
     'symfony/config' => 
     array (
-      'pretty_version' => 'v4.4.19',
-      'version' => '4.4.19.0',
+      'pretty_version' => 'v4.4.20',
+      'version' => '4.4.20.0',
       'aliases' => 
       array (
       ),
-      'reference' => '2c4c7827a7e143f5cf375666641b0f448eab8802',
+      'reference' => '98606c6fa1a8f55ff964ccdd704275bf5b9f71b3',
     ),
     'symfony/console' => 
     array (
@@ -2618,21 +2728,21 @@ private static $installed = array (
     ),
     'symfony/filesystem' => 
     array (
-      'pretty_version' => 'v5.2.3',
-      'version' => '5.2.3.0',
+      'pretty_version' => 'v5.2.4',
+      'version' => '5.2.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '262d033b57c73e8b59cd6e68a45c528318b15038',
+      'reference' => '710d364200997a5afde34d9fe57bd52f3cc1e108',
     ),
     'symfony/finder' => 
     array (
-      'pretty_version' => 'v4.4.19',
-      'version' => '4.4.19.0',
+      'pretty_version' => 'v4.4.20',
+      'version' => '4.4.20.0',
       'aliases' => 
       array (
       ),
-      'reference' => '25d79cfccfc12e84e7a63a248c3f0720fdd92db6',
+      'reference' => '2543795ab1570df588b9bbd31e1a2bd7037b94f6',
     ),
     'symfony/http-foundation' => 
     array (
@@ -2717,8 +2827,8 @@ private static $installed = array (
     ),
     'symfony/polyfill-php80' => 
     array (
-      'pretty_version' => 'v1.22.0',
-      'version' => '1.22.0.0',
+      'pretty_version' => 'v1.22.1',
+      'version' => '1.22.1.0',
       'aliases' => 
       array (
       ),
@@ -2789,8 +2899,8 @@ private static $installed = array (
     ),
     'symfony/var-dumper' => 
     array (
-      'pretty_version' => 'v4.4.19',
-      'version' => '4.4.19.0',
+      'pretty_version' => 'v4.4.20',
+      'version' => '4.4.20.0',
       'aliases' => 
       array (
       ),
@@ -2843,12 +2953,12 @@ private static $installed = array (
     ),
     'webmozart/assert' => 
     array (
-      'pretty_version' => '1.9.1',
-      'version' => '1.9.1.0',
+      'pretty_version' => '1.5.0',
+      'version' => '1.5.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'bafc69caeb4d49c39fd0779086c03a3738cbb389',
+      'reference' => '88e6d84706d09a236046d686bbea96f07b3a34f4',
     ),
     'webmozart/path-util' => 
     array (
@@ -2870,12 +2980,12 @@ private static $installed = array (
     ),
     'wikimedia/composer-merge-plugin' => 
     array (
-      'pretty_version' => 'dev-feature/composer-v2',
-      'version' => 'dev-feature/composer-v2',
+      'pretty_version' => 'v2.0.1',
+      'version' => '2.0.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '3f4c1e914be5ba7b9e84434a69f3bb835bff2ac1',
+      'reference' => '8ca2ed8ab97c8ebce6b39d9943e9909bb4f18912',
     ),
     'zendframework/zend-diactoros' => 
     array (
@@ -2907,175 +3017,238 @@ private static $installed = array (
     ),
   ),
 );
-
-
-
-
-
-
-
-public static function getInstalledPackages()
-{
-return array_keys(self::$installed['versions']);
-}
-
-
-
-
-
-
-
-
-
-public static function isInstalled($packageName)
-{
-return isset(self::$installed['versions'][$packageName]);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public static function satisfies(VersionParser $parser, $packageName, $constraint)
-{
-$constraint = $parser->parseConstraints($constraint);
-$provided = $parser->parseConstraints(self::getVersionRanges($packageName));
-
-return $provided->matches($constraint);
-}
-
-
-
-
-
-
-
-
-
-
-public static function getVersionRanges($packageName)
-{
-if (!isset(self::$installed['versions'][$packageName])) {
-throw new \OutOfBoundsException('Package "' . $packageName . '" is not installed');
-}
-
-$ranges = array();
-if (isset(self::$installed['versions'][$packageName]['pretty_version'])) {
-$ranges[] = self::$installed['versions'][$packageName]['pretty_version'];
-}
-if (array_key_exists('aliases', self::$installed['versions'][$packageName])) {
-$ranges = array_merge($ranges, self::$installed['versions'][$packageName]['aliases']);
-}
-if (array_key_exists('replaced', self::$installed['versions'][$packageName])) {
-$ranges = array_merge($ranges, self::$installed['versions'][$packageName]['replaced']);
-}
-if (array_key_exists('provided', self::$installed['versions'][$packageName])) {
-$ranges = array_merge($ranges, self::$installed['versions'][$packageName]['provided']);
-}
-
-return implode(' || ', $ranges);
-}
-
-
-
-
-
-public static function getVersion($packageName)
-{
-if (!isset(self::$installed['versions'][$packageName])) {
-throw new \OutOfBoundsException('Package "' . $packageName . '" is not installed');
-}
-
-if (!isset(self::$installed['versions'][$packageName]['version'])) {
-return null;
-}
-
-return self::$installed['versions'][$packageName]['version'];
-}
-
-
-
-
-
-public static function getPrettyVersion($packageName)
-{
-if (!isset(self::$installed['versions'][$packageName])) {
-throw new \OutOfBoundsException('Package "' . $packageName . '" is not installed');
-}
-
-if (!isset(self::$installed['versions'][$packageName]['pretty_version'])) {
-return null;
-}
-
-return self::$installed['versions'][$packageName]['pretty_version'];
-}
-
-
-
-
-
-public static function getReference($packageName)
-{
-if (!isset(self::$installed['versions'][$packageName])) {
-throw new \OutOfBoundsException('Package "' . $packageName . '" is not installed');
-}
-
-if (!isset(self::$installed['versions'][$packageName]['reference'])) {
-return null;
-}
-
-return self::$installed['versions'][$packageName]['reference'];
-}
-
-
-
-
-
-public static function getRootPackage()
-{
-return self::$installed['root'];
-}
-
-
-
-
-
-
-
-public static function getRawData()
-{
-return self::$installed;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public static function reload($data)
-{
-self::$installed = $data;
-}
+    private static $canGetVendors;
+    private static $installedByVendor = array();
+
+    /**
+     * Returns a list of all package names which are present, either by being installed, replaced or provided
+     *
+     * @return string[]
+     * @psalm-return list<string>
+     */
+    public static function getInstalledPackages()
+    {
+        $packages = array();
+        foreach (self::getInstalled() as $installed) {
+            $packages[] = array_keys($installed['versions']);
+        }
+
+
+        if (1 === \count($packages)) {
+            return $packages[0];
+        }
+
+        return array_keys(array_flip(\call_user_func_array('array_merge', $packages)));
+    }
+
+    /**
+     * Checks whether the given package is installed
+     *
+     * This also returns true if the package name is provided or replaced by another package
+     *
+     * @param  string $packageName
+     * @return bool
+     */
+    public static function isInstalled($packageName)
+    {
+        foreach (self::getInstalled() as $installed) {
+            if (isset($installed['versions'][$packageName])) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Checks whether the given package satisfies a version constraint
+     *
+     * e.g. If you want to know whether version 2.3+ of package foo/bar is installed, you would call:
+     *
+     *   Composer\InstalledVersions::satisfies(new VersionParser, 'foo/bar', '^2.3')
+     *
+     * @param VersionParser $parser      Install composer/semver to have access to this class and functionality
+     * @param string        $packageName
+     * @param string|null   $constraint  A version constraint to check for, if you pass one you have to make sure composer/semver is required by your package
+     *
+     * @return bool
+     */
+    public static function satisfies(VersionParser $parser, $packageName, $constraint)
+    {
+        $constraint = $parser->parseConstraints($constraint);
+        $provided = $parser->parseConstraints(self::getVersionRanges($packageName));
+
+        return $provided->matches($constraint);
+    }
+
+    /**
+     * Returns a version constraint representing all the range(s) which are installed for a given package
+     *
+     * It is easier to use this via isInstalled() with the $constraint argument if you need to check
+     * whether a given version of a package is installed, and not just whether it exists
+     *
+     * @param  string $packageName
+     * @return string Version constraint usable with composer/semver
+     */
+    public static function getVersionRanges($packageName)
+    {
+        foreach (self::getInstalled() as $installed) {
+            if (!isset($installed['versions'][$packageName])) {
+                continue;
+            }
+
+            $ranges = array();
+            if (isset($installed['versions'][$packageName]['pretty_version'])) {
+                $ranges[] = $installed['versions'][$packageName]['pretty_version'];
+            }
+            if (array_key_exists('aliases', $installed['versions'][$packageName])) {
+                $ranges = array_merge($ranges, $installed['versions'][$packageName]['aliases']);
+            }
+            if (array_key_exists('replaced', $installed['versions'][$packageName])) {
+                $ranges = array_merge($ranges, $installed['versions'][$packageName]['replaced']);
+            }
+            if (array_key_exists('provided', $installed['versions'][$packageName])) {
+                $ranges = array_merge($ranges, $installed['versions'][$packageName]['provided']);
+            }
+
+            return implode(' || ', $ranges);
+        }
+
+        throw new \OutOfBoundsException('Package "' . $packageName . '" is not installed');
+    }
+
+    /**
+     * @param  string      $packageName
+     * @return string|null If the package is being replaced or provided but is not really installed, null will be returned as version, use satisfies or getVersionRanges if you need to know if a given version is present
+     */
+    public static function getVersion($packageName)
+    {
+        foreach (self::getInstalled() as $installed) {
+            if (!isset($installed['versions'][$packageName])) {
+                continue;
+            }
+
+            if (!isset($installed['versions'][$packageName]['version'])) {
+                return null;
+            }
+
+            return $installed['versions'][$packageName]['version'];
+        }
+
+        throw new \OutOfBoundsException('Package "' . $packageName . '" is not installed');
+    }
+
+    /**
+     * @param  string      $packageName
+     * @return string|null If the package is being replaced or provided but is not really installed, null will be returned as version, use satisfies or getVersionRanges if you need to know if a given version is present
+     */
+    public static function getPrettyVersion($packageName)
+    {
+        foreach (self::getInstalled() as $installed) {
+            if (!isset($installed['versions'][$packageName])) {
+                continue;
+            }
+
+            if (!isset($installed['versions'][$packageName]['pretty_version'])) {
+                return null;
+            }
+
+            return $installed['versions'][$packageName]['pretty_version'];
+        }
+
+        throw new \OutOfBoundsException('Package "' . $packageName . '" is not installed');
+    }
+
+    /**
+     * @param  string      $packageName
+     * @return string|null If the package is being replaced or provided but is not really installed, null will be returned as reference
+     */
+    public static function getReference($packageName)
+    {
+        foreach (self::getInstalled() as $installed) {
+            if (!isset($installed['versions'][$packageName])) {
+                continue;
+            }
+
+            if (!isset($installed['versions'][$packageName]['reference'])) {
+                return null;
+            }
+
+            return $installed['versions'][$packageName]['reference'];
+        }
+
+        throw new \OutOfBoundsException('Package "' . $packageName . '" is not installed');
+    }
+
+    /**
+     * @return array
+     * @psalm-return array{name: string, version: string, reference: string, pretty_version: string, aliases: string[]}
+     */
+    public static function getRootPackage()
+    {
+        $installed = self::getInstalled();
+
+        return $installed[0]['root'];
+    }
+
+    /**
+     * Returns the raw installed.php data for custom implementations
+     *
+     * @return array[]
+     * @psalm-return array{root: array{name: string, version: string, reference: string, pretty_version: string, aliases: string[]}, versions: list<string, array{pretty_version: ?string, version: ?string, aliases: ?string[], reference: ?string, replaced: ?string[], provided: ?string[]}>}
+     */
+    public static function getRawData()
+    {
+        return self::$installed;
+    }
+
+    /**
+     * Lets you reload the static array from another file
+     *
+     * This is only useful for complex integrations in which a project needs to use
+     * this class but then also needs to execute another project's autoloader in process,
+     * and wants to ensure both projects have access to their version of installed.php.
+     *
+     * A typical case would be PHPUnit, where it would need to make sure it reads all
+     * the data it needs from this class, then call reload() with
+     * `require $CWD/vendor/composer/installed.php` (or similar) as input to make sure
+     * the project in which it runs can then also use this class safely, without
+     * interference between PHPUnit's dependencies and the project's dependencies.
+     *
+     * @param  array[] $data A vendor/composer/installed.php data set
+     * @return void
+     *
+     * @psalm-param array{root: array{name: string, version: string, reference: string, pretty_version: string, aliases: string[]}, versions: list<string, array{pretty_version: ?string, version: ?string, aliases: ?string[], reference: ?string, replaced: ?string[], provided: ?string[]}>} $data
+     */
+    public static function reload($data)
+    {
+        self::$installed = $data;
+        self::$installedByVendor = array();
+    }
+
+    /**
+     * @return array[]
+     */
+    private static function getInstalled()
+    {
+        if (null === self::$canGetVendors) {
+            self::$canGetVendors = method_exists('Composer\Autoload\ClassLoader', 'getRegisteredLoaders');
+        }
+
+        $installed = array();
+
+        if (self::$canGetVendors) {
+            foreach (ClassLoader::getRegisteredLoaders() as $vendorDir => $loader) {
+                if (isset(self::$installedByVendor[$vendorDir])) {
+                    $installed[] = self::$installedByVendor[$vendorDir];
+                } elseif (is_file($vendorDir.'/composer/installed.php')) {
+                    $installed[] = self::$installedByVendor[$vendorDir] = require $vendorDir.'/composer/installed.php';
+                }
+            }
+        }
+
+        $installed[] = self::$installed;
+
+        return $installed;
+    }
 }
