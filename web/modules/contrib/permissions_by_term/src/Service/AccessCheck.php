@@ -11,6 +11,7 @@ use Drupal\taxonomy\Entity\Term;
 use Drupal\user\Entity\User;
 use Drupal\node\Entity\Node;
 
+
 /**
  * AccessCheckService class.
  */
@@ -78,7 +79,7 @@ class AccessCheck {
     $configPermissionMode = \Drupal::config('permissions_by_term.settings')->get('permission_mode');
     $requireAllTermsGranted = \Drupal::config('permissions_by_term.settings')->get('require_all_terms_granted');
 
-    if (!$configPermissionMode && (!$requireAllTermsGranted)) {
+    if (!$configPermissionMode && !$requireAllTermsGranted) {
       $access_allowed = TRUE;
     } else {
       $access_allowed = FALSE;
@@ -244,6 +245,8 @@ class AccessCheck {
         return TRUE;
       }
     }
+
+    return FALSE;
   }
 
 }

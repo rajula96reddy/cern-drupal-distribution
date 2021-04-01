@@ -6,7 +6,6 @@
  */
 
 use Drupal\Core\Access\AccessResultForbidden;
-use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
@@ -166,7 +165,7 @@ function permissions_by_term_form_taxonomy_term_form_alter(&$form, FormStateInte
 
     $aAllowedUsers = $access_storage->getAllowedUserIds($termId, $langcode);
     if (!empty($aAllowedUsers)) {
-      $aAllowedUsers = user_load_multiple($aAllowedUsers);
+      $aAllowedUsers = \Drupal\user\Entity\User::loadMultiple($aAllowedUsers);
       $sUserFormValue = $access_storage->getUserFormValue($aAllowedUsers);
     }
     else {
@@ -291,12 +290,9 @@ function permissions_by_term_user_form_submit(array &$form, FormStateInterface $
 
   /** @var \Drupal\user\UserInterface $user */
   $user = $form_state->getFormObject()->getEntity();
-  $uid = $user->id();
-
-  $origPerms = $access_storage->getAllTermPermissionsByUserId($uid);
 
   // First, we delete existing values from the db.
-  $access_storage->deleteAllTermPermissionsByUserId($uid);
+  $access_storage->deleteAllTermPermissionsByUserId($user->id());
 
   if ($tids = $form_state->getValue('terms')) {
     // For term permissions use user preferred language.
@@ -304,16 +300,13 @@ function permissions_by_term_user_form_submit(array &$form, FormStateInterface $
 
     // Second, we insert updated values.
     foreach ($tids as $tid) {
-      $access_storage->addTermPermissionsByUserIds([$uid], $tid, $langcode);
+      $access_storage->addTermPermissionsByUserIds([$user->id()], $tid, $langcode);
     }
   }
 
-  $newPerms = $access_storage->getAllTermPermissionsByUserId($uid);
-
   // Rebuild permissions for nodes if needed.
-  if (!\Drupal::config('permissions_by_term.settings')->get('disable_node_access_records') &&
-    !empty(array_diff($origPerms, $newPerms))) {
-    \Drupal::service('permissions_by_term.node_access')->rebuildAccess($uid);
+  if (!\Drupal::config('permissions_by_term.settings')->get('disable_node_access_records')) {
+    node_access_rebuild(TRUE);
   }
 }
 
@@ -375,7 +368,7 @@ function isNodeEditForm() {
 /**
  * Implements hook_node_grants().
  */
-function permissions_by_term_node_grants(\Drupal\Core\Session\AccountInterface $account, $op) {
+function permissions_by_term_node_grants(AccountInterface $account, $op) {
   $grants = [];
 
   if ($op == 'view' && !\Drupal::configFactory()->getEditable('permissions_by_term.settings')->get('disable_node_access_records')) {

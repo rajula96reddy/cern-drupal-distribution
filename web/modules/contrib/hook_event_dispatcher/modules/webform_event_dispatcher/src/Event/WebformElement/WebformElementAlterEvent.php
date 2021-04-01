@@ -9,8 +9,6 @@ use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Class WebformElementAlterEvent.
- *
- * @package Drupal\webform_event_dispatcher\Event\Element
  */
 class WebformElementAlterEvent extends Event implements EventInterface {
 
@@ -58,7 +56,7 @@ class WebformElementAlterEvent extends Event implements EventInterface {
    * @return array
    *   The element.
    */
-  public function &getElement() {
+  public function &getElement(): array {
     return $this->element;
   }
 
@@ -68,7 +66,7 @@ class WebformElementAlterEvent extends Event implements EventInterface {
    * @return string
    *   The webform element type.
    */
-  public function getElementType() {
+  public function getElementType(): string {
     return $this->getElement()['#type'];
   }
 
@@ -78,7 +76,7 @@ class WebformElementAlterEvent extends Event implements EventInterface {
    * @return \Drupal\Core\Form\FormStateInterface
    *   The form state.
    */
-  public function getFormState() {
+  public function getFormState(): FormStateInterface {
     return $this->formState;
   }
 
@@ -88,14 +86,14 @@ class WebformElementAlterEvent extends Event implements EventInterface {
    * @return array
    *   The context.
    */
-  public function getContext() {
+  public function getContext(): array {
     return $this->context;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getDispatcherType() {
+  public function getDispatcherType(): string {
     return HookEventDispatcherInterface::WEBFORM_ELEMENT_ALTER;
   }
 

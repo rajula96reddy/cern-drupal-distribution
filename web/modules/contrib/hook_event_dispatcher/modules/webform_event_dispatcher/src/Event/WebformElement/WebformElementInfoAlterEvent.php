@@ -8,8 +8,6 @@ use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Class WebformElementInfoAlterEvent.
- *
- * @package Drupal\webform_event_dispatcher\Event\Element
  */
 class WebformElementInfoAlterEvent extends Event implements EventInterface {
 
@@ -17,7 +15,8 @@ class WebformElementInfoAlterEvent extends Event implements EventInterface {
    * The webform element.
    *
    * @var array
-   *   The array of webform handlers, keyed on the machine-readable element name.
+   *   The array of webform handlers,
+   *   keyed on the machine-readable element name.
    */
   private $definitions;
 
@@ -25,7 +24,8 @@ class WebformElementInfoAlterEvent extends Event implements EventInterface {
    * WidgetFormAlterEvent constructor.
    *
    * @param array $definitions
-   *   The array of webform handlers, keyed on the machine-readable element name.
+   *   The array of webform handlers,
+   *   keyed on the machine-readable element name.
    */
   public function __construct(array &$definitions) {
     $this->definitions = &$definitions;
@@ -35,16 +35,17 @@ class WebformElementInfoAlterEvent extends Event implements EventInterface {
    * Get the definitions.
    *
    * @return array
-   *   The array of webform handlers, keyed on the machine-readable element name.
+   *   The array of webform handlers,
+   *   keyed on the machine-readable element name.
    */
-  public function &getDefinitions() {
+  public function &getDefinitions(): array {
     return $this->definitions;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getDispatcherType() {
+  public function getDispatcherType(): string {
     return HookEventDispatcherInterface::WEBFORM_ELEMENT_INFO_ALTER;
   }
 

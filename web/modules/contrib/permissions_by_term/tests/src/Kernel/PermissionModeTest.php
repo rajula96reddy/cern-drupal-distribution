@@ -24,7 +24,7 @@ class PermissionModeTest extends PBTKernelTestBase {
 
   public function testCanUserAccessByNodeId(): void {
     $this->createRelationWithoutRestriction();
-    self::assertInternalType('string', $this->getNidNoRestriction());
+    self::assertIsNumeric($this->getNidNoRestriction());
     self::assertTrue($this->accessCheck->canUserAccessByNode(Node::load($this->getNidNoRestriction())));
     \Drupal::configFactory()
       ->getEditable('permissions_by_term.settings')
@@ -46,7 +46,7 @@ class PermissionModeTest extends PBTKernelTestBase {
 
   public function testHandleNode(): void {
     $this->createRelationWithoutRestriction();
-    self::assertInternalType('string', $this->getNidNoRestriction());
+    self::assertIsNumeric($this->getNidNoRestriction());
     $node = Node::load($this->getNidNoRestriction());
 
     self::assertInstanceOf(AccessResultNeutral::class, $this->accessCheck->handleNode($node, $node->language()->getId()));
@@ -71,7 +71,7 @@ class PermissionModeTest extends PBTKernelTestBase {
 
   public function testNodeAccessRecordCreation(): void {
     $this->createRelationWithoutRestriction();
-    self::assertInternalType('string', $this->getNidNoRestriction());
+    self::assertIsNumeric($this->getNidNoRestriction());
 
     $node = Node::load($this->getNidNoRestriction());
     $nodeAccessRecord = permissions_by_term_node_access_records($node);

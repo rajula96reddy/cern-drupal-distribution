@@ -95,11 +95,11 @@ class NodeEntityBundleInfoTest extends PBTKernelTestBase {
     $permissions = $this->nodeEntityBundleInfo->getPermissions();
 
     $expectedPermissions = [
-      'roleLabels' => [1 => ['First Role', 'Second Role', 'Third Role'], 2 => ['Second Role', 'Third Role']],
+      'roleLabels' => [1 => ['First Role', 'Second Role', 'Third Role', 'administrator'], 2 => ['Second Role', 'Third Role', 'administrator']],
       'userDisplayNames' => [1 => ['testUser1', 'testUser2', 'testUser3']]
     ];
 
-    $this->assertArraySubset($expectedPermissions, $permissions);
+    $this->assertEquals($expectedPermissions, $permissions);
   }
 
 }

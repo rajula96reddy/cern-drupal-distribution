@@ -2,22 +2,23 @@
 
 namespace Drupal\Tests\webform_event_dispatcher\Unit\WebformElement;
 
+use Drupal;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Tests\hook_event_dispatcher\Unit\HookEventDispatcherManagerSpy;
-use Drupal\Tests\UnitTestCase;
 use Drupal\webform_event_dispatcher\Event\WebformElement\WebformElementAlterEvent;
 use Drupal\webform_event_dispatcher\Event\WebformElement\WebformElementInfoAlterEvent;
 use Drupal\webform_event_dispatcher\Event\WebformElement\WebformElementTypeAlterEvent;
+use PHPUnit\Framework\TestCase;
+use function array_merge;
+use function array_merge_recursive;
 
 /**
  * Class WebformElementEventTest.
  *
- * @package Drupal\Tests\webform_event_dispatcher\Unit\Element
- *
  * @group hook_event_dispatcher
  */
-class WebformElementEventTest extends UnitTestCase {
+class WebformElementEventTest extends TestCase {
 
   /**
    * The manager.
@@ -29,26 +30,26 @@ class WebformElementEventTest extends UnitTestCase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  public function setUp(): void {
     $builder = new ContainerBuilder();
     $this->manager = new HookEventDispatcherManagerSpy();
     $this->manager->setMaxEventCount(2);
     $builder->set('hook_event_dispatcher.manager', $this->manager);
     $builder->compile();
-    \Drupal::setContainer($builder);
+    Drupal::setContainer($builder);
   }
 
   /**
    * Test WebformElementInfoAlterEvent.
    */
-  public function testWebformElementInfoAlterEvent() {
+  public function testWebformElementInfoAlterEvent(): void {
     $definitions = ['textfield' => ['id' => 'textfield']];
     $alters = ['textfield' => ['#test' => 'test']];
     $expectedDefinitions = array_merge_recursive($definitions, $alters);
 
     // Create event subscriber to alter element info.
     $this->manager->setEventCallbacks([
-      'hook_event_dispatcher.webform.element.info.alter' => function (WebformElementInfoAlterEvent $event) {
+      'hook_event_dispatcher.webform.element.info.alter' => static function (WebformElementInfoAlterEvent $event) {
         $definitions = &$event->getDefinitions();
         $definitions['textfield']['#test'] = 'test';
       },
@@ -56,16 +57,16 @@ class WebformElementEventTest extends UnitTestCase {
 
     webform_event_dispatcher_webform_element_info_alter($definitions);
 
-    /* @var \Drupal\webform_event_dispatcher\Event\WebformElement\WebformElementInfoAlterEvent $event */
+    /** @var \Drupal\webform_event_dispatcher\Event\WebformElement\WebformElementInfoAlterEvent $event */
     $event = $this->manager->getRegisteredEvent('hook_event_dispatcher.webform.element.info.alter');
-    $this->assertInstanceOf(WebformElementInfoAlterEvent::class, $event);
-    $this->assertSame($expectedDefinitions, $event->getDefinitions());
+    self::assertInstanceOf(WebformElementInfoAlterEvent::class, $event);
+    self::assertSame($expectedDefinitions, $event->getDefinitions());
   }
 
   /**
    * Test WebformElementAlterEvent.
    */
-  public function testWebformElementAlterEvent() {
+  public function testWebformElementAlterEvent(): void {
     $element = ['#type' => 'textfield'];
     $alters = ['#test' => 'test'];
     $expectedElement = array_merge($element, $alters);
@@ -74,7 +75,7 @@ class WebformElementEventTest extends UnitTestCase {
 
     // Create event subscriber to alter element.
     $this->manager->setEventCallbacks([
-      'hook_event_dispatcher.webform.element.alter' => function (WebformElementAlterEvent $event) {
+      'hook_event_dispatcher.webform.element.alter' => static function (WebformElementAlterEvent $event) {
         $element = &$event->getElement();
         $element['#test'] = 'test';
       },
@@ -82,18 +83,18 @@ class WebformElementEventTest extends UnitTestCase {
 
     webform_event_dispatcher_webform_element_alter($element, $formState, $context);
 
-    /* @var \Drupal\webform_event_dispatcher\Event\WebformElement\WebformElementAlterEvent $event */
+    /** @var \Drupal\webform_event_dispatcher\Event\WebformElement\WebformElementAlterEvent $event */
     $event = $this->manager->getRegisteredEvent('hook_event_dispatcher.webform.element.alter');
-    $this->assertInstanceOf(WebformElementAlterEvent::class, $event);
-    $this->assertSame($expectedElement, $event->getElement());
-    $this->assertSame($formState, $event->getFormState());
-    $this->assertSame($context, $event->getContext());
+    self::assertInstanceOf(WebformElementAlterEvent::class, $event);
+    self::assertSame($expectedElement, $event->getElement());
+    self::assertSame($formState, $event->getFormState());
+    self::assertSame($context, $event->getContext());
   }
 
   /**
    * Test WebformElementTypeAlterEvent.
    */
-  public function testWebformElementTypeAlterEvent() {
+  public function testWebformElementTypeAlterEvent(): void {
     $elementType = 'textfield';
     $element = ['#type' => $elementType];
     $alters = ['#test' => 'test'];
@@ -103,7 +104,7 @@ class WebformElementEventTest extends UnitTestCase {
 
     // Create event subscriber to alter element of given type.
     $this->manager->setEventCallbacks([
-      "hook_event_dispatcher.webform.element_$elementType.alter" => function (WebformElementAlterEvent $event) {
+      "hook_event_dispatcher.webform.element_$elementType.alter" => static function (WebformElementAlterEvent $event) {
         $element = &$event->getElement();
         $element['#test'] = 'test';
       },
@@ -111,13 +112,13 @@ class WebformElementEventTest extends UnitTestCase {
 
     webform_event_dispatcher_webform_element_alter($element, $formState, $context);
 
-    /* @var \Drupal\webform_event_dispatcher\Event\WebformElement\WebformElementTypeAlterEvent $event */
+    /** @var \Drupal\webform_event_dispatcher\Event\WebformElement\WebformElementTypeAlterEvent $event */
     $event = $this->manager->getRegisteredEvent("hook_event_dispatcher.webform.element_$elementType.alter");
-    $this->assertInstanceOf(WebformElementTypeAlterEvent::class, $event);
-    $this->assertSame($expectedElement, $event->getElement());
-    $this->assertSame($elementType, $event->getElementType());
-    $this->assertSame($formState, $event->getFormState());
-    $this->assertSame($context, $event->getContext());
+    self::assertInstanceOf(WebformElementTypeAlterEvent::class, $event);
+    self::assertSame($expectedElement, $event->getElement());
+    self::assertSame($elementType, $event->getElementType());
+    self::assertSame($formState, $event->getFormState());
+    self::assertSame($context, $event->getContext());
   }
 
 }

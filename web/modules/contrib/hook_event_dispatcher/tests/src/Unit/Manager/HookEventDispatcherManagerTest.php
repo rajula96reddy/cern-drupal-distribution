@@ -3,7 +3,7 @@
 namespace Drupal\Tests\hook_event_dispatcher\Unit\Manager;
 
 use Drupal\hook_event_dispatcher\Manager\HookEventDispatcherManager;
-use Drupal\Tests\UnitTestCase;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
@@ -13,19 +13,19 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
  *
  * @group hook_event_dispatcher
  */
-class HookEventDispatcherManagerTest extends UnitTestCase {
+class HookEventDispatcherManagerTest extends TestCase {
 
   /**
    * Test event dispatcher.
    */
-  public function testEventDispatcher() {
+  public function testEventDispatcher(): void {
     $event = new FakeEvent('test');
     $dispatcher = $this->createMock(EventDispatcherInterface::class);
     $dispatcher->method('dispatch')->with('test', $event)->willReturn($event);
 
     $manager = new HookEventDispatcherManager($dispatcher);
     $returnedEvent = $manager->register($event);
-    $this->assertEquals($event, $returnedEvent);
+    self::assertSame($event, $returnedEvent);
   }
 
 }

@@ -129,7 +129,7 @@ class TermHandler {
       return NULL;
     }
 
-    return $resultArray['0'];
+    return current($resultArray);
   }
 
   /**

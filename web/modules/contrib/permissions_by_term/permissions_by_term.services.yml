@@ -52,4 +52,4 @@ services:
 
     permissions_by_term.cache_invalidator:
       class: Drupal\permissions_by_term\Cache\CacheInvalidator
-      autowire: true
+      arguments: ['@cache_tags.invalidator']

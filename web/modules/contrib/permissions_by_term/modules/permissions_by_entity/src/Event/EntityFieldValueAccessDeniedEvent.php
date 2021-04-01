@@ -4,7 +4,7 @@ namespace Drupal\permissions_by_entity\Event;
 
 use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Field\FieldItemListInterface;
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * Class EntityFieldValueAccessDeniedEvent.
@@ -47,7 +47,7 @@ class EntityFieldValueAccessDeniedEvent extends Event {
    * @param \Drupal\Core\Field\FieldItemListInterface $field
    *   The field that contains the fieldable entity.
    */
-  public function setField(FieldItemListInterface $field) {
+  public function setField(FieldItemListInterface $field): void {
     $this->field = $field;
   }
 
@@ -57,7 +57,7 @@ class EntityFieldValueAccessDeniedEvent extends Event {
    * @return \Drupal\Core\Field\FieldItemListInterface
    *   The field that contains the fieldable entity.
    */
-  public function getField() {
+  public function getField(): FieldItemListInterface {
     return $this->field;
   }
 
@@ -67,7 +67,7 @@ class EntityFieldValueAccessDeniedEvent extends Event {
    * @param \Drupal\Core\Entity\FieldableEntityInterface $entity
    *   A fieldable entity.
    */
-  public function setEntity(FieldableEntityInterface $entity) {
+  public function setEntity(FieldableEntityInterface $entity): void {
     $this->entity = $entity;
   }
 
@@ -77,7 +77,7 @@ class EntityFieldValueAccessDeniedEvent extends Event {
    * @return \Drupal\Core\Entity\FieldableEntityInterface
    *   A fieldable entity.
    */
-  public function getEntity() {
+  public function getEntity(): FieldableEntityInterface {
     return $this->entity;
   }
 
@@ -87,7 +87,7 @@ class EntityFieldValueAccessDeniedEvent extends Event {
    * @param int $uid
    *   The user id.
    */
-  public function setUid($uid) {
+  public function setUid($uid): void {
     $this->uid = $uid;
   }
 
@@ -97,7 +97,7 @@ class EntityFieldValueAccessDeniedEvent extends Event {
    * @return int
    *   The user id.
    */
-  public function getUid() {
+  public function getUid(): int {
     return $this->uid;
   }
 
@@ -107,7 +107,7 @@ class EntityFieldValueAccessDeniedEvent extends Event {
    * @param int $index
    *   The current index.
    */
-  public function setIndex($index) {
+  public function setIndex($index): void {
     $this->index = $index;
   }
 
@@ -117,7 +117,8 @@ class EntityFieldValueAccessDeniedEvent extends Event {
    * @return int
    *   The current index.
    */
-  public function getIndex() {
+  public function getIndex(): int {
     return $this->index;
   }
+
 }

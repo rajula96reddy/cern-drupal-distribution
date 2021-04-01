@@ -6,6 +6,7 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityFieldManager;
 use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
+use Drupal\path_alias\AliasManagerInterface;
 use Drupal\permissions_by_term\Service\NodeEntityBundleInfo;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -27,9 +28,17 @@ class NodeEntityBundleController extends ControllerBase {
    */
   private $nodeEntityBundleInfo;
 
-  public function __construct(EntityFieldManager $entityFieldManager, NodeEntityBundleInfo $nodeEntityBundleInfo) {
+  /**
+   * Path alias manager.
+   *
+   * @var \Drupal\path_alias\AliasManagerInterface
+   */
+  protected $pathAliasManager;
+
+  public function __construct(EntityFieldManager $entityFieldManager, NodeEntityBundleInfo $nodeEntityBundleInfo, AliasManagerInterface $path_alias_manager) {
     $this->entityFieldManager = $entityFieldManager;
     $this->nodeEntityBundleInfo = $nodeEntityBundleInfo;
+    $this->pathAliasManager = $path_alias_manager;
   }
 
   /**
@@ -38,7 +47,8 @@ class NodeEntityBundleController extends ControllerBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('entity_field.manager'),
-      $container->get('permissions_by_term.node_entity_bundle_info')
+      $container->get('permissions_by_term.node_entity_bundle_info'),
+      $container->get('path_alias.manager')
     );
   }
 
@@ -95,7 +105,7 @@ class NodeEntityBundleController extends ControllerBase {
   }
 
   private function getContentType($nodeEditPath) {
-    $alias = \Drupal::service('path.alias_manager')->getPathByAlias($nodeEditPath);
+    $alias = $this->pathAliasManager->getPathByAlias($nodeEditPath);
     $params = Url::fromUri("internal:" . $alias)->getRouteParameters();
     $entity_type = key($params);
     $node = \Drupal::entityTypeManager()->getStorage($entity_type)->load($params[$entity_type]);

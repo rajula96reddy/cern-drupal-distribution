@@ -3,8 +3,8 @@
 namespace Drupal\pbt_entity_test\EventSubscriber;
 
 use Drupal\dynamic_page_cache\EventSubscriber\DynamicPageCacheSubscriber;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 
 /**
  * Mocked dynamic page cache subscriber.
@@ -16,7 +16,7 @@ class MockedDynamicPageCacheSubscriber extends DynamicPageCacheSubscriber {
   /**
    * {@inheritdoc}
    */
-  public function onRouteMatch(GetResponseEvent $event) {
+  public function onRouteMatch(RequestEvent $event): void {
     // Sets the response for the current route, if cached.
     $cached = $this->renderCache->get($this->dynamicPageCacheRedirectRenderArray);
     if ($cached) {
@@ -29,7 +29,7 @@ class MockedDynamicPageCacheSubscriber extends DynamicPageCacheSubscriber {
   /**
    * {@inheritdoc}
    */
-  public function onResponse(FilterResponseEvent $event) {
+  public function onResponse(ResponseEvent $event): void {
     $response = $event->getResponse();
 
     // Embed the response object in a render array so that RenderCache is able

@@ -4,13 +4,14 @@ dependencies:
   - 'drupal:system'
   - 'drupal:field'
   - 'drupal:taxonomy'
+  - 'drupal:path_alias'
 type: module
-core: '8.x'
-# version: '8.x-2.28'
+core_version_requirement: '^9'
+# version: '3.1.9'
 package: 'Permissions by Term'
 configure: permissions_by_term.settings
 
-# Information added by Drupal.org packaging script on 2021-02-02
-version: '8.x-2.29'
+# Information added by Drupal.org packaging script on 2021-03-01
+version: '3.1.10'
 project: 'permissions_by_term'
-datestamp: 1612278252
+datestamp: 1614602567

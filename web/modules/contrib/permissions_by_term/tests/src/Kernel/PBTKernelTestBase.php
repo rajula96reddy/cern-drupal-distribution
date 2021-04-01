@@ -369,7 +369,7 @@ abstract class PBTKernelTestBase extends KernelTestBase {
   /**
    * @param int $nidNoRestiction
    */
-  protected function setNidNoRestriction($nidNoRestiction) {
+  protected function setNidNoRestriction(int $nidNoRestiction) {
     $this->nidNoRestriction = $nidNoRestiction;
   }
 

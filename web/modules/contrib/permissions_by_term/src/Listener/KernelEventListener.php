@@ -15,8 +15,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
 
@@ -77,20 +77,14 @@ class KernelEventListener implements EventSubscriberInterface
   /**
    * Access restriction on kernel request.
    */
-  public function onKernelRequest(GetResponseEvent $event) {
+  public function onKernelRequest(RequestEvent $event): void {
     if ($event->isMasterRequest()) {
 
-      if (($result = $this->handleAccessToNodePages($event)) instanceof Response) {
-        $event->setResponse($result);
-      }
+      $this->handleAccessToNodePages($event);
 
-      if (($result = $this->handleAccessToTermAutocompleteLists($event)) instanceof Response) {
-        $event->setResponse($result);
-      }
+      $this->handleAccessToTermAutocompleteLists($event);
 
-      if (($result = $this->handleAccessToTaxonomyTermViewsPages()) instanceof Response) {
-        $event->setResponse($result);
-      }
+      $this->handleAccessToTaxonomyTermViewsPages();
 
     }
   }
@@ -98,14 +92,14 @@ class KernelEventListener implements EventSubscriberInterface
   /**
    * Restricts access on kernel response.
    */
-  public function onKernelResponse(FilterResponseEvent $event) {
+  public function onKernelResponse(ResponseEvent $event) {
     $this->restrictTermAccessAtAutoCompletion($event);
   }
 
   /**
    * Restricts access to terms on AJAX auto completion.
    */
-  private function restrictTermAccessAtAutoCompletion(FilterResponseEvent $event) {
+  private function restrictTermAccessAtAutoCompletion(ResponseEvent $event) {
     if ($event->getRequest()->attributes->get('target_type') === 'taxonomy_term' &&
       $event->getRequest()->attributes->get('_route') === 'system.entity_autocomplete'
     ) {
@@ -152,7 +146,7 @@ class KernelEventListener implements EventSubscriberInterface
     return FALSE;
   }
 
-  private function handleAccessToTaxonomyTermViewsPages() {
+  private function handleAccessToTaxonomyTermViewsPages(): void {
     $url_object = \Drupal::service('path.validator')->getUrlIfValid(\Drupal::service('path.current')->getPath());
     if ($url_object instanceof Url && $url_object->getRouteName() === 'entity.taxonomy_term.canonical') {
       $route_parameters = $url_object->getrouteParameters();
@@ -164,7 +158,7 @@ class KernelEventListener implements EventSubscriberInterface
     }
   }
 
-  private function handleAccessToNodePages(GetResponseEvent $event) {
+  private function handleAccessToNodePages(RequestEvent $event): void {
     // Restricts access to nodes (views/edit).
     if ($this->canRequestGetNode($event->getRequest())) {
       $node = $event->getRequest()->attributes->get('node');
@@ -181,7 +175,7 @@ class KernelEventListener implements EventSubscriberInterface
     }
   }
 
-  private function handleAccessToTermAutocompleteLists(GetResponseEvent $event) {
+  private function handleAccessToTermAutocompleteLists(RequestEvent $event): void {
     // Restrict access to taxonomy terms by autocomplete list.
     if ($event->getRequest()->attributes->get('target_type') === 'taxonomy_term' &&
       $event->getRequest()->attributes->get('_route') === 'system.entity_autocomplete') {

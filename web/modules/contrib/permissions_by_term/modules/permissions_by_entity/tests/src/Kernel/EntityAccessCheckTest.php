@@ -10,8 +10,8 @@ use Drupal\taxonomy\Entity\Vocabulary;
 use Drupal\user\Entity\User;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -90,7 +90,7 @@ class EntityAccessCheckTest extends KernelTestBase {
   /**
    * Tests basic access control.
    */
-  public function testBaseAccessControl() {
+  public function testBaseAccessControl(): void {
     self::assertTrue($this->accessChecker->isAccessAllowed($this->nodes['test_entity_term_a'], $this->terms['term_user_a']['user']->id()));
     self::assertTrue($this->accessChecker->isAccessAllowed($this->nodes['test_entity_term_b'], $this->terms['term_user_b']['user']->id()));
 
@@ -101,41 +101,41 @@ class EntityAccessCheckTest extends KernelTestBase {
   /**
    * Tests even listener based access control.
    */
-  public function testAnonymousAccessDeniedUsingKernel() {
+  public function testAnonymousAccessDeniedUsingKernel(): void {
     $dispatcher = $this->getPopulatedDispatcher();
 
-    $this->setExpectedException(AccessDeniedHttpException::class);
-    $dispatcher->dispatch(KernelEvents::REQUEST, $this->getRequestResponseEvent());
+    $this->expectException(AccessDeniedHttpException::class);
+    $dispatcher->dispatch(KernelEvents::REQUEST, $this->getRequestEvent());
   }
 
   /**
    * Tests even listener based access control.
    */
-  public function testAuthenticatedAccessUsingKernel() {
+  public function testAuthenticatedAccessUsingKernel(): void {
     $dispatcher = $this->getPopulatedDispatcher();
 
     $this->container->get('current_user')->setAccount($this->terms['term_user_a']['user']);
-    $dispatcher->dispatch(KernelEvents::REQUEST, $this->getRequestResponseEvent());
+    $dispatcher->dispatch(KernelEvents::REQUEST, $this->getRequestEvent());
   }
 
   /**
    * Tests even listener based access control.
    */
-  public function testAuthenticatedDeniedOnCachedAccessUsingKernel() {
+  public function testAuthenticatedDeniedOnCachedAccessUsingKernel(): void {
     $dispatcher = $this->getPopulatedDispatcher();
 
     // Execute first request for allowed user.
     $this->container->get('current_user')->setAccount($this->terms['term_user_a']['user']);
-    $dispatcher->dispatch(KernelEvents::REQUEST, $this->getRequestResponseEvent());
-    $dispatcher->dispatch(KernelEvents::RESPONSE, $this->getCachableResponseEvent());
+    $dispatcher->dispatch(KernelEvents::REQUEST, $this->getRequestEvent());
+    $dispatcher->dispatch(KernelEvents::RESPONSE, $this->getCacheableResponseEvent());
 
     // Reset the cache to emulate a new request.
     $this->container->get('permissions_by_entity.checked_entity_cache')->clear();
 
     // Execute second request for disallowed user.
     $this->container->get('current_user')->setAccount($this->terms['term_user_b']['user']);
-    $this->setExpectedException(AccessDeniedHttpException::class);
-    $dispatcher->dispatch(KernelEvents::REQUEST, $this->getRequestResponseEvent());
+    $this->expectException(AccessDeniedHttpException::class);
+    $dispatcher->dispatch(KernelEvents::REQUEST, $this->getRequestEvent());
   }
 
   /**
@@ -206,7 +206,7 @@ class EntityAccessCheckTest extends KernelTestBase {
    *
    * @return \Symfony\Component\EventDispatcher\EventDispatcher
    */
-  private function getPopulatedDispatcher() {
+  private function getPopulatedDispatcher(): EventDispatcher {
     $dispatcher = new EventDispatcher();
     $cache_subscriber = $this->container->get('mocked_dynamic_page_cache_subscriber');
     $access_subscriber = $this->container->get('permissions_by_entity.kernel_event_subscriber');
@@ -219,27 +219,27 @@ class EntityAccessCheckTest extends KernelTestBase {
   /**
    * Gets a request response event for term A.
    *
-   * @return \Symfony\Component\HttpKernel\Event\GetResponseEvent
+   * @return \Symfony\Component\HttpKernel\Event\RequestEvent
    */
-  private function getRequestResponseEvent() {
+  private function getRequestEvent(): RequestEvent {
     $request = new Request();
     $request->attributes->set('_entity', $this->nodes['test_entity_term_a']);
 
-    $kernel = $this->getMock(HttpKernelInterface::class);
-    return new GetResponseEvent($kernel, $request, HttpKernelInterface::MASTER_REQUEST);
+    $kernel = $this->createMock(HttpKernelInterface::class);
+    return new RequestEvent($kernel, $request, HttpKernelInterface::MASTER_REQUEST);
   }
 
   /**
-   * Gets a cachable filter response for term a.
+   * Gets a cacheable filter response for term "a".
    *
-   * @return \Symfony\Component\HttpKernel\Event\FilterResponseEvent
+   * @return \Symfony\Component\HttpKernel\Event\ResponseEvent
    */
-  private function getCachableResponseEvent() {
+  private function getCacheableResponseEvent(): ResponseEvent {
     $response = new CacheableResponse();
-    $kernel = $this->getMock(HttpKernelInterface::class);
+    $kernel = $this->createMock(HttpKernelInterface::class);
     $request = new Request();
     $request->attributes->set('_entity', $this->nodes['test_entity_term_a']);
 
-    return new FilterResponseEvent($kernel, $request, HttpKernelInterface::SUB_REQUEST, $response);
+    return new ResponseEvent($kernel, $request, HttpKernelInterface::SUB_REQUEST, $response);
   }
 }

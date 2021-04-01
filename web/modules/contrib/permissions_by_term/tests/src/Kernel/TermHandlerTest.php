@@ -42,7 +42,7 @@ class TermHandlerTest extends PBTKernelTestBase {
         ),
     );
 
-    self::assertArraySubset($expectedNidToTidsPairs, $tidsBoundToAllNids);
+    self::assertEquals($expectedNidToTidsPairs, $tidsBoundToAllNids);
   }
 
 }

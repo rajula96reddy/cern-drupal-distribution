@@ -34,7 +34,7 @@ class PermissionsByTermController extends ControllerBase {
     $prefix = count($array) ? implode(', ', $array) . ', ' : '';
 
     foreach ($aUserIds as $iUserId) {
-      $oUser = user_load($iUserId);
+      $oUser = \Drupal::service('entity_type.manager')->getStorage('user')->load($iUserId);
       $matches[$prefix . $oUser->getDisplayName()] = $oUser->getDisplayName();
     }
 

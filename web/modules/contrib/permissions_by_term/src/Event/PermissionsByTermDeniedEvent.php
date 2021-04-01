@@ -10,6 +10,7 @@ use Symfony\Component\EventDispatcher\Event;
  * @package Drupal\permissions_by_term\Event
  */
 class PermissionsByTermDeniedEvent extends Event {
+
   const NAME = 'permissions_by_term.access.denied';
 
   /**

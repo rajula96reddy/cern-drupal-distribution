@@ -33,7 +33,7 @@ DomClient.prototype.renderPermissionsInfo = function() {
 
   const generalInfoText = this.drupal.t("This widget shows information about taxonomy term related permissions. It's being updated, as soon you make any related changes in the form.");
 
-  this.documentAdapter.setDivHtmlByClassSelector('#edit-permissions-by-term-info .js-form-type-item', '<div id="edit-permissions-by-term-info"><div class="form-type-item">' + generalInfoText + '<br /><br />' + allowedUsersHtml + '<br />' + allowedRolesHtml + '</div></div>');
+  this.documentAdapter.setDivHtmlByClassSelector('#edit-permissions-by-term-info .js-form-type-item', '<div id="edit-permissions-by-term-info"><div class="js-form-type-item">' + generalInfoText + '<br /><br />' + allowedUsersHtml + '<br />' + allowedRolesHtml + '</div></div>');
 }
 
 DomClient.prototype._computeTidsByAutocomplete = function(fieldWrapperCSSClass) {

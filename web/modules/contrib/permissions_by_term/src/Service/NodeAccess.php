@@ -288,14 +288,8 @@ class NodeAccess {
     return 'Processed node ' . $nid;
   }
 
-  /**
-   * Rebuild permissions by term records only.
-   *
-   * @param $uid|NULL
-   *   The user ID to which changes are scoped.
-   */
-  public function rebuildAccess($uid = NULL) {
-    $nids = $this->getNidsForAccessRebuild($uid);
+  public function rebuildAccess(): void {
+    $nids = $this->getNidsForAccessRebuild();
 
     if (count($nids) > 50) {
       $operations = array_map(function($id) {

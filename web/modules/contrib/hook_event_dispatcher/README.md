@@ -23,41 +23,22 @@ Examples
 --------
 You can find an example on how to use each Event in src/Example
 
-Add a preprocess event
-----------------------
-You can find an example how to add a new preprocess event in
-src/Example/preprocess_example_module. The event in this module will get
-dispatched on the specified hook (example) when enabled.
+Upgrading from 1.x to 2.x
+------------------------
+The 2.x version has been refactored to include several submodules that will
+need to be enabled in addition to the main hook_event_dispatcher modules, in
+order to use the events they expose. These currently include:
 
-To add your own preprocess event, you need the following three classes:
-1. [hook]PreprocessEvent
-2. [hook]EventVariables
-3. [hook]PreprocessEventFactory
+ - core_event_dispatcher
+ - field_event_dispatcher
+ - media_event_dispatcher
+ - path_event_dispatcher
+ - preprocess_event_dispatcher
+ - toolbar_event_dispatcher
+ - user_event_dispatcher
+ - views_event_dispatcher
+ - webform_event_dispatcher
 
-How you name them is of course up to you, but I suggest to name them like
-the already existing ones for consistency.
-
-#### [hook]PreprocessEvent
-This is the event that will fire on the specified hook, which contains the
-[hook]EventVariables that can be modified by the listener. It should
-implement PreprocessEventInterface, but I suggest to extend the
-AbstractPreprocessEvent as that will make your life easier.
-
-#### [hook]EventVariables
-Wrapper class for the event variables, with helper functions to add, modify
-and delete values in the variables array with ease. It should extend the
-AbstractEventVariables, as that is the base of all variable classes.
-
-#### [hook]PreprocessEventFactory
-This will create the event and the variables so it can be dispatched to the
-registered listeners. It should implement the interface
-PreprocessEventFactoryInterface. Furthermore the factory should be defined as a
-service with the tag preprocess_event_factory.
-
-### Extending already implemented event
-It is possible to extend an existing event, to add extra wrapper functions to
-the variables for instance. This works the same way as adding a new event. You
-need to create a new variables class, which extends the old one and create a
-factory that will create the existing event with the improved variables. If you
-give the factory the tag preprocess_event_factory it will have precedence over
-the default factory, so the old event will not be dispatched.
+For example, for Core hooks like THEME, the submodule of
+'core_event_dispatcher' has to be enabled for the site to continue working
+properly and the namespace of the used event will need to be updated.
