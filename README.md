@@ -141,3 +141,8 @@ To prevent this you can add this code to specify the PHP version you want to use
     "platform": {"php": "5.5.9"}
 },
 ```
+
+
+### Are the CERN modules supported for Drupal 9?
+
+Check here: https://gitlab.cern.ch/web-team/drupal/public/d9/migration-progress/-/blob/master/module_progress.md
