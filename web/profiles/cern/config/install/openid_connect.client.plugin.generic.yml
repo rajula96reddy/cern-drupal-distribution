@@ -1,0 +1,7 @@
+enabled: true
+settings:
+  issuer_url: $ISSUER_URL
+  authorization_endpoint: $AUTHORIZATION_ENDPOINT
+  token_endpoint: $TOKEN_ENDPOINT
+  userinfo_endpoint: $USERINFO_ENDPOINT
+  eval_every_time: true

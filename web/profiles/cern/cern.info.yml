@@ -30,7 +30,7 @@ dependencies:
   - help
   - history
   - image
-  - matomo  
+  - matomo
   - menu_link_content
   - menu_ui
   - node
@@ -41,7 +41,7 @@ dependencies:
   - rdf
   - search
   - shortcut
-  - simplesamlphp_auth
+  - openid_connect
   - syslog
   - taxonomy
   - toolbar

@@ -1,19 +1,7 @@
-
-openid_connect.settings:
-  always_save_userinfo: true
-  connect_existing_users: false
-  override_registration_settings: true
-  user_login_display: below
-  userinfo_mappings:
-    timezone: zoneinfo
-    user_picture: 0
-openid_connect.client.plugin.generic:
-  enabled: true
-  settings:
-    client_id: $CLIENT_ID
-    client_secret: $CLIENT_SECRET
-    authorization_endpoint: $AUTHORIZATION_ENDPOINT
-    token_endpoint: $TOKEN_ENDPOINT
-    userinfo_endpoint: $USERINFO_ENDPOINT
-    eval_every_time: true
-
+always_save_userinfo: true
+connect_existing_users: false
+override_registration_settings: true
+user_login_display: below
+userinfo_mappings:
+  timezone: zoneinfo
+  user_picture: 0
