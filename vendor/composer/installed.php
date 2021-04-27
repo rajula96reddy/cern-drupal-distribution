@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'df1cf2b87eac52cd22b0ee21972347da603c2e68',
+    'reference' => '1859023b10782850fc315d970743a682b389f5ad',
     'name' => 'drupal/recommended-project',
   ),
   'versions' => 
@@ -55,6 +55,15 @@
       array (
       ),
       'reference' => '0d38f13051ef05c223a2bb8e962d668e24785196',
+    ),
+    'cweagans/composer-patches' => 
+    array (
+      'pretty_version' => '1.7.0',
+      'version' => '1.7.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ae02121445ad75f4eaff800cc532b5e6233e2ddf',
     ),
     'dflydev/dot-access-data' => 
     array (
@@ -1600,7 +1609,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'df1cf2b87eac52cd22b0ee21972347da603c2e68',
+      'reference' => '1859023b10782850fc315d970743a682b389f5ad',
     ),
     'drupal/redirect' => 
     array (

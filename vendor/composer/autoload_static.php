@@ -46,6 +46,10 @@ class ComposerStaticInit26b9ab19422811c9528189a39d74c975
         array (
             'lsolesen\\pel\\' => 13,
         ),
+        'c' => 
+        array (
+            'cweagans\\Composer\\' => 18,
+        ),
         'X' => 
         array (
             'XdgBaseDir\\' => 11,
@@ -203,6 +207,10 @@ class ComposerStaticInit26b9ab19422811c9528189a39d74c975
         'lsolesen\\pel\\' => 
         array (
             0 => __DIR__ . '/..' . '/lsolesen/pel/src',
+        ),
+        'cweagans\\Composer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cweagans/composer-patches/src',
         ),
         'XdgBaseDir\\' => 
         array (
