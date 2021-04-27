@@ -14,11 +14,6 @@ class MetatagOpenGraphProductsTagsTest extends MetatagTagsTestBase {
   /**
    * {@inheritdoc}
    */
-  protected static $modules = ['metatag_open_graph_products'];
-
-  /**
-   * {@inheritdoc}
-   */
   protected $tags = [
     'product_price_amount',
     'product_price_currency',
@@ -33,6 +28,14 @@ class MetatagOpenGraphProductsTagsTest extends MetatagTagsTestBase {
    * {@inheritdoc}
    */
   protected $testNameAttribute = 'property';
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp() {
+    parent::$modules[] = 'metatag_open_graph_products';
+    parent::setUp();
+  }
 
   /**
    * Each of these meta tags has a different tag name vs its internal name.

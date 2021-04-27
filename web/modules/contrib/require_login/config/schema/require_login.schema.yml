@@ -1,33 +1,22 @@
 require_login.config:
   type: config_object
-  label: 'Require Login'
+  label: 'Require login'
   mapping:
     auth_path:
       type: text
-      label: 'Login form path'
+      label: 'Login path'
     destination_path:
       type: text
-      label: 'Login destination path'
+      label: 'Destination path'
     deny_message:
       type: text
       label: 'Access denied message'
     excluded_403:
       type: boolean
-      label: 'Exclude 403 (access denied) page'
+      label: 'Excluded 403 page'
     excluded_404:
       type: boolean
-      label: 'Exclude 404 (not found) page'
+      label: 'Excluded 404 page'
     excluded_paths:
       type: text
       label: 'Excluded paths'
-    excluded_node_types:
-      type: config_object
-      mapping:
-        type: require_login.node_type
-    excluded_routes:
-      type: text
-      label: 'Excluded route names'
-
-require_login.node_type:
-  type: string
-  label: 'Content Type'

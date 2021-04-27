@@ -94,8 +94,7 @@ class EntityReferenceRevisionsAdminTest extends BrowserTestBase {
       'title[0][value]' => $title,
       'body[0][value]' => 'Revision 1',
     );
-    $this->drupalGet('node/add/article');
-    $this->submitForm($edit, 'Save');
+    $this->drupalPostForm('node/add/article', $edit, t('Save'));
     $this->assertText($title);
     $this->assertText('Revision 1');
     $node = $this->drupalGetNodeByTitle($title);
@@ -108,7 +107,7 @@ class EntityReferenceRevisionsAdminTest extends BrowserTestBase {
       'title[0][value]' => 'Entity reference revision content',
       'field_entity_reference_revisions[1][target_id]' => $node->label() . ' (' . $node->id() . ')',
     ];
-    $this->submitForm($edit, 'Save');
+    $this->drupalPostForm(NULL, $edit, t('Save'));
     $this->assertLinkByHref('node/' . $node_target->id());
     $this->assertText('Entity revisions Entity reference revision content has been created.');
     $this->assertText('Entity reference revision content');
@@ -120,8 +119,7 @@ class EntityReferenceRevisionsAdminTest extends BrowserTestBase {
       'body[0][value]' => 'Revision 2',
       'revision' => TRUE,
     );
-    $this->drupalGet('node/' . $node->id() . '/edit');
-    $this->submitForm($edit, 'Save');
+    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit, t('Save'));
     $this->assertText($title);
     $this->assertText('Revision 2');
 
@@ -139,8 +137,7 @@ class EntityReferenceRevisionsAdminTest extends BrowserTestBase {
       'label' => 'Entity reference revisions field',
       'field_name' => 'entity_ref_revisions_field',
     );
-    $this->drupalGet('admin/structure/types/manage/entity_revisions/fields/add-field');
-    $this->submitForm($edit, 'Save and continue');
+    $this->drupalPostForm('admin/structure/types/manage/entity_revisions/fields/add-field', $edit, t('Save and continue'));
     $this->assertNoOption('edit-settings-target-type', 'user');
     $this->assertOption('edit-settings-target-type', 'node');
 

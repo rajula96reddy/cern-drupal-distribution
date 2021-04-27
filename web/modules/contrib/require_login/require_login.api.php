@@ -2,18 +2,20 @@
 
 /**
  * @file
- * Hooks for the require_login module.
+ * Documentation for require login API.
  */
 
 /**
- * Alter default authentication checks.
+ * Alter login requirement checks. The $checks variable is a non-associative
+ * array containing only boolean values. Login will be required if $checks
+ * includes at least one TRUE boolean.
  *
- * @param array &$default_checks
- *   An array of boolean values indicating authentication status.
+ * @param array &$checks
+ *   Boolean check values.
  */
-function hook_require_login_authcheck_alter(array &$default_checks) {
-  $var1 = $var2 = 'some-value';
+function hook_require_login_authcheck_alter(&$checks) {
+  $variable_1 = $variable_2 = 'hello-world';
 
-  // If $var1 equals $var2 then allow unauthenticated access.
-  $default_checks[] = ($var1 == $var2);
+  // Allow access if $variable_1 equals $variable_2.
+  $checks[] = ($variable_1 == $variable_2);
 }

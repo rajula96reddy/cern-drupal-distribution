@@ -73,8 +73,7 @@ class EntityReferenceRevisionsNormalizerTest extends BrowserTestBase {
       'title[0][value]' => $title,
       'body[0][value]' => 'Revision 1',
     );
-    $this->drupalGet('node/add/article');
-    $this->submitForm($edit, 'Save');
+    $this->drupalPostForm('node/add/article', $edit, t('Save'));
     $this->assertText($title);
     $this->assertText('Revision 1');
     $node = $this->drupalGetNodeByTitle($title);
@@ -85,8 +84,7 @@ class EntityReferenceRevisionsNormalizerTest extends BrowserTestBase {
       'title[0][value]' => $err_title,
       'field_entity_reference_revisions[0][target_id]' => $node->label() . ' (' . $node->id() . ')',
     );
-    $this->drupalGet('node/add/entity_revisions');
-    $this->submitForm($edit, 'Save');
+    $this->drupalPostForm('node/add/entity_revisions', $edit, t('Save'));
     $this->assertText('Entity revisions Entity reference revision content has been created.');
     $err_node = $this->drupalGetNodeByTitle($err_title);
 
@@ -99,8 +97,7 @@ class EntityReferenceRevisionsNormalizerTest extends BrowserTestBase {
       'body[0][value]' => 'Revision 2',
       'revision' => TRUE,
     );
-    $this->drupalGet('node/' . $node->id() . '/edit');
-    $this->submitForm($edit, 'Save');
+    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit, t('Save'));
     $serializer = $this->container->get('serializer');
     $normalized = $serializer->normalize($err_node, 'hal_json');
     $request = \Drupal::request();

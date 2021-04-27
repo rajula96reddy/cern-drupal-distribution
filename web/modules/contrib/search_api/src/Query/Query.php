@@ -756,6 +756,10 @@ class Query implements QueryInterface, RefinableCacheableDependencyInterface {
    * {@inheritdoc}
    */
   public function getCacheContexts() {
+    // Call the pre-execute method to ensure that processors and modules have
+    // had the chance to alter the query and modify the cacheability metadata.
+    $this->preExecute();
+
     $contexts = $this->cacheContexts;
 
     foreach ($this->getIndex()->getDatasources() as $datasource) {
@@ -769,6 +773,10 @@ class Query implements QueryInterface, RefinableCacheableDependencyInterface {
    * {@inheritdoc}
    */
   public function getCacheTags() {
+    // Call the pre-execute method to ensure that processors and modules have
+    // had the chance to alter the query and modify the cacheability metadata.
+    $this->preExecute();
+
     $tags = $this->cacheTags;
 
     // If the configuration of the search index changes we should invalidate the
@@ -783,6 +791,10 @@ class Query implements QueryInterface, RefinableCacheableDependencyInterface {
    * {@inheritdoc}
    */
   public function getCacheMaxAge() {
+    // Call the pre-execute method to ensure that processors and modules have
+    // had the chance to alter the query and modify the cacheability metadata.
+    $this->preExecute();
+
     return $this->cacheMaxAge;
   }
 

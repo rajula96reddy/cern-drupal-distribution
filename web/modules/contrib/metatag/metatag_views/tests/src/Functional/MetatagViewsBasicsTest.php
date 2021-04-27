@@ -17,7 +17,7 @@ class MetatagViewsBasicsTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected static $modules = [
+  public static $modules = [
     // Modules for core functionality.
     'block',
     'field',

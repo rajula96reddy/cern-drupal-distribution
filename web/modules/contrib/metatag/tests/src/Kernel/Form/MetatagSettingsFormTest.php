@@ -27,7 +27,7 @@ class MetatagSettingsFormTest extends KernelTestBase {
    *
    * @var array
    */
-  protected static $modules = [
+  public static $modules = [
     // Core modules.
     'system',
 

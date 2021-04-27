@@ -33,7 +33,7 @@ class CreateFixtureNodesForTestingCommands extends DrushCommands {
    * @command permissions-by-term:create-nodes-with-permissions
    * @aliases pbtcnwp
    */
-  public function createNodesWithPermissions(int $numNodes = 1000): void {
+  public function createOneThousandNodesWithPermissions(int $numNodes = 1000): void {
     if ($this->io()->confirm('Do you really want to create ' . $numNodes . ' Drupal nodes with permissions? This is a testing feature for the permissions by term module.', FALSE)) {
       $this->io()->progressStart($numNodes);
 

@@ -50,10 +50,6 @@ class ComposerStaticInit26b9ab19422811c9528189a39d74c975
         array (
             'cweagans\\Composer\\' => 18,
         ),
-        'X' => 
-        array (
-            'XdgBaseDir\\' => 11,
-        ),
         'W' => 
         array (
             'Wikimedia\\Composer\\Merge\\V2\\' => 28,
@@ -162,7 +158,6 @@ class ComposerStaticInit26b9ab19422811c9528189a39d74c975
         'F' => 
         array (
             'FontLib\\' => 8,
-            'FileEye\\MimeMap\\' => 16,
         ),
         'E' => 
         array (
@@ -211,10 +206,6 @@ class ComposerStaticInit26b9ab19422811c9528189a39d74c975
         'cweagans\\Composer\\' => 
         array (
             0 => __DIR__ . '/..' . '/cweagans/composer-patches/src',
-        ),
-        'XdgBaseDir\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src',
         ),
         'Wikimedia\\Composer\\Merge\\V2\\' => 
         array (
@@ -543,10 +534,6 @@ class ComposerStaticInit26b9ab19422811c9528189a39d74c975
         'FontLib\\' => 
         array (
             0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
-        ),
-        'FileEye\\MimeMap\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/fileeye/mimemap/src',
         ),
         'Egulias\\EmailValidator\\' => 
         array (

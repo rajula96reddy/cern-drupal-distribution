@@ -113,33 +113,23 @@ tr.features-export-header-row td {
   font-size: 14px;
 }
 
-.features-export-info {
+#features-export-info {
   width: 49%;
-  float: left; /* LTR */
+  float: left;
   position: relative;
 }
-[dir="rtl"] .features-export-info {
-  float: right;
-}
-
-.features-export-wrapper {
+#features-export-wrapper {
   width: 49%;
-  float: right; /* LTR */
+  float: right;
   clear: both;
   position: relative;
 }
-[dir="rtl"] .features-export-wrapper {
-  float: left;
+
+.form-type-checkbox.form-item-conflicts {
+  clear: left;
 }
 
-.features-ui-conflicts {
-  clear: left; /* LTR */
-}
-[dir="rtl"] .features-ui-conflicts {
-  clear: right;
-}
-
-.features-export-list {
+div.features-export-list {
   font-weight: normal;
   font-size: 12px;
   border: 1px solid #ccc;
@@ -156,7 +146,7 @@ span.features-component-list span {
   border-radius: 5px;
 }
 
-.features-export-empty {
+div.features-export-empty {
   display: none;
 }
 
@@ -175,7 +165,7 @@ span.features-component-list .features-dependency {
   background: #f8f8f8;
 }
 
-.features-legend-component {
+#features-legend .fieldset-wrapper span {
   font-style: normal;
   color: black;
   display: inline-block;
@@ -184,67 +174,76 @@ span.features-component-list .features-dependency {
   border-radius: 5px;
   white-space: nowrap;
   padding: 0 8px;
-  margin: 0 10px 0 0; /* LTR */
+  margin: 0 10px 0 0;
 }
-[dir="rtl"] .features-legend-component {
-  margin-right: 0;
-  margin-left: 10px;
-}
-
 #features-export-wrapper .config-name {
   color: #777;
 }
-#features-export-wrapper .components-detected .form-item,
-.features-legend-component--detected {
+#features-export-wrapper .component-detected .form-type-checkbox,
+#features-legend .fieldset-wrapper .component-detected {
   font-style: italic;
   color: #68a;
   background: #def;
   border-width: 0;
 }
-#features-export-wrapper .components-added .form-item,
-.features-legend-component--added {
+#features-export-wrapper .component-added .form-type-checkbox,
+#features-legend .fieldset-wrapper .component-added {
   font-weight: bold;
   background: #eee;
   border-width: 0;
 }
-#features-export-wrapper .form-item.component-conflict,
-.features-legend-component--conflict {
+#features-export-wrapper .component-conflict.form-type-checkbox,
+#features-legend .fieldset-wrapper .component-conflict {
   color: #c30 !important;
   font-weight: bold !important;
 }
 
-#features-export-wrapper .component-conflict.form-item label,
-#features-export-wrapper .components-added .form-item label {
+#features-export-wrapper .component-conflict.form-type-checkbox label,
+#features-export-wrapper .component-added .form-type-checkbox label {
   font-weight: bold !important;
 }
 
-.features-filter .form-text {
+#features-filter input[size="60"].form-text {
   width: 200px;
 }
-.features-filter .fieldset-content,
-.features-filter .fieldset-wrapper,
-.features-filter .features-filter__fieldset {
+#features-filter .fieldset-content,
+#features-filter .fieldset-wrapper,
+#features-filter fieldset {
   border: 0;
   padding: 0;
   margin: 0;
-  box-shadow: none;
 }
-.features-filter .features-filter__fieldset legend {
+#features-filter fieldset legend {
   display: none;
 }
-
-.features-filter-clear {
+#features-filter label,
+#features-filter input {
+  display: inline;
+  width: auto;
+}
+#features-filter .form-item {
+  float: left;
+  margin: 5px 0;
+  padding: 0;
+}
+#features-filter .form-item.form-type-checkbox {
+  margin: 5px 0;
+}
+#features-filter span {
+  float: left;
+  white-space: normal;
   margin: 5px 5px;
   padding: 0 5px;
+  background: transparent;
   background: #eee;
   border-radius: 5px;
   cursor: pointer;
 }
-.features-filter-clear:hover {
+#features-filter span:hover {
   background: #def;
 }
 
-.features-export-parent {
+#features-export-wrapper div.features-export-parent {
   clear: both;
   margin: 0 0 10px;
 }
@@ -267,10 +266,6 @@ details.features-export-component .details-wrapper {
   padding-left: 25px;
   padding-top: 0;
 }
-[dir="rtl"] details.features-export-component .details-wrapper {
-  padding-right: 25px;
-  padding-left: 0;
-}
 
 /** Styles for Bundle assignment config form **/
 #edit-bundles-wrapper .form-item-bundle-bundle-select {
@@ -285,8 +280,4 @@ details.features-export-component .details-wrapper {
 /** Styles for plugin config forms **/
 .features-assignment-settings-form .fieldset-wrapper {
   padding-left: 16px;
-}
-[dir="rtl"] .features-assignment-settings-form .fieldset-wrapper {
-  padding-right: 16px;
-  padding-left: 0;
 }

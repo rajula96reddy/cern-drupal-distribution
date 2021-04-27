@@ -86,8 +86,7 @@ class EntityReferenceRevisionsAutocompleteTest extends BrowserTestBase {
       'info[0][value]' => $block_label,
       'body[0][value]' => $block_content,
     );
-    $this->drupalGet('block/add');
-    $this->submitForm($edit, 'Save');
+    $this->drupalPostForm('block/add', $edit, t('Save'));
     $block = $this->drupalGetBlockByInfo($block_label);
 
     // Create an article.
@@ -97,8 +96,7 @@ class EntityReferenceRevisionsAutocompleteTest extends BrowserTestBase {
       'body[0][value]' => 'Revision 1',
       'field_entity_reference_revisions[0][target_id]' => $block_label . ' (' . $block->id() . ')',
     );
-    $this->drupalGet('node/add/article');
-    $this->submitForm($edit, 'Save');
+    $this->drupalPostForm('node/add/article', $edit, t('Save'));
     $this->assertText($title);
     $this->assertText(Html::escape($block_content));
 
@@ -146,8 +144,7 @@ class EntityReferenceRevisionsAutocompleteTest extends BrowserTestBase {
       'id' => $machine_name,
       'revision' => TRUE,
     );
-    $this->drupalGet('admin/structure/block/block-content/types/add');
-    $this->submitForm($edit, 'Save');
+    $this->drupalPostForm('admin/structure/block/block-content/types/add', $edit, t('Save'));
     $this->assertText($label);
   }
 

@@ -14,7 +14,7 @@ class MetatagManagerTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  protected static $modules = [
+  public static $modules = [
     // Core modules.
     'system',
     'field',

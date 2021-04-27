@@ -15,11 +15,6 @@ class MetatagDublinCoreAdvancedTagsTest extends MetatagTagsTestBase {
   /**
    * {@inheritdoc}
    */
-  protected static $modules = ['metatag_dc_advanced'];
-
-  /**
-   * {@inheritdoc}
-   */
   protected $tags = [
     'dcterms_abstract',
     'dcterms_access_rights',
@@ -62,6 +57,14 @@ class MetatagDublinCoreAdvancedTagsTest extends MetatagTagsTestBase {
     'dcterms_temporal',
     'dcterms_valid',
   ];
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp() {
+    parent::$modules[] = 'metatag_dc_advanced';
+    parent::setUp();
+  }
 
   /**
    * Each of these meta tags has a different tag name vs its internal name.

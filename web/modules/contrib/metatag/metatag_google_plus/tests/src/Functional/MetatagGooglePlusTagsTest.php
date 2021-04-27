@@ -14,11 +14,6 @@ class MetatagGooglePlusTagsTest extends MetatagTagsTestBase {
   /**
    * {@inheritdoc}
    */
-  protected static $modules = ['metatag_google_plus'];
-
-  /**
-   * {@inheritdoc}
-   */
   protected $tags = [
     'google_plus_author',
     'google_plus_description',
@@ -31,6 +26,14 @@ class MetatagGooglePlusTagsTest extends MetatagTagsTestBase {
    * {@inheritdoc}
    */
   protected $testNameAttribute = 'itemprop';
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp() {
+    parent::$modules[] = 'metatag_google_plus';
+    parent::setUp();
+  }
 
   /**
    * Each of these meta tags has a different tag name vs its internal name.

@@ -82,8 +82,7 @@ class EntityReferenceRevisionsDiffTest extends BrowserTestBase {
       'title[0][value]' => $title_node_1,
       'body[0][value]' => 'body_node_1',
     ];
-    $this->drupalGet('node/add/article');
-    $this->submitForm($edit, 'Save');
+    $this->drupalPostForm('node/add/article', $edit, t('Save'));
 
     // Create second referenced node.
     $title_node_2 = 'referenced_node_2';
@@ -91,8 +90,7 @@ class EntityReferenceRevisionsDiffTest extends BrowserTestBase {
       'title[0][value]' => $title_node_2,
       'body[0][value]' => 'body_node_2',
     ];
-    $this->drupalGet('node/add/article');
-    $this->submitForm($edit, 'Save');
+    $this->drupalPostForm('node/add/article', $edit, t('Save'));
 
     // Create referencing node.
     $title = 'referencing_node';
@@ -101,12 +99,11 @@ class EntityReferenceRevisionsDiffTest extends BrowserTestBase {
       'title[0][value]' => $title,
       'field_err_field[0][target_id]' => $title_node_1 . ' (' . $node->id() . ')',
     ];
-    $this->drupalGet('node/add/article');
-    $this->submitForm($edit, 'Save');
+    $this->drupalPostForm('node/add/article', $edit, t('Save'));
 
     // Check the plugin is set.
     $this->drupalGet('admin/config/content/diff/fields');
-    $this->submitForm(['fields[node__field_err_field][plugin][type]' => 'entity_reference_revisions_field_diff_builder'], 'Save');
+    $this->drupalPostForm(NULL, ['fields[node__field_err_field][plugin][type]' => 'entity_reference_revisions_field_diff_builder'], t('Save'));
 
     // Update the referenced node of the err field and create a new revision.
     $node = $this->drupalGetNodeByTitle($title);
@@ -115,12 +112,10 @@ class EntityReferenceRevisionsDiffTest extends BrowserTestBase {
       'field_err_field[0][target_id]' => $title_node_2 . ' (' . $referenced_node_new->id() . ')',
       'revision' => TRUE,
     ];
-    $this->drupalGet('node/' . $node->id() . '/edit');
-    $this->submitForm($edit, 'Save');
+    $this->drupalPostForm('node/' . $node->id() . '/edit', $edit, t('Save'));
 
     // Compare the revisions of the referencing node.
-    $this->drupalGet('node/' . $node->id() . '/revisions');
-    $this->submitForm([], 'Compare selected revisions');
+    $this->drupalPostForm('node/' . $node->id() . '/revisions', [], t('Compare selected revisions'));
 
     // Assert the field changes.
     $this->assertRaw('class="diff-context diff-deletedline">' . $title_node_1);

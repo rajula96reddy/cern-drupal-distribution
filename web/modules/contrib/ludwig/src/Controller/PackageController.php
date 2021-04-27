@@ -118,31 +118,19 @@ class PackageController implements ContainerInjectionInterface {
       if ($package['installed'] === FALSE) {
         $missing++;
       }
-
-      $guide_link = 'https://www.drupal.org/docs/contributed-modules/ludwig/ludwig-errors-warnings-and-notices';
-
       if (($package['resource'] == 'classmap' || $package['resource'] == 'files') && empty($package['disable_warnings'])) {
-        $package['description'] .= $this->t('<br><strong>Warning! The @resource type libraries are not supported by Ludwig automatically. @read_more.</strong>', [
+        $package['description'] = $this->t('<strong>Warning! The @resource autoload type libraries are not supported by Ludwig yet.</strong>', [
           '@resource' => strtoupper($package['resource']),
-          '@read_more' => Link::fromTextAndUrl($this->t('Read more'), Url::fromUri($guide_link))->toString(),
         ]);
       }
-      elseif ($package['resource'] == 'exclude-from-classmap' && empty($package['disable_warnings'])) {
-        $package['description'] .= $this->t('<br><strong>Notice! The @resource property is not supported by Ludwig.</strong> Despite this notice, the library is loaded properly and the module should work nicely. @read_more.', [
+      elseif (($package['resource'] == 'exclude-from-classmap' || $package['resource'] == 'target-dir') && empty($package['disable_warnings'])) {
+        $package['description'] = $this->t('<strong>Warning! The @resource autoload property is not supported by Ludwig yet.</strong>', [
           '@resource' => strtoupper($package['resource']),
-          '@read_more' => Link::fromTextAndUrl($this->t('Read more'), Url::fromUri($guide_link))->toString(),
-        ]);
-      }
-      elseif ($package['resource'] == 'target-dir' && empty($package['disable_warnings'])) {
-        $package['description'] .= $this->t('<br><strong>Warning! The @resource property is not supported by Ludwig.</strong> This module may lack some functionality. @read_more.', [
-          '@resource' => strtoupper($package['resource']),
-          '@read_more' => Link::fromTextAndUrl($this->t('Read more'), Url::fromUri($guide_link))->toString(),
         ]);
       }
       elseif (($package['resource'] == 'legacy' || $package['resource'] == 'unknown') && empty($package['disable_warnings'])) {
-        $package['description'] .= $this->t('<br><strong>Warning! The @resource library type. Not supported by Ludwig. @read_more.</strong>', [
+        $package['description'] = $this->t('<strong>Warning! The @resource library type. Not supported by Ludwig.</strong>', [
           '@resource' => strtoupper($package['resource']),
-          '@read_more' => Link::fromTextAndUrl($this->t('Read more'), Url::fromUri($guide_link))->toString(),
         ]);
       }
       elseif (!$package['installed']) {
@@ -196,8 +184,9 @@ class PackageController implements ContainerInjectionInterface {
     }
 
     if (!empty($missing)) {
-      // There are some missing packages, so render the
-      // "Download all missing packages" clickable button.
+      // There are some missing packages, so render
+      // the "Download all missing packages" button
+      // as clickable link to the download page.
       $build['#markup'] = $this->t('<div class="button"><a href="@packages-url">Download and unpack all missing packages (@missing)</a></div><div>&nbsp;</div>', [
         '@packages-url' => Url::fromRoute('ludwig.packages')->toString() . '?missing=download',
         '@missing' => $missing,

@@ -69,17 +69,13 @@ class Rotate extends ImagemagickImageToolkitOperationBase {
 
     // Need to resize the image after rotation to make sure it complies with
     // the dimensions expected, calculated via the Rectangle class.
-    if ($this->getToolkit()->getWidth() && $this->getToolkit()->getHeight()) {
-      $box = new Rectangle($this->getToolkit()->getWidth(), $this->getToolkit()->getHeight());
-      $box = $box->rotate((float) $arguments['degrees']);
-      return $this->getToolkit()->apply('resize', [
-        'width' => $box->getBoundingWidth(),
-        'height' => $box->getBoundingHeight(),
-        'filter' => $arguments['resize_filter'],
-      ]);
-    }
-
-    return TRUE;
+    $box = new Rectangle($this->getToolkit()->getWidth(), $this->getToolkit()->getHeight());
+    $box = $box->rotate((float) $arguments['degrees']);
+    return $this->getToolkit()->apply('resize', [
+      'width' => $box->getBoundingWidth(),
+      'height' => $box->getBoundingHeight(),
+      'filter' => $arguments['resize_filter'],
+    ]);
   }
 
 }

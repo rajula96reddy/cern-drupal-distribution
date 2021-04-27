@@ -36,8 +36,7 @@ class ExtlinkAdminTest extends ExtlinkTestBase {
     $this->assertRaw('/extlink/extlink.js');
 
     // Disable Extlink on admin routes.
-    $this->drupalGet(self::EXTLINK_ADMIN_PATH);
-    $this->submitForm(['extlink_exclude_admin_routes' => TRUE], 'Save configuration');
+    $this->drupalPostForm(self::EXTLINK_ADMIN_PATH, ['extlink_exclude_admin_routes' => TRUE], 'Save configuration');
     $this->assertNoRaw('/extlink/extlink.js');
   }
 

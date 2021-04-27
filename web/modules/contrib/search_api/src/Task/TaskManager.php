@@ -352,13 +352,11 @@ class TaskManager implements TaskManagerInterface {
     $pending = $this->getTasksCount($conditions);
     $context['finished'] = 1 - $pending / $context['results']['total'];
     $executed = $context['results']['total'] - $pending;
-    if ($executed > 0) {
-      $context['message'] = $this->formatPlural(
-        $executed,
-        'Successfully executed @count pending task.',
-        'Successfully executed @count pending tasks.'
-      );
-    }
+    $context['message'] = $this->formatPlural(
+      $executed,
+      'Successfully executed @count pending task.',
+      'Successfully executed @count pending tasks.'
+    );
   }
 
   /**

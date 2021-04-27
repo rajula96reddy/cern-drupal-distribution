@@ -14,11 +14,6 @@ class MetatagTwitterCardsTagsTest extends MetatagTagsTestBase {
   /**
    * {@inheritdoc}
    */
-  protected static $modules = ['metatag_twitter_cards'];
-
-  /**
-   * {@inheritdoc}
-   */
   protected $tags = [
     'twitter_cards_app_id_googleplay',
     'twitter_cards_app_id_ipad',
@@ -58,6 +53,14 @@ class MetatagTwitterCardsTagsTest extends MetatagTagsTestBase {
     // 'twitter_cards_image',
     // 'twitter_cards_player',
   ];
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp() {
+    parent::$modules[] = 'metatag_twitter_cards';
+    parent::setUp();
+  }
 
   /**
    * Twitter meta tags (almost) all have colons instead of underlines.

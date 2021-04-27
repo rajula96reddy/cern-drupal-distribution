@@ -2,8 +2,6 @@
 
 namespace Drupal\imagemagick;
 
-@trigger_error('The ' . __NAMESPACE__ . '\ImagemagickMimeTypeMapper class is deprecated in ImageMagick 8.x-2.4, will be removed in 8.x-3.0. You should use the FileEye\MimeMap\Type and FileEye\MimeMap\Extension API instead. See https://www.drupal.org/project/imagemagick/issues/3026733.', E_USER_DEPRECATED);
-
 use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesserInterface;
 
 /**
@@ -74,14 +72,8 @@ class ImagemagickMimeTypeMapper {
    *
    * @return string[]
    *   An array of file extensions matching the MIME type, without leading dot.
-   *
-   * @deprecated in ImageMagick 8.x-2.4, will be removed in 8.x-3.0.
-   *   Use FileEye\MimeMap\Type::getExtensions() instead.
-   *
-   * @see https://www.drupal.org/project/imagemagick/issues/3026733
    */
   public function getExtensionsForMimeType($mimetype) {
-    @trigger_error(__METHOD__ . ' is deprecated in ImageMagick 8.x-2.4, will be removed in 8.x-3.0. Use FileEye\MimeMap\Type::getExtensions() instead. See https://www.drupal.org/project/imagemagick/issues/3026733.', E_USER_DEPRECATED);
     $mapping = $this->getMapping();
     if (!in_array($mimetype, $mapping['mimetypes'])) {
       return [];
@@ -97,14 +89,8 @@ class ImagemagickMimeTypeMapper {
    *
    * @return string[]
    *   An array of MIME types.
-   *
-   * @deprecated in ImageMagick 8.x-2.4, will be removed in 8.x-3.0.
-   *   Use FileEye\MimeMap\AbstractMap::listTypes() instead.
-   *
-   * @see https://www.drupal.org/project/imagemagick/issues/3026733
    */
   public function getMimeTypes() {
-    @trigger_error(__METHOD__ . ' is deprecated in ImageMagick 8.x-2.4, will be removed in 8.x-3.0. Use FileEye\MimeMap\AbstractMap::listTypes() instead. See https://www.drupal.org/project/imagemagick/issues/3026733.', E_USER_DEPRECATED);
     return array_values($this->getMapping()['mimetypes']);
   }
 

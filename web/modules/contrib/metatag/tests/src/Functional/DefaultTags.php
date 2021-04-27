@@ -17,7 +17,7 @@ class DefaultTags extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected static $modules = [
+  public static $modules = [
     // Modules for core functionality.
     'node',
     'taxonomy',
@@ -153,7 +153,7 @@ class DefaultTags extends BrowserTestBase {
 
       // Check the meta tags.
       $xpath = $this->xpath("//link[@rel='canonical']");
-      $this->assertNotEquals((string) $xpath[0]->getAttribute('href'), $front_url);
+      $this->assertNotEqual((string) $xpath[0]->getAttribute('href'), $front_url);
       self::assertEquals((string) $xpath[0]->getAttribute('href'), $this_page_url);
     }
   }

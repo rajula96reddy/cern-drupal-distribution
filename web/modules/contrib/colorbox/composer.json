@@ -7,7 +7,7 @@
     "issues": "https://www.drupal.org/project/issues/colorbox",
     "source": "https://git.drupalcode.org/project/colorbox"
   },
-  "license": "GPL-2.0-or-later",
+  "license": "GPL-2.0+",
   "minimum-stability": "dev",
   "authors": [
     {
@@ -35,9 +35,7 @@
       }
     }
   ],
-  "require": {
-      "drupal/core": "^8.8 || ^9"
-  },
+  "require": {},
   "suggest": {
     "jackmoore/colorbox": "The Colorbox library is required to use the drupal/colorbox module."
   },

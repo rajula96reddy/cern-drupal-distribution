@@ -14,11 +14,6 @@ class MetatagMobileTagsTest extends MetatagTagsTestBase {
   /**
    * {@inheritdoc}
    */
-  protected static $modules = ['metatag_mobile'];
-
-  /**
-   * {@inheritdoc}
-   */
   protected $tags = [
     'alternate_handheld',
     'android_app_link_alternative',
@@ -63,6 +58,14 @@ class MetatagMobileTagsTest extends MetatagTagsTestBase {
   /**
    * {@inheritdoc}
    */
+  protected function setUp() {
+    parent::$modules[] = 'metatag_mobile';
+    parent::setUp();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   protected function getTestTagName($tag_name) {
     // These tags all use dashes instead of underlines.
     $tag_name = str_replace('_', '-', $tag_name);
@@ -86,6 +89,20 @@ class MetatagMobileTagsTest extends MetatagTagsTestBase {
    * Implements {tag_name}TestValueAttribute() for 'alternate-handheld'.
    */
   protected function alternateHandheldTestValueAttribute() {
+    return 'href';
+  }
+
+  /**
+   * Implements {tag_name}TestOutputXpath() for 'amphtml'.
+   */
+  protected function amphtmlTestOutputXpath() {
+    return "//link[@rel='amphtml']";
+  }
+
+  /**
+   * Implements {tag_name}TestValueAttribute() for 'amphtml'.
+   */
+  protected function amphtmlTestValueAttribute() {
     return 'href';
   }
 

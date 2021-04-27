@@ -3,7 +3,6 @@
 namespace Drupal\ds\Plugin\views\Entity\Render;
 
 use Drupal\views\Entity\Render\EntityTranslationRendererBase;
-use Drupal\views\ResultRow;
 
 /**
  * Renders entities in the current language.
@@ -19,52 +18,11 @@ abstract class RendererBase extends EntityTranslationRendererBase {
   }
 
   /**
-   * {@inheritdoc}
-   */
-  public function render(ResultRow $row) {
-    $entity_id = $row->_entity->id();
-    $langcode = $this->getLangcode($row);
-    if (isset($this->build[$entity_id][$langcode])) {
-      $build = $this->build[$entity_id][$langcode];
-      $this->alterBuild($build, $row);
-      return $build;
-    }
-    return [];
-  }
-
-  /**
-   * Alter the build.
-   *
-   * @param $build
-   * @param $row
-   */
-  protected function alterBuild(&$build, $row) {
-    // Add row index. Remember that in case you want to use this, you will
-    // have to remove the cache for this build.
-    $build['#row_index'] = isset($row->index) ? $row->index : NULL;
-
-    // Delta fields.
-    $delta_fields = $this->view->rowPlugin->options['delta_fieldset']['delta_fields'];
-    if (!empty($delta_fields)) {
-      foreach ($delta_fields as $field) {
-        $field_name_delta = $field . '_delta';
-        if (isset($row->{$field_name_delta})) {
-          $build['#ds_delta'][$field] = $row->{$field_name_delta};
-        }
-      }
-    }
-  }
-
-  /**
    * Pre renders all the Display Suite rows.
-   *
-   * @param array $result
-   * @param bool $translation
    */
   protected function dsPreRender(array $result, $translation = FALSE) {
     if ($result) {
-
-      // Get the view builder to render this entity.
+      // Get all entities which will be used to render in rows.
       $view_builder = \Drupal::entityTypeManager()->getViewBuilder($this->entityType->id());
 
       $i = 0;
@@ -75,7 +33,6 @@ abstract class RendererBase extends EntityTranslationRendererBase {
         $group_value_content = '';
         $entity = $row->_entity;
         $entity->view = $this->view;
-
         /* @var $entity \Drupal\Core\Entity\EntityInterface */
         $entity_id = $entity->id();
         $langcode = $this->getLangcode($row);
@@ -109,10 +66,12 @@ abstract class RendererBase extends EntityTranslationRendererBase {
           $modules = \Drupal::moduleHandler()->getImplementations('ds_views_row_render_entity');
           foreach ($modules as $module) {
             if ($content = \Drupal::moduleHandler()->invoke($module, 'ds_views_row_render_entity', [$entity, $view_mode])) {
-              if (!is_array($content)) {
-                $content = ['#markup' => $content];
+              if (!$translation) {
+                $this->build[$entity_id] = $content;
               }
-              $this->build[$entity_id][$langcode] = $content;
+              else {
+                $this->build[$entity_id][$langcode] = $content;
+              }
               $rendered = TRUE;
             }
           }
@@ -128,10 +87,22 @@ abstract class RendererBase extends EntityTranslationRendererBase {
         \Drupal::moduleHandler()->alter('ds_views_view_mode', $view_mode, $context);
 
         if (!$rendered) {
-          if (empty($view_mode)) {
-            $view_mode = 'full';
+          if (!$translation) {
+            if (!empty($view_mode)) {
+              $this->build[$entity_id] = $view_builder->view($entity, $view_mode, $langcode);
+            }
+            else {
+              $this->build[$entity_id] = $view_builder->view($entity, 'full', $langcode);
+            }
           }
-          $this->build[$entity_id][$langcode] = $view_builder->view($entity, $view_mode, $langcode);
+          else {
+            if (!empty($view_mode)) {
+              $this->build[$entity_id][$langcode] = $view_builder->view($entity, $view_mode, $langcode);
+            }
+            else {
+              $this->build[$entity_id][$langcode] = $view_builder->view($entity, 'full', $langcode);
+            }
+          }
         }
 
         $context = [

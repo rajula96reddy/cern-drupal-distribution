@@ -6,7 +6,6 @@
  */
 
 use Drupal\migrate_upgrade\MigrateUpgradeDrushRunner;
-use Drush\Drush;
 
 /**
  * Implements hook_drush_command().
@@ -46,17 +45,12 @@ function migrate_upgrade_drush_command() {
  * Optionally perform the imports.
  */
 function drush_migrate_upgrade() {
-  $runner = new MigrateUpgradeDrushRunner(Drush::logger());
+  $runner = new MigrateUpgradeDrushRunner();
 
   try {
     $runner->configure();
     if (drush_get_option('configure-only')) {
-      $result = $runner->export();
-      foreach ($result as $original => $prefixed_migration) {
-        drush_print(dt('Exporting @migration as @new_migration',
-          ['@migration' => $original, '@new_migration' => $prefixed_migration]
-        ));
-      }
+      $runner->export();
     }
     else {
       $runner->import();
@@ -76,7 +70,7 @@ function drush_migrate_upgrade() {
 function drush_migrate_upgrade_rollback() {
   if ($date_performed = \Drupal::state()->get('migrate_drupal_ui.performed')) {
     if (drush_confirm(dt('All migrations tagged as \'Drupal\' will be rolled back. Are you sure?'))) {
-      $runner = new MigrateUpgradeDrushRunner(Drush::logger());
+      $runner = new MigrateUpgradeDrushRunner();
 
       try {
         drush_log(dt('Rolling back the upgrades performed @date',

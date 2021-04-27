@@ -19,22 +19,6 @@ use Drupal\views\Plugin\views\row\EntityRow as ViewsEntityRow;
 class EntityRow extends ViewsEntityRow {
 
   /**
-   * {@inheritdoc}
-   */
-  public function query() {
-    parent::query();
-
-    $delta_fields = $this->options['delta_fieldset']['delta_fields'];
-    if (!empty($delta_fields)) {
-      foreach ($delta_fields as $field) {
-        $table_name = $this->entityTypeId . '__' . $field;
-        $field_name_delta = $field . '_delta';
-        $this->view->query->addField($table_name, 'delta', $field_name_delta);
-      }
-    }
-  }
-
-  /**
    * Contains an array of render arrays, one for each rendered entity.
    *
    * @var array
@@ -71,11 +55,6 @@ class EntityRow extends ViewsEntityRow {
     $options['switch_fieldset'] = [
       'contains' => [
         'switch' => ['default' => FALSE, 'bool' => TRUE],
-      ],
-    ];
-    $options['delta_fieldset'] = [
-      'contains' => [
-        'delta_fields' => ['default' => []],
       ],
     ];
     return $options;
@@ -187,30 +166,6 @@ class EntityRow extends ViewsEntityRow {
       $form['grouping_fieldset']['group']['#disabled'] = TRUE;
       $form['grouping_fieldset']['group']['#description'] = $this->t('Grouping is disabled because you do not have any sort fields.');
     }
-
-    // Delta fields.
-    $delta_fields = [];
-    $fields = \Drupal::service('entity_field.manager')->getFieldStorageDefinitions($this->entityTypeId);
-    /** @var \Drupal\Core\Field\FieldStorageDefinitionInterface $field */
-    foreach ($fields as $key => $field) {
-      if ($field->getCardinality() != 1) {
-        $delta_fields[$key] = $key;
-      }
-    }
-    $form['delta_fieldset'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Delta fields'),
-      '#collapsible' => TRUE,
-      '#collapsed' => empty($this->options['delta_fields']),
-    );
-    $form['delta_fieldset']['delta_fields'] = array(
-      '#type' => 'select',
-      '#title' => t('Select fields'),
-      '#description' => t('Select fields which "delta" value should be added to the result row. On the manage display of an entity you can decide to look for this delta value to only print that row.'),
-      '#options' => $delta_fields,
-      '#multiple' => TRUE,
-      '#default_value' => !empty($this->options['delta_fieldset']['delta_fields']) ? $this->options['delta_fieldset']['delta_fields'] : '',
-    );
 
     // Advanced function.
     $form['advanced_fieldset'] = [

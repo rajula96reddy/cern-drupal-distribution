@@ -65,9 +65,7 @@ class TermHandler {
     foreach ($fieldNamesWithTaxonomyTerms as $fieldName) {
       $termTargetIdsForField = $node->get($fieldName)->getValue();
       foreach ($termTargetIdsForField as $key => $termTargetId) {
-        if (isset($termTargetId['target_id'])) {
-          $tids[] = $termTargetId['target_id'];
-        }
+        $tids[] = $termTargetId['target_id'];
       }
     }
 

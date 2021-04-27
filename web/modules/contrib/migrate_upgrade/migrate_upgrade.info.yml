@@ -9,7 +9,7 @@ dependencies:
   - drupal:migrate_drupal
   - migrate_plus:migrate_plus
 
-# Information added by Drupal.org packaging script on 2020-04-30
-version: '8.x-3.2'
+# Information added by Drupal.org packaging script on 2019-11-25
+version: '8.x-3.1'
 project: 'migrate_upgrade'
-datestamp: 1588260037
+datestamp: 1574694138

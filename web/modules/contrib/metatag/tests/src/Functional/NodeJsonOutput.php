@@ -19,7 +19,7 @@ class NodeJsonOutput extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected static $modules = [
+  public static $modules = [
     // Modules for core functionality.
     'node',
     'field',
@@ -63,7 +63,7 @@ class NodeJsonOutput extends BrowserTestBase {
     $this->assertSession()->statusCodeEquals(200);
 
     // Decode the JSON output.
-    $response = $this->getSession()->getPage()->getContent();
+    $response = $this->getRawContent();
     $this->assertNotEmpty($response);
     $json = json_decode($response);
     $this->verbose($json, 'JSON output');

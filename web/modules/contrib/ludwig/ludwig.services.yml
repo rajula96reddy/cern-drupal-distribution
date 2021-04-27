@@ -8,5 +8,5 @@ services:
     arguments: ['@plugin.manager.archiver', '@file_system', '@http_client', '@app.root']
 
   ludwig.require_once:
-    class: Drupal\ludwig\RequireOnce
+    class: Drupal\ludwig\LudwigRequireOnce
     arguments:

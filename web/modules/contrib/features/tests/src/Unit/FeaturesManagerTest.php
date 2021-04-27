@@ -10,7 +10,6 @@ use Drupal\Core\Config\InstallStorage;
 use Drupal\Core\Config\StorageInterface;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\Extension\Extension;
-use Drupal\Core\Extension\ModuleExtensionList;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\config_update\ConfigRevertInterface;
 use Drupal\features\Entity\FeaturesBundle;
@@ -88,13 +87,6 @@ class FeaturesManagerTest extends UnitTestCase {
   protected $configReverter;
 
   /**
-   * The module extension list mock.
-   *
-   * @var \Drupal\Core\Extension\ModuleHandlerInterface|\PHPUnit_Framework_MockObject_MockObject
-   */
-  protected $moduleExtensionList;
-
-  /**
    * {@inheritdoc}
    */
   public function setUp() {
@@ -151,14 +143,7 @@ class FeaturesManagerTest extends UnitTestCase {
     $this->configReverter->expects($this->any())
       ->method('revert')
       ->willReturn(TRUE);
-    $this->moduleExtensionList = $this->createMock(ModuleExtensionList::class);
-    $this->moduleExtensionList->expects($this->any())
-      ->method('getPath')
-      ->willReturn('some/path');
-    $this->moduleExtensionList->expects($this->any())
-      ->method('getExtensionInfo')
-      ->willReturn([]);
-    $this->featuresManager = new FeaturesManager($this->root, $this->entityTypeManager, $this->configFactory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter, $this->moduleExtensionList);
+    $this->featuresManager = new FeaturesManager($this->root, $this->entityTypeManager, $this->configFactory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter);
   }
 
   protected function setupVfsWithTestFeature() {
@@ -170,7 +155,7 @@ class FeaturesManagerTest extends UnitTestCase {
           'test_feature.info.yml' => <<<EOT
 name: Test feature
 type: module
-core_version_requirement: "^8.8 || ^9"
+core: 8.x
 description: test description
 EOT
           ,
@@ -371,7 +356,7 @@ EOT
     $bundle->isDefault()->willReturn(TRUE);
     $assigner->getBundle()->willReturn($bundle->reveal());
     // Use the wrapper because we need ::drupalGetProfile().
-    $features_manager = new TestFeaturesManager($this->root, $this->entityTypeManager, $this->configFactory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter, $this->moduleExtensionList);
+    $features_manager = new TestFeaturesManager($this->root, $this->entityTypeManager, $this->configFactory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter);
     $features_manager->setAssigner($assigner->reveal());
 
     $features_manager->setConfigCollection($this->getAssignInterPackageDependenciesConfigCollection());
@@ -438,7 +423,7 @@ EOT
     $bundle->getMachineName()->willReturn('giraffe');
     $assigner->getBundle('giraffe')->willReturn($bundle->reveal());
     // Use the wrapper because we need ::drupalGetProfile().
-    $features_manager = new TestFeaturesManager($this->root, $this->entityTypeManager, $this->configFactory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter, $this->moduleExtensionList);
+    $features_manager = new TestFeaturesManager($this->root, $this->entityTypeManager, $this->configFactory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter);
     $features_manager->setAssigner($assigner->reveal());
     $features_manager->setConfigCollection($this->getAssignInterPackageDependenciesConfigCollection());
 
@@ -489,6 +474,8 @@ EOT
 
   /**
    * @covers ::assignInterPackageDependencies
+   * @expectedException \Exception
+   * @expectedExceptionMessage The packages have not yet been prefixed with a bundle name
    */
   public function testAssignInterPackageDependenciesPrematureCall() {
     $bundle = $this->prophesize(FeaturesBundleInterface::class);
@@ -499,9 +486,7 @@ EOT
         'bundle' => 'giraffe',
       ]),
     ];
-    // TBD: why 'Error' and not 'Exception'?
-    $this->expectException('Error');
-    $this->expectExceptionMessag('The packages have not yet been prefixed with a bundle name');
+
     $this->featuresManager->assignInterPackageDependencies($bundle->reveal(), $packages);
   }
 
@@ -581,7 +566,7 @@ EOT
       'key2' => 'value0',
     ]);
 
-    $features_manager = new TestFeaturesManager($this->root, $this->entityTypeManager, $this->configFactory, $config_storage->reveal(), $this->configManager, $this->moduleHandler, $this->configReverter, $this->moduleExtensionList);
+    $features_manager = new TestFeaturesManager($this->root, $this->entityTypeManager, $this->configFactory, $config_storage->reveal(), $this->configManager, $this->moduleHandler, $this->configReverter);
     $features_manager->setExtensionStorages($extension_storage->reveal());
 
     $this->assertEquals(['test_overridden'], $features_manager->detectOverrides($package));
@@ -770,7 +755,7 @@ EOT
       'key' => 'value',
     ]);
 
-    $features_manager = new TestFeaturesManager($this->root, $this->entityTypeManager, $this->configFactory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter, $this->moduleExtensionList);
+    $features_manager = new TestFeaturesManager($this->root, $this->entityTypeManager, $this->configFactory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter);
     $features_manager->setExtensionStorages($extension_storage->reveal());
 
     $this->assertEmpty($features_manager->detectNew($package));
@@ -785,7 +770,7 @@ EOT
     $extension_storage = $this->prophesize(FeaturesExtensionStoragesInterface::class);
     $extension_storage->read('test_config')->willReturn(FALSE);
 
-    $features_manager = new TestFeaturesManager($this->root, $this->entityTypeManager, $this->configFactory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter, $this->moduleExtensionList);
+    $features_manager = new TestFeaturesManager($this->root, $this->entityTypeManager, $this->configFactory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter);
     $features_manager->setExtensionStorages($extension_storage->reveal());
 
     $this->assertEquals(['test_config'], $features_manager->detectNew($package));
@@ -811,14 +796,14 @@ EOT
     $data = [];
     $data['empty-info'] = [[], [], []];
     $data['override-info'] = [
-      ['name' => 'New name', 'core_version_requirement' => '^8.8 || ^9'],
-      ['name' => 'Old name', 'core_version_requirement' => '^8.8 || ^9'],
+      ['name' => 'New name', 'core' => '8.x'],
+      ['name' => 'Old name', 'core' => '8.x'],
       ['name' => 'New name'],
     ];
     $data['dependency-merging'] = [
-      ['dependencies' => ['a:a', 'b:b', 'c:c', 'd:d', 'e:e']],
+      ['dependencies' => ['a', 'b', 'c', 'd', 'e']],
       ['dependencies' => ['b', 'd', 'c']],
-      ['dependencies' => ['a:a', 'b:b', 'e:e']],
+      ['dependencies' => ['a', 'b', 'e']],
       [],
     ];
 
@@ -831,7 +816,7 @@ EOT
   public function testInitPackageWithNewPackage() {
     $bundle = new FeaturesBundle(['machine_name' => 'test'], 'features_bundle');
 
-    $features_manager = new TestFeaturesManager($this->root, $this->entityTypeManager, $this->configFactory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter, $this->moduleExtensionList);
+    $features_manager = new TestFeaturesManager($this->root, $this->entityTypeManager, $this->configFactory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter);
     $features_manager->setAllModules([]);
 
     $package = $features_manager->initPackage('test_feature', 'test name', 'test description', 'module', $bundle);
@@ -854,7 +839,7 @@ EOT
   public function testInitPackageWithExistingPackage() {
     $bundle = new FeaturesBundle(['machine_name' => 'test'], 'features_bundle');
 
-    $features_manager = new TestFeaturesManager('vfs://drupal', $this->entityTypeManager, $this->configFactory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter, $this->moduleExtensionList);
+    $features_manager = new TestFeaturesManager('vfs://drupal', $this->entityTypeManager, $this->configFactory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter);
 
     $this->setupVfsWithTestFeature();
     $extension = new Extension('vfs://drupal', 'module', 'modules/test_feature/test_feature.info.yml');
@@ -922,7 +907,7 @@ EOT
     $this->assertEquals(Yaml::encode([
       'name' => 'Test feature',
       'type' => 'module',
-      'core_version_requirement' => '^8.9 || ^9',
+      'core' => '8.x',
     ]), $files['info']['string']);
     $this->assertEquals(Yaml::encode(TRUE), $files['features']['string']);
 
@@ -954,7 +939,7 @@ EOT
         ],
       ],
     ]);
-    $this->featuresManager = new FeaturesManager($this->root, $this->entityTypeManager, $config_factory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter, $this->moduleExtensionList);
+    $this->featuresManager = new FeaturesManager($this->root, $this->entityTypeManager, $config_factory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter);
 
     $package = new Package('test_feature');
     $result = $this->featuresManager->getExportInfo($package);
@@ -973,7 +958,7 @@ EOT
         ],
       ],
     ]);
-    $this->featuresManager = new FeaturesManager($this->root, $this->entityTypeManager, $config_factory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter, $this->moduleExtensionList);
+    $this->featuresManager = new FeaturesManager($this->root, $this->entityTypeManager, $config_factory, $this->configStorage, $this->configManager, $this->moduleHandler, $this->configReverter);
 
     $package = new Package('test_feature');
     $bundle = new FeaturesBundle(['machine_name' => 'test_bundle'], 'features_bundle');
