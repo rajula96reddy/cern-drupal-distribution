@@ -4,7 +4,10 @@ namespace Drupal\node\Plugin\views\row;
 
 use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Language\LanguageManagerInterface;
+use Drupal\views\Entity\Render\EntityTranslationRenderTrait;
 use Drupal\views\Plugin\views\row\RssPluginBase;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Plugin which performs a node_view on the resulting object
@@ -21,6 +24,7 @@ use Drupal\views\Plugin\views\row\RssPluginBase;
  * )
  */
 class Rss extends RssPluginBase {
+  use EntityTranslationRenderTrait;
 
   // Basic properties that let the row style follow relationships.
   public $base_table = 'node_field_data';
@@ -43,6 +47,16 @@ class Rss extends RssPluginBase {
   protected $nodeStorage;
 
   /**
+   *  The language manager.
+   */
+  protected $languageManager;
+
+  /**
+   * Set the entity type
+   */
+  protected $entityType;
+
+  /**
    * Constructs the Rss object.
    *
    * @param array $configuration
@@ -53,12 +67,29 @@ class Rss extends RssPluginBase {
    *   The plugin implementation definition.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
+   * @param \Drupal\Core\Language\LanguageManagerInterface $languageManager
+   *   The language manager.
    * @param \Drupal\Core\Entity\EntityDisplayRepositoryInterface $entity_display_repository
    *   The entity display repository.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, EntityDisplayRepositoryInterface $entity_display_repository = NULL) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, LanguageManagerInterface $languageManager, EntityDisplayRepositoryInterface $entity_display_repository = NULL) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $entity_type_manager, $entity_display_repository);
+    $this->languageManager = $languageManager;
     $this->nodeStorage = $entity_type_manager->getStorage('node');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('entity_type.manager'),
+      $container->get('language_manager'),
+      $container->get('entity_display.repository')
+    );
   }
 
   /**
@@ -106,6 +137,8 @@ class Rss extends RssPluginBase {
       return;
     }
 
+    $render_langcode = $this->languageManager->getCurrentLanguage()->getId();
+    $node = $node->hasTranslation($render_langcode) ? $node->getTranslation($render_langcode): $node;
     $node->link = $node->toUrl('canonical', ['absolute' => TRUE])->toString();
     $node->rss_namespaces = [];
     $node->rss_elements = [
@@ -166,6 +199,34 @@ class Rss extends RssPluginBase {
     ];
 
     return $build;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getEntityTypeId() {
+    return $this->entityType;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function getEntityManager() {
+    return $this->entityManager;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function getLanguageManager() {
+    return $this->languageManager;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function getView() {
+    return $this->view;
   }
 
 }

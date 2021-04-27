@@ -11,7 +11,7 @@
 
       var webformcharts = settings.webformcharts;
 
-      google.charts.load('current', {packages: webformcharts.packages});
+      google.charts.load('46', {packages: webformcharts.packages});
 
       google.charts.setOnLoadCallback(function () {
 

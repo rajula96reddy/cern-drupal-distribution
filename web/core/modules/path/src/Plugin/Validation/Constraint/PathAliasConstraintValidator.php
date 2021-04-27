@@ -49,6 +49,9 @@ class PathAliasConstraintValidator extends ConstraintValidator implements Contai
       /** @var \Drupal\Core\Entity\ContentEntityInterface $original */
       $original = $this->entityTypeManager->getStorage($entity->getEntityTypeId())->loadUnchanged($entity->id());
       $entity_langcode = $entity->language()->getId();
+      if ($original->language()->getId() !== $entity_langcode && $original->hasTranslation($entity_langcode)) {
+        $original = $original->getTranslation($entity_langcode);
+      }
 
       // Only add the violation if the current translation does not have the
       // same path alias.

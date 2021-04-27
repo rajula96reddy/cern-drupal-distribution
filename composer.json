@@ -109,16 +109,16 @@
     "drupal/colorbutton": "~1.2.0",
     "drupal/components": "~1.1.0",
     "drupal/config_update": "~1.7.0",
-    "drupal/content_access": "~1.0.0-alpha3",
-    "drupal/context": "~4.0.0-beta5",
-    "drupal/contribute": "~1.0.0-beta8",
+    "drupal/content_access": "~1.0.0@alpha",
+    "drupal/context": "~4.0.0@beta",
+    "drupal/contribute": "~1.0.0@beta",
     "drupal/cookieconsent": "~1.6.0",
     "drupal/core-composer-scaffold": "~8.9.13",
     "drupal/core-project-message": "~8.9.13",
     "drupal/core-recommended": "~8.9.13",
     "drupal/ctools": "~3.4.0",
     "drupal/devel": "~2.1.0",
-    "drupal/domain_301_redirect": "~1.0.0-alpha0",
+    "drupal/domain_301_redirect": "~1.0.0@alpha",
     "drupal/ds": "~3.12.0",
     "drupal/easy_breadcrumb": "~1.15.0",
     "drupal/easychart": "~3.4.0",
@@ -128,14 +128,14 @@
     "drupal/externalauth": "~1.3.0",
     "drupal/extlink": "~1.6.0",
     "drupal/facets": "~1.7.0",
-    "drupal/fast_404": "~2.0.0-alpha5",
+    "drupal/fast_404": "~2.0.0@alpha",
     "drupal/features": "~3.12.0",
-    "drupal/feeds": "~3.0.0-alpha10",
+    "drupal/feeds": "~3.0.0@alpha",
     "drupal/fences": "~2.0.0-rc1",
     "drupal/field_formatter_class": "~1.5.0",
     "drupal/field_group": "~3.1.0",
     "drupal/field_permissions": "~1.1.0",
-    "drupal/filefield_paths": "~1.0.0-beta5",
+    "drupal/filefield_paths": "~1.0.0@beta",
     "drupal/honeypot": "~1.30.0",
     "drupal/hook_event_dispatcher": "~1.29.0",
     "drupal/hotjar": "~2.0.0",
@@ -169,7 +169,7 @@
     "drupal/recaptcha": "~2.5.0",
     "drupal/redirect": "~1.6.0",
     "drupal/require_login": "~2.4.0",
-    "drupal/rules": "~3.0.0-alpha6",
+    "drupal/rules": "~3.0.0@alpha",
     "drupal/scheduler": "~1.3.0",
     "drupal/search_api": "~1.19.0",
     "drupal/simplesamlphp_auth": "~3.2.0",
@@ -183,10 +183,10 @@
     "drupal/views_slideshow": "~4.8.0",
     "drupal/viewsreference": "~1.7.0",
     "drupal/webform": "~5.25.0",
-    "drupal/webform_analysis": "~1.0.0-beta7",
+    "drupal/webform_analysis": "~1.0.0@beta",
     "drupal/webform_invitation": "~1.1.0",
     "drupal/workbench": "~1.3.0",
-    "drupal/workbench_access": "~1.0.0-beta4",
+    "drupal/workbench_access": "~1.0.0@beta",
     "drupal/workbench_moderation": "~1.6.0",
     "wikimedia/composer-merge-plugin": "~v2.0.1"
   },
@@ -232,19 +232,19 @@
     },
     "patches": {
       "drupal/core": {
-        "Patch1": "patches/2816447-32.patch",
-        "Patch2": "patches/allow_tokens_in_text_editor-2830210-14.patch",
-        "Patch4": "patches/drupal_views_argument_validator_TermName-2494617-75.patch",
-        "Patch5": "patches/empty-alias-check-2930599-44.patch",
-        "Patch12": "patches/translations_not_save_invalid_path-3101344-20.patch",
-        "Patch13": "patches/views-rss-fields-enclosure-2511878-17.patch"
+        "DRUPAL-499: Get feed title in correct language": "patches/2816447-32.patch",
+        "DRUPAL-302: Allow tokens to be used in Text Editor image upload directory path": "patches/allow_tokens_in_text_editor-2830210-14.patch",
+        "DRUPAL-496: TermName views argument_validator is not working as expected": "patches/drupal_views_argument_validator_TermName-2494617-75.patch",
+        "steps.everis.com/CERN-904: https://www.drupal.org/project/drupal/issues/2930599#comment-12779330": "patches/empty-alias-check-2930599-44.patch",
+        "DRUPAL-567: Cannot save translated nodes after upgrading to 8.8 due to invalid path": "patches/translations_not_save_invalid_path-3101344-20.patch",
+        "DRUPAL-503: Support enclosure field in Views RssFields row plugin": "patches/views-rss-fields-enclosure-2511878-17.patch"
       },
       "drupal/webform_analysis": {
-        "Patch14": "patches/webform_analysis_google_charts_version_downgrade-3137161-5.patch"
+        "fix webform analysis charts not compatible with latest version of google libraries https://www.drupal.org/project/webform_analysis/issues/3137161": "patches/webform_analysis_google_charts_version_downgrade-3137161-5.patch"
       },
       "drupal/paragraphs": {
-        "Patch6": "patches/experimental-widget-asymetric-translation-2904705-47.patch",
-        "Patch10": "patches/paragraphs-3138609-9.patch"
+        "DRUPAL-466: adds the widget that fixes the landing pages issues\n WARNING: there is a new version of this patch upstream for PHP7.2 with some community validation.  But since this version still applies cleanly, we wont update it yet.": "patches/experimental-widget-asymetric-translation-2904705-47.patch",
+        "fix on field_group after updating paragraph to 1.12 https://www.drupal.org/project/paragraphs/issues/3138609 https://mattermost.web.cern.ch/it-dep/pl/8aw316jbttd7i8hp4zhg9ba3hc": "patches/paragraphs-3138609-9.patch"
       }
     },
     "drupal-core-project-message": {

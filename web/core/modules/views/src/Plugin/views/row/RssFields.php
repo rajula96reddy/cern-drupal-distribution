@@ -4,6 +4,9 @@ namespace Drupal\views\Plugin\views\row;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
+use Drupal\file\Entity\File;
+use Drupal\file\Plugin\Field\FieldType\FileFieldItemList;
+use Drupal\image\Entity\ImageStyle;
 
 /**
  * Renders an RSS item based on fields.
@@ -32,6 +35,7 @@ class RssFields extends RowPluginBase {
     $options['description_field'] = ['default' => ''];
     $options['creator_field'] = ['default' => ''];
     $options['date_field'] = ['default' => ''];
+    $options['enclosure_field'] = ['default' => ''];
     $options['guid_field_options']['contains']['guid_field'] = ['default' => ''];
     $options['guid_field_options']['contains']['guid_field_is_permalink'] = ['default' => TRUE];
     return $options;
@@ -83,6 +87,13 @@ class RssFields extends RowPluginBase {
       '#options' => $view_fields_labels,
       '#default_value' => $this->options['date_field'],
       '#required' => TRUE,
+    ];
+    $form['enclosure_field'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Enclosure field'),
+      '#description' => $this->t('Describes a media object that is attached to the item. This must be a file field.'),
+      '#options' => $view_fields_labels,
+      '#default_value' => $this->options['enclosure_field'],
     ];
     $form['guid_field_options'] = [
       '#type' => 'details',
@@ -152,6 +163,57 @@ class RssFields extends RowPluginBase {
         'namespace' => ['xmlns:dc' => 'http://purl.org/dc/elements/1.1/'],
       ],
     ];
+
+    if ($this->options['enclosure_field']) {
+      $field_name = $this->options['enclosure_field'];
+      $field_options = $this->view->field[$field_name]->options;
+      $entity = $this->view->result[$row_index]->_entity;
+      $enclosure = $entity->$field_name;
+      if ($enclosure instanceof FileFieldItemList) {
+        $value = $enclosure->getValue();
+        if (!empty($value[0]['target_id'])) {
+          if($file = File::load($value[0]['target_id'])) {
+            $file_url = '';
+            $file_size = '';
+            $file_mimetype = '';
+            $file_uri = $file->getFileUri();
+            if (isset($field_options['settings']['image_style'])) {
+              $style = ImageStyle::load($field_options['settings']['image_style']);
+              $derivative_uri = $style->buildUri($file_uri);
+              $derivative_exists = TRUE;
+              if (!file_exists($derivative_uri)) {
+                $derivative_exists = $style->createDerivative($file_uri, $derivative_uri);
+              }
+              if ($derivative_exists) {
+                $image = \Drupal::service('image.factory')->get($derivative_uri);
+                $file_url = file_create_url($derivative_uri);
+                $file_size = $image->getFileSize();
+                $file_mimetype = $image->getMimeType();
+              }
+            }
+            else {
+              // In RSS feeds, it is necessary to use absolute URLs. The 'url.site'
+              // cache context is already associated with RSS feed responses, so it
+              // does not need to be specified here.
+              $file_url = file_create_url($file_uri);
+              $file_size = $file->getSize();
+              $file_mimetype = $file->getMimeType();
+            }
+            if (!empty($file_url)) {
+              $item->elements[] = [
+                'key' => 'enclosure',
+                'attributes' => [
+                  'url' => $file_url,
+                  'length' => $file_size,
+                  'type' => $file_mimetype,
+                ]
+              ];
+            }
+          }
+        }
+      }
+    }
+
     $guid_is_permalink_string = 'false';
     $item_guid = $this->getField($row_index, $this->options['guid_field_options']['guid_field']);
     if ($this->options['guid_field_options']['guid_field_is_permalink']) {

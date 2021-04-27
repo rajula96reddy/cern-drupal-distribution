@@ -32,7 +32,7 @@ class PathWidget extends WidgetBase {
     $element['alias'] = [
       '#type' => 'textfield',
       '#title' => $element['#title'],
-      '#default_value' => $items[$delta]->alias,
+      '#default_value' => $entity->isNewTranslation() ? '' : $items[$delta]->alias,
       '#required' => $element['#required'],
       '#maxlength' => 255,
       '#description' => $this->t('Specify an alternative path by which this data can be accessed. For example, type "/about" when writing an about page.'),
