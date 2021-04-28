@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\openid_connect\Unit;
 
-use Drupal\openid_connect\OpenIDConnectSessionInterface;
 use Drupal\Tests\UnitTestCase;
 use Drupal\openid_connect\OpenIDConnectStateToken;
 
@@ -24,13 +23,6 @@ class OpenIDConnectStateTokenTest extends UnitTestCase {
   protected $stateTokenService;
 
   /**
-   * A mock of the openid_connect.session service.
-   *
-   * @var \PHPUnit\Framework\MockObject\MockObject
-   */
-  protected $session;
-
-  /**
    * The state token created for these tests.
    *
    * @var string
@@ -42,14 +34,10 @@ class OpenIDConnectStateTokenTest extends UnitTestCase {
    */
   protected function setUp(): void {
     parent::setUp();
-
-    // Mock the 'openid_connect.session' service.
-    $this->session = $this->createMock(OpenIDConnectSessionInterface::class);
-
-    $this->stateTokenService = new OpenIDConnectStateToken($this->session);
+    $this->stateTokenService = new OpenIDConnectStateToken();
 
     // Set the state token and save the results.
-    $this->stateToken = $this->stateTokenService->generateToken();
+    $this->stateToken = $this->stateTokenService->create();
   }
 
   /**
@@ -58,21 +46,22 @@ class OpenIDConnectStateTokenTest extends UnitTestCase {
    * @runInSeparateProcess
    */
   public function testConfirm(): void {
-    $random = $this->randomMachineName();
-    $this->session->expects($this->atLeast(2))
-      ->method('retrieveStateToken')
-      ->willReturnOnConsecutiveCalls($this->stateToken, $random, '');
-
     // Confirm the session matches the state token variable.
     $confirmResultTrue = $this->stateTokenService->confirm($this->stateToken);
     $this->assertEquals(TRUE, $confirmResultTrue);
 
+    // Assert the state token key in the session global.
+    $this->assertArrayHasKey('openid_connect_state', $_SESSION);
+
     // Change the session variable.
-    $this->session->saveStateToken($random);
+    $_SESSION['openid_connect_state'] = $this->randomMachineName();
     $confirmResultFalse = $this->stateTokenService->confirm($this->stateToken);
 
     // Assert the expected value no longer matches the session.
     $this->assertEquals(FALSE, $confirmResultFalse);
+
+    // Remove the session variable altogether.
+    unset($_SESSION['openid_connect_state']);
 
     // Check the state token.
     $confirmResultEmpty = $this->stateTokenService->confirm($this->stateToken);

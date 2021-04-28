@@ -22,7 +22,7 @@ class OpenIDConnectClient extends Plugin {
   public $id;
 
   /**
-   * The human-readable name of the OpenID Connect Client plugin.
+   * The label of the plugin.
    *
    * @var \Drupal\Core\Annotation\Translation
    *

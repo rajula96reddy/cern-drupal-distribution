@@ -2,10 +2,8 @@
 
 namespace Drupal\openid_connect\Plugin\OpenIDConnectClient;
 
-use Drupal\Component\Serialization\Json;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\openid_connect\Plugin\OpenIDConnectClientBase;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * LinkedIn OpenID Connect client.
@@ -22,7 +20,7 @@ class OpenIDConnectLinkedinClient extends OpenIDConnectClientBase {
   /**
    * {@inheritdoc}
    */
-  public function buildConfigurationForm(array $form, FormStateInterface $form_state): array {
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
 
     $url = 'https://www.linkedin.com/developer/apps';
@@ -36,7 +34,7 @@ class OpenIDConnectLinkedinClient extends OpenIDConnectClientBase {
   /**
    * {@inheritdoc}
    */
-  public function getEndpoints(): array {
+  public function getEndpoints() {
     return [
       'authorization' => 'https://www.linkedin.com/oauth/v2/authorization',
       'token' => 'https://www.linkedin.com/oauth/v2/accessToken',
@@ -48,7 +46,7 @@ class OpenIDConnectLinkedinClient extends OpenIDConnectClientBase {
   /**
    * {@inheritdoc}
    */
-  public function authorize(string $scope = 'openid email'): Response {
+  public function authorize($scope = 'openid email') {
     // Use LinkedIn specific authorisations.
     return parent::authorize('r_liteprofile r_emailaddress');
   }
@@ -56,7 +54,14 @@ class OpenIDConnectLinkedinClient extends OpenIDConnectClientBase {
   /**
    * {@inheritdoc}
    */
-  public function retrieveUserInfo(string $access_token): ?array {
+  public function decodeIdToken($id_token) {
+    return [];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function retrieveUserInfo($access_token) {
     $userinfo = [];
     $info = parent::retrieveUserInfo($access_token);
 
@@ -96,10 +101,10 @@ class OpenIDConnectLinkedinClient extends OpenIDConnectClientBase {
    * @param string $access_token
    *   An access token string.
    *
-   * @return string|null
-   *   An email or null.
+   * @return string|bool
+   *   An email or false.
    */
-  protected function retrieveUserEmail(string $access_token): ?string {
+  protected function retrieveUserEmail($access_token) {
     $request_options = [
       'headers' => [
         'Authorization' => 'Bearer ' . $access_token,
@@ -110,7 +115,7 @@ class OpenIDConnectLinkedinClient extends OpenIDConnectClientBase {
 
     try {
       $response = $this->httpClient->get($endpoints['useremail'], $request_options);
-      $object = Json::decode((string) $response->getBody());
+      $object = json_decode((string) $response->getBody(), TRUE);
 
       if (isset($object['elements'])) {
         foreach ($object['elements'] as $element) {
@@ -131,7 +136,7 @@ class OpenIDConnectLinkedinClient extends OpenIDConnectClientBase {
     }
 
     // No email address was provided.
-    return NULL;
+    return FALSE;
   }
 
 }

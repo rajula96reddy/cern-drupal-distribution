@@ -2,26 +2,34 @@
 
 namespace Drupal\openid_connect\Form;
 
-use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\openid_connect\OpenIDConnectSession;
 use Drupal\openid_connect\OpenIDConnectClaims;
-use Drupal\openid_connect\OpenIDConnectSessionInterface;
+use Drupal\openid_connect\Plugin\OpenIDConnectClientManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides the OpenID Connect login form.
+ * Class OpenIDConnectLoginForm.
  *
  * @package Drupal\openid_connect\Form
  */
-class OpenIDConnectLoginForm extends FormBase {
+class OpenIDConnectLoginForm extends FormBase implements ContainerInjectionInterface {
 
   /**
-   * The entity type manager.
+   * The OpenID Connect session service.
    *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   * @var \Drupal\openid_connect\OpenIDConnectSession
    */
-  protected $entityTypeManager;
+  protected $session;
+
+  /**
+   * Drupal\openid_connect\Plugin\OpenIDConnectClientManager definition.
+   *
+   * @var \Drupal\openid_connect\Plugin\OpenIDConnectClientManager
+   */
+  protected $pluginManager;
 
   /**
    * The OpenID Connect claims.
@@ -31,57 +39,58 @@ class OpenIDConnectLoginForm extends FormBase {
   protected $claims;
 
   /**
-   * The OpenID Connect session service.
-   *
-   * @var \Drupal\openid_connect\OpenIDConnectSessionInterface
-   */
-  protected $session;
-
-  /**
    * The constructor.
    *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   *   The entity type manager.
+   * @param \Drupal\openid_connect\OpenIDConnectSession $session
+   *   The OpenID Connect session service.
+   * @param \Drupal\openid_connect\Plugin\OpenIDConnectClientManager $plugin_manager
+   *   The plugin manager.
    * @param \Drupal\openid_connect\OpenIDConnectClaims $claims
    *   The OpenID Connect claims.
-   * @param \Drupal\openid_connect\OpenIDConnectSessionInterface $session
-   *   The OpenID Connect session service.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, OpenIDConnectClaims $claims, OpenIDConnectSessionInterface $session) {
-    $this->entityTypeManager = $entity_type_manager;
-    $this->claims = $claims;
+  public function __construct(
+      OpenIDConnectSession $session,
+      OpenIDConnectClientManager $plugin_manager,
+      OpenIDConnectClaims $claims
+  ) {
     $this->session = $session;
+    $this->pluginManager = $plugin_manager;
+    $this->claims = $claims;
   }
 
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container): OpenIDConnectLoginForm {
+  public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity_type.manager'),
-      $container->get('openid_connect.claims'),
-      $container->get('openid_connect.session')
+      $container->get('openid_connect.session'),
+      $container->get('plugin.manager.openid_connect_client.processor'),
+      $container->get('openid_connect.claims')
     );
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getFormId(): string {
+  public function getFormId() {
     return 'openid_connect_login_form';
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state): array {
-    $clients = $this->entityTypeManager->getStorage('openid_connect_client')->loadByProperties(['status' => TRUE]);
-    foreach ($clients as $client_id => $client) {
-      /** @var \Drupal\openid_connect\OpenIDConnectClientEntityInterface $client */
+  public function buildForm(array $form, FormStateInterface $form_state) {
+    $definitions = $this->pluginManager->getDefinitions();
+    foreach ($definitions as $client_id => $client) {
+      if (!$this->config('openid_connect.settings.' . $client_id)
+        ->get('enabled')) {
+        continue;
+      }
+
       $form['openid_connect_client_' . $client_id . '_login'] = [
         '#type' => 'submit',
         '#value' => $this->t('Log in with @client_title', [
-          '@client_title' => $client->label(),
+          '@client_title' => $client['label'],
         ]),
         '#name' => $client_id,
         '#prefix' => '<div>',
@@ -98,12 +107,16 @@ class OpenIDConnectLoginForm extends FormBase {
     $this->session->saveDestination();
     $client_name = $form_state->getTriggeringElement()['#name'];
 
-    /** @var \Drupal\openid_connect\OpenIDConnectClientEntityInterface $client */
-    $client = $this->entityTypeManager->getStorage('openid_connect_client')->loadByProperties(['id' => $client_name])[$client_name];
-    $plugin = $client->getPlugin();
-    $scopes = $this->claims->getScopes($plugin);
-    $this->session->saveOp('login');
-    $response = $plugin->authorize($scopes);
+    $configuration = $this->config('openid_connect.settings.' . $client_name)
+      ->get('settings');
+    /** @var \Drupal\openid_connect\Plugin\OpenIDConnectClientInterface $client */
+    $client = $this->pluginManager->createInstance(
+      $client_name,
+      $configuration
+    );
+    $scopes = $this->claims->getScopes($client);
+    $_SESSION['openid_connect_op'] = 'login';
+    $response = $client->authorize($scopes, $form_state);
     $form_state->setResponse($response);
   }
 

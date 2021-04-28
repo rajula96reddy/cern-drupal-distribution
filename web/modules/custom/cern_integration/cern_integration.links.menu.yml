@@ -1,0 +1,5 @@
+cern_integration.settings:
+  title: 'CERN Infrastructure'
+  parent: system.admin_config_system
+  description: 'Access CERN Drupal infrastructure tools (e.g., database administration, file access)'
+  route_name: cern_integration.settings

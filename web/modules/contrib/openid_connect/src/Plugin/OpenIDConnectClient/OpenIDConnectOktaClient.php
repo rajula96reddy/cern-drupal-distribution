@@ -20,7 +20,7 @@ class OpenIDConnectOktaClient extends OpenIDConnectClientBase {
   /**
    * {@inheritdoc}
    */
-  public function defaultConfiguration(): array {
+  public function defaultConfiguration() {
     return [
       'okta_domain' => '',
     ] + parent::defaultConfiguration();
@@ -29,7 +29,7 @@ class OpenIDConnectOktaClient extends OpenIDConnectClientBase {
   /**
    * {@inheritdoc}
    */
-  public function buildConfigurationForm(array $form, FormStateInterface $form_state): array {
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildConfigurationForm($form, $form_state);
 
     $form['okta_domain'] = [
@@ -44,14 +44,13 @@ class OpenIDConnectOktaClient extends OpenIDConnectClientBase {
   /**
    * {@inheritdoc}
    */
-  public function getEndpoints(): array {
+  public function getEndpoints() {
     // From https://developer.okta.com/docs/reference/api/oidc and
     // https://${yourOktaDomain}/.well-known/openid-configuration
     return [
       'authorization' => 'https://' . $this->configuration['okta_domain'] . '/oauth2/v1/authorize',
       'token' => 'https://' . $this->configuration['okta_domain'] . '/oauth2/v1/token',
       'userinfo' => 'https://' . $this->configuration['okta_domain'] . '/oauth2/v1/userinfo',
-      'end_session' => 'https://' . $this->configuration['okta_domain'] . '/oauth2/v1/logout',
     ];
   }
 

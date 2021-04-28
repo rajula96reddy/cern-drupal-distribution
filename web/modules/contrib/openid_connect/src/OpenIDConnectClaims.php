@@ -2,9 +2,9 @@
 
 namespace Drupal\openid_connect;
 
-use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
-use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Extension\ModuleHandler;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\openid_connect\Plugin\OpenIDConnectClientInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -18,16 +18,16 @@ class OpenIDConnectClaims implements ContainerInjectionInterface {
   use StringTranslationTrait;
 
   /**
-   * The config factory.
+   * Drupal\Core\Config\ConfigFactory definition.
    *
-   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   * @var \Drupal\Core\Config\ConfigFactory
    */
   protected $configFactory;
 
   /**
-   * The module handler.
+   * Drupal\Core\Extension\ModuleHandler definition.
    *
-   * @var \Drupal\Core\Extension\ModuleHandlerInterface
+   * @var \Drupal\Core\Extension\ModuleHandler
    */
   protected $moduleHandler;
 
@@ -46,14 +46,18 @@ class OpenIDConnectClaims implements ContainerInjectionInterface {
   protected $defaultScopes = ['openid', 'email'];
 
   /**
-   * Constructs an OpenID Connect claims service instance.
+   * The constructor.
    *
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
-   *   The config factory.
-   * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
+   * @param \Drupal\Core\Config\ConfigFactory $config_factory
+   *   The configuration factory.
+   * @param \Drupal\Core\Extension\ModuleHandler $module_handler
    *   The module handler.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, ModuleHandlerInterface $module_handler) {
+  public function __construct(
+    ConfigFactory $config_factory,
+    ModuleHandler $module_handler
+  ) {
+
     $this->configFactory = $config_factory;
     $this->moduleHandler = $module_handler;
   }
@@ -61,7 +65,7 @@ class OpenIDConnectClaims implements ContainerInjectionInterface {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container): OpenIDConnectClaims {
+  public static function create(ContainerInterface $container) {
     return new static(
       $container->get('config.factory'),
       $container->get('module_handler')
@@ -79,7 +83,7 @@ class OpenIDConnectClaims implements ContainerInjectionInterface {
    * @return array
    *   List of claims.
    */
-  public function getClaims(): array {
+  public function getClaims() {
     if (!isset(self::$claims)) {
       $claims = $this->getDefaultClaims();
       $this->moduleHandler->alter('openid_connect_claims', $claims);
@@ -94,7 +98,7 @@ class OpenIDConnectClaims implements ContainerInjectionInterface {
    * @return array
    *   List of claims as options.
    */
-  public function getOptions(): array {
+  public function getOptions() {
     $options = [];
     foreach ($this->getClaims() as $claim_name => $claim) {
       $options[ucfirst($claim['scope'])][$claim_name] = $claim['title'];
@@ -113,7 +117,7 @@ class OpenIDConnectClaims implements ContainerInjectionInterface {
    *
    * @see http://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims
    */
-  public function getScopes(OpenIDConnectClientInterface $client = NULL): string {
+  public function getScopes(OpenIDConnectClientInterface $client = NULL) {
     $claims = $this->configFactory
       ->getEditable('openid_connect.settings')
       ->get('userinfo_mappings');
@@ -139,7 +143,7 @@ class OpenIDConnectClaims implements ContainerInjectionInterface {
    * @return array
    *   Default claims supported by the OpenID Connect module.
    */
-  protected function getDefaultClaims(): array {
+  protected function getDefaultClaims() {
     return [
       'name' => [
         'scope' => 'profile',

@@ -4,16 +4,11 @@ declare(strict_types = 1);
 
 namespace Drupal\Tests\openid_connect\Unit;
 
-use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Config\ImmutableConfig;
-use Drupal\Core\DependencyInjection\ContainerBuilder;
-use Drupal\Core\Language\LanguageInterface;
-use Drupal\Core\Language\LanguageManagerInterface;
-use Drupal\Core\Routing\RedirectDestinationInterface;
-use Drupal\Core\Routing\UrlGeneratorInterface;
+use Drupal\Core\Path\CurrentPathStack;
 use Drupal\openid_connect\OpenIDConnectSession;
 use Drupal\Tests\UnitTestCase;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * @coversDefaultClass \Drupal\openid_connect\OpenIDConnectSession
@@ -37,98 +32,64 @@ class OpenIdConnectSessionTest extends UnitTestCase {
   const TEST_QUERY = 'sport=baseball&team=reds';
 
   /**
-   * A mock of the config.factory service.
+   * A mock of the current_path service.
    *
    * @var \PHPUnit\Framework\MockObject\MockObject
    */
-  protected $configFactory;
+  protected $currentPath;
 
   /**
-   * A mock of the redirect.destination service.
+   * A mock of the requestStack method for testing.
    *
    * @var \PHPUnit\Framework\MockObject\MockObject
    */
-  protected $redirectDestination;
-
-  /**
-   * A mock of the session service.
-   *
-   * @var \PHPUnit\Framework\MockObject\MockObject
-   */
-  protected $session;
-
-  /**
-   * A mock of the language manager service.
-   *
-   * @var \PHPUnit\Framework\MockObject\MockObject
-   */
-  protected $languageManager;
+  protected $requestStack;
 
   /**
    * {@inheritdoc}
    */
-  protected function setUp(): void {
+  protected function setUp() {
     parent::setUp();
 
-    // Mock the configuration factory service.
-    $this->configFactory = $this->createMock(ConfigFactoryInterface::class);
-    // Mock the 'redirect.destination' service.
-    $this->redirectDestination = $this->createMock(RedirectDestinationInterface::class);
-    // Mock the 'session' service.
-    $this->session = $this->createMock(SessionInterface::class);
-    // Mock the 'language_manager' service.
-    $this->languageManager = $this->createMock(LanguageManagerInterface::class);
+    // Mock the currentPath service.
+    $this->currentPath = $this->createMock(CurrentPathStack::class);
 
-    // Mock the url generator service.
-    $urlGenerator = $this->createMock(UrlGeneratorInterface::class);
-    $urlGenerator->expects($this->once())
-      ->method('generateFromRoute')
-      ->with('user.login', [], [], FALSE)
-      ->willReturn('/user/login');
-    $container = new ContainerBuilder();
-    $container->set('url_generator', $urlGenerator);
-    \Drupal::setContainer($container);
+    // Mock the Request class that is returned by RequestStack class.
+    $request = $this->createMock(Request::class);
+    $request->expects($this->once())
+      ->method('getQueryString')
+      ->willReturn('sport=baseball&team=reds');
+
+    // Mock the requestStack service.
+    $this->requestStack = $this->createMock(RequestStack::class);
+    $this->requestStack->expects($this->once())
+      ->method('getCurrentRequest')
+      ->willReturn($request);
   }
 
   /**
-   * Test the saveDestination method.
+   * Test the save destination method.
    */
   public function testSaveDestination(): void {
-    // Get the expected destination.
-    $expectedDestination = self::TEST_PATH . '?' . self::TEST_QUERY;
+    // Get the expected session array.
+    $expectedSession = $this->getExpectedSessionArray(
+      self::TEST_PATH,
+      self::TEST_QUERY
+    );
 
-    // Mock the get method for the 'redirect.destination' service.
-    $this->redirectDestination->expects($this->once())
-      ->method('get')
-      ->willReturn($expectedDestination);
-
-    // Mock the get method for the 'session' service.
-    $this->session->expects($this->exactly(2))
-      ->method('get')
-      ->willReturnOnConsecutiveCalls($expectedDestination, 'und');
-
-    $language = $this->createMock(LanguageInterface::class);
-    $language->expects($this->once())
-      ->method('getId')
-      ->willReturn('und');
-
-    $this->languageManager->expects($this->once())
-      ->method('getCurrentLanguage')
-      ->willReturn($language);
+    // Mock the getPath method for the current path service.
+    $this->currentPath->expects($this->once())
+      ->method('getPath')
+      ->willReturn(self::TEST_PATH);
 
     // Create a new OpenIDConnectSession class.
-    $session = new OpenIDConnectSession($this->configFactory, $this->redirectDestination, $this->session, $this->languageManager);
+    $session = new OpenIDConnectSession($this->currentPath, $this->requestStack);
 
     // Call the saveDestination() method.
     $session->saveDestination();
 
-    // Call the retrieveDestination method.
-    $destination = $session->retrieveDestination();
-
-    // Assert the destination matches our expectation.
-    $this->assertEquals($destination,
-      ['destination' => $expectedDestination, 'langcode' => 'und']
-    );
+    // Assert the $_SESSOIN global matches our expectation.
+    $this->assertArrayEquals($expectedSession, $_SESSION);
   }
 
   /**
@@ -136,48 +97,46 @@ class OpenIdConnectSessionTest extends UnitTestCase {
    */
   public function testSaveDestinationUserPath(): void {
     // Setup our expected results.
-    $expectedDestination = 'user';
+    $expectedSession = $this->getExpectedSessionArray(
+      '/user',
+      self::TEST_QUERY
+    );
 
-    $immutableConfig = $this
-      ->createMock(ImmutableConfig::class);
-
-    $this->configFactory->expects($this->once())
-      ->method('get')
-      ->with('openid_connect.settings')
-      ->willReturn($immutableConfig);
-
-    // Mock the get method with the user login path.
-    $this->redirectDestination->expects($this->once())
-      ->method('get')
+    // Mock the getPath method with the user path.
+    $this->currentPath->expects($this->once())
+      ->method('getPath')
       ->willReturn(self::TEST_USER_PATH);
 
-    // Mock the get method for the 'session' service.
-    $this->session->expects($this->exactly(2))
-      ->method('get')
-      ->willReturnOnConsecutiveCalls($expectedDestination, 'und');
-
-    $language = $this->createMock(LanguageInterface::class);
-    $language->expects($this->once())
-      ->method('getId')
-      ->willReturn('und');
-
-    $this->languageManager->expects($this->once())
-      ->method('getCurrentLanguage')
-      ->willReturn($language);
-
     // Create a class to test with.
-    $session = new OpenIDConnectSession($this->configFactory, $this->redirectDestination, $this->session, $this->languageManager);
+    $session = new OpenIDConnectSession($this->currentPath, $this->requestStack);
 
     // Call the saveDestination method.
     $session->saveDestination();
 
-    // Call the retrieveDestination method.
-    $destination = $session->retrieveDestination();
+    // Assert the $_SESSION matches our expectations.
+    $this->assertArrayEquals($expectedSession, $_SESSION);
+  }
 
-    // Assert the destination matches our expectations.
-    $this->assertEquals($destination,
-      ['destination' => $expectedDestination, 'langcode' => 'und']
-    );
+  /**
+   * Get the expected session array to compare.
+   *
+   * @param string $path
+   *   The path that is expected in the session global.
+   * @param string $queryString
+   *   The query string that is expected in the session global.
+   *
+   * @return array
+   *   The expected session array.
+   */
+  private function getExpectedSessionArray(string $path, string $queryString): array {
+    return [
+      'openid_connect_destination' => [
+        $path,
+        [
+          'query' => $queryString,
+        ],
+      ],
+    ];
   }
 
 }
