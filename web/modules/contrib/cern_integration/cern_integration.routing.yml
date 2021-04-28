@@ -1,0 +1,7 @@
+cern_integration.settings:
+  path: '/_site'
+  defaults:
+    _title: 'CERN Infrastructure'
+    _controller: '\Drupal\cern_integration\Controller\BackendController::redirect'
+  requirements:
+    _permission: 'administer site configuration'

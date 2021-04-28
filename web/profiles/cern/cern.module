@@ -29,6 +29,25 @@ function cern_modules_installed() {
     ->getEditable('matomo.settings')
     ->set("url_https", 'https://piwik.web.cern.ch/')
     ->save();
+
+    /*Set OIDC vars*/
+  $client_id= $form_state->getValue('clientID');
+  $client_secret= $form_state->getValue('clientSecret');
+  $issuer_url= $form_state->getValue('issuerURL');
+  \Drupal::configFactory()
+    ->getEditable("openid_connect.settings")
+    ->set("client_ID", $client_id)
+    ->save();
+
+  \Drupal::configFactory()
+    ->getEditable("openid_connect.settings")
+    ->set("client_secret", $client_secret)
+    ->save();
+
+  \Drupal::configFactory()
+    ->getEditable("openid_connect.settings")
+    ->set("client_ID", $issuer_url)
+    ->save();
 }
 
 /**

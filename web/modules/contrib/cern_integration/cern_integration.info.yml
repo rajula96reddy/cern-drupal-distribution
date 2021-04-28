@@ -1,0 +1,8 @@
+name: CERN Integration module
+description: Custom functionality and constraints for CERN Drupal infrastructure
+package: CERN
+type: module
+version: '8.0.9'
+core: 8.x
+
+required: TRUE
