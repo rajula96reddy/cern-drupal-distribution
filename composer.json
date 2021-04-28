@@ -104,6 +104,7 @@
     "drupal/cern-webcast-feeds": "~2.0.4",
     "drupal/ckeditor_font": "~1.1.0",
     "drupal/codesnippet": "~1.7.0",
+    "drupal/filelog": "~2.0.0",
     "drupal/color_field": "~2.4.0",
     "drupal/colorbox": "~1.7.0",
     "drupal/colorbutton": "~1.2.0",
