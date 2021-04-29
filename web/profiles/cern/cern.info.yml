@@ -27,6 +27,7 @@ dependencies:
   - externalauth
   - field_ui
   - file
+  - filelog
   - help
   - history
   - image
