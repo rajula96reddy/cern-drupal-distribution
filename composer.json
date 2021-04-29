@@ -79,7 +79,7 @@
     }
   ],
   "require": {
-    "composer/installers": "~v1.10.0",
+    "composer/installers": "~1.10.0",
     "cweagans/composer-patches": "~1.7.0",
     "drupal/admin_toolbar": "~2.4.0",
     "drupal/adminimal_theme": "~1.6.0",
@@ -132,7 +132,7 @@
     "drupal/fast_404": "~2.0.0@alpha",
     "drupal/features": "~3.12.0",
     "drupal/feeds": "~3.0.0@alpha",
-    "drupal/fences": "~2.0.0-rc1",
+    "drupal/fences": "~2.0.0@rc",
     "drupal/field_formatter_class": "~1.5.0",
     "drupal/field_group": "~3.1.0",
     "drupal/field_permissions": "~1.1.0",
@@ -189,7 +189,7 @@
     "drupal/workbench": "~1.3.0",
     "drupal/workbench_access": "~1.0.0@beta",
     "drupal/workbench_moderation": "~1.6.0",
-    "wikimedia/composer-merge-plugin": "~v2.0.1"
+    "wikimedia/composer-merge-plugin": "~2.0.1"
   },
   "conflict": {
     "drupal/drupal": "*"
