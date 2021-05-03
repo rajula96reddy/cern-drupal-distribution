@@ -11,7 +11,9 @@ use Drupal\Core\Extension\ModuleHandler;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
-use Drupal\openid_connect\OpenIDConnectAuthmap;
+use Drupal\externalauth\AuthmapInterface;
+use Drupal\externalauth\ExternalAuthInterface;
+use Drupal\openid_connect\OpenIDConnectClientEntityInterface;
 use Drupal\openid_connect\Plugin\OpenIDConnectClientInterface;
 use Drupal\Tests\UnitTestCase;
 use Drupal\user\Entity\User;
@@ -30,7 +32,7 @@ use Drupal\Core\File\FileSystemInterface;
 use Psr\Log\InvalidArgumentException;
 
 /**
- * Class OpenIDConnectTest.
+ * Provides tests for the OpenID Connect module.
  *
  * @coversDefaultClass \Drupal\openid_connect\OpenIDConnect
  * @group openid_connect
@@ -45,11 +47,18 @@ class OpenIDConnectTest extends UnitTestCase {
   protected $configFactory;
 
   /**
-   * Mock of the OpenIDConnectAuthMap service.
+   * Mock of the external authmap service.
    *
    * @var \PHPUnit\Framework\MockObject\MockObject
    */
-  protected $authMap;
+  protected $authmap;
+
+  /**
+   * Mock of the externalAuth service.
+   *
+   * @var \PHPUnit\Framework\MockObject\MockObject
+   */
+  protected $externalAuth;
 
   /**
    * Mock of the entity_type.manager service.
@@ -138,7 +147,7 @@ class OpenIDConnectTest extends UnitTestCase {
   /**
    * {@inheritDoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $oldFileMock = $this->createMock(File::class);
@@ -155,9 +164,13 @@ class OpenIDConnectTest extends UnitTestCase {
     $this->configFactory = $this
       ->createMock(ConfigFactoryInterface::class);
 
-    // Mock the authMap open id connect service.
-    $this->authMap = $this
-      ->createMock(OpenIDConnectAuthmap::class);
+    // Mock the external authMap service.
+    $this->authmap = $this
+      ->createMock(AuthmapInterface::class);
+
+    // Mock the externalAuth connect service.
+    $this->externalAuth = $this
+      ->createMock(ExternalAuthInterface::class);
 
     $this->userStorage = $this
       ->createMock(EntityStorageInterface::class);
@@ -213,7 +226,8 @@ class OpenIDConnectTest extends UnitTestCase {
 
     $this->openIdConnect = new OpenIDConnect(
       $this->configFactory,
-      $this->authMap,
+      $this->authmap,
+      $this->externalAuth,
       $this->entityTypeManager,
       $this->entityFieldManager,
       $this->currentUser,
@@ -258,16 +272,9 @@ class OpenIDConnectTest extends UnitTestCase {
         []
       );
 
-    $this->moduleHandler->expects($this->once())
-      ->method('alterDeprecated')
-      ->with(
-        'hook_openid_connect_user_properties_to_skip_alter() is deprecated and will be removed in 8.x-2.0.', 'openid_connect_user_properties_to_skip',
-        $defaultPropertiesIgnore
-      );
-
     $actualPropertiesIgnored = $this->openIdConnect->userPropertiesIgnore([]);
 
-    $this->assertArrayEquals($expectedResults, $actualPropertiesIgnored);
+    $this->assertEquals($expectedResults, $actualPropertiesIgnored);
   }
 
   /**
@@ -284,11 +291,7 @@ class OpenIDConnectTest extends UnitTestCase {
    *
    * @dataProvider dataProviderForExtractSub
    */
-  public function testExtractSub(
-    array $userData,
-    array $userInfo,
-    $expected
-  ): void {
+  public function testExtractSub(array $userData, array $userInfo, $expected): void {
     $actual = $this->openIdConnect->extractSub($userData, $userInfo);
     $this->assertEquals($expected, $actual);
   }
@@ -353,9 +356,8 @@ class OpenIDConnectTest extends UnitTestCase {
         ->willReturn($hasPermission);
 
       if (!$hasPermission) {
-        $this->authMap->expects($this->once())
-          ->method('getConnectedAccounts')
-          ->with($this->currentUser)
+        $this->authmap->expects($this->once())
+          ->method('getAll')
           ->willReturn($connectedAccounts);
       }
     }
@@ -366,9 +368,8 @@ class OpenIDConnectTest extends UnitTestCase {
         ->willReturn($hasPermission);
 
       if (!$hasPermission) {
-        $this->authMap->expects($this->once())
-          ->method('getConnectedAccounts')
-          ->with($account)
+        $this->authmap->expects($this->once())
+          ->method('getAll')
           ->willReturn($connectedAccounts);
       }
     }
@@ -426,7 +427,7 @@ class OpenIDConnectTest extends UnitTestCase {
    *   The userinfo array containing the email key.
    * @param string $client_name
    *   The client name for the user.
-   * @param bool $status
+   * @param int $status
    *   The user status.
    * @param bool $duplicate
    *   Whether to test a duplicate username.
@@ -437,7 +438,7 @@ class OpenIDConnectTest extends UnitTestCase {
     string $sub,
     array $userinfo,
     string $client_name,
-    bool $status,
+    int $status,
     bool $duplicate
   ): void {
     // Mock the expected username.
@@ -459,20 +460,15 @@ class OpenIDConnectTest extends UnitTestCase {
       'mail' => $userinfo['email'],
       'init' => $userinfo['email'],
       'status' => $status,
-      'openid_connect_client' => $client_name,
-      'openid_connect_sub' => $sub,
     ];
 
     // Mock the user account to be created.
     $account = $this
       ->createMock(UserInterface::class);
-    $account->expects($this->once())
-      ->method('save')
-      ->willReturn(1);
 
-    $this->userStorage->expects($this->once())
-      ->method('create')
-      ->with($expectedAccountArray)
+    $this->externalAuth->expects($this->once())
+      ->method('register')
+      ->with($sub, 'openid_connect.' . $client_name, $expectedAccountArray)
       ->willReturn($account);
 
     if ($duplicate) {
@@ -509,7 +505,7 @@ class OpenIDConnectTest extends UnitTestCase {
         $this->randomMachineName(),
         ['email' => 'test@123.com'],
         '',
-        FALSE,
+        0,
         FALSE,
       ],
       [
@@ -519,7 +515,7 @@ class OpenIDConnectTest extends UnitTestCase {
           'name' => $this->randomMachineName(),
         ],
         $this->randomMachineName(),
-        TRUE,
+        1,
         FALSE,
       ],
       [
@@ -529,7 +525,7 @@ class OpenIDConnectTest extends UnitTestCase {
           'preferred_username' => $this->randomMachineName(),
         ],
         $this->randomMachineName(),
-        TRUE,
+        1,
         TRUE,
       ],
     ];
@@ -566,6 +562,7 @@ class OpenIDConnectTest extends UnitTestCase {
     bool $accountExists
   ): void {
     $clientPluginId = $this->randomMachineName();
+    $clientId = $this->randomMachineName();
 
     $this->currentUser->expects($this->once())
       ->method('isAuthenticated')
@@ -573,6 +570,8 @@ class OpenIDConnectTest extends UnitTestCase {
 
     $client = $this
       ->createMock(OpenIDConnectClientInterface::class);
+
+    $clientEntity = $this->createMock(OpenIDConnectClientEntityInterface::class);
 
     if ($authenticated) {
       $this->expectException('RuntimeException');
@@ -588,9 +587,17 @@ class OpenIDConnectTest extends UnitTestCase {
         ->with($tokens['access_token'])
         ->willReturn($userInfo);
 
-      $client->expects($this->any())
+      $clientEntity->expects($this->any())
+        ->method('getPlugin')
+        ->willReturn($client);
+
+      $clientEntity->expects($this->any())
         ->method('getPluginId')
         ->willReturn($clientPluginId);
+
+      $clientEntity->expects($this->any())
+        ->method('id')
+        ->willReturn($clientId);
 
       if ($accountExists) {
         if (!$preAuthorize) {
@@ -647,8 +654,8 @@ class OpenIDConnectTest extends UnitTestCase {
           $account->method('id')->willReturn(1234);
           $account->method('isNew')->willReturn(FALSE);
 
-          $this->authMap->expects($this->once())
-            ->method('userLoadBySub')
+          $this->externalAuth->expects($this->once())
+            ->method('load')
             ->willReturn($account);
 
           $this->moduleHandler->expects($this->any())
@@ -694,8 +701,8 @@ class OpenIDConnectTest extends UnitTestCase {
       else {
         $account = FALSE;
 
-        $this->authMap->expects($this->once())
-          ->method('userLoadBySub')
+        $this->externalAuth->expects($this->once())
+          ->method('load')
           ->willReturn($account);
 
         $this->moduleHandler->expects($this->any())
@@ -776,11 +783,6 @@ class OpenIDConnectTest extends UnitTestCase {
                 $account->expects($this->once())
                   ->method('isBlocked')
                   ->willReturn(TRUE);
-
-                if ($accountExists) {
-                  $this->messenger->expects($this->once())
-                    ->method('addError');
-                }
               }
             }
 
@@ -868,7 +870,8 @@ class OpenIDConnectTest extends UnitTestCase {
     $oidcMock = $this->getMockBuilder('\Drupal\openid_connect\OpenIDConnect')
       ->setConstructorArgs([
         $this->configFactory,
-        $this->authMap,
+        $this->authmap,
+        $this->externalAuth,
         $this->entityTypeManager,
         $this->entityFieldManager,
         $this->currentUser,
@@ -894,7 +897,7 @@ class OpenIDConnectTest extends UnitTestCase {
       );
 
     $authorization = $oidcMock
-      ->completeAuthorization($client, $tokens, $destination);
+      ->completeAuthorization($clientEntity, $tokens);
 
     if (empty($userData) && empty($userInfo)) {
       $this->assertEquals(FALSE, $authorization);
@@ -1117,13 +1120,12 @@ class OpenIDConnectTest extends UnitTestCase {
     bool $expectedResult
   ): void {
     $pluginId = $this->randomMachineName();
+    $clientId = $this->randomMachineName();
 
     $client = $this
       ->createMock(OpenIDConnectClientInterface::class);
 
-    $client->expects($this->any())
-      ->method('getPluginId')
-      ->willReturn($pluginId);
+    $clientEntity = $this->createMock(OpenIDConnectClientEntityInterface::class);
 
     $this->currentUser->expects($this->once())
       ->method('isAuthenticated')
@@ -1142,6 +1144,18 @@ class OpenIDConnectTest extends UnitTestCase {
         ->method('retrieveUserInfo')
         ->with($tokens['access_token'])
         ->willReturn($userInfo);
+
+      $clientEntity->expects($this->any())
+        ->method('getPlugin')
+        ->willReturn($client);
+
+      $clientEntity->expects($this->any())
+        ->method('getPluginId')
+        ->willReturn($pluginId);
+
+      $clientEntity->expects($this->any())
+        ->method('id')
+        ->willReturn($clientId);
 
       if (empty($userInfo) && empty($userData)) {
         $this->oidcLogger->expects($this->once())
@@ -1165,8 +1179,8 @@ class OpenIDConnectTest extends UnitTestCase {
         $account = $this
           ->createMock(UserInterface::class);
 
-        $this->authMap->expects($this->once())
-          ->method('userLoadBySub')
+        $this->externalAuth->expects($this->once())
+          ->method('load')
           ->willReturn($account);
 
         $this->moduleHandler->expects($this->once())
@@ -1190,8 +1204,8 @@ class OpenIDConnectTest extends UnitTestCase {
           ->method('id')
           ->willReturn($accountId);
 
-        $this->authMap->expects($this->once())
-          ->method('userLoadBySub')
+        $this->externalAuth->expects($this->once())
+          ->method('load')
           ->willReturn($account);
 
         $this->moduleHandler->expects($this->once())
@@ -1218,8 +1232,8 @@ class OpenIDConnectTest extends UnitTestCase {
           ->with($accountId)
           ->willReturn($account);
 
-        $this->authMap->expects($this->once())
-          ->method('userLoadBySub')
+        $this->externalAuth->expects($this->once())
+          ->method('load')
           ->willReturn(FALSE);
 
         $mappings = [
@@ -1371,7 +1385,7 @@ class OpenIDConnectTest extends UnitTestCase {
       }
     }
 
-    $result = $this->openIdConnect->connectCurrentUser($client, $tokens);
+    $result = $this->openIdConnect->connectCurrentUser($clientEntity, $tokens);
 
     $this->assertEquals($expectedResult, $result);
   }

@@ -5,7 +5,7 @@ core: '8.x'
 dependencies:
   - permissions_by_term
 package: 'Permissions by Term (Experimental)'
-# Information added by Drupal.org packaging script on 2021-03-01
-version: '8.x-2.31'
+# Information added by Drupal.org packaging script on 2021-04-13
+version: '8.x-2.33'
 project: 'permissions_by_term'
-datestamp: 1614602595
+datestamp: 1618296449

@@ -6,7 +6,6 @@ default:
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
-        - Drupal\Tests\permissions_by_term\Behat\Context\PermissionsByTermContext
       paths:
         features: '%paths.base%/modules/permissions_by_term/tests/src/Behat/Features'
   extensions:

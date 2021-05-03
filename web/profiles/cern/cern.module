@@ -29,6 +29,66 @@ function cern_modules_installed() {
     ->getEditable('matomo.settings')
     ->set("url_https", 'https://piwik.web.cern.ch/')
     ->save();
+
+
+    /*Set generic OIDC settings*/
+  \Drupal::configFactory()
+          ->getEditable("openid_connect.client.cern")
+          ->set("langcode", "en")
+          ->save();
+  \Drupal::configFactory()
+          ->getEditable("openid_connect.client.cern")
+          ->set("status", "true")
+          ->save();
+  \Drupal::configFactory()
+          ->getEditable("openid_connect.client.cern")
+          ->set("id", "cern")
+          ->save();
+  \Drupal::configFactory()
+          ->getEditable("openid_connect.client.cern")
+          ->set("label", "cern")
+          ->save();
+  \Drupal::configFactory()
+          ->getEditable("openid_connect.client.cern")
+          ->set("plugin", "generic")
+          ->save();
+
+  /*Set OIDC vars*/
+  $client_id= getenv('clientID');
+  $client_secret= getenv('clientSecret');
+  $issuer_url= getenv('issuerURL');
+  \Drupal::configFactory()
+          ->getEditable("openid_connect.client.cern")
+          ->set("settings.client_id", $client_id)
+          ->save();
+  \Drupal::configFactory()
+          ->getEditable("openid_connect.client.cern")
+          ->set("settings.client_secret", $client_secret)
+          ->save();
+
+  /* Values set for endpoints */
+  $auth_endpoint = "/protocol/openid-connect/auth";
+  $token_endpoint = "/protocol/openid-connect/token";
+  $userinfo_endpoint = "/protocol/openid-connect/userinfo";
+
+  \Drupal::configFactory()
+          ->getEditable("openid_connect.client.cern")
+          ->set("settings.authorization_endpoint", $issuer_url.$auth_endpoint)
+          ->save();
+  \Drupal::configFactory()
+          ->getEditable("openid_connect.client.cern")
+          ->set("settings.token_endpoint", $issuer_url.$token_endpoint)
+          ->save();
+  \Drupal::configFactory()
+          ->getEditable("openid_connect.client.cern")
+          ->set("settings.userinfo_endpoint", $issuer_url.$userinfo_endpoint)
+          ->save();
+
+    /*Set custom setting to allow creation of new users*/
+   \Drupal::configFactory()
+          ->getEditable("user.settings")
+          ->set("register", "admin_only")
+          ->save();
 }
 
 /**
