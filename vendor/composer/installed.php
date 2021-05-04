@@ -1,12 +1,12 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => '8.9.13.x-dev',
-    'version' => '8.9.13.9999999-dev',
+    'pretty_version' => 'dev-8.9.14-oidc',
+    'version' => 'dev-8.9.14-oidc',
     'aliases' => 
     array (
     ),
-    'reference' => '877c105a33dbc7c39240284969fb9f6e3d6e4995',
+    'reference' => 'f4698ae8767e7509a004304cd47d844ce8da0d1d',
     'name' => 'drupal/recommended-project',
   ),
   'versions' => 
@@ -364,6 +364,15 @@
       array (
       ),
       'reference' => '8478ce54ec7267c82e3370c5e35642d8e0c11534',
+    ),
+    'drupal/cern-install-profiles' => 
+    array (
+      'pretty_version' => 'dev-k8s',
+      'version' => 'dev-k8s',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '95a77c3b31e13ec8bf5f8bcfbecbb87fcde7f8d6',
     ),
     'drupal/cern-landing-page' => 
     array (
@@ -1086,15 +1095,6 @@
       ),
       'reference' => '8.x-1.0-beta5',
     ),
-    'drupal/filelog' => 
-    array (
-      'pretty_version' => '2.0.1',
-      'version' => '2.0.1.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '2.0.1',
-    ),
     'drupal/filter' => 
     array (
       'replaced' => 
@@ -1472,12 +1472,12 @@
     ),
     'drupal/openid_connect' => 
     array (
-      'pretty_version' => '1.0.0',
-      'version' => '1.0.0.0',
+      'pretty_version' => '2.0.0-alpha6',
+      'version' => '2.0.0.0-alpha6',
       'aliases' => 
       array (
       ),
-      'reference' => '8.x-1.0',
+      'reference' => '2.0.0-alpha6',
     ),
     'drupal/options' => 
     array (
@@ -1604,12 +1604,12 @@
     ),
     'drupal/recommended-project' => 
     array (
-      'pretty_version' => '8.9.13.x-dev',
-      'version' => '8.9.13.9999999-dev',
+      'pretty_version' => 'dev-8.9.14-oidc',
+      'version' => 'dev-8.9.14-oidc',
       'aliases' => 
       array (
       ),
-      'reference' => '877c105a33dbc7c39240284969fb9f6e3d6e4995',
+      'reference' => 'f4698ae8767e7509a004304cd47d844ce8da0d1d',
     ),
     'drupal/redirect' => 
     array (
@@ -2140,12 +2140,12 @@
     ),
     'nikic/php-parser' => 
     array (
-      'pretty_version' => 'v4.10.4',
-      'version' => '4.10.4.0',
+      'pretty_version' => 'v4.10.5',
+      'version' => '4.10.5.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c6d052fc58cb876152f89f532b95a8d7907e7f0e',
+      'reference' => '4432ba399e47c66624bc73c8c0f811e5c109576f',
     ),
     'paragonie/random_compat' => 
     array (
@@ -2605,12 +2605,12 @@
     ),
     'simplesamlphp/simplesamlphp-module-sqlauth' => 
     array (
-      'pretty_version' => 'v0.9.2',
-      'version' => '0.9.2.0',
+      'pretty_version' => 'v0.9.3',
+      'version' => '0.9.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'a53475236787630d7872ca97445f7e75f2609257',
+      'reference' => 'c2dc4fc8aa6d8b2408131e09b39f06d8610ff374',
     ),
     'simplesamlphp/simplesamlphp-module-statistics' => 
     array (
@@ -2668,12 +2668,12 @@
     ),
     'symfony/config' => 
     array (
-      'pretty_version' => 'v4.4.20',
-      'version' => '4.4.20.0',
+      'pretty_version' => 'v4.4.22',
+      'version' => '4.4.22.0',
       'aliases' => 
       array (
       ),
-      'reference' => '98606c6fa1a8f55ff964ccdd704275bf5b9f71b3',
+      'reference' => 'f6d8318c14e4be81525ae47b30e618f0bed4c7b3',
     ),
     'symfony/console' => 
     array (
@@ -2713,12 +2713,12 @@
     ),
     'symfony/filesystem' => 
     array (
-      'pretty_version' => 'v5.2.6',
-      'version' => '5.2.6.0',
+      'pretty_version' => 'v5.2.7',
+      'version' => '5.2.7.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8c86a82f51658188119e62cff0a050a12d09836f',
+      'reference' => '056e92acc21d977c37e6ea8e97374b2a6c8551b0',
     ),
     'symfony/finder' => 
     array (
@@ -2884,12 +2884,12 @@
     ),
     'symfony/var-dumper' => 
     array (
-      'pretty_version' => 'v4.4.21',
-      'version' => '4.4.21.0',
+      'pretty_version' => 'v4.4.22',
+      'version' => '4.4.22.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0da0e174f728996f5d5072d6a9f0a42259dbc806',
+      'reference' => 'c194bcedde6295f3ec3e9eba1f5d484ea97c41a7',
     ),
     'symfony/yaml' => 
     array (
