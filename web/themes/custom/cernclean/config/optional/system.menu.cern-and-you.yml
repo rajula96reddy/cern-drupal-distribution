@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: cern-and-you
-label: 'Cern and You'
-description: 'Cern and you footer menu'
-locked: false

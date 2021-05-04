@@ -2,20 +2,22 @@
 
 namespace Drupal\openid_connect;
 
+use Drupal\Component\Utility\EmailValidatorInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
-use Drupal\Core\Extension\ModuleHandler;
+use Drupal\Core\Entity\EntityStorageException;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Messenger\MessengerInterface;
-use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\openid_connect\Plugin\OpenIDConnectClientInterface;
+use Drupal\externalauth\AuthmapInterface;
+use Drupal\externalauth\ExternalAuthInterface;
 use Drupal\user\UserDataInterface;
 use Drupal\user\UserInterface;
-use Drupal\Component\Utility\EmailValidatorInterface;
 
 /**
  * Main service of the OpenID Connect module.
@@ -31,11 +33,18 @@ class OpenIDConnect {
   protected $configFactory;
 
   /**
-   * The OpenID Connect authmap service.
+   * The external authmap service.
    *
-   * @var \Drupal\openid_connect\OpenIDConnectAuthmap
+   * @var \Drupal\externalauth\AuthmapInterface
    */
   protected $authmap;
+
+  /**
+   * The external auth.
+   *
+   * @var \Drupal\externalauth\ExternalAuthInterface
+   */
+  protected $externalAuth;
 
   /**
    * The entity field manager.
@@ -75,7 +84,7 @@ class OpenIDConnect {
   /**
    * The module handler.
    *
-   * @var \Drupal\Core\Extension\ModuleHandler
+   * @var \Drupal\Core\Extension\ModuleHandlerInterface
    */
   protected $moduleHandler;
 
@@ -105,8 +114,10 @@ class OpenIDConnect {
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The config factory.
-   * @param \Drupal\openid_connect\OpenIDConnectAuthmap $authmap
-   *   The OpenID Connect authmap service.
+   * @param \Drupal\externalauth\AuthmapInterface $authmap
+   *   The external authmap service.
+   * @param \Drupal\externalauth\ExternalAuthInterface $external_auth
+   *   The external auth service.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity manager.
    * @param \Drupal\Core\Entity\EntityFieldManagerInterface $entity_field_manager
@@ -119,28 +130,33 @@ class OpenIDConnect {
    *   The email validator service.
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   The messenger service.
-   * @param \Drupal\Core\Extension\ModuleHandler $module_handler
+   * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    *   The module handler.
    * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger
    *   A logger channel factory instance.
    * @param \Drupal\Core\File\FileSystemInterface $fileSystem
    *   The file system service.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function __construct(
     ConfigFactoryInterface $config_factory,
-    OpenIDConnectAuthmap $authmap,
+    AuthmapInterface $authmap,
+    ExternalAuthInterface $external_auth,
     EntityTypeManagerInterface $entity_type_manager,
     EntityFieldManagerInterface $entity_field_manager,
     AccountProxyInterface $current_user,
     UserDataInterface $user_data,
     EmailValidatorInterface $email_validator,
     MessengerInterface $messenger,
-    ModuleHandler $module_handler,
+    ModuleHandlerInterface $module_handler,
     LoggerChannelFactoryInterface $logger,
     FileSystemInterface $fileSystem
   ) {
     $this->configFactory = $config_factory;
     $this->authmap = $authmap;
+    $this->externalAuth = $external_auth;
     $this->userStorage = $entity_type_manager->getStorage('user');
     $this->entityFieldManager = $entity_field_manager;
     $this->currentUser = $current_user;
@@ -159,8 +175,11 @@ class OpenIDConnect {
    *   Optional: Array with context information, if this function is called
    *   within the context of user authorization.
    *   Defaults to an empty array.
+   *
+   * @return array
+   *   User properties to ignore.
    */
-  public function userPropertiesIgnore(array $context = []) {
+  public function userPropertiesIgnore(array $context = []): array {
     $properties_ignore = [
       'uid',
       'uuid',
@@ -180,8 +199,6 @@ class OpenIDConnect {
       'default_langcode',
     ];
     $this->moduleHandler->alter('openid_connect_user_properties_ignore', $properties_ignore, $context);
-    // Invoke deprecated hook with deprecation error message.
-    $this->moduleHandler->alterDeprecated('hook_openid_connect_user_properties_to_skip_alter() is deprecated and will be removed in 8.x-2.0.', 'openid_connect_user_properties_to_skip', $properties_ignore, $context);
 
     $properties_ignore = array_unique($properties_ignore);
     return array_combine($properties_ignore, $properties_ignore);
@@ -193,16 +210,16 @@ class OpenIDConnect {
    * The 'sub' (Subject Identifier) is a unique ID for the external provider to
    * identify the user.
    *
-   * @param array $user_data
-   *   The user data from OpenIDConnectClientInterface::decodeIdToken().
-   * @param array $userinfo
-   *   The user claims from OpenIDConnectClientInterface::retrieveUserInfo().
+   * @param array|null $user_data
+   *   The user data.
+   * @param array|null $userinfo
+   *   The user claims.
    *
    * @return string|false
    *   The sub, or FALSE if there was an error.
    */
-  public function extractSub(array $user_data, array $userinfo) {
-    if (isset($user_data['sub'])) {
+  public function extractSub(?array $user_data, ?array $userinfo) {
+    if (isset($user_data) && isset($user_data['sub'])) {
       // If we have sub in both $user_data and $userinfo, return FALSE if they
       // differ. Otherwise return the one in $user_data.
       return (!isset($userinfo['sub']) || ($user_data['sub'] == $userinfo['sub'])) ? $user_data['sub'] : FALSE;
@@ -216,7 +233,7 @@ class OpenIDConnect {
   /**
    * Fill the context array.
    *
-   * @param \Drupal\openid_connect\Plugin\OpenIDConnectClientInterface $client
+   * @param \Drupal\openid_connect\OpenIDConnectClientEntityInterface $client
    *   The client.
    * @param array $tokens
    *   The tokens as returned by OpenIDConnectClientInterface::retrieveTokens().
@@ -224,9 +241,22 @@ class OpenIDConnect {
    * @return array|bool
    *   Context array or FALSE if an error was raised.
    */
-  private function buildContext(OpenIDConnectClientInterface $client, array $tokens) {
-    $user_data = $client->decodeIdToken($tokens['id_token']);
-    $userinfo = $client->retrieveUserInfo($tokens['access_token']);
+  private function buildContext(OpenIDConnectClientEntityInterface $client, array $tokens) {
+    $plugin = $client->getPlugin();
+    $user_data = $tokens['id_token'];
+    $access_data = $tokens['access_token'];
+    if ($plugin->usesUserInfo()) {
+      $userinfo = $plugin->retrieveUserInfo($tokens['access_token']);
+    }
+    elseif (is_array($user_data)) {
+      $userinfo = $user_data;
+    }
+    elseif (is_array($access_data)) {
+      $userinfo = $access_data;
+    }
+    else {
+      $userinfo = [];
+    }
     $provider = $client->getPluginId();
 
     $context = [
@@ -238,23 +268,23 @@ class OpenIDConnect {
 
     // Whether we have no usable user information.
     if (empty($user_data) && empty($userinfo)) {
-      $this->logger->error('No user information provided by @provider (@code @error). Details: @details', ['@provider' => $provider]);
+      $this->logger->error('No user information provided by @provider', ['@provider' => $provider]);
       return FALSE;
     }
 
     if ($userinfo && empty($userinfo['email'])) {
-      $this->logger->error('No e-mail address provided by @provider (@code @error). Details: @details', ['@provider' => $provider]);
+      $this->logger->error('No e-mail address provided by @provider', ['@provider' => $provider]);
       return FALSE;
     }
 
     $sub = $this->extractSub($user_data, $userinfo);
     if (empty($sub)) {
-      $this->logger->error('No "sub" found from @provider (@code @error). Details: @details', ['@provider' => $provider]);
+      $this->logger->error('No "sub" found from @provider', ['@provider' => $provider]);
       return FALSE;
     }
 
     /** @var \Drupal\user\UserInterface|bool $account */
-    $account = $this->authmap->userLoadBySub($sub, $provider);
+    $account = $this->externalAuth->load($sub, 'openid_connect.' . $provider);
     $context = [
       'tokens' => $tokens,
       'plugin_id' => $provider,
@@ -288,17 +318,17 @@ class OpenIDConnect {
   /**
    * Complete the authorization after tokens have been retrieved.
    *
-   * @param \Drupal\openid_connect\Plugin\OpenIDConnectClientInterface $client
+   * @param \Drupal\openid_connect\OpenIDConnectClientEntityInterface $client
    *   The client.
    * @param array $tokens
    *   The tokens as returned by OpenIDConnectClientInterface::retrieveTokens().
-   * @param string|array $destination
-   *   The path to redirect to after authorization.
    *
    * @return bool
    *   TRUE on success, FALSE on failure.
+   *
+   * @throws \Exception
    */
-  public function completeAuthorization(OpenIDConnectClientInterface $client, array $tokens, &$destination) {
+  public function completeAuthorization(OpenIDConnectClientEntityInterface $client, array $tokens): bool {
     if ($this->currentUser->isAuthenticated()) {
       throw new \RuntimeException('User already logged in');
     }
@@ -336,7 +366,7 @@ class OpenIDConnect {
           ->get('connect_existing_users');
         if ($connect_existing_users) {
           // Connect existing user account with this sub.
-          $this->authmap->createAssociation($account, $client->getPluginId(), $context['sub']);
+          $this->externalAuth->linkExistingAccount($context['sub'], 'openid_connect.' . $client->id(), $account);
         }
         else {
           $this->messenger->addError($this->t('The e-mail address is already taken: @email', [
@@ -366,12 +396,12 @@ class OpenIDConnect {
           case UserInterface::REGISTER_VISITORS:
             // Create a new account if register settings is set to visitors or
             // override is active.
-            $account = $this->createUser($context['sub'], $context['userinfo'], $client->getPluginId(), 1);
+            $account = $this->createUser($context['sub'], $context['userinfo'], $client->id());
             break;
 
           case UserInterface::REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL:
             // Create a new account and inform the user of the pending approval.
-            $account = $this->createUser($context['sub'], $context['userinfo'], $client->getPluginId(), 0);
+            $account = $this->createUser($context['sub'], $context['userinfo'], $client->id(), 0);
             $this->messenger->addMessage($this->t('Thank you for applying for an account. Your account is currently pending approval by the site administrator.'));
             break;
         }
@@ -379,7 +409,6 @@ class OpenIDConnect {
 
       // Store the newly created account.
       $this->saveUserinfo($account, $context + ['is_new' => TRUE]);
-      $this->authmap->createAssociation($account, $client->getPluginId(), $context['sub']);
     }
 
     // Whether the user should not be logged in due to pending administrator
@@ -393,15 +422,10 @@ class OpenIDConnect {
       return FALSE;
     }
 
-    $this->loginUser($account);
+    $this->externalAuth->userLoginFinalize($account, $context['sub'], 'openid_connect.' . $client->id());
 
-    $this->moduleHandler->invokeAll(
-      'openid_connect_post_authorize',
-      [
-        $account,
-        $context,
-      ]
-    );
+    $this->moduleHandler
+      ->invokeAll('openid_connect_post_authorize', [$account, $context]);
 
     return TRUE;
   }
@@ -409,16 +433,17 @@ class OpenIDConnect {
   /**
    * Connect the current user's account to an external provider.
    *
-   * @param \Drupal\openid_connect\Plugin\OpenIDConnectClientInterface $client
+   * @param \Drupal\openid_connect\OpenIDConnectClientEntityInterface $client
    *   The client.
    * @param array $tokens
-   *   The tokens as returned from
-   *   OpenIDConnectClientInterface::retrieveTokens().
+   *   The tokens as returned by OpenIDConnectClientInterface::retrieveTokens().
    *
    * @return bool
    *   TRUE on success, FALSE on failure.
+   *
+   * @throws \Exception
    */
-  public function connectCurrentUser(OpenIDConnectClientInterface $client, array $tokens) {
+  public function connectCurrentUser(OpenIDConnectClientEntityInterface $client, array $tokens): bool {
     if (!$this->currentUser->isAuthenticated()) {
       throw new \RuntimeException('User not logged in');
     }
@@ -436,7 +461,7 @@ class OpenIDConnect {
 
     if ($account === FALSE) {
       $account = $this->userStorage->load($this->currentUser->id());
-      $this->authmap->createAssociation($account, $client->getPluginId(), $context['sub']);
+      $this->externalAuth->linkExistingAccount($context['sub'], 'openid_connect.' . $client->id(), $account);
     }
 
     $always_save_userinfo = $this->configFactory->get('openid_connect.settings')->get('always_save_userinfo');
@@ -458,14 +483,14 @@ class OpenIDConnect {
   /**
    * Find whether a user is allowed to change the own password.
    *
-   * @param \Drupal\Core\Session\AccountInterface $account
+   * @param \Drupal\Core\Session\AccountInterface|null $account
    *   Optional: Account to check the access for.
    *   Defaults to the currently logged-in user.
    *
    * @return bool
    *   TRUE if access is granted, FALSE otherwise.
    */
-  public function hasSetPasswordAccess(AccountInterface $account = NULL) {
+  public function hasSetPasswordAccess(AccountInterface $account = NULL): bool {
     if (empty($account)) {
       $account = $this->currentUser;
     }
@@ -474,7 +499,7 @@ class OpenIDConnect {
       return TRUE;
     }
 
-    $connected_accounts = $this->authmap->getConnectedAccounts($account);
+    $connected_accounts = $this->authmap->getAll($account->id());
 
     return empty($connected_accounts);
   }
@@ -491,33 +516,19 @@ class OpenIDConnect {
    * @param int $status
    *   The initial user status.
    *
-   * @return \Drupal\user\UserInterface|false
-   *   The user object or FALSE on failure.
+   * @return \Drupal\user\UserInterface|null
+   *   The user object or null on failure.
    */
-  public function createUser($sub, array $userinfo, $client_name, $status = 1) {
-    /** @var \Drupal\user\UserInterface $account */
-    $account = $this->userStorage->create([
+  public function createUser(string $sub, array $userinfo, string $client_name, int $status = 1): ?UserInterface {
+    $account_data = [
       'name' => $this->generateUsername($sub, $userinfo, $client_name),
       'pass' => user_password(),
       'mail' => $userinfo['email'],
       'init' => $userinfo['email'],
       'status' => $status,
-      'openid_connect_client' => $client_name,
-      'openid_connect_sub' => $sub,
-    ]);
-    $account->save();
+    ];
 
-    return $account;
-  }
-
-  /**
-   * Log in a user.
-   *
-   * @param \Drupal\user\UserInterface $account
-   *   The user account to login.
-   */
-  protected function loginUser(UserInterface $account) {
-    user_login_finalize($account);
+    return $this->externalAuth->register($sub, 'openid_connect.' . $client_name, $account_data);
   }
 
   /**
@@ -533,7 +544,7 @@ class OpenIDConnect {
    * @return string
    *   A unique username.
    */
-  public function generateUsername($sub, array $userinfo, $client_name) {
+  public function generateUsername(string $sub, array $userinfo, string $client_name): string {
     $name = 'oidc_' . $client_name . '_' . md5($sub);
     $candidates = ['preferred_username', 'name'];
     foreach ($candidates as $candidate) {
@@ -560,7 +571,7 @@ class OpenIDConnect {
    * @return bool
    *   TRUE if a user exists with the given name, FALSE otherwise.
    */
-  public function usernameExists($name) {
+  public function usernameExists(string $name): bool {
     $users = $this->userStorage->loadByProperties([
       'name' => $name,
     ]);
@@ -580,8 +591,11 @@ class OpenIDConnect {
    *   - userinfo:       An array of user information.
    *   - plugin_id:      The plugin identifier.
    *   - sub:            The remote user identifier.
+   *
+   * @return bool
+   *   Whether the user info was successfully saved.
    */
-  public function saveUserinfo(UserInterface $account, array $context) {
+  public function saveUserinfo(UserInterface $account, array $context): bool {
     $userinfo = $context['userinfo'];
     $properties = $this->entityFieldManager->getFieldDefinitions('user', 'user');
     $properties_skip = $this->userPropertiesIgnore($context);
@@ -626,16 +640,16 @@ class OpenIDConnect {
                 $account->set($property_name, !empty($claim_value));
                 break;
 
+              case 'entity_reference':
+                $account->set($property_name, ['target_id' => $claim_value]);
+                break;
+
               case 'image':
                 // Create file object from remote URL.
                 $basename = explode('?', $this->fileSystem->basename($claim_value))[0];
                 $data = file_get_contents($claim_value);
 
-                $file = file_save_data(
-                  $data,
-                  'public://user-picture-' . $account->id() . '-' . $basename,
-                  FileSystemInterface::EXISTS_RENAME
-                );
+                $file = file_save_data($data, 'public://user-picture-' . $account->id() . '-' . $basename, FileSystemInterface::EXISTS_RENAME);
 
                 // Cleanup the old file.
                 if ($file) {
@@ -679,16 +693,18 @@ class OpenIDConnect {
     }
 
     // Allow other modules to add additional user information.
-    $this->moduleHandler->invokeAllDeprecated('openid_connect_save_userinfo() is deprecated and will be removed in 8.x-2.0.', 'openid_connect_save_userinfo', [
-      $account,
-      $context,
-    ]);
     $this->moduleHandler->invokeAll('openid_connect_userinfo_save', [
       $account,
       $context,
     ]);
 
-    $account->save();
+    try {
+      $account->save();
+      return TRUE;
+    }
+    catch (EntityStorageException $e) {
+      return FALSE;
+    }
   }
 
 }
