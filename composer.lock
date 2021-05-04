@@ -1709,7 +1709,7 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cern.ch/drupal/profiles.git",
-                "reference": "95a77c3b31e13ec8bf5f8bcfbecbb87fcde7f8d6"
+                "reference": "4ec044a87c18f6df2d904a9da49fce9e97dc7fcb"
             },
             "type": "drupal-profile",
             "license": [
