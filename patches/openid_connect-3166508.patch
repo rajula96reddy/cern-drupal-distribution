@@ -1,0 +1,220 @@
+diff --git a/config/install/openid_connect.settings.yml b/config/install/openid_connect.settings.yml
+index 55bbb1c..9f37020 100644
+--- a/config/install/openid_connect.settings.yml
++++ b/config/install/openid_connect.settings.yml
+@@ -6,3 +6,4 @@ redirect_login: 'user'
+ redirect_logout: ''
+ userinfo_mappings:
+   timezone: zoneinfo
++debug: false
+diff --git a/config/schema/openid_connect.schema.yml b/config/schema/openid_connect.schema.yml
+index d589577..67011ce 100644
+--- a/config/schema/openid_connect.schema.yml
++++ b/config/schema/openid_connect.schema.yml
+@@ -25,6 +25,9 @@ openid_connect.settings:
+       label: 'User claims mapping'
+       sequence:
+         type: string
++    debug:
++      type: boolean
++      label: 'Expand the level of Drupal logging to include debugging information'
+ 
+ openid_connect.client.*:
+   type: config_entity
+@@ -87,6 +90,9 @@ openid_connect.client.plugin.generic:
+       label: 'Scopes'
+       sequence:
+         type: string
++    role_eval_every_time:
++      type: boolean
++      label: 'Reevaluate roles every time the user logs in'
+ 
+ openid_connect.client.plugin.okta:
+   type: mapping
+diff --git a/src/Form/OpenIDConnectSettingsForm.php b/src/Form/OpenIDConnectSettingsForm.php
+index 2db7d0d..f16192c 100644
+--- a/src/Form/OpenIDConnectSettingsForm.php
++++ b/src/Form/OpenIDConnectSettingsForm.php
+@@ -156,6 +156,18 @@ class OpenIDConnectSettingsForm extends ConfigFormBase {
+       '#tree' => TRUE,
+     ];
+ 
++    $form['debugging'] = [
++      '#type' => 'fieldset',
++      '#title' => $this->t('Debugging'),
++      '#collapsible' => FALSE,
++    ];
++    $form['debugging']['debug'] = [
++      '#type' => 'checkbox',
++      '#title' => $this->t('Turn on debugging messages'),
++      '#description' => $this->t('Expand the level of Drupal logging to include debugging information.'),
++      '#default_value' => $settings->get('debug'),
++    ];
++
+     $properties = $this->entityFieldManager->getFieldDefinitions('user', 'user');
+     $properties_skip = $this->openIDConnect->userPropertiesIgnore();
+     $claims = $this->claims->getOptions();
+@@ -198,6 +210,7 @@ class OpenIDConnectSettingsForm extends ConfigFormBase {
+       ->set('redirect_login', $form_state->getValue('redirect_login'))
+       ->set('redirect_logout', $form_state->getValue('redirect_logout'))
+       ->set('userinfo_mappings', array_filter($form_state->getValue('userinfo_mappings')))
++      ->set('debug', $form_state->getValue('debug'))
+       ->save();
+   }
+ 
+diff --git a/src/OpenIDConnect.php b/src/OpenIDConnect.php
+index e16575d..ac15fc2 100644
+--- a/src/OpenIDConnect.php
++++ b/src/OpenIDConnect.php
+@@ -18,6 +18,7 @@ use Drupal\externalauth\AuthmapInterface;
+ use Drupal\externalauth\ExternalAuthInterface;
+ use Drupal\user\UserDataInterface;
+ use Drupal\user\UserInterface;
++use Drupal\user\Entity\Role;
+ 
+ /**
+  * Main service of the OpenID Connect module.
+@@ -424,6 +425,12 @@ class OpenIDConnect {
+ 
+     $this->externalAuth->userLoginFinalize($account, $context['sub'], 'openid_connect.' . $client->id());
+ 
++    // Determine if roles should be evaluated upon login.
++    $pluginConfig = $client->getPlugin()->getConfiguration();
++    if (isset($pluginConfig['role_eval_every_time']) && $pluginConfig['role_eval_every_time']) {
++        $this->roleMatchSync($client, $account, $context);
++    }
++
+     $this->moduleHandler
+       ->invokeAll('openid_connect_post_authorize', [$account, $context]);
+ 
+@@ -475,6 +482,71 @@ class OpenIDConnect {
+     return TRUE;
+   }
+ 
++  /**
++   * Synchronizes (adds/removes) user account roles.
++   *
++   * @param \Drupal\openid_connect\OpenIDConnectClientEntityInterface $client
++   *   The client.
++   * @param \Drupal\user\UserInterface $account
++   *   The Drupal user to sync roles for.
++   * @param array $context
++   *   An associative array with context information:
++   *   - tokens:         An array of tokens.
++   *   - user_data:      An array of user and session data.
++   *   - userinfo:       An array of user information.
++   *   - plugin_id:      The plugin identifier.
++   *   - sub:            The remote user identifier.
++   *
++   * @throws EntityStorageException
++   */
++  public function roleMatchSync(OpenIDConnectClientEntityInterface $client, UserInterface $account, array $context) {
++    // Get user's current roles, excluding locked roles (e.g. Authenticated).
++    $current_roles = $account->getRoles(TRUE);
++    // Get OICD user roles
++    $openid_roles = $this->getOIDCRoles($client, $context);
++
++    if ($this->configFactory->get('openid_connect.settings')->get('debug')) {
++      $this->logger->debug('Current user roles: %roles', [
++        '%roles' => json_encode($current_roles),
++      ]);
++      $this->logger->debug('OICD matched roles: %roles', ['%roles' => json_encode($openid_roles)]);
++    }
++
++    // Set boolean to only update account when needed.
++    $account_updated = FALSE;
++
++    // Remove non-locked roles not mapped to the user via OIDC.
++    foreach (array_diff($current_roles, $openid_roles) as $role_id) {
++      if ($this->configFactory->get('openid_connect.settings')->get('debug')) {
++        $this->logger->debug('Removing role %role from user %name', [
++          '%role' => $role_id,
++          '%name' => $account->getAccountName(),
++        ]);
++      }
++      $account->removeRole($role_id);
++      $account_updated = TRUE;
++    }
++
++    // Add roles mapped to the user via OIDC.
++    foreach (array_diff($openid_roles, $current_roles) as $role_id) {
++      if ($this->configFactory->get('openid_connect.settings')->get('debug')) {
++        $this->logger->debug('Adding role %role to user %name', [
++          '%role' => $role_id,
++          '%name' => $account->getAccountName(),
++          ]);
++      }
++      $account->addRole($role_id);
++      $account_updated = TRUE;
++    }
++    if ($account_updated) {
++      $account->save();
++    }
++
++    if ($this->configFactory->get('openid_connect.settings')->get('debug')) {
++      $this->logger->debug('User final roles: %roles', ['%roles' => json_encode($account->getRoles())]);
++    }
++  }
++
+   /**
+    * Find whether a user is allowed to change the own password.
+    *
+@@ -689,4 +761,33 @@ class OpenIDConnect {
+     }
+   }
+ 
++
++  /**
++   * Returns OpenID Connect Role claims.
++   *
++   * @param \Drupal\openid_connect\OpenIDConnectClientEntityInterface $client
++   *   The client.
++   * @param array $context
++   *   An associative array with context information:
++   *   - tokens:         An array of tokens.
++   *   - user_data:      An array of user and session data.
++   *   - userinfo:       An array of user information.
++   *   - plugin_id:      The plugin identifier.
++   *   - sub:            The remote user identifier.
++   *
++   * @return array
++   *   List of Role claims.
++   */
++  public function getOIDCRoles(OpenIDConnectClientEntityInterface $client, array $context): array {
++    $client_id = $client->getPlugin()->getConfiguration()['client_id'];
++    $oidc_mapped_roles = $context['user_data']['resource_access'][$client_id]['roles'];
++    $all_roles = array_keys(Role::loadMultiple());
++
++    if ($this->configFactory->get('openid_connect.settings')->get('debug')) {
++      $this->logger->debug('OICD roles: %roles', ['%roles' => json_encode($oidc_mapped_roles)]);
++      $this->logger->debug('Drupal roles: %roles', ['%roles' => json_encode($all_roles)]);
++    }
++
++    return array_values(array_intersect($all_roles, $oidc_mapped_roles));
++  }
+ }
+diff --git a/src/Plugin/OpenIDConnectClient/OpenIDConnectGenericClient.php b/src/Plugin/OpenIDConnectClient/OpenIDConnectGenericClient.php
+index 268c5ed..a0e42a7 100644
+--- a/src/Plugin/OpenIDConnectClient/OpenIDConnectGenericClient.php
++++ b/src/Plugin/OpenIDConnectClient/OpenIDConnectGenericClient.php
+@@ -98,6 +98,12 @@ class OpenIDConnectGenericClient extends OpenIDConnectClientBase {
+       '#default_value' => implode(' ', $this->configuration['scopes']),
+     ];
+ 
++    $form['role_eval_every_time'] = [
++      '#type' => 'checkbox',
++      '#title' => $this->t('Reevaluate roles every time the user logs in'),
++      '#default_value' => $this->configuration['role_eval_every_time'],
++    ];
++
+     return $form;
+   }
+ 
+@@ -185,6 +191,7 @@ class OpenIDConnectGenericClient extends OpenIDConnectClientBase {
+       'token' => $this->configuration['token_endpoint'],
+       'userinfo' => $this->configuration['userinfo_endpoint'],
+       'end_session' => $this->configuration['end_session_endpoint'],
++      'role_eval_every_time' => $this->configuration['role_eval_every_time']
+     ];
+   }
+ 
