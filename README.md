@@ -141,3 +141,11 @@ To prevent this you can add this code to specify the PHP version you want to use
     "platform": {"php": "5.5.9"}
 },
 ```
+
+### How do I edit a profile?
+
+The profiles are imported during image creation, to edit one please see the
+following repository:   
+https://gitlab.cern.ch/drupal/profiles
+
+
