@@ -1,3 +1,0 @@
-administer cern_profile_displayname:
-  title: 'Administer CERN Profiles DisplayName configuration.'
-  description: 'Remember to set the "View user profile" permissions too User section at the bottom of the page).'

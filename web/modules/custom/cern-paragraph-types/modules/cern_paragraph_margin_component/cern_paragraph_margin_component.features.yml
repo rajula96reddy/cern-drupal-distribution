@@ -1,6 +1,0 @@
-excluded:
-  - core.base_field_override.paragraph.cern_margin.created
-  - core.base_field_override.paragraph.cern_margin.moderation_state
-  - core.base_field_override.paragraph.cern_margin.status
-  - core.base_field_override.paragraph.cern_margin.uid
-required: true

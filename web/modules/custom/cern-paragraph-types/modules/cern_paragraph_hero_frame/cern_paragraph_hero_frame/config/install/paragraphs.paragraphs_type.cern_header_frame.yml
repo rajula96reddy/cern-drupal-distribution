@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: cern_header_frame
-label: 'Hero frame'
-icon_uuid: null
-description: 'Hero frame paragraph'
-behavior_plugins: {  }

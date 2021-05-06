@@ -1,5 +1,0 @@
-cern_toolbar.settings:
-  title: CERN Toolbar
-  parent: system.admin_config_ui
-  description: 'Configurations of the CERN Toolbar'
-  route_name: cern_toolbar.cern_toolbar_settings_form

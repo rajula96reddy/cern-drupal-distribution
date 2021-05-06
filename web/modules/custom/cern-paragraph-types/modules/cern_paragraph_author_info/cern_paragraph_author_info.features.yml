@@ -1,5 +1,0 @@
-excluded:
-  - core.base_field_override.paragraph.cern_author_info.created
-  - core.base_field_override.paragraph.cern_author_info.status
-  - core.base_field_override.paragraph.cern_author_info.uid
-required: true

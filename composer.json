@@ -19,6 +19,22 @@
     },
     {
       "type": "vcs",
+      "url": "https://gitlab.cern.ch/drupal/modules/cern_ldap_api.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/drupal/modules/cern_integration.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/drupal/modules/webform_invitation_cern.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/drupal-welcome-message-block"
+    },
+    {
+      "type": "vcs",
       "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/themes/adminimal_subtheme.git"
     },
     {
@@ -100,13 +116,16 @@
     "drupal/cern-full-html-format": "~2.0.4",
     "drupal/cern-indico-feeds": "~2.0.5",
     "drupal/cern-install-profiles": "dev-k8s",
+    "drupal/cern-integration": "~1.0.0",
     "drupal/cern-landing-page": "~2.2.4",
+    "drupal/cern-ldap-api": "~1.0.0",
     "drupal/cern-loading": "~2.1.2",
     "drupal/cern-paragraph-types": "~2.2.3",
     "drupal/cern-profile-displayname": "~2.1.0",
     "drupal/cern-theme": "~2.6.11",
     "drupal/cern-toolbar": "~2.2.3",
     "drupal/cern-webcast-feeds": "~2.0.4",
+    "drupal/cern-webform-invitation": "~1.0.0",
     "drupal/ckeditor_font": "~1.1.0",
     "drupal/codesnippet": "~1.7.0",
     "drupal/color_field": "~2.4.0",

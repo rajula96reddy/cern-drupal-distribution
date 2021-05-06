@@ -1,5 +1,0 @@
-cern_dev_status.settings:
-  title: CERN dev-status
-  parent: system.admin_config_development
-  description: 'Configurations for development sites'
-  route_name: cern_dev_status.settings

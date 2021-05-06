@@ -1,4 +1,0 @@
-services:
-  cern_lda_api.cernldap:
-    class: Drupal\cern_ldap_api\CERNLdapService
-    arguments: []

@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: cern_resource_box
-label: 'Resource box'
-icon_uuid: null
-description: 'Resource box paragraph'
-behavior_plugins: {  }

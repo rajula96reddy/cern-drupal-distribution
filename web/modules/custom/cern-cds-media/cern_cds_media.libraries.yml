@@ -1,7 +1,0 @@
-cern-cds-media:
-  version: 1.x
-  js:
-    js/cern_cds_media.js: {}
-  dependencies:
-    - core/jquery
-    - core/drupal

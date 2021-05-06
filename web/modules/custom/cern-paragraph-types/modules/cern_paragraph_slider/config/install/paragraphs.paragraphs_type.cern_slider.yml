@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: cern_slider
-label: Slider
-icon_uuid: null
-description: 'A container with a carousel functionality for slides'
-behavior_plugins: {  }

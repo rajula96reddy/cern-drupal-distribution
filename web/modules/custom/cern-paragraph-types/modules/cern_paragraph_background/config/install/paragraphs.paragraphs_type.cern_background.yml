@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: cern_background
-label: Background
-icon_uuid: null
-description: 'This paragraph is a collection of fields created to be used in other paragraphs as background'
-behavior_plugins: {  }

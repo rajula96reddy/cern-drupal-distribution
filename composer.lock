@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "adc9af36554150cc475ffe4b3556ea01",
+    "content-hash": "a42b569e72fc0fe6040331dff0da3ff1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1637,7 +1637,7 @@
             "version": "1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/drupal-welcome-message-block.git",
+                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/drupal-welcome-message-block",
                 "reference": "c5a6c1b0b465429ffe2c3d5bac92b6fa39f668f6"
             },
             "type": "drupal-custom-module",
@@ -1725,6 +1725,27 @@
             "time": "2021-05-04T00:06:15+00:00"
         },
         {
+            "name": "drupal/cern-integration",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.cern.ch/drupal/modules/cern_integration.git",
+                "reference": "4b993ec6d0f336d7246a4f21e4262d19ca5e97c8"
+            },
+            "type": "drupal-custom-module",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Konstantinos Platis",
+                    "email": "konstantinos.platis@cern.ch"
+                }
+            ],
+            "description": "Custom functionality and constraints for CERN Drupal infrastructure",
+            "time": "2021-05-06T16:42:51+00:00"
+        },
+        {
             "name": "drupal/cern-landing-page",
             "version": "2.2.4",
             "source": {
@@ -1761,6 +1782,27 @@
             ],
             "description": "Provides the Landing Page content type and related configuration. A long-form story telling page.",
             "time": "2021-02-08T09:43:22+00:00"
+        },
+        {
+            "name": "drupal/cern-ldap-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.cern.ch/drupal/modules/cern_ldap_api.git",
+                "reference": "2819777430d528f83e441b2526d9de3670782df6"
+            },
+            "type": "drupal-custom-module",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Konstantinos Platis",
+                    "email": "konstantinos.platis@cern.ch"
+                }
+            ],
+            "description": "Provides a service API to access CERN LDAP",
+            "time": "2021-05-06T16:48:42+00:00"
         },
         {
             "name": "drupal/cern-loading",
@@ -1901,6 +1943,33 @@
             ],
             "description": "Defines Webcast feeds for the CERN Drupal infrastructure",
             "time": "2021-02-09T13:25:19+00:00"
+        },
+        {
+            "name": "drupal/cern-webform-invitation",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.cern.ch/drupal/modules/webform_invitation_cern.git",
+                "reference": "8d43e23c25736aeb98feeafb7bf425fc0ce3cede"
+            },
+            "require": {
+                "drupal/cern-ldap-api": "^1.0",
+                "drupal/mailsystem": "^4.3",
+                "drupal/token": "^1.9",
+                "drupal/webform_invitation": "^1.1"
+            },
+            "type": "drupal-custom-module",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Konstantinos Platis",
+                    "email": "konstantinos.platis@cern.ch"
+                }
+            ],
+            "description": "Allow to generate invitation codes given a list of emails or e-groups, send them and also support confidential invitations.",
+            "time": "2021-05-06T16:59:03+00:00"
         },
         {
             "name": "drupal/ckeditor_font",

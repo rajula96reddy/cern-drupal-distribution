@@ -1,8 +1,0 @@
-cern_toolbar:
-  version: 1.x
-  css:
-    component:
-      assets/css/screen.css: {}
-      assets/css/cookieconsent.css: {}
-  js:
-    assets/js/cern_toolbar.js: {}
