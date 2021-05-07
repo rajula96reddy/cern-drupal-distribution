@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a42b569e72fc0fe6040331dff0da3ff1",
+    "content-hash": "687210143fb70fc462287ccba915d5d5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1723,27 +1723,6 @@
             ],
             "description": "Initialize the site with configuration that integrates it with the CERN environment",
             "time": "2021-05-04T00:06:15+00:00"
-        },
-        {
-            "name": "drupal/cern-integration",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.cern.ch/drupal/modules/cern_integration.git",
-                "reference": "4b993ec6d0f336d7246a4f21e4262d19ca5e97c8"
-            },
-            "type": "drupal-custom-module",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantinos Platis",
-                    "email": "konstantinos.platis@cern.ch"
-                }
-            ],
-            "description": "Custom functionality and constraints for CERN Drupal infrastructure",
-            "time": "2021-05-06T16:42:51+00:00"
         },
         {
             "name": "drupal/cern-landing-page",
