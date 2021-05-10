@@ -1,0 +1,317 @@
+diff --git a/config/install/openid_connect.settings.yml b/config/install/openid_connect.settings.yml
+index 55bbb1c267ad8ffad7535a0c3e6dd845313bf275..3e55e233805f3bf2d0890e6e852481bb0bf3b4df 100644
+--- a/config/install/openid_connect.settings.yml
++++ b/config/install/openid_connect.settings.yml
+@@ -6,3 +6,4 @@ redirect_login: 'user'
+ redirect_logout: ''
+ userinfo_mappings:
+   timezone: zoneinfo
++autostart_login: false
+diff --git a/config/schema/openid_connect.schema.yml b/config/schema/openid_connect.schema.yml
+index d589577bf84688ca6b226685b7da282153d769bb..8e4834115f25216afa5063446d39c38f48204724 100644
+--- a/config/schema/openid_connect.schema.yml
++++ b/config/schema/openid_connect.schema.yml
+@@ -25,6 +25,9 @@ openid_connect.settings:
+       label: 'User claims mapping'
+       sequence:
+         type: string
++    autostart_login:
++      type: boolean
++      label: 'Autostart login process'
+ 
+ openid_connect.client.*:
+   type: config_entity
+diff --git a/openid_connect.services.yml b/openid_connect.services.yml
+index 0046aa3dc0cd37bf5bb46d2262fb054b2f086487..e94c3f365e0dabe15d43e53079f436da1aed95e4 100644
+--- a/openid_connect.services.yml
++++ b/openid_connect.services.yml
+@@ -15,6 +15,12 @@ services:
+     class: Drupal\openid_connect\OpenIDConnectStateToken
+     arguments: ['@openid_connect.session']
+ 
++  openid_connect.auto_login:
++    class: Drupal\openid_connect\EventSubscriber\OpenIDConnectAutoLogin
++    arguments: ['@current_user', '@plugin.manager.openid_connect_client', '@config.factory', '@logger.factory']
++    tags:
++      - { name: event_subscriber }
++
+   openid_connect.session:
+     class: Drupal\openid_connect\OpenIDConnectSession
+     arguments: ['@config.factory', '@redirect.destination', '@session', '@language_manager']
+diff --git a/src/EventSubscriber/OpenIDConnectAutoLogin.php b/src/EventSubscriber/OpenIDConnectAutoLogin.php
+new file mode 100644
+index 0000000000000000000000000000000000000000..e17ae88e951213864b0f28010e8f166666d5dfaa
+--- /dev/null
++++ b/src/EventSubscriber/OpenIDConnectAutoLogin.php
+@@ -0,0 +1,245 @@
++<?php
++
++namespace Drupal\openid_connect\EventSubscriber;
++
++use Drupal\Core\Config\ConfigFactoryInterface;
++use Drupal\Core\Logger\LoggerChannelFactoryInterface;
++use Drupal\Core\Session\AccountInterface;
++use Drupal\openid_connect\Plugin\OpenIDConnectClientManager;
++use Symfony\Cmf\Component\Routing\RouteObjectInterface;
++use Symfony\Component\EventDispatcher\EventSubscriberInterface;
++use Symfony\Component\HttpFoundation\Request;
++use Symfony\Component\HttpKernel\Event\GetResponseEvent;
++use Symfony\Component\HttpKernel\KernelEvents;
++
++/**
++ * Auto login process.
++ *
++ * When user is requesting user login, register or password reset
++ * page as anonymous, OpenID Connect client login process should auto start.
++ *
++ * Login auto start can be disabled in configuration of plugin and
++ * will only start, if only one OpenID Connect client is enabled.
++ *
++ * If user, as anonymous will request page with 'showcore'
++ * parameter, standard Drupal login page should be displayed
++ * instead of OpenID Connect client login page.
++ */
++class OpenIDConnectAutoLogin implements EventSubscriberInterface
++{
++
++    /**
++     * Current user.
++     *
++     * @var \Drupal\Core\Session\AccountInterface
++     */
++    protected $currentUser;
++
++    /**
++     * OpenID Connect Client Plugin Manager.
++     *
++     * @var \Drupal\openid_connect\Plugin\OpenIDConnectClientManager
++     */
++    protected $pluginManager;
++
++    /**
++     * Config factory.
++     *
++     * @var \Drupal\Core\Config\ConfigFactoryInterface
++     */
++    protected $configFactory;
++
++    /**
++     * OpenID Client to use in login process.
++     *
++     * @var \Drupal\openid_connect\Plugin\OpenIDConnectClientInterface
++     */
++    protected $client;
++
++    /**
++     * The logger factory.
++     *
++     * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
++     */
++    protected $logger;
++
++    /**
++     * The constructor.
++     *
++     * @param \Drupal\Core\Session\AccountInterface $user
++     *   Current user.
++     * @param \Drupal\openid_connect\Plugin\OpenIDConnectClientManager $plugin_manager
++     *   The plugin manager.
++     * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
++     *   Config factory.
++     * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
++     *   The logger factory service.
++     *
++     */
++    public function __construct(AccountInterface $user, OpenIDConnectClientManager $plugin_manager, ConfigFactoryInterface $config_factory, LoggerChannelFactoryInterface $logger_factory)
++    {
++        $this->currentUser = $user;
++        $this->pluginManager = $plugin_manager;
++        $this->configFactory = $config_factory;
++        $this->logger = $logger_factory->get('openid_connect');
++    }
++
++    /**
++     * {@inheritdoc}
++     */
++    public static function getSubscribedEvents(): array
++    {
++        return [
++            KernelEvents::REQUEST => [
++                ['login', 28],
++            ],
++        ];
++    }
++
++    /**
++     * Auto start OpenID Connect client login process.
++     *
++     * The process will start, if there is only one client enabled.
++     *
++     * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
++     *   Response event.
++     */
++    public function login(GetResponseEvent $event)
++    {
++        $request = $event->getRequest();
++        if ($this->isAutostartEnabled() && $this->currentUser->isAnonymous() && $this->isLoginRequested($request)) {
++            if (!$this->hasErrors() && !$this->bypassAutoLogin($request)) {
++                // Start OpenID Connect login process.
++                \Drupal::service('openid_connect.session')->saveDestination();
++                $_SESSION['openid_connect_op'] = 'login';
++                $client = $this->getClient();
++                if ($client) {
++                    $this->logger->debug(
++                        'Bypassing login with %client client: %parentEntityId', [
++                        '%client' => $client->getPluginId(),
++                        '%parentEntityId' => $client->getParentEntityId()
++                    ]);
++                    $response = $client->authorize();
++                    $event->setResponse($response);
++                }
++            }
++        }
++    }
++
++    /**
++     * Detect if there is error during OpenID Connect login process.
++     *
++     * @return bool
++     *   TRUE in case of error, FALSE otherwise.
++     */
++    protected function hasErrors(): bool
++    {
++        if (isset($_SESSION['messages']) && isset($_SESSION['messages']['error'])) {
++            return TRUE;
++        }
++        return FALSE;
++    }
++
++    /**
++     * Check if auto start login process is enabled.
++     *
++     * Autostart means, that if user tries to access login, register or reset
++     * password pages as anonymous, it will be redirected to OpenID Connect
++     * client login process.
++     *
++     * This function also checks if openid client configuration has been provided.
++     *
++     * @return bool
++     *   TRUE if autostart login is enabled, FALSE otherwise.
++     */
++    protected function isAutostartEnabled(): bool
++    {
++        // Check if autostart is enabled.
++        $auto_start = (bool)$this->configFactory
++            ->get('openid_connect.settings')
++            ->get('autostart_login');
++        if ($auto_start) {
++            $client = $this->getClient();
++            // Check if client endpoints are configured.
++            if ($client) {
++                foreach ($client->getEndpoints() as $endpoint) {
++                    if ($endpoint === NULL) {
++                        return FALSE;
++                    }
++                }
++            }
++        }
++        return $auto_start;
++    }
++
++    /**
++     * Check if login or register page was requested.
++     *
++     * @param \Symfony\Component\HttpFoundation\Request $request
++     *   Request.
++     *
++     * @return bool
++     *   TRUE if login or register page was requested, FALSE otherwise.
++     */
++    protected function isLoginRequested(Request $request): bool
++    {
++        // Get route name of current page.
++        $route_name = $request->get(RouteObjectInterface::ROUTE_NAME);
++        // If route name is empty, return true to prevent further actions,
++        // as we don't know yet page, we are viewing.
++        return !empty($route_name) && in_array($route_name, [
++                'user.login',
++                'user.register',
++                'user.pass',
++            ]);
++    }
++
++    /**
++     * Set OpenID Connect Client.
++     *
++     * Get all definitions of OpenID Connect clients and return the one,
++     * we should use in auto start login process. If there is more than one
++     * clients enabled, return null.
++     *
++     * @return null|\Drupal\openid_connect\Plugin\OpenIDConnectClientInterface
++     *   NULL if no client or client object.
++     */
++    protected function getClient(): ?\Drupal\openid_connect\Plugin\OpenIDConnectClientInterface
++    {
++        if (!$this->client) {
++            // Find enabled OpenID Connect clients.
++            $clientConfigs = array_filter($this->configFactory->listAll(), function ($var) {
++                return str_starts_with($var, 'openid_connect.client.');
++            });
++
++            // If there is more than one enabled client, we can't auto start login process.
++            if (!$clientConfigs || count($clientConfigs) > 1) {
++                return $this->client;
++            }
++
++            $clientConfig = $this->configFactory->get(current($clientConfigs));
++            $this->client = $this->pluginManager->createInstance($clientConfig->get('plugin'), $clientConfig->get('settings'));
++            $this->client->setParentEntityId($clientConfig->get('id'));
++        }
++        return $this->client;
++    }
++
++    /**
++     * Check if OpenID connect or Drupal login process were requested.
++     *
++     * If we should display Drupal login/register/password reset page,
++     * the query contains the 'showcore' parameter in the request. Otherwise we are
++     * starting OpenID Connect client login process.
++     *
++     * @param \Symfony\Component\HttpFoundation\Request $request
++     *   Request.
++     *
++     * @return bool
++     *   TRUE if regular Drupal login process should start, FALSE otherwise.
++     */
++    protected function bypassAutoLogin(Request $request): bool
++    {
++        return $request->query->has('showcore');
++    }
++
++}
+diff --git a/src/Form/OpenIDConnectSettingsForm.php b/src/Form/OpenIDConnectSettingsForm.php
+index 2db7d0d4a06d9920fe281b52d31f22f73d56ab5d..5d584b3b7bb98b311e8295ba35666c9a584db0ec 100644
+--- a/src/Form/OpenIDConnectSettingsForm.php
++++ b/src/Form/OpenIDConnectSettingsForm.php
+@@ -118,6 +118,13 @@ class OpenIDConnectSettingsForm extends ConfigFormBase {
+       '#default_value' => $settings->get('override_registration_settings'),
+     ];
+ 
++    $form['autostart_login'] = [
++      '#title' => $this->t('Autostart login process'),
++      '#type' => 'checkbox',
++      '#default_value' => $settings->get('autostart_login'),
++      '#description' => $this->t('Auto start login process when login, register or password reset page was requested as anonymous.'),
++    ];
++
+     $form['user_login_display'] = [
+       '#type' => 'radios',
+       '#title' => $this->t('OpenID buttons display in user login form'),
+@@ -194,6 +201,7 @@ class OpenIDConnectSettingsForm extends ConfigFormBase {
+       ->set('always_save_userinfo', $form_state->getValue('always_save_userinfo'))
+       ->set('connect_existing_users', $form_state->getValue('connect_existing_users'))
+       ->set('override_registration_settings', $form_state->getValue('override_registration_settings'))
++      ->set('autostart_login', $form_state->getValue('autostart_login'))
+       ->set('user_login_display', $form_state->getValue('user_login_display'))
+       ->set('redirect_login', $form_state->getValue('redirect_login'))
+       ->set('redirect_logout', $form_state->getValue('redirect_logout'))
