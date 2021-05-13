@@ -306,6 +306,14 @@
       "merge-extra": true,
       "merge-extra-deep": true,
       "merge-scripts": true
-    }
+    },
+   "scripts": {
+     "post-install-cmd": [
+       "@composer drupal:scaffold"
+     ],
+     "post-update-cmd": [
+       "@composer drupal:scaffold"
+     ]
+   }
   }
 }
