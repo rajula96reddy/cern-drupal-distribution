@@ -1,28 +1,28 @@
 diff --git a/config/install/openid_connect.settings.yml b/config/install/openid_connect.settings.yml
-index 55bbb1c267ad8ffad7535a0c3e6dd845313bf275..3e55e233805f3bf2d0890e6e852481bb0bf3b4df 100644
+index 55bbb1c..eb53477 100644
 --- a/config/install/openid_connect.settings.yml
 +++ b/config/install/openid_connect.settings.yml
-@@ -6,3 +6,4 @@ redirect_login: 'user'
- redirect_logout: ''
- userinfo_mappings:
-   timezone: zoneinfo
+@@ -1,3 +1,4 @@
 +autostart_login: false
+ always_save_userinfo: true
+ connect_existing_users: false
+ override_registration_settings: false
 diff --git a/config/schema/openid_connect.schema.yml b/config/schema/openid_connect.schema.yml
-index d589577bf84688ca6b226685b7da282153d769bb..8e4834115f25216afa5063446d39c38f48204724 100644
+index d589577..5af78e1 100644
 --- a/config/schema/openid_connect.schema.yml
 +++ b/config/schema/openid_connect.schema.yml
-@@ -25,6 +25,9 @@ openid_connect.settings:
-       label: 'User claims mapping'
-       sequence:
-         type: string
+@@ -2,6 +2,9 @@ openid_connect.settings:
+   type: config_object
+   label: 'OpenID Connect settings'
+   mapping:
 +    autostart_login:
 +      type: boolean
 +      label: 'Autostart login process'
- 
- openid_connect.client.*:
-   type: config_entity
+     always_save_userinfo:
+       type: boolean
+       label: 'Save user claims on every login'
 diff --git a/openid_connect.services.yml b/openid_connect.services.yml
-index 0046aa3dc0cd37bf5bb46d2262fb054b2f086487..e94c3f365e0dabe15d43e53079f436da1aed95e4 100644
+index 0046aa3..e94c3f3 100644
 --- a/openid_connect.services.yml
 +++ b/openid_connect.services.yml
 @@ -15,6 +15,12 @@ services:
@@ -40,7 +40,7 @@ index 0046aa3dc0cd37bf5bb46d2262fb054b2f086487..e94c3f365e0dabe15d43e53079f436da
      arguments: ['@config.factory', '@redirect.destination', '@session', '@language_manager']
 diff --git a/src/EventSubscriber/OpenIDConnectAutoLogin.php b/src/EventSubscriber/OpenIDConnectAutoLogin.php
 new file mode 100644
-index 0000000000000000000000000000000000000000..e17ae88e951213864b0f28010e8f166666d5dfaa
+index 0000000..e17ae88
 --- /dev/null
 +++ b/src/EventSubscriber/OpenIDConnectAutoLogin.php
 @@ -0,0 +1,245 @@
@@ -290,7 +290,7 @@ index 0000000000000000000000000000000000000000..e17ae88e951213864b0f28010e8f1666
 +
 +}
 diff --git a/src/Form/OpenIDConnectSettingsForm.php b/src/Form/OpenIDConnectSettingsForm.php
-index 2db7d0d4a06d9920fe281b52d31f22f73d56ab5d..5d584b3b7bb98b311e8295ba35666c9a584db0ec 100644
+index 2db7d0d..5d584b3 100644
 --- a/src/Form/OpenIDConnectSettingsForm.php
 +++ b/src/Form/OpenIDConnectSettingsForm.php
 @@ -118,6 +118,13 @@ class OpenIDConnectSettingsForm extends ConfigFormBase {
@@ -315,3 +315,152 @@ index 2db7d0d4a06d9920fe281b52d31f22f73d56ab5d..5d584b3b7bb98b311e8295ba35666c9a
        ->set('user_login_display', $form_state->getValue('user_login_display'))
        ->set('redirect_login', $form_state->getValue('redirect_login'))
        ->set('redirect_logout', $form_state->getValue('redirect_logout'))
+diff --git a/src/OpenIDConnect.php b/src/OpenIDConnect.php
+index db716f1..e16575d 100644
+--- a/src/OpenIDConnect.php
++++ b/src/OpenIDConnect.php
+@@ -469,13 +469,8 @@ class OpenIDConnect {
+       $this->saveUserinfo($account, $context);
+     }
+ 
+-    $this->moduleHandler->invokeAll(
+-      'openid_connect_post_authorize',
+-      [
+-        $account,
+-        $context,
+-      ]
+-    );
++    $this->moduleHandler->invokeAll('openid_connect_post_authorize',
++      [$account, $context]);
+ 
+     return TRUE;
+   }
+@@ -619,11 +614,7 @@ class OpenIDConnect {
+             'property_type' => $property_type,
+             'userinfo_mappings' => $userinfo_mappings,
+           ];
+-          $this->moduleHandler->alter(
+-            'openid_connect_userinfo_claim',
+-            $claim_value,
+-            $claim_context
+-          );
++          $this->moduleHandler->alter('openid_connect_userinfo_claim', $claim_value, $claim_context);
+ 
+           // Set the user property, while ignoring exceptions from invalid
+           // values.
+@@ -659,20 +650,12 @@ class OpenIDConnect {
+                   }
+                 }
+ 
+-                $account->set(
+-                  $property_name,
+-                  [
+-                    'target_id' => $file->id(),
+-                  ]
+-                );
++                $account->set($property_name, ['target_id' => $file->id()]);
+                 break;
+ 
+               default:
+-                $this->logger->error(
+-                  'Could not save user info, property type not implemented: %property_type',
+-                  [
+-                    '%property_type' => $property_type,
+-                  ]
++                $this->logger->error('Could not save user info, property type not implemented: %property_type',
++                  ['%property_type' => $property_type]
+                 );
+                 break;
+ 
+@@ -693,10 +676,9 @@ class OpenIDConnect {
+     }
+ 
+     // Allow other modules to add additional user information.
+-    $this->moduleHandler->invokeAll('openid_connect_userinfo_save', [
+-      $account,
+-      $context,
+-    ]);
++    $this->moduleHandler->invokeAll('openid_connect_userinfo_save',
++      [$account, $context]
++    );
+ 
+     try {
+       $account->save();
+diff --git a/tests/src/Unit/OpenIDConnectTest.php b/tests/src/Unit/OpenIDConnectTest.php
+index ebbc2bc..9de6fa1 100644
+--- a/tests/src/Unit/OpenIDConnectTest.php
++++ b/tests/src/Unit/OpenIDConnectTest.php
+@@ -281,11 +281,9 @@ class OpenIDConnectTest extends UnitTestCase {
+    * Test the extractSub method.
+    *
+    * @param array $userData
+-   *   The user data as returned from
+-   *   OpenIDConnectClientInterface::decodeIdToken().
++   *   The user data.
+    * @param array $userInfo
+-   *   The user claims as returned from
+-   *   OpenIDConnectClientInterface::retrieveUserInfo().
++   *   The user claims.
+    * @param bool|string $expected
+    *   The expected result from the test.
+    *
+@@ -577,11 +575,6 @@ class OpenIDConnectTest extends UnitTestCase {
+       $this->expectException('RuntimeException');
+     }
+     else {
+-      $client->expects($this->once())
+-        ->method('decodeIdToken')
+-        ->with($tokens['id_token'])
+-        ->willReturn($userData);
+-
+       $client->expects($this->once())
+         ->method('retrieveUserInfo')
+         ->with($tokens['access_token'])
+@@ -635,7 +628,7 @@ class OpenIDConnectTest extends UnitTestCase {
+           $this->oidcLogger->expects($this->once())
+             ->method('error')
+             ->with(
+-              'No user information provided by @provider (@code @error). Details: @details',
++              'No user information provided by @provider',
+               ['@provider' => $clientPluginId]
+             );
+         }
+@@ -644,7 +637,7 @@ class OpenIDConnectTest extends UnitTestCase {
+           $this->oidcLogger->expects($this->once())
+             ->method('error')
+             ->with(
+-              'No e-mail address provided by @provider (@code @error). Details: @details',
++              'No e-mail address provided by @provider',
+               ['@provider' => $clientPluginId]
+             );
+         }
+@@ -1135,11 +1128,6 @@ class OpenIDConnectTest extends UnitTestCase {
+       $this->expectException('RuntimeException');
+     }
+     else {
+-      $client->expects($this->once())
+-        ->method('decodeIdToken')
+-        ->with($tokens['id_token'])
+-        ->willReturn($userData);
+-
+       $client->expects($this->once())
+         ->method('retrieveUserInfo')
+         ->with($tokens['access_token'])
+@@ -1161,7 +1149,7 @@ class OpenIDConnectTest extends UnitTestCase {
+         $this->oidcLogger->expects($this->once())
+           ->method('error')
+           ->with(
+-            'No user information provided by @provider (@code @error). Details: @details',
++            'No user information provided by @provider',
+             ['@provider' => $pluginId]
+           );
+       }
+@@ -1170,7 +1158,7 @@ class OpenIDConnectTest extends UnitTestCase {
+         $this->oidcLogger->expects($this->once())
+           ->method('error')
+           ->with(
+-            'No e-mail address provided by @provider (@code @error). Details: @details',
++            'No e-mail address provided by @provider',
+             ['@provider' => $pluginId]
+           );
+       }

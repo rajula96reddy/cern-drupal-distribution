@@ -116,6 +116,7 @@
     "drupal/cern-full-html-format": "~2.0.4",
     "drupal/cern-indico-feeds": "~2.0.5",
     "drupal/cern-install-profiles": "dev-k8s",
+    "drupal/cern-integration": "~1.0.0",
     "drupal/cern-landing-page": "~2.2.4",
     "drupal/cern-ldap-api": "~1.0.0",
     "drupal/cern-loading": "~2.1.2",
