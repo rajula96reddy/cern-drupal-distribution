@@ -143,11 +143,15 @@ https://gitlab.cern.ch/drupal/profiles
 
 ### How to update [JS libs](web/libraries)?
 
-Run after composer update:
+Run this after composer update.
+
+Note: find the latest versions for the libs with a `VERSION` variable.
 
 ```
-( mkdir -p libraries/jquery.cycle && cd $_ && wget https://raw.githubusercontent.com/malsup/cycle/master/jquery.cycle.all.js; )
-( mkdir -p libraries/jquery.hoverIntent && cd $_ && wget https://raw.githubusercontent.com/briancherne/jquery-hoverIntent/master/jquery.hoverIntent.js; )
-( mkdir -p libraries/json2 && cd $_ && wget https://raw.githubusercontent.com/douglascrockford/JSON-js/master/json2.js; )
-( mkdir -p libraries/jquery.pause && cd $_ && wget https://raw.githubusercontent.com/tobia/Pause/master/jquery.pause.js; )
+( mkdir -p web/libraries/jquery.cycle && cd $_ && wget https://raw.githubusercontent.com/malsup/cycle/master/jquery.cycle.all.js; )
+( mkdir -p web/libraries/jquery.hoverIntent && cd $_ && wget https://raw.githubusercontent.com/briancherne/jquery-hoverIntent/master/jquery.hoverIntent.js; )
+( mkdir -p web/libraries/json2 && cd $_ && wget https://raw.githubusercontent.com/douglascrockford/JSON-js/master/json2.js; )
+( mkdir -p web/libraries/jquery.pause && cd $_ && wget https://raw.githubusercontent.com/tobia/Pause/master/jquery.pause.js; )
+( VERSION=4.16.0; cd web/libraries && wget https://download.ckeditor.com/colorbutton/releases/colorbutton_$VERSION.zip && unzip colorbutton_$VERSION.zip && rm colorbutton_$VERSION.zip; )
+( VERSION=4.16.0; cd web/libraries && wget https://download.ckeditor.com/panelbutton/releases/panelbutton_$VERSION.zip && unzip panelbutton_$VERSION.zip && rm panelbutton_$VERSION.zip; )
 ```
