@@ -1,0 +1,5 @@
+#!/bin/sh
+
+/bin/bash pushd ${HOME} >/dev/null
+tar cf - vendor
+/bin/bash popd >/dev/null

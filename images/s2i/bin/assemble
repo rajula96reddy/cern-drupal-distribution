@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# S2I assemble script for the image.
+# The 'assemble' script builds your application source ready to run.
+#
+# For more information refer to the documentation:
+#  https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#
+
+#If the assemble script is executed with the '-h' flag, print the usage.
+if [[ "$1" == "-h" ]]; then
+	exec /usr/libexec/s2i/usage
+fi
+
+echo "---> Moving user drupal configuration to final location..."
+cp -Rf /tmp/src/* /app/
+# At this point we have
+# - composer.admins.json (composer from admins)
+# - composer.json (composer from users)
+# In order to make composer merge works, we need to swap their names
+# (in this order)
+# composer.json -> composer.user.json
+mv composer.json composer.user.json
+# composer.admin.json -> composer.json
+mv composer.admins.json composer.json
+
+if [ -f composer.json ] && [ -f composer.user.json ] && [ -f composer.lock ]; then	
+	echo "---> Found 'composer.lock', updating dependencies ... "
+	composer install --optimize-autoloader -vvv
+fi
+
+echo "--> Ignition..."
