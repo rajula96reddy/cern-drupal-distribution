@@ -86,7 +86,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 # RUN composer clearcache; composer require drush/drush ${DRUSH_VERSION}; composer install;
 # ENV PATH=$PATH:/tmp/drush/vendor/bin
 
-COPY ./s2i/bin/ ./hooks/ /usr/libexec/s2i/
+# COPY ./s2i/bin/ ./hooks/ /usr/libexec/s2i/
 COPY ./php-fpm/fix-permissions /fix-permissions
 RUN chmod -R +x /usr/libexec/s2i/; \
     chmod +x /fix-permissions
@@ -101,7 +101,7 @@ ENV DRUPAL_APP_DIR /app
 ENV DRUPAL_OPERATIONS_DIR /operations
 
 # The following folders are copied from the CI environment during image build 
-COPY cern-drupal-distribution ${DRUPAL_APP_DIR}
+COPY ../../cern-drupal-distribution ${DRUPAL_APP_DIR}
 # Add scripts for Drupal operations
 COPY drupal-operations-scripts ${DRUPAL_OPERATIONS_DIR}
 RUN chmod +x ${DRUPAL_OPERATIONS_DIR}/*
