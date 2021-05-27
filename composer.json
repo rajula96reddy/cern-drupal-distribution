@@ -61,6 +61,10 @@
     },
     {
       "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-full-html-format.git"
+    },
+    {
+      "type": "vcs",
       "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-dev-status.git"
     },
     {
@@ -118,6 +122,8 @@
     "drupal/cern-components": "~2.7.10",
     "drupal/cern-dev-status": "~2.0.5",
     "drupal/cern-display-formats": "~1.4.5",
+    "drupal/cern-drupal-welcome-message-block": "~1.1.0",
+    "drupal/cern-full-html-format": "~2.0.4",
     "drupal/cern-indico-feeds": "~2.0.5",
     "drupal/cern-install-profiles": "dev-k8s",
     "drupal/cern-integration": "~1.0.0",
