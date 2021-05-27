@@ -137,7 +137,7 @@ RUN ln -s ${DRUPAL_APP_DIR}/web/profiles/contrib/cern-install-profiles/cern ${DR
 # post-update-cmd: DrupalProject\composer\ScriptHandler::createRequiredFiles
 # Overwrite settings.php with ours.
 # - settings.php
-#ADD ./configuration/sitebuilder/settings.php ${DRUPAL_APP_DIR}/web/sites/default/settings.php
+ADD ./settings.php ${DRUPAL_APP_DIR}/web/sites/default/settings.php
 # Remove ${DRUPAL_APP_DIR}/web/sites/default/{files, private, modules, themes}, preparing it to be symbolic link;
 RUN rm -rf ${DRUPAL_APP_DIR}/web/sites/default/files; \
     rm -rf ${DRUPAL_APP_DIR}/web/sites/default/private; \
