@@ -32,8 +32,8 @@ build:
       --destination ${CI_REGISTRY_IMAGE}/site-builder:${CI_COMMIT_BRANCH}-${TAG}
       --build-arg PHP_VERSION=$phpVersion --build-arg COMPOSER_VERSION=$composerVersion --build-arg DRUSH_VERSION=$drushVersion;
       # Image builder for nginx
-      #- /kaniko/executor --context $CI_PROJECT_DIR/images/nginx --dockerfile $CI_PROJECT_DIR/images/nginx/Dockerfile
-      #    --destination \$CI_REGISTRY_IMAGE/nginx:${CI_COMMIT_BRANCH}-${TAG}
-      #    --build-arg NGINX_VERSION=\$nginxVersion;
+    - /kaniko/executor --context "$CI_PROJECT_DIR/images/nginx" --dockerfile "$CI_PROJECT_DIR/images/nginx/Dockerfile"
+      --destination ${CI_REGISTRY_IMAGE}/nginx:${CI_COMMIT_BRANCH}-${TAG}
+      --build-arg NGINX_VERSION=\$nginxVersion;
     - echo "Image pushed to ${CI_REGISTRY_IMAGE}/${CI_COMMIT_BRANCH}-${TAG}"
 

@@ -1567,7 +1567,6 @@
                 "reference": "8cc5c011dbb200e748718701212882dcda5563ff"
             },
             "require": {
-                "drupal/cern-full-html-format": "^2.0.2",
                 "drupal/components": "^1.1",
                 "drupal/ds": "^3.9",
                 "drupal/field_group": "^3.1",
@@ -1631,53 +1630,6 @@
             ],
             "description": "Defines a set of views display formats",
             "time": "2021-01-14T08:51:34+00:00"
-        },
-        {
-            "name": "drupal/cern-drupal-welcome-message-block",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/drupal-welcome-message-block",
-                "reference": "c5a6c1b0b465429ffe2c3d5bac92b6fa39f668f6"
-            },
-            "type": "drupal-custom-module",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantinos Platis",
-                    "email": "konstantinos.platis@cern.ch"
-                }
-            ],
-            "description": "Creates the welcome message block for CERN Drupal websites",
-            "time": "2021-02-11T13:36:40+00:00"
-        },
-        {
-            "name": "drupal/cern-full-html-format",
-            "version": "2.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-full-html-format.git",
-                "reference": "4e4a15aa77576abadb8639f537e31d31edbc09a6"
-            },
-            "require": {
-                "drupal/ckeditor_font": "^1.1",
-                "drupal/colorbutton": "^1.2",
-                "drupal/panelbutton": "^1.3"
-            },
-            "type": "drupal-custom-module",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantinos Platis",
-                    "email": "konstantinos.platis@cern.ch"
-                }
-            ],
-            "description": "Adds the CERN Full HTML text format on CKEditor",
-            "time": "2021-02-08T09:36:17+00:00"
         },
         {
             "name": "drupal/cern-indico-feeds",
