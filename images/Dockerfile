@@ -86,7 +86,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 # RUN composer clearcache; composer require drush/drush ${DRUSH_VERSION}; composer install;
 # ENV PATH=$PATH:/tmp/drush/vendor/bin
 
-COPY ./s2i/bin/ ./hooks/ /usr/libexec/s2i/
 COPY ./php-fpm/fix-permissions /fix-permissions
 RUN chmod -R +x /usr/libexec/s2i/; \
     chmod +x /fix-permissions
@@ -101,7 +100,7 @@ ENV DRUPAL_APP_DIR /app
 ENV DRUPAL_OPERATIONS_DIR /operations
 
 # The following folders are copied from the CI environment during image build 
-COPY cern-drupal-distribution ${DRUPAL_APP_DIR}
+COPY ../../cern-drupal-distribution ${DRUPAL_APP_DIR}
 # Add scripts for Drupal operations
 COPY drupal-operations-scripts ${DRUPAL_OPERATIONS_DIR}
 RUN chmod +x ${DRUPAL_OPERATIONS_DIR}/*
@@ -137,7 +136,7 @@ RUN ln -s ${DRUPAL_APP_DIR}/web/profiles/contrib/cern-install-profiles/cern ${DR
 # post-update-cmd: DrupalProject\composer\ScriptHandler::createRequiredFiles
 # Overwrite settings.php with ours.
 # - settings.php
-ADD ./configuration/sitebuilder/settings.php ${DRUPAL_APP_DIR}/web/sites/default/settings.php
+ADD ./settings.php ${DRUPAL_APP_DIR}/web/sites/default/settings.php
 # Remove ${DRUPAL_APP_DIR}/web/sites/default/{files, private, modules, themes}, preparing it to be symbolic link;
 RUN rm -rf ${DRUPAL_APP_DIR}/web/sites/default/files; \
     rm -rf ${DRUPAL_APP_DIR}/web/sites/default/private; \
