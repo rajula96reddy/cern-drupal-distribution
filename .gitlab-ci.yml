@@ -12,10 +12,12 @@ nginx:
     - |
         if [[ "$CI_COMMIT_BRANCH" == "v"* ]] ; then
           export DATE=`date -u +%Y.%m.%dT%H-%M-%SZ`
-          export TAG=${TAG:-"RELEASE".$DATE}
+          export TAG="RELEASE"-${DATE}
         else
           export TAG=$CI_COMMIT_SHORT_SHA
         fi
+    - echo $CI_COMMIT_BRANCH
+    - echo $TAG
     - wget --no-check-certificate https://github.com/mikefarah/yq/releases/download/v4.2.0/yq_linux_amd64 -O /yq && chmod +x /yq
     - export softwareVersions=$CI_PROJECT_DIR/images/softwareVersions
     - export nginxVersion=`/yq e .nginx $softwareVersions`
