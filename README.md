@@ -1,157 +1,75 @@
-# Composer template for Drupal projects
+# CERN Drupal Distribution
 
-[![CI](https://github.com/drupal-composer/drupal-project/actions/workflows/ci.yml/badge.svg?branch=9.x)](https://github.com/drupal-composer/drupal-project/actions/workflows/ci.yml)
+A Composer package that defines the CERN Drupal Distribution: Drupal and a set of core modules,
+that are the common denominator of all websites deployed in the [CERN Drupal service](https://drupal.cern.ch).
 
-This project template provides a starter kit for managing your site
-dependencies with [Composer](https://getcomposer.org/).
+This composer project relies on an upstream recommended setup for Drupal sites.
+More info in [cern-drupal-distribution-composer-project.md](cern-drupal-distribution-composer-project.md).
 
-## Usage
+#### Customizing the composer project of my website
 
-First you need to [install Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).
+First refer to the DrupalSite docs.
 
-> Note: The instructions below refer to the [global Composer installation](https://getcomposer.org/doc/00-intro.md#globally).
-You might need to replace `composer` with `php composer.phar` (or similar)
-for your setup.
+Extra composer packages can be injected to a website by linking the DrupalSite to a git repo with a `composer.json`.
+The injection happens with a [source-to-image](images/s2i) mechanism, triggered when the DrupalSite is deployed.
 
-After that you can create the project:
+## Sitebuilder/nginx images
 
-```
-composer create-project drupal-composer/drupal-project:9.x-dev some-dir --no-interaction
-```
+This composer project is deployed through a [sitebuilder image](images/Dockerfile).
+Each DrupalSite instantiated at the CERN Drupal service deploys a sitebuilder and an [nginx](images/nginx/Dockerfile) container.
 
-With `composer require ...` you can download new dependencies to your
-installation.
+The rest of the [images](images) directory includes configuration to build the images.
+The image tags depend on the [release process](#release)
 
-```
-cd some-dir
-composer require drupal/devel
-```
+## <h2 id="release"></h2> Versioning and Release
 
-The `composer create-project` command passes ownership of all files to the
-project that is created. You should create a new Git repository, and commit
-all files not excluded by the `.gitignore` file.
+The precise contents of the images currently running a Drupal site can be linked to this repo.
+Each branch in this repo starting with the letter `v*` is a stable version branch.
+The branch's name corresponds to the `spec.version.name` field in the DrupalSite.
 
-## What does the template do?
+For a standard user, this is all that is needed to instantiate the Drupal site: the latest release (commit)
+of the specified branch will be deployed automatically.
+The resolved/currently running release (version + releaseSpec) can be found in `DrupalSite.status.releaseID.current`.
 
-When installing the given `composer.json` some tasks are taken care of:
+The following section gives a detailed description of the GitOps workflow of this repo.
 
-* Drupal will be installed in the `web`-directory.
-* Autoloader is implemented to use the generated composer autoloader in `vendor/autoload.php`,
-  instead of the one provided by Drupal (`web/vendor/autoload.php`).
-* Modules (packages of type `drupal-module`) will be placed in `web/modules/contrib/`
-* Theme (packages of type `drupal-theme`) will be placed in `web/themes/contrib/`
-* Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/contrib/`
-* Creates default writable versions of `settings.php` and `services.yml`.
-* Creates `web/sites/default/files`-directory.
-* Latest version of drush is installed locally for use at `vendor/bin/drush`.
-* Latest version of DrupalConsole is installed locally for use at `vendor/bin/drupal`.
-* Creates environment variables based on your .env file. See [.env.example](.env.example).
+### GitOps (details)
 
-## Updating Drupal Core
-
-This project will attempt to keep all of your Drupal Core files up-to-date; the
-project [drupal/core-composer-scaffold](https://github.com/drupal/core-composer-scaffold)
-is used to ensure that your scaffold files are updated every time drupal/core is
-updated. If you customize any of the "scaffolding" files (commonly `.htaccess`),
-you may need to merge conflicts if any of your modified files are updated in a
-new release of Drupal core.
-
-Follow the steps below to update your core files.
-
-1. Run `composer update "drupal/core-*" --with-dependencies` to update Drupal Core and its dependencies.
-2. Run `git diff` to determine if any of the scaffolding files have changed.
-   Review the files for any changes and restore any customizations to
-  `.htaccess` or `robots.txt`.
-1. Commit everything all together in a single commit, so `web` will remain in
-   sync with the `core` when checking out branches or running `git bisect`.
-1. In the event that there are non-trivial conflicts in step 2, you may wish
-   to perform these steps on a branch, and use `git merge` to combine the
-   updated core files with your customized files. This facilitates the use
-   of a [three-way merge tool such as kdiff3](http://www.gitshah.com/2010/12/how-to-setup-kdiff-as-diff-tool-for-git.html). This setup is not necessary if your changes are simple;
-   keeping all of your modifications at the beginning or end of the file is a
-   good strategy to keep merges easy.
-
-## FAQ
-
-### Should I commit the contrib modules I download?
-
-Composer recommends **no**. They provide [argumentation against but also
-workrounds if a project decides to do it anyway](https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).
-
-### Should I commit the scaffolding files?
-
-The [Drupal Composer Scaffold](https://github.com/drupal/core-composer-scaffold)
-plugin can download the scaffold files (like index.php, update.php, …) to the
-web/ directory of your project. If you have not customized those files you could
-choose to not check them into your version control system (e.g. git). If that is
-the case for your project it might be convenient to automatically run the
-drupal-scaffold plugin after every install or update of your project. You can
-achieve that by registering `@composer drupal:scaffold` as post-install and
-post-update command in your composer.json:
-
-```json
-"scripts": {
-    "post-install-cmd": [
-        "@composer drupal:scaffold",
-        "..."
-    ],
-    "post-update-cmd": [
-        "@composer drupal:scaffold",
-        "..."
-    ]
-},
-```
-
-### How can I apply patches to downloaded modules?
-
-If you need to apply patches (depending on the project being modified, a pull
-request is often a better solution), you can do so with the
-[composer-patches](https://github.com/cweagans/composer-patches) plugin.
-
-To add a patch to drupal module foobar insert the patches section in the extra
-section of composer.json:
-
-```json
-"extra": {
-    "patches": {
-        "drupal/foobar": {
-            "Patch description": "URL or local path to patch"
-        }
-    }
-}
-```
-
-### How do I specify a PHP version ?
-
-This project supports PHP 7.3 as minimum version (see [Environment requirements of Drupal 9](https://www.drupal.org/docs/understanding-drupal/how-drupal-9-was-made-and-what-is-included/environment-requirements-of)), however it's possible that a `composer update` will upgrade some package that will then require PHP 7.3+.
-
-To prevent this you can add this code to specify the PHP version you want to use in the `config` section of `composer.json`:
-
-```json
-"config": {
-    "sort-packages": true,
-    "platform": {
-        "php": "7.3.19"
-    }
-},
-```
-### How do I edit a profile?
-
-The profiles are imported during image creation, to edit one please see the
-following repository:
-https://gitlab.cern.ch/drupal/profiles
-
-### How to update [JS libs](web/libraries)?
-
-Run this after composer update.
-
-Note: find the latest versions for the libs with a `VERSION` variable.
+The tip of the repo's history is the `master` branch.
+At each point in time we also have some supported version branches (v8.9-1, v8.9-2 in this example):
 
 ```
-( mkdir -p web/libraries/jquery.cycle && cd $_ && wget https://raw.githubusercontent.com/malsup/cycle/master/jquery.cycle.all.js; )
-( mkdir -p web/libraries/jquery.hoverIntent && cd $_ && wget https://raw.githubusercontent.com/briancherne/jquery-hoverIntent/master/jquery.hoverIntent.js; )
-( mkdir -p web/libraries/json2 && cd $_ && wget https://raw.githubusercontent.com/douglascrockford/JSON-js/master/json2.js; )
-( mkdir -p web/libraries/jquery.pause && cd $_ && wget https://raw.githubusercontent.com/tobia/Pause/master/jquery.pause.js; )
-( VERSION=4.16.0; cd web/libraries && wget https://download.ckeditor.com/colorbutton/releases/colorbutton_$VERSION.zip && unzip colorbutton_$VERSION.zip && rm colorbutton_$VERSION.zip; )
-( VERSION=4.16.0; cd web/libraries && wget https://download.ckeditor.com/panelbutton/releases/panelbutton_$VERSION.zip && unzip panelbutton_$VERSION.zip && rm panelbutton_$VERSION.zip; )
+master   v8.9-2 v8.9-1
+|
+|        |              dev8.9-1-secfix3
+                |<----- |
+|
+                        |
+|        |      | ----->|
+| ------>|
+|               | (backported security fix)
+|
+|
+| ------------->|
+|
+|     dev-myfeature
+|<--- |
+|     |
+| --->|
+|
 ```
+
+For each commit in a version branch the corresponding image tag is: `<branch>-RELEASE.<date>`
+
+#### Development
+
+Development happens on the master branch using feature branches (`dev-myfeature` in the example above).
+Backporting happens in feature branches (`dev8.9-1-secfix3`) that branch out from the version branches.
+Each non-version branch produces image tags with each commit of the format `<branch>-<commit-sha>`.
+
+#### Testing
+
+Eventually, CI should run a test suite for every commit against the drupal-stg cluster.
+CI should be a normal user that creates a DrupalSite with this version/release and runs tests against it.
+
+
