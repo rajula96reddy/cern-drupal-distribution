@@ -86,7 +86,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 # RUN composer clearcache; composer require drush/drush ${DRUSH_VERSION}; composer install;
 # ENV PATH=$PATH:/tmp/drush/vendor/bin
 
-# COPY ./s2i/bin/ ./hooks/ /usr/libexec/s2i/
 COPY ./php-fpm/fix-permissions /fix-permissions
 RUN chmod -R +x /usr/libexec/s2i/; \
     chmod +x /fix-permissions
