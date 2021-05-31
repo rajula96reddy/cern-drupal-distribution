@@ -197,6 +197,7 @@
     "drupal/cern-loading": "~2.1.2",
     "drupal/cern-paragraph-types": "~2.2.3",
     "drupal/cern-profile-displayname": "~2.1.0",
+    "drupal/cern-taxonomies": "~2.0.1",
     "drupal/cern-theme": "~2.6.11",
     "drupal/cern-toolbar": "~2.2.3",
     "drupal/cern-webcast-feeds": "~2.0.4",
