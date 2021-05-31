@@ -10,12 +10,11 @@ nginx:
     entrypoint: [""]
   script:
     - |
-        if [[ "$CI_COMMIT_BRANCH" == "v"* ]] ; then
-          export DATE=`date -u +%Y.%m.%dT%H-%M-%SZ`
-          export TAG="RELEASE"-${DATE}
-        else
-          export TAG=$CI_COMMIT_SHORT_SHA
-        fi
+
+      case "$CI_COMMIT_BRANCH" in
+        v*) export DATE=`date -u +%Y.%m.%dT%H-%M-%SZ` ; export TAG="RELEASE"-${DATE} ;;
+        *) export TAG=$CI_COMMIT_SHORT_SHA ;;
+      esac
     - echo $CI_COMMIT_BRANCH
     - echo $TAG
     - wget --no-check-certificate https://github.com/mikefarah/yq/releases/download/v4.2.0/yq_linux_amd64 -O /yq && chmod +x /yq
