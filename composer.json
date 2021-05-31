@@ -25,6 +25,74 @@
     },
     {
       "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-taxonomies.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_basic_page"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/paragraph-types"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-components"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-full-html-format"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-cds-media"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_faq_page"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_news_pages"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-landing-page"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_configuration"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_event_page"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_feature_story_page"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_resource_page"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_story_page"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_system_page"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-webcast-feeds"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-indico-feeds"
+    },
+    {
+      "type": "vcs",
       "url": "https://gitlab.cern.ch/drupal/modules/cern_ldap_api.git"
     },
     {
@@ -108,9 +176,6 @@
     "php": ">=7.3",
     "composer/installers": "~1.10.0",
     "cweagans/composer-patches": "~1.7.0",
-    "drush/drush": "~8.4",
-    "vlucas/phpdotenv": "~5.1.0",
-    "webflo/drupal-finder": "~1.2.0",
     "drupal/admin_toolbar": "~2.4.0",
     "drupal/adminimal_theme": "~1.6.0",
     "drupal/allowed_formats": "~1.3.0",
@@ -141,7 +206,7 @@
     "drupal/color_field": "~2.4.0",
     "drupal/colorbox": "~1.7.0",
     "drupal/colorbutton": "~1.2.0",
-    "drupal/components": "~1.1.0",
+    "drupal/components": "~2.4.0",
     "drupal/config_update": "~1.7.0",
     "drupal/content_access": "~1.0.0@alpha",
     "drupal/context": "~4.0.0@beta",
@@ -150,7 +215,7 @@
     "drupal/core-composer-scaffold": "8.9.14",
     "drupal/core-project-message": "8.9.14",
     "drupal/core-recommended": "8.9.14",
-    "drupal/ctools": "~3.4.0",
+    "drupal/ctools": "~3.6.0",
     "drupal/devel": "~2.1.0",
     "drupal/domain_301_redirect": "~1.0.0@alpha",
     "drupal/ds": "~3.12.0",
@@ -221,6 +286,9 @@
     "drupal/workbench": "~1.3.0",
     "drupal/workbench_access": "~1.0.0@beta",
     "drupal/workbench_moderation": "~1.6.0",
+    "drush/drush": "~8.4",
+    "vlucas/phpdotenv": "~5.1.0",
+    "webflo/drupal-finder": "~1.2.0",
     "wikimedia/composer-merge-plugin": "~2.0.1"
   },
   "require-dev": {
