@@ -1,4 +1,3 @@
-
 stages:
   - build
 
@@ -12,7 +11,7 @@ nginx:
     # Using POSIX string check since "[[]]" failed
     - |
       case "$CI_COMMIT_BRANCH" in
-        v*) export DATE=`date -u +%Y.%m.%dT%H-%M-%SZ` ; export TAG="RELEASE"-${DATE} ;;
+        v*) export DATE=$(date -u +%Y.%m.%dT%H-%M-%SZ); echo "DATE=$DATE" >> build.env ;export TAG="RELEASE"-${DATE} ;;
         *) export TAG=$CI_COMMIT_SHORT_SHA ;;
       esac
     - echo $CI_COMMIT_BRANCH
@@ -27,14 +26,19 @@ nginx:
       --destination ${CI_REGISTRY_IMAGE}/nginx:${CI_COMMIT_BRANCH}-${TAG}
       --build-arg NGINX_VERSION=\$nginxVersion;
     - echo "Nginx image pushed to ${CI_REGISTRY_IMAGE}/nginx:${CI_COMMIT_BRANCH}-${TAG}"
+  artifacts:
+    reports:
+      dotenv: build.env
 sitebuilder:
   stage: build
+  needs: [nginx]
   image:
     # We recommend using the CERN version of the Kaniko image: gitlab-registry.cern.ch/ci-tools/docker-image-builder
     name: gitlab-registry.cern.ch/ci-tools/docker-image-builder
     entrypoint: [""]
   script:
     # Using POSIX string check since "[[]]" failed
+    - echo $DATE
     - |
       case "$CI_COMMIT_BRANCH" in
         v*) export DATE=`date -u +%Y.%m.%dT%H-%M-%SZ` ; export TAG="RELEASE"-${DATE} ;;
