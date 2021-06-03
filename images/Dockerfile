@@ -85,7 +85,7 @@ RUN set -eux; \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=${COMPOSER_VERSION}
 # RUN composer clearcache; composer require drush/drush ${DRUSH_VERSION}; composer install;
 # ENV PATH=$PATH:/tmp/drush/vendor/bin
-
+COPY ./s2i/bin/ /usr/libexec/s2i/
 COPY ./php-fpm/fix-permissions /fix-permissions
 RUN chmod -R +x /usr/libexec/s2i/; \
     chmod +x /fix-permissions
@@ -120,7 +120,7 @@ RUN composer install --optimize-autoloader -v
 
 ENV PATH=$PATH:${DRUPAL_APP_DIR}/vendor/bin
 
-RUN mkdir ${DRUPAL_APP_DIR}/web/themes/custom
+RUN mkdir -p ${DRUPAL_APP_DIR}/web/themes/custom
 
 # Clean-up composer installation
 # Rename composer.json to composer.admins.json so that when user injects its composer,
