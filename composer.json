@@ -100,7 +100,7 @@
         "drupal/cern-loading": "^2.1",
         "drupal/cern-paragraph-types": "^2.2",
         "drupal/cern-profile-displayname": "^2.1",
-        "drupal/cern-theme": "^2.6",
+        "drupal/cern-theme": "^2.6.11",
         "drupal/cern-toolbar": "^2.2",
         "drupal/cern-webcast-feeds": "^2.0",
         "drupal/ckeditor_font": "^1.1",

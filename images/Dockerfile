@@ -120,6 +120,8 @@ RUN composer install --optimize-autoloader -v
 
 ENV PATH=$PATH:${DRUPAL_APP_DIR}/vendor/bin
 
+RUN mkdir ${DRUPAL_APP_DIR}/web/themes/custom
+
 # Clean-up composer installation
 # Rename composer.json to composer.admins.json so that when user injects its composer,
 # there is no conflict between then.
