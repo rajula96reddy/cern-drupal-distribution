@@ -221,7 +221,9 @@
     "drupal/workbench": "~1.3.0",
     "drupal/workbench_access": "~1.0.0@beta",
     "drupal/workbench_moderation": "~1.6.0",
-    "wikimedia/composer-merge-plugin": "~2.0.1"
+    "wikimedia/composer-merge-plugin": "~2.0.1",
+    "drupal/redis": "~1.5.0",
+    "predis/predis": "~1.1.7"
   },
   "require-dev": {
     "drupal/core-dev": "~8.9.14",
