@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: Topics
-vid: cern_topics
-description: 'Vocabulary for tagging content by topic'
-hierarchy: 0
-weight: 0

@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: Audience
-vid: cern_audience
-description: 'Vocabulary for tagging content in the "NEWS" section by audience'
-hierarchy: 0
-weight: 0
