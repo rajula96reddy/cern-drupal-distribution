@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: Authors
-vid: cern_authors
-description: 'Vocabulary for tagging and displaying author information'
-hierarchy: 0
-weight: 0

@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: 'News Format'
-vid: cern_news_format
-description: 'Vocabulary for tagging news content by type'
-hierarchy: 0
-weight: 0
