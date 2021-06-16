@@ -170,4 +170,6 @@ RUN ln -s ${DRUPAL_SHARED_VOLUME}/files ${DRUPAL_APP_DIR}/web/sites/default/file
 RUN chmod -R 555 ${DRUPAL_APP_DIR}/web/sites/default
 RUN chmod 444 ${DRUPAL_APP_DIR}/web/sites/default/settings.php
 
+STOPSIGNAL SIGWINCH
+
 CMD ["/usr/libexec/s2i/usage"]
