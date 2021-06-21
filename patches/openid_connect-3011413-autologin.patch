@@ -6,7 +6,7 @@ index 40767fc..f9fdc23 100644
  userinfo_mappings:
    timezone: zoneinfo
  debug: false
-+autostart_login: false
++autostart_login: true
 diff --git a/config/schema/openid_connect.schema.yml b/config/schema/openid_connect.schema.yml
 index d638a50..318b4d8 100644
 --- a/config/schema/openid_connect.schema.yml
@@ -30,7 +30,6 @@ index 5435797..d1931a2 100644
      class: Drupal\openid_connect\OpenIDConnectStateToken
      arguments: []
  
-+  #  We should change to plugin.manager.openid_connect_client once using the openid_connect module v2
 +  openid_connect.auto_login:
 +    class: Drupal\openid_connect\EventSubscriber\OpenIDConnectAutoLogin
 +    arguments: ['@current_user', '@plugin.manager.openid_connect_client.processor', '@config.factory']
