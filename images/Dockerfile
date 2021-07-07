@@ -157,9 +157,6 @@ ADD ./php-fpm/config/php-fpm/ /usr/local/etc/php-fpm.d/
 # - opcache
 ADD ./php-fpm/config/opcache/ /usr/local/etc/php/conf.d/
 
-ADD ./php-fpm/run-php-fpm.sh /
-RUN chmod +x /run-php-fpm.sh
-
 ENV DRUPAL_SHARED_VOLUME /drupal-data
 
 RUN ln -s ${DRUPAL_SHARED_VOLUME}/files ${DRUPAL_APP_DIR}/web/sites/default/files && \
