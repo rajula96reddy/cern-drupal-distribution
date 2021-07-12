@@ -1,0 +1,31 @@
+--- openid_connect_orig/src/EventSubscriber/OpenIDConnectAutoLogin.php  2021-07-12 17:35:12.000000001 +0200
++++ openid_connect/src/EventSubscriber/OpenIDConnectAutoLogin.php       2021-07-12 18:12:14.000000001 +0200
+@@ -91,17 +91,21 @@
+    */
+   public function login(GetResponseEvent $event) {
+     // Get current request.
++    Drupal::logger('oidc_debug')->warning("Starting Login AutoLogin...");
+     $request = $event->getRequest();
+     // Check if user is anonymous and login or register page was requested.
+     if ($this->isAutostartEnabled() && $this->currentUser->isAnonymous() && $this->isLoginRequested($request)) {
++      Drupal::logger('oidc_debug')->warning("Login Autologin, user anonymous and login is requested");
+       // If there is no login errors and login process is not in progress
+       // and openid_connect_bypass is not provided, then start login process.
+       if (!$this->hasErrors() && !$this->bypassAutoLogin($request)) {
++        Drupal::logger('oidc_debug')->warning("Login Autologin, no errors and no bypassAutoLogin");
+         // Start OpenID Connect login process.
+         Drupal::service('openid_connect.session')->saveDestination();
+         $_SESSION['openid_connect_op'] = 'login';
+         $client = $this->getClient();
+         if ($client) {
++          Drupal::logger('oidc_debug')->warning("Login Autologin, client exists");
+           $response = $client->authorize();
+           // Redirect to given response.
+           $event->setResponse($response);
+@@ -229,6 +233,7 @@
+    *   TRUE if regular Drupal login process should start, FALSE otherwise.
+    */
+   protected function bypassAutoLogin(Request $request) {
++    Drupal::logger('oidc_debug')->warning("bypassAutoLogin : " . $request->query->has('showcore'));
+     return $request->query->has('showcore');
+   }
