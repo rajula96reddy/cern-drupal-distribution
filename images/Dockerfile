@@ -32,6 +32,7 @@ RUN apk --update add \
     mysql-client \
     jq \
     tzdata \
+    psmisc \
     rsync
 
 # Configured timezone.
