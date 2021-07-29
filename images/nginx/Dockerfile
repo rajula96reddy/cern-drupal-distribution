@@ -12,7 +12,6 @@ ENV DRUPAL_SHARED_VOLUME /drupal-data
 
 # Nginx default configuration
 ADD config/default.conf /etc/nginx/conf.d/default.conf
-ADD config/webdav.conf /etc/nginx/conf.d/webdav.conf
 ADD config/nginx.conf /etc/nginx/nginx.conf
 
 ### n.b.: https://www.redpill-linpro.com/sysadvent/2017/12/10/jekyll-openshift.html
