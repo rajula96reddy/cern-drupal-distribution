@@ -1,6 +1,15 @@
 #!/bin/sh
 set -exu
 
+# We have a cookie to let the job know if it should run 'drush site-install ...'
+# Details can be seen here: https://gitlab.cern.ch/webservices/webframeworks-planning/-/issues/484
+INSTALL_COOKIE=/drupal-data/.site-installed
+if [ -f "${INSTALL_COOKIE}" ]; then
+    echo "${INSTALL_COOKIE} exists."
+    echo "skipping installation..."
+    exit 0
+fi
+
 # Change working directory to the drupal code
 cd /app
 
@@ -16,3 +25,6 @@ drush cr
 if [ "$?" -ne "0" ]; then
     drush cr
 fi
+
+# Leave cookie
+touch $INSTALL_COOKIE
