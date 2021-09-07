@@ -25,14 +25,6 @@
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-taxonomies.git"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_basic_page"
-    },
-    {
-      "type": "vcs",
       "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/paragraph-types"
     },
     {
@@ -49,39 +41,7 @@
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_faq_page"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_news_pages"
-    },
-    {
-      "type": "vcs",
       "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-landing-page"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_configuration"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_event_page"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_feature_story_page"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_resource_page"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_story_page"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_system_page"
     },
     {
       "type": "vcs",
@@ -342,15 +302,11 @@
     },
     "patches": {
       "drupal/core": {
-        "DRUPAL-499: Get feed title in correct language": "patches/2816447-32.patch",
         "DRUPAL-302: Allow tokens to be used in Text Editor image upload directory path": "patches/allow_tokens_in_text_editor-2830210-14.patch",
         "DRUPAL-496: TermName views argument_validator is not working as expected": "patches/drupal_views_argument_validator_TermName-2494617-75.patch",
         "steps.everis.com/CERN-904: https://www.drupal.org/project/drupal/issues/2930599#comment-12779330": "patches/empty-alias-check-2930599-44.patch",
         "DRUPAL-567: Cannot save translated nodes after upgrading to 8.8 due to invalid path": "patches/translations_not_save_invalid_path-3101344-20.patch",
         "DRUPAL-503: Support enclosure field in Views RssFields row plugin": "patches/views-rss-fields-enclosure-2511878-17.patch"
-      },
-      "drupal/webform_analysis": {
-        "fix webform analysis charts not compatible with latest version of google libraries https://www.drupal.org/project/webform_analysis/issues/3137161": "patches/webform_analysis_google_charts_version_downgrade-3137161-5.patch"
       },
       "drupal/paragraphs": {
         "DRUPAL-466: adds the widget that fixes the landing pages issues\n WARNING: there is a new version of this patch upstream for PHP7.2 with some community validation.  But since this version still applies cleanly, we wont update it yet.": "patches/experimental-widget-asymetric-translation-2904705-47.patch",
