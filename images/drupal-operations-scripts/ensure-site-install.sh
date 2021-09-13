@@ -18,7 +18,7 @@ drush sql:drop -y
 
 # Install Drupal site
 echo "Installing Drupal site"
-drush site-install cern -y --config-dir=../config/sync --account-name=admin install_configure_form.enable_update_status_emails=NULL
+drush site-install cern -y --config-dir=../config/sync --account-name=admin install_configure_form.enable_update_status_emails=NULL -vvv
 # Remove admin account
 drush user-cancel admin -y
 drush cr
