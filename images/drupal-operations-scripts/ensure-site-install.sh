@@ -1,5 +1,23 @@
 #!/bin/sh
-set -exu
+
+usage() {
+  echo "Usage: $0 --profile <cern|easystart>" 1>&2;
+  exit 1;
+}
+
+# Options
+ARGS=$(getopt -o 'p:' --long 'profile:' -- "$@") || exit 1
+eval "set -- $ARGS"
+
+while true; do
+  case "$1" in
+    (-p|--profile)
+      export PROFILE="$2"; shift 2;;
+    (--) shift; break;;
+    (*) usage;;
+  esac
+done
+[[ -z "$PROFILE" ]] && usage
 
 # We have a cookie to let the job know if it should run 'drush site-install ...'
 # Details can be seen here: https://gitlab.cern.ch/webservices/webframeworks-planning/-/issues/484
@@ -18,7 +36,7 @@ drush sql:drop -y
 
 # Install Drupal site
 echo "Installing Drupal site"
-drush site-install cern -y --config-dir=../config/sync --account-name=admin install_configure_form.enable_update_status_emails=NULL -vvv
+drush site-install $PROFILE -y --config-dir=../config/sync --account-name=admin install_configure_form.enable_update_status_emails=NULL -vvv
 # Remove admin account
 drush user-cancel admin -y
 drush cr
