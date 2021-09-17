@@ -25,14 +25,6 @@
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-taxonomies.git"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_basic_page"
-    },
-    {
-      "type": "vcs",
       "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/paragraph-types"
     },
     {
@@ -49,39 +41,7 @@
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_faq_page"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_news_pages"
-    },
-    {
-      "type": "vcs",
       "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-landing-page"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_configuration"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_event_page"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_feature_story_page"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_resource_page"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_story_page"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_system_page"
     },
     {
       "type": "vcs",
@@ -197,7 +157,6 @@
     "drupal/cern-loading": "~2.1.2",
     "drupal/cern-paragraph-types": "~2.2.3",
     "drupal/cern-profile-displayname": "~2.1.0",
-    "drupal/cern-taxonomies": "~2.0.1",
     "drupal/cern-theme": "~2.6.11",
     "drupal/cern-toolbar": "~2.2.3",
     "drupal/cern-webcast-feeds": "~2.0.4",
@@ -213,9 +172,9 @@
     "drupal/context": "~4.0.0@beta",
     "drupal/contribute": "~1.0.0@beta",
     "drupal/cookieconsent": "~1.6.0",
-    "drupal/core-composer-scaffold": "8.9.16",
-    "drupal/core-project-message": "8.9.16",
-    "drupal/core-recommended": "8.9.16",
+    "drupal/core-composer-scaffold": "8.9.18",
+    "drupal/core-project-message": "8.9.18",
+    "drupal/core-recommended": "8.9.18",
     "drupal/ctools": "~3.6.0",
     "drupal/devel": "~2.1.0",
     "drupal/domain_301_redirect": "~1.0.0@alpha",
@@ -277,6 +236,7 @@
     "drupal/token": "~1.9.0",
     "drupal/twig_tweak": "~2.9.0",
     "drupal/ui_patterns": "~1.2.0",
+    "drupal/upgrade_status": "^3.10",
     "drupal/userprotect": "~1.1.0",
     "drupal/views_bulk_operations": "~2.6.0",
     "drupal/views_slideshow": "~4.8.0",
@@ -293,7 +253,7 @@
     "wikimedia/composer-merge-plugin": "~2.0.1"
   },
   "require-dev": {
-    "drupal/core-dev": "~8.9.14",
+    "drupal/core-dev": "~8.9.18",
     "zaporylie/composer-drupal-optimizations": "~1.2.0"
   },
   "conflict": {
