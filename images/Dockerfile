@@ -126,10 +126,10 @@ ENV PATH=$PATH:${DRUPAL_APP_DIR}/vendor/bin
 RUN cp ${DRUPAL_APP_DIR}/composer.json ${DRUPAL_APP_DIR}/composer.admins.json
 
 # Put symlinks for profiles/themes/modules to a path where old Drupal sites expect to find them
-RUN ln -s ${DRUPAL_APP_DIR}/web/profiles/contrib/cern-install-profiles/cern ${DRUPAL_APP_DIR}/web/profiles/cern && \
-    ln -s ${DRUPAL_APP_DIR}/web/profiles/contrib/cern-install-profiles/easystart ${DRUPAL_APP_DIR}/web/profiles/easystart && \
-    ln -s ${DRUPAL_APP_DIR}/web/themes/custom/cern-theme ${DRUPAL_APP_DIR}/web/themes/custom/cernclean &&\
-    ln -s ${DRUPAL_APP_DIR}/web/themes/custom/cern-base-theme ${DRUPAL_APP_DIR}/web/themes/custom/cernbase
+RUN ln -s contrib/cern-install-profiles/cern ${DRUPAL_APP_DIR}/web/profiles/cern && \
+    ln -s contrib/cern-install-profiles/easystart ${DRUPAL_APP_DIR}/web/profiles/easystart && \
+    ln -s cern-theme ${DRUPAL_APP_DIR}/web/themes/custom/cernclean &&\
+    ln -s cern-base-theme ${DRUPAL_APP_DIR}/web/themes/custom/cernbase
 
 # Add extra configurations
 # At this point, composer has created the required settings.php through:
