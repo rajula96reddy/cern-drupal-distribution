@@ -133,7 +133,7 @@
     }
   ],
   "require": {
-    "php": ">=7.4",
+    "php": ">=7.3",
     "ckeditor/ckeditor": "~4.16",
     "composer/installers": "~1.10.0",
     "cweagans/composer-patches": "~1.7.0",
