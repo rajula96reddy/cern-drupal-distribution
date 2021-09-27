@@ -47,12 +47,11 @@ build-sitebuilder:
     - export softwareVersions=$CI_PROJECT_DIR/images/softwareVersions
     - export phpVersion=`/yq e .php $softwareVersions`
     - export composerVersion=`/yq e .composer $softwareVersions`
-    - export drushVersion=`/yq e .drush $softwareVersions`
       # This is not the common Authentication config, unknown reason why common config fails
     - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$(echo -n ${CI_REGISTRY_USER}:${CI_REGISTRY_PASSWORD} | base64)\"}}}" > /kaniko/.docker/config.json
       # Image builder for Site-Builder
     - /kaniko/executor --context "$CI_PROJECT_DIR/images" --dockerfile "$CI_PROJECT_DIR/images/Dockerfile"
       --destination ${CI_REGISTRY_IMAGE}/site-builder:${CI_COMMIT_BRANCH}-${TAG}
-      --build-arg PHP_VERSION=$phpVersion --build-arg COMPOSER_VERSION=$composerVersion --build-arg DRUSH_VERSION=$drushVersion;
+      --build-arg PHP_VERSION=$phpVersion --build-arg COMPOSER_VERSION=$composerVersion;
     - echo "SiteBuilder image pushed to ${CI_REGISTRY_IMAGE}/site-builder:${CI_COMMIT_BRANCH}-${TAG}"
 

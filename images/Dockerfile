@@ -6,10 +6,8 @@ ARG PHP_VERSION
 
 FROM php:${PHP_VERSION}
 
-# COMPOSER_VERSION and DRUSH_VERSION are passed by Gitlab as an argument through the version files in drupalVersions directory
+# COMPOSER_VERSION is passed by Gitlab as an argument through the version files in drupalVersions directory
 ARG COMPOSER_VERSION
-ARG DRUSH_VERSION
-
 
 LABEL io.openshift.s2i.scripts-url="image:///usr/libexec/s2i" \
     io.s2i.scripts-url="image:///usr/libexec/s2i" \
@@ -58,9 +56,8 @@ RUN set -eux; \
     ; \
 	\
 	docker-php-ext-configure gd \
-		--with-freetype-dir=/usr/include \
-		--with-jpeg-dir=/usr/include \
-		--with-png-dir=/usr/include \
+		--with-freetype=/usr/include \
+		--with-jpeg=/usr/include \
 	; \
 	\
 	docker-php-ext-install -j "$(nproc)" \
@@ -79,12 +76,7 @@ RUN set -eux; \
 	apk add --virtual .drupal-phpexts-rundeps $runDeps; \
 	apk del .build-deps
 
-
-# RUN mkdir -p /tmp/drush
-# WORKDIR /tmp/drush
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=${COMPOSER_VERSION}
-# RUN composer clearcache; composer require drush/drush ${DRUSH_VERSION}; composer install;
-# ENV PATH=$PATH:/tmp/drush/vendor/bin
 COPY ./s2i/bin/ /usr/libexec/s2i/
 COPY ./php-fpm/fix-permissions /fix-permissions
 RUN chmod -R +x /usr/libexec/s2i/; \
