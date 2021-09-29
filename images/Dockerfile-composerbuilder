@@ -7,7 +7,8 @@ FROM php:${PHP_VERSION}
 # COMPOSER_VERSION is passed by Gitlab as an argument through the softwareVersions file
 ARG COMPOSER_VERSION
 
-LABEL maintainer="Drupal Admins <drupal-admins@cern.ch>"
+LABEL maintainer="Drupal Admins <drupal-admins@cern.ch>" \
+      composer_version="$COMPOSER_VERSION"
 
 # from https://www.drupal.org/docs/8/system-requirements/drupal-8-php-requirements
 # from https://github.com/docker-library/docs/blob/master/php/README.md#supported-tags-and-respective-dockerfile-links

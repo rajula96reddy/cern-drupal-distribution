@@ -1,4 +1,7 @@
 php: '7.3.23-fpm-alpine3.12'
 nginx: '1.18.0'
+# This value is used to build the composer-builder ONLY.
+# It will NOT affect the sitebuilder directly.
 composer: '2.1.8'
-composerBuilderTag: 'RELEASE-2021.09.29T18-57-38Z'
+# This is instead the version of the composer builder that the sitebuilder will use.
+composerBuilderTag: 'RELEASE-2021.09.29T19-25-11Z'
