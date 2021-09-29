@@ -2,14 +2,9 @@
 # and serves as a basis for all Drupal websites.
 # This image will also be used to server PHP container in the deployment
 
-ARG PHP_VERSION
+ARG COMPOSER_BUILDER_TAG
 
-FROM php:${PHP_VERSION}
-
-# COMPOSER_VERSION and DRUSH_VERSION are passed by Gitlab as an argument through the version files in drupalVersions directory
-ARG COMPOSER_VERSION
-ARG DRUSH_VERSION
-
+FROM gitlab-registry.cern.ch/drupal/paas/cern-drupal-distribution/composer-builder:$COMPOSER_BUILDER_TAG
 
 LABEL io.openshift.s2i.scripts-url="image:///usr/libexec/s2i" \
     io.s2i.scripts-url="image:///usr/libexec/s2i" \
@@ -18,71 +13,6 @@ LABEL io.openshift.s2i.scripts-url="image:///usr/libexec/s2i" \
     io.openshift.tags="builder,drupal,php,php-fpm" \
     maintainer="Drupal Admins <drupal-admins@cern.ch>"
 
-# from https://www.drupal.org/docs/8/system-requirements/drupal-8-php-requirements
-# from https://github.com/docker-library/docs/blob/master/php/README.md#supported-tags-and-respective-dockerfile-links
-# install some utils
-RUN apk --update add \
-    # Some composer packages need git    
-    git \
-    patch \
-    curl \
-    gettext \
-    zip \
-    unzip \
-    mysql-client \
-    jq \
-    tzdata \
-    rsync
-
-# Configured timezone.
-ENV TZ=Europe/Zurich
-RUN touch /usr/share/zoneinfo/$TZ \
-	&& cp /usr/share/zoneinfo/$TZ /etc/localtime \
-	&& echo $TZ > /etc/timezone && \
-	apk del tzdata \
-	&& rm -rf /var/cache/apk/*
-
-# PHP FPM
-RUN set -eux; \
-	\
-	apk add --no-cache --virtual .build-deps autoconf g++ make \
-		coreutils \
-		freetype-dev \
-		libjpeg-turbo-dev \
-		libpng-dev \
-		libzip-dev \
-		mysql-client \
-	; \
-    \
-    rm -rf /tmp/pear \
-    ; \
-	\
-	docker-php-ext-configure gd \
-		--with-freetype-dir=/usr/include \
-		--with-jpeg-dir=/usr/include \
-		--with-png-dir=/usr/include \
-	; \
-	\
-	docker-php-ext-install -j "$(nproc)" \
-		gd \
-		opcache \
-		pdo_mysql \
-		zip \
-	; \
-	\
-	runDeps="$( \
-		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local \
-			| tr ',' '\n' \
-			| sort -u \
-			| awk 'system("[ -e /usr/local/lib/" $1 " ]") == 0 { next } { print "so:" $1 }' \
-	)"; \
-	apk add --virtual .drupal-phpexts-rundeps $runDeps; \
-	apk del .build-deps
-
-
-# RUN mkdir -p /tmp/drush
-# WORKDIR /tmp/drush
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=${COMPOSER_VERSION}
 # RUN composer clearcache; composer require drush/drush ${DRUSH_VERSION}; composer install;
 # ENV PATH=$PATH:/tmp/drush/vendor/bin
 COPY ./s2i/bin/ /usr/libexec/s2i/
