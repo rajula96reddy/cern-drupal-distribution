@@ -61,10 +61,6 @@
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/drupal/modules/webform_invitation_cern.git"
-    },
-    {
-      "type": "vcs",
       "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/drupal-welcome-message-block"
     },
     {
@@ -162,7 +158,6 @@
     "drupal/cern-theme": "~2.7.0",
     "drupal/cern-toolbar": "~2.2.3",
     "drupal/cern-webcast-feeds": "~2.0.4",
-    "drupal/cern-webform-invitation": "~1.0.0",
     "drupal/ckeditor_font": "~1.1.0",
     "drupal/codesnippet": "~1.7.0",
     "drupal/color_field": "~2.4.0",
@@ -242,7 +237,7 @@
     "drupal/views_slideshow": "~4.8.0",
     "drupal/views_taxonomy_term_name_depth": "~7.0.2",
     "drupal/viewsreference": "~1.7.0",
-    "drupal/webform_invitation": "~1.1.0",
+    "drupal/webform": "~6.0.0",
     "drupal/workbench": "~1.3.0",
     "drupal/workbench_access": "~1.0.0@beta",
     "drupal/workbench_moderation": "~1.6.0",
