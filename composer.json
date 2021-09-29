@@ -240,6 +240,7 @@
     "drupal/userprotect": "~1.1.0",
     "drupal/views_bulk_operations": "~2.6.0",
     "drupal/views_slideshow": "~4.8.0",
+    "drupal/views_taxonomy_term_name_depth": "^7.0",
     "drupal/viewsreference": "~1.7.0",
     "drupal/webform": "~5.25.0",
     "drupal/webform_analysis": "~1.0.0@beta",
