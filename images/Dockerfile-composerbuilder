@@ -71,3 +71,7 @@ RUN set -eux; \
 	apk del .build-deps
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=${COMPOSER_VERSION}
+
+# Make the environment friendly for interactive use during development
+WORKDIR /project
+ENTRYPOINT /bin/sh
