@@ -14,7 +14,7 @@ LABEL maintainer="Drupal Admins <drupal-admins@cern.ch>" \
 # from https://github.com/docker-library/docs/blob/master/php/README.md#supported-tags-and-respective-dockerfile-links
 # install some utils
 RUN apk --update add \
-    # Some composer packages need git    
+    # Some composer packages need git
     git \
     patch \
     curl \
@@ -50,9 +50,8 @@ RUN set -eux; \
     ; \
 	\
 	docker-php-ext-configure gd \
-		--with-freetype-dir=/usr/include \
-		--with-jpeg-dir=/usr/include \
-		--with-png-dir=/usr/include \
+      --with-freetype=/usr/include \
+      --with-jpeg=/usr/include \
 	; \
 	\
 	docker-php-ext-install -j "$(nproc)" \
