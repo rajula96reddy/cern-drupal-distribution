@@ -1,57 +1,77 @@
 stages:
-  - nginx
-  - sitebuilder
+  - environment
+  - build
 
-build-nginx:
-  stage: nginx
+.build_image: &build_image
   image:
     # We recommend using the CERN version of the Kaniko image: gitlab-registry.cern.ch/ci-tools/docker-image-builder
     name: gitlab-registry.cern.ch/ci-tools/docker-image-builder
     entrypoint: [""]
   script:
+      # This is not the common Authentication config, unknown reason why common config fails
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$(echo -n ${CI_REGISTRY_USER}:${CI_REGISTRY_PASSWORD} | base64)\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context "$CI_PROJECT_DIR/$CONTEXT_DIR" --dockerfile "$CI_PROJECT_DIR/$CONTEXT_DIR/$DOCKERFILE"
+      --destination "${CI_REGISTRY_IMAGE}/${IMAGE_NAME}:${TAG}" $BUILD_ARGS
+    - echo "Image pushed to ${CI_REGISTRY_IMAGE}/${IMAGE_NAME}:${TAG}"
+
+environment:
+  stage: environment
+  script:
     - |
+      export DATE=$(date -u +%Y.%m.%dT%H-%M-%SZ);
       case "$CI_COMMIT_BRANCH" in
-        v*) export DATE=$(date -u +%Y.%m.%dT%H-%M-%SZ); export TAG="RELEASE"-${DATE}; echo "TAG=$TAG" >> build.env ;;
-        *) export TAG=$CI_COMMIT_SHORT_SHA ;;
+        v*) export TAG="RELEASE-${DATE}" ;;
+        *) export TAG="${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}" ;;
       esac
     - wget --no-check-certificate https://github.com/mikefarah/yq/releases/download/v4.2.0/yq_linux_amd64 -O /yq && chmod +x /yq
     - export softwareVersions=$CI_PROJECT_DIR/images/softwareVersions
     - export nginxVersion=`/yq e .nginx $softwareVersions`
-      # This is not the common Authentication config, unknown reason why common config fails
-    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$(echo -n ${CI_REGISTRY_USER}:${CI_REGISTRY_PASSWORD} | base64)\"}}}" > /kaniko/.docker/config.json
-      # Image builder for nginx
-    - /kaniko/executor --context "$CI_PROJECT_DIR/images/nginx" --dockerfile "$CI_PROJECT_DIR/images/nginx/Dockerfile"
-      --destination ${CI_REGISTRY_IMAGE}/nginx:${CI_COMMIT_BRANCH}-${TAG}
-      --build-arg NGINX_VERSION=\$nginxVersion;
-    - echo "Nginx image pushed to ${CI_REGISTRY_IMAGE}/nginx:${CI_COMMIT_BRANCH}-${TAG}"
-  artifacts:
-    reports:
-      dotenv: build.env
-
-build-sitebuilder:
-  stage: sitebuilder
-  needs: [build-nginx]
-  image:
-    # We recommend using the CERN version of the Kaniko image: gitlab-registry.cern.ch/ci-tools/docker-image-builder
-    name: gitlab-registry.cern.ch/ci-tools/docker-image-builder
-    entrypoint: [""]
-  script:
-    # Using POSIX string check since "[[]]" failed
-    - echo $DATE
-    - |
-      case "$CI_COMMIT_BRANCH" in
-        v*) echo $TAG;;
-        *) export TAG=$CI_COMMIT_SHORT_SHA ;;
-      esac
-    - wget --no-check-certificate https://github.com/mikefarah/yq/releases/download/v4.2.0/yq_linux_amd64 -O /yq && chmod +x /yq
-    - export softwareVersions=$CI_PROJECT_DIR/images/softwareVersions
     - export phpVersion=`/yq e .php $softwareVersions`
     - export composerVersion=`/yq e .composer $softwareVersions`
-      # This is not the common Authentication config, unknown reason why common config fails
-    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$(echo -n ${CI_REGISTRY_USER}:${CI_REGISTRY_PASSWORD} | base64)\"}}}" > /kaniko/.docker/config.json
-      # Image builder for Site-Builder
-    - /kaniko/executor --context "$CI_PROJECT_DIR/images" --dockerfile "$CI_PROJECT_DIR/images/Dockerfile"
-      --destination ${CI_REGISTRY_IMAGE}/site-builder:${CI_COMMIT_BRANCH}-${TAG}
-      --build-arg PHP_VERSION=$phpVersion --build-arg COMPOSER_VERSION=$composerVersion;
-    - echo "SiteBuilder image pushed to ${CI_REGISTRY_IMAGE}/site-builder:${CI_COMMIT_BRANCH}-${TAG}"
+    - export composerBuilderTag=`/yq e .composerBuilderTag $softwareVersions`
+    - echo "TAG=$TAG" >> env.env
+    - echo "nginxVersion=$nginxVersion" >> env.env
+    - echo "phpVersion=$phpVersion" >> env.env
+    - echo "composerVersion=$composerVersion" >> env.env
+    - echo "composerBuilderTag=$composerBuilderTag" >> env.env
+  artifacts:
+    reports:
+      dotenv: env.env
 
+build-nginx:
+  <<: *build_image
+  stage: build
+  needs: [environment]
+  variables:
+    IMAGE_NAME: 'nginx'
+    CONTEXT_DIR: 'images/nginx'
+    DOCKERFILE: 'Dockerfile'
+    # space-separated list of variables to interpolate in the dockerfile
+    BUILD_ARGS: '--build-arg NGINX_VERSION=$nginxVersion'
+
+build-sitebuilder:
+  <<: *build_image
+  stage: build
+  needs: [environment]
+  variables:
+    IMAGE_NAME: 'site-builder'
+    CONTEXT_DIR: 'images'
+    DOCKERFILE: 'Dockerfile-sitebuilder'
+    # space-separated list of variables to interpolate in the dockerfile
+    BUILD_ARGS: '--build-arg COMPOSER_BUILDER_TAG=$composerBuilderTag'
+
+build-composerbuilder:
+  <<: *build_image
+  stage: build
+  needs: [environment]
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: never
+    - when: manual
+      allow_failure: true
+  variables:
+    IMAGE_NAME: 'composer-builder'
+    CONTEXT_DIR: 'images'
+    DOCKERFILE: 'Dockerfile-composerbuilder'
+    # space-separated list of variables to interpolate in the dockerfile
+    BUILD_ARGS: '--build-arg PHP_VERSION=$phpVersion --build-arg COMPOSER_VERSION=$composerVersion'
