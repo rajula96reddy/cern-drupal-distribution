@@ -15,11 +15,26 @@ The injection happens with a [source-to-image](images/s2i) mechanism, triggered 
 
 ## Sitebuilder/nginx images
 
-This composer project is deployed through a [sitebuilder image](images/Dockerfile).
+This composer project is deployed through a [sitebuilder image](images/Dockerfile-sitebuilder).
 Each DrupalSite instantiated at the CERN Drupal service deploys a sitebuilder and an [nginx](images/nginx/Dockerfile) container.
 
 The rest of the [images](images) directory includes configuration to build the images.
 The image tags depend on the [release process](#release)
+
+## Development / updating environment
+
+A specific version of composer is ideal to work with this repo. We have seen cases where different composer versions produce incompatible composer.lock
+In order to standardize development, we produce an intermediate [composer-builder](images/Dockerfile-composerbuilder) image, from which the sitebuilder derives.
+Since it is the base of the sitebuilder, this image should be also used as a development environment.
+The image tag that is used by the sitebuilder is listed in [software versions](images/softwareVersions) as `composerBuilderTag`.
+
+To create a local development environment with the same composer version the following can be used, replacing the tag as needed:
+
+```bash
+$ docker run -it -v .:/project:z gitlab-registry.cern.ch/drupal/paas/cern-drupal-distribution/composer-builder:RELEASE-2021.09.29T19-25-11Z
+# composer -n require ...
+# composer -n update
+```
 
 ## <h2 id="release"></h2> Versioning and Release
 
