@@ -1,4 +1,4 @@
 php: '7.3.23-fpm-alpine3.12'
 nginx: '1.18.0'
-composer: '2.0.0'
-drush: '10.3.6'
+composer: '2.1.8'
+composerBuilderTag: 'devenv-a5767c31'
