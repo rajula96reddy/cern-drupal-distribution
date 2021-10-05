@@ -32,7 +32,8 @@ if echo "$cron_key" | grep -Eq '^[:alnum:]_-]+$' ; then # key can contain alphab
     continue
 fi
 
-HTTP_CODE=$(curl --location --silent -L -w "%{http_code}\n" "http://${site}/cron/${cron_key}" -o /dev/null)
+# We have max time / keep alive due to some crons to take longer than expected (it has been reported in Oct/2021 of a website[test-cnpdfs] to take ~5/6min)
+HTTP_CODE=$(curl --location --silent -L --max-time 900  --keepalive-time 900 -w "%{http_code}\n" "http://${site}/cron/${cron_key}" -o /dev/null)
 case $HTTP_CODE in
     204)
         echo "$(date) : [${site}] ${HTTP_CODE/204/OK}" # Logs not added since pod logs should suffice ? >> "$LOGFILE_MASTER"  204 No Content -> success
