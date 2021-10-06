@@ -1,7 +1,7 @@
-php: '7.3.23-fpm-alpine3.12'
-nginx: '1.18.0'
+nginx: '1.20.1'
 # This value is used to build the composer-builder ONLY.
 # It will NOT affect the sitebuilder directly.
 composer: '2.1.8'
+php: '7.3.23-fpm-alpine3.12'
 # This is instead the version of the composer builder that the sitebuilder will use.
-composerBuilderTag: 'RELEASE-2021.09.29T19-25-11Z'
+composerBuilderTag: 'merge-images-9454fa12'

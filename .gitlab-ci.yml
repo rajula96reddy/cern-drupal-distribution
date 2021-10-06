@@ -21,6 +21,7 @@ environment:
       export DATE=$(date -u +%Y.%m.%dT%H-%M-%SZ);
       case "$CI_COMMIT_BRANCH" in
         v*) export TAG="${CI_COMMIT_BRANCH}-RELEASE-${DATE}" ;;
+        master) export TAG="${CI_COMMIT_BRANCH}-RELEASE-${DATE}" ;;
         *) export TAG="${CI_COMMIT_BRANCH}-${CI_COMMIT_SHORT_SHA}" ;;
       esac
     - wget --no-check-certificate https://github.com/mikefarah/yq/releases/download/v4.2.0/yq_linux_amd64 -O /yq && chmod +x /yq
@@ -37,17 +38,6 @@ environment:
   artifacts:
     reports:
       dotenv: env.env
-
-build-nginx:
-  <<: *build_image
-  stage: build
-  needs: [environment]
-  variables:
-    IMAGE_NAME: 'nginx'
-    CONTEXT_DIR: 'images/nginx'
-    DOCKERFILE: 'Dockerfile'
-    # space-separated list of variables to interpolate in the dockerfile
-    BUILD_ARGS: '--build-arg NGINX_VERSION=$nginxVersion'
 
 build-sitebuilder:
   <<: *build_image
@@ -74,4 +64,4 @@ build-composerbuilder:
     CONTEXT_DIR: 'images'
     DOCKERFILE: 'Dockerfile-composerbuilder'
     # space-separated list of variables to interpolate in the dockerfile
-    BUILD_ARGS: '--build-arg PHP_VERSION=$phpVersion --build-arg COMPOSER_VERSION=$composerVersion'
+    BUILD_ARGS: '--build-arg PHP_VERSION=$phpVersion --build-arg COMPOSER_VERSION=$composerVersion --build-arg NGINX_VERSION=$nginxVersion'
