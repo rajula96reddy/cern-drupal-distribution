@@ -184,3 +184,7 @@ RUN set -x \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+
+# Make the environment friendly for interactive use during development
+WORKDIR /project
+CMD ["/bin/sh"]
