@@ -142,7 +142,7 @@
     "drupal/cern-adminimal-subtheme": "~2.1.0",
     "drupal/cern-base-theme": "~2.6.9",
     "drupal/cern-cds-media": "~2.1.4",
-    "drupal/cern-components": "~2.7.11",
+    "drupal/cern-components": "~2.7.13",
     "drupal/cern-dev-status": "~2.0.5",
     "drupal/cern-display-formats": "~1.4.6",
     "drupal/cern-drupal-welcome-message-block": "~1.1.0",
@@ -300,14 +300,12 @@
     "patches": {
       "drupal/core": {
         "DRUPAL-302: Allow tokens to be used in Text Editor image upload directory path": "patches/allow_tokens_in_text_editor-2830210-14.patch",
-        "DRUPAL-496: TermName views argument_validator is not working as expected": "patches/drupal_views_argument_validator_TermName-2494617-75.patch",
-        "steps.everis.com/CERN-904: https://www.drupal.org/project/drupal/issues/2930599#comment-12779330": "patches/empty-alias-check-2930599-44.patch",
-        "DRUPAL-567: Cannot save translated nodes after upgrading to 8.8 due to invalid path": "patches/translations_not_save_invalid_path-3101344-20.patch",
-        "DRUPAL-503: Support enclosure field in Views RssFields row plugin": "patches/views-rss-fields-enclosure-2511878-17.patch"
+        "DRUPAL-496: TermName views argument_validator is not working as expected": "patches/drupal_views_argument_validator_TermName-2494617-99.patch",
+        "DRUPAL-567: Cannot save translated nodes after upgrading to 8.8 due to invalid path": "patches/3101344-drupal-core-fix-permissions-checking-while-node-translating-64.patch",
+        "DRUPAL-503: Support enclosure field in Views RssFields row plugin": "patches/views-rss-fields-enclosure-2511878-35.patch"
       },
       "drupal/paragraphs": {
-        "DRUPAL-466: adds the widget that fixes the landing pages issues\n WARNING: there is a new version of this patch upstream for PHP7.2 with some community validation.  But since this version still applies cleanly, we wont update it yet.": "patches/experimental-widget-asymetric-translation-2904705-47.patch",
-        "fix on field_group after updating paragraph to 1.12 https://www.drupal.org/project/paragraphs/issues/3138609 https://mattermost.web.cern.ch/it-dep/pl/8aw316jbttd7i8hp4zhg9ba3hc": "patches/paragraphs-3138609-9.patch"
+        "DRUPAL-466: adds the widget that fixes the landing pages issues\n WARNING: there is a new version of this patch upstream for PHP7.2 with some community validation.  But since this version still applies cleanly, we wont update it yet.": "patches/experimental-widget-asymetric-translation-2904705-47.patch"
       },
       "drupal/openid_connect": {
         "OIDC roles mapping from JWT https://www.drupal.org/project/openid_connect/issues/3166508": "patches/openid_connect-3166508-role-mapping.patch",
