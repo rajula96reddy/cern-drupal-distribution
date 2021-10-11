@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e362be7f2d407a218f2b321a1b0dee6d",
+    "content-hash": "02c3c92c2e5d8ce92b33fe105ab2d9d7",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4734,6 +4734,62 @@
                 "source": "git://git.drupal.org/project/facets.git",
                 "issues": "https://www.drupal.org/project/issues/facets",
                 "irc": "irc://irc.freenode.org/drupal-search-api"
+            }
+        },
+        {
+            "name": "drupal/fast_404",
+            "version": "dev-2.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/fast_404.git",
+                "reference": "5382a99335ee466f8261dc1774a3d56f1699da81"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-2.0-alpha5+6-dev",
+                    "datestamp": "1600095923",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "adammalone",
+                    "homepage": "https://www.drupal.org/user/1295980"
+                },
+                {
+                    "name": "bonus",
+                    "homepage": "https://www.drupal.org/user/360002"
+                },
+                {
+                    "name": "naveenvalecha",
+                    "homepage": "https://www.drupal.org/user/2665733"
+                },
+                {
+                    "name": "neetu morwani",
+                    "homepage": "https://www.drupal.org/user/2632025"
+                },
+                {
+                    "name": "soyarma",
+                    "homepage": "https://www.drupal.org/user/286273"
+                }
+            ],
+            "homepage": "https://www.drupal.org/project/fast_404",
+            "support": {
+                "source": "https://git.drupalcode.org/project/fast_404"
             }
         },
         {
@@ -21170,12 +21226,13 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "drupal/contribute": 20,
         "drupal/cern-indico-feeds": 15,
         "drupal/cern-install-profiles": 20,
         "drupal/cern-landing-page": 10,
         "drupal/content_access": 15,
         "drupal/context": 10,
+        "drupal/contribute": 20,
+        "drupal/fast_404": 20,
         "drupal/feeds": 15,
         "drupal/fences": 5,
         "drupal/filefield_paths": 10,
