@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e01d3e13d89748712b12b7a1a2ef4fe6",
+    "content-hash": "0ee002fddd5042f450856540660db891",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2521,11 +2521,11 @@
         },
         {
             "name": "drupal/cern-theme",
-            "version": "2.6.12",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/themes/cern.git",
-                "reference": "408630b7b5e53086c2991653fa8a0d561f3166b2"
+                "reference": "9b10b4897eb768c4e5740689135f5e618fd9f621"
             },
             "require": {
                 "drupal/cern-base-theme": "^2.6.1"
@@ -2541,7 +2541,7 @@
                 }
             ],
             "description": "Defines the CERN theme",
-            "time": "2021-04-27T12:37:58+00:00"
+            "time": "2021-05-19T09:18:30+00:00"
         },
         {
             "name": "drupal/cern-toolbar",
@@ -17395,6 +17395,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "drupal/cern-indico-feeds": 15,
         "drupal/cern-landing-page": 10,
         "drupal/content_access": 15,
         "drupal/context": 10,
