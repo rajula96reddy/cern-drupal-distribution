@@ -230,6 +230,7 @@
     "drupal/rules": "~3.0.0@alpha",
     "drupal/scheduler": "~1.3.0",
     "drupal/search_api": "~1.19.0",
+    "drupal/simplesamlphp_auth": "~3.2.0",
     "drupal/smart_trim": "~1.3.0",
     "drupal/sticky": "~1.1.0",
     "drupal/token": "~1.9.0",
