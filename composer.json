@@ -172,9 +172,9 @@
     "drupal/context": "~4.0.0@beta",
     "drupal/contribute": "1.x-dev@dev",
     "drupal/cookieconsent": "~1.6.0",
-    "drupal/core-composer-scaffold": "8.9.18",
-    "drupal/core-project-message": "8.9.18",
-    "drupal/core-recommended": "8.9.18",
+    "drupal/core-composer-scaffold": "8.9.19",
+    "drupal/core-project-message": "8.9.19",
+    "drupal/core-recommended": "8.9.19",
     "drupal/ctools": "~3.6.0",
     "drupal/devel": "~4.1.1",
     "drupal/domain_301_redirect": "~1.0.0@alpha",
@@ -254,7 +254,7 @@
     "wikimedia/composer-merge-plugin": "~2.0.1"
   },
   "require-dev": {
-    "drupal/core-dev": "~8.9.18",
+    "drupal/core-dev": "~8.9.19",
     "zaporylie/composer-drupal-optimizations": "~1.2.0"
   },
   "conflict": {
