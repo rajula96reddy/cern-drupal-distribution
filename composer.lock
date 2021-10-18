@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b7f2a84347dd8d0573c1a6b5be07ea60",
+    "content-hash": "9bf06055c272575be4024765f1ec60ac",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2182,46 +2182,6 @@
             "time": "2021-05-12T08:35:11+00:00"
         },
         {
-            "name": "drupal/cern-basic-page",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_basic_page.git",
-                "reference": "f359ea7ae685db04dbd2eeb7c8dd476fe193c675"
-            },
-            "require": {
-                "drupal/allowed_formats": "^1.3",
-                "drupal/cern-cds-media": "^2.1.4",
-                "drupal/cern-configuration": "^2.0.1",
-                "drupal/cern-news-pages": "^2.0.1",
-                "drupal/cern-paragraph-types": "^2.2.3",
-                "drupal/cern-taxonomies": "^2.0.1",
-                "drupal/color_field": "^2.4",
-                "drupal/ctools": "^3.6",
-                "drupal/ds": "^3.9",
-                "drupal/easy_breadcrumb": "^1.15",
-                "drupal/entity_reference_revisions": "^1.8",
-                "drupal/field_formatter_class": "^1.5",
-                "drupal/filefield_paths": "^1.0",
-                "drupal/pathauto": "^1.8",
-                "drupal/scheduler": "^1.3",
-                "drupal/smart_trim": "^1.3",
-                "drupal/viewsreference": "^1.7"
-            },
-            "type": "drupal-custom-module",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantinos Platis",
-                    "email": "konstantinos.platis@cern.ch"
-                }
-            ],
-            "description": "Provides Basic Page content type and related configuration. Content type for creating basic page nodes.",
-            "time": "2021-05-28T12:42:32+00:00"
-        },
-        {
             "name": "drupal/cern-cds-media",
             "version": "2.1.4",
             "source": {
@@ -2270,49 +2230,6 @@
             ],
             "description": "Defines a set of re-usable patterns for the CERN Drupal infrastructure",
             "time": "2021-02-08T15:28:34+00:00"
-        },
-        {
-            "name": "drupal/cern-configuration",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_configuration.git",
-                "reference": "18eea689c94b1b219c3d7d6ef0110df8937308c7"
-            },
-            "require": {
-                "drupal/cern-basic-page": "^2.0.1",
-                "drupal/cern-cds-media": "^2.1.4",
-                "drupal/cern-event-page": "^2.0.1",
-                "drupal/cern-faq-page": "^2.0.1",
-                "drupal/cern-feature-story-page": "^2.0.1",
-                "drupal/cern-indico-feeds": "^2.0.5",
-                "drupal/cern-landing-page": "^2.2.4",
-                "drupal/cern-news-pages": "^2.0.1",
-                "drupal/cern-paragraph-types": "^2.2.3",
-                "drupal/cern-resource-page": "^2.0.1",
-                "drupal/cern-story-page": "^2.0.1",
-                "drupal/cern-system-page": "^2.0.1",
-                "drupal/cern-taxonomies": "^2.0.1",
-                "drupal/cern-webcast-feeds": "^2.0.4",
-                "drupal/ctools": "^3.6",
-                "drupal/ds": "^3.9",
-                "drupal/field_formatter_class": "^1.5",
-                "drupal/filefield_paths": "^1.0",
-                "drupal/social_media": "^1.8",
-                "drupal/views_taxonomy_term_name_depth": "^7.0.1"
-            },
-            "type": "drupal-custom-module",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantinos Platis",
-                    "email": "konstantinos.platis@cern.ch"
-                }
-            ],
-            "description": "Provides the default configuration for CERN Home Website.",
-            "time": "2021-05-28T12:44:21+00:00"
         },
         {
             "name": "drupal/cern-dev-status",
@@ -2379,127 +2296,6 @@
             ],
             "description": "Creates the welcome message block for CERN Drupal websites",
             "time": "2021-02-11T13:36:40+00:00"
-        },
-        {
-            "name": "drupal/cern-event-page",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_event_page.git",
-                "reference": "82770e501c111f52a0bb567afdd55d725de9a285"
-            },
-            "require": {
-                "drupal/allowed_formats": "^1.3",
-                "drupal/cern-basic-page": "^2.0.1",
-                "drupal/cern-cds-media": "^2.1.4",
-                "drupal/cern-configuration": "^2.0.1",
-                "drupal/cern-faq-page": "^2.0.1",
-                "drupal/cern-indico-feeds": "^2.0.5",
-                "drupal/cern-landing-page": "^2.2.4",
-                "drupal/cern-news-pages": "^2.0.1",
-                "drupal/cern-resource-page": "^2.0.1",
-                "drupal/cern-system-page": "^2.0.1",
-                "drupal/cern-taxonomies": "^2.0.1",
-                "drupal/cern-webcast-feeds": "^2.0.4",
-                "drupal/ctools": "^3.6",
-                "drupal/date_popup": "^1.1",
-                "drupal/ds": "^3.9",
-                "drupal/feeds": "^3.0",
-                "drupal/field_formatter_class": "^1.5",
-                "drupal/field_group": "^3.1",
-                "drupal/filefield_paths": "^1.0",
-                "drupal/pathauto": "^1.8",
-                "drupal/scheduler": "^1.3",
-                "drupal/smart_trim": "^1.3",
-                "drupal/social_media": "^1.8"
-            },
-            "type": "drupal-custom-module",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantinos Platis",
-                    "email": "konstantinos.platis@cern.ch"
-                }
-            ],
-            "description": "Provides Event Page content type and related configuration. Content type for creating event nodes.",
-            "time": "2021-05-28T12:51:23+00:00"
-        },
-        {
-            "name": "drupal/cern-faq-page",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_faq_page.git",
-                "reference": "abbe0a378af58e901ab7cf76ae740b790c8836f4"
-            },
-            "require": {
-                "drupal/allowed_formats": "^1.3",
-                "drupal/cern-cds-media": "^2.1.4",
-                "drupal/cern-configuration": "^2.0.1",
-                "drupal/cern-taxonomies": "^2.0.1",
-                "drupal/ctools": "^3.6",
-                "drupal/ds": "^3.9",
-                "drupal/field_formatter_class": "^1.5",
-                "drupal/field_group": "^3.1",
-                "drupal/filefield_paths": "^1.0",
-                "drupal/pathauto": "^1.8",
-                "drupal/scheduler": "^1.3",
-                "drupal/smart_trim": "^1.3",
-                "drupal/social_media": "^1.8"
-            },
-            "type": "drupal-custom-module",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantinos Platis",
-                    "email": "konstantinos.platis@cern.ch"
-                }
-            ],
-            "description": "Provides FAQ Page content type and related configuration. Content type for creating FAQ nodes",
-            "time": "2021-05-28T14:01:34+00:00"
-        },
-        {
-            "name": "drupal/cern-feature-story-page",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_feature_story_page.git",
-                "reference": "fdb86aab49a40777af7ef3ce158276a53d9d98b3"
-            },
-            "require": {
-                "drupal/cern-cds-media": "^2.1.4",
-                "drupal/cern-configuration": "^2.0.1",
-                "drupal/cern-news-pages": "^2.0.1",
-                "drupal/cern-paragraph-types": "^2.2.3",
-                "drupal/cern-resource-page": "^2.0.1",
-                "drupal/cern-taxonomies": "^2.0.1",
-                "drupal/ds": "^3.9",
-                "drupal/entity_reference_revisions": "^1.9",
-                "drupal/field_formatter_class": "^1.5",
-                "drupal/field_group": "^3.1",
-                "drupal/filefield_paths": "^1.0",
-                "drupal/paragraphs": "^1.12",
-                "drupal/pathauto": "^1.8",
-                "drupal/scheduler": "^1.3",
-                "drupal/social_media": "^1.8",
-                "drupal/views_taxonomy_term_name_depth": "^7.0.1"
-            },
-            "type": "drupal-custom-module",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantinos Platis",
-                    "email": "konstantinos.platis@cern.ch"
-                }
-            ],
-            "description": "Provides Feature Story content type and related configuration. Content type for creating feature article nodes.",
-            "time": "2021-05-28T14:17:25+00:00"
         },
         {
             "name": "drupal/cern-full-html-format",
@@ -2598,7 +2394,7 @@
             "version": "2.2.4",
             "source": {
                 "type": "git",
-                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-landing-page.git",
+                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-landing-page",
                 "reference": "a6aa2903393d64b341900aa65c3e160afd39752f"
             },
             "require": {
@@ -2674,49 +2470,6 @@
             "time": "2021-01-14T09:07:39+00:00"
         },
         {
-            "name": "drupal/cern-news-pages",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_news_pages.git",
-                "reference": "70716b05082f10691348c0ecac8aee97549cfc74"
-            },
-            "require": {
-                "drupal/allowed_formats": "^1.3",
-                "drupal/cern-cds-media": "^2.1.4",
-                "drupal/cern-configuration": "^2.0.1",
-                "drupal/cern-feature-story-page": "^2.0.1",
-                "drupal/cern-paragraph-types": "^2.2.3",
-                "drupal/cern-story-page": "^2.0.1",
-                "drupal/cern-taxonomies": "^2.0.1",
-                "drupal/ctools": "^3.6",
-                "drupal/ds": "^3.9",
-                "drupal/entity_reference_revisions": "^1.9",
-                "drupal/field_formatter_class": "^1.5",
-                "drupal/field_group": "^3.1",
-                "drupal/filefield_paths": "^1.0",
-                "drupal/jcarousel": "^4.0",
-                "drupal/paragraphs": "^1.12",
-                "drupal/pathauto": "^1.8",
-                "drupal/scheduler": "^1.3",
-                "drupal/social_media": "^1.8",
-                "drupal/views_bulk_operations": "^2.6",
-                "drupal/views_taxonomy_term_name_depth": "^7.0.1"
-            },
-            "type": "drupal-custom-module",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantinos Platis",
-                    "email": "konstantinos.platis@cern.ch"
-                }
-            ],
-            "description": "Provides News Page content type and related configuration. Content type for creating news nodes.",
-            "time": "2021-05-28T12:46:51+00:00"
-        },
-        {
             "name": "drupal/cern-paragraph-types",
             "version": "2.2.3",
             "source": {
@@ -2765,166 +2518,6 @@
             ],
             "description": "Overrides user login names with the fullname attribute. Enables redirection to Profiles site.",
             "time": "2021-10-01T12:42:57+00:00"
-        },
-        {
-            "name": "drupal/cern-resource-page",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_resource_page.git",
-                "reference": "a6a720ea22775ea24184c77f0c03c5c4d2aa39de"
-            },
-            "require": {
-                "drupal/allowed_formats": "^1.3",
-                "drupal/cern-cds-media": "^2.1.4",
-                "drupal/cern-configuration": "^2.0.1",
-                "drupal/cern-event-page": "^2.0.1",
-                "drupal/cern-news-pages": "^2.0.1",
-                "drupal/cern-paragraph-types": "^2.2.3",
-                "drupal/cern-taxonomies": "^2.0.1",
-                "drupal/ctools": "^3.6",
-                "drupal/ds": "^3.9",
-                "drupal/entity_reference_revisions": "^1.9",
-                "drupal/field_formatter_class": "^1.5",
-                "drupal/field_group": "^3.1",
-                "drupal/filefield_paths": "^1.0",
-                "drupal/paragraphs": "^1.12",
-                "drupal/pathauto": "^1.8",
-                "drupal/scheduler": "^1.3",
-                "drupal/views_taxonomy_term_name_depth": "^7.0.1"
-            },
-            "type": "drupal-custom-module",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantinos Platis",
-                    "email": "konstantinos.platis@cern.ch"
-                }
-            ],
-            "description": "Provides Resource Page content type and related configuration. Content type for creating resource nodes.",
-            "time": "2021-05-28T12:54:21+00:00"
-        },
-        {
-            "name": "drupal/cern-story-page",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_story_page.git",
-                "reference": "cc03a53dffd7ad25c9172782f0ad2f570f50607e"
-            },
-            "require": {
-                "drupal/allowed_formats": "^1.3",
-                "drupal/cern-basic-page": "^2.0.1",
-                "drupal/cern-cds-media": "^2.1.4",
-                "drupal/cern-configuration": "^2.0.1",
-                "drupal/cern-event-page": "^2.0.1",
-                "drupal/cern-faq-page": "^2.0.1",
-                "drupal/cern-feature-story-page": "^2.0.1",
-                "drupal/cern-indico-feeds": "^2.0.5",
-                "drupal/cern-landing-page": "^2.2.4",
-                "drupal/cern-news-pages": "^2.0.1",
-                "drupal/cern-paragraph-types": "^2.2.3",
-                "drupal/cern-resource-page": "^2.0.1",
-                "drupal/cern-system-page": "^2.0.1",
-                "drupal/cern-taxonomies": "^2.0.1",
-                "drupal/cern-webcast-feeds": "^2.0.4",
-                "drupal/ds": "^3.9",
-                "drupal/entity_reference_revisions": "^1.9",
-                "drupal/feeds": "^3.0",
-                "drupal/field_formatter_class": "^1.5",
-                "drupal/field_group": "^3.1",
-                "drupal/filefield_paths": "^1.0",
-                "drupal/paragraphs": "^1.12",
-                "drupal/pathauto": "^1.8",
-                "drupal/scheduler": "^1.3",
-                "drupal/social_media": "^1.8"
-            },
-            "type": "drupal-custom-module",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantinos Platis",
-                    "email": "konstantinos.platis@cern.ch"
-                }
-            ],
-            "description": "Provides Story Page content type for creating long pages using Web Components.",
-            "time": "2021-05-28T14:11:00+00:00"
-        },
-        {
-            "name": "drupal/cern-system-page",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_system_page.git",
-                "reference": "a79ed959c28e70104fa8eefa341a251e3f60e2ce"
-            },
-            "require": {
-                "drupal/allowed_formats": "^1.3",
-                "drupal/cern-components": "^2.7.13",
-                "drupal/cern-taxonomies": "^2.0.1",
-                "drupal/ds": "^3.9",
-                "drupal/field_group": "^3.1",
-                "drupal/pathauto": "^1.8",
-                "drupal/scheduler": "^1.3"
-            },
-            "type": "drupal-custom-module",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantinos Platis",
-                    "email": "konstantinos.platis@cern.ch"
-                }
-            ],
-            "description": "Provides System Page content type and related configuration. Content type for creating system nodes.",
-            "time": "2021-05-28T14:12:59+00:00"
-        },
-        {
-            "name": "drupal/cern-taxonomies",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-taxonomies.git",
-                "reference": "bceb47d9a540b21d4e34c13b2ca809e5ada1b5ff"
-            },
-            "require": {
-                "drupal/cern-basic-page": "^2.0.1",
-                "drupal/cern-configuration": "^2.0.1",
-                "drupal/cern-event-page": "^2.0.1",
-                "drupal/cern-faq-page": "^2.0.1",
-                "drupal/cern-feature-story-page": "^2.0.1",
-                "drupal/cern-indico-feeds": "^2.0.5",
-                "drupal/cern-landing-page": "^2.2.4",
-                "drupal/cern-news-pages": "^2.0.1",
-                "drupal/cern-paragraph-types": "^2.2.3",
-                "drupal/cern-resource-page": "^2.0.1",
-                "drupal/cern-story-page": "^2.0.1",
-                "drupal/cern-system-page": "^2.0.1",
-                "drupal/cern-webcast-feeds": "^2.0.4",
-                "drupal/ctools": "^3.6",
-                "drupal/ds": "^3.9",
-                "drupal/field_formatter_class": "^1.5",
-                "drupal/filefield_paths": "^1.0",
-                "drupal/pathauto": "^1.8",
-                "drupal/smart_trim": "^1.3"
-            },
-            "type": "drupal-custom-module",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantinos Platis",
-                    "email": "konstantinos.platis@cern.ch"
-                }
-            ],
-            "description": "Provides a set of pre-defined taxonomy terms, specially designed for the needs of CERN websites.",
-            "time": "2021-05-28T12:49:13+00:00"
         },
         {
             "name": "drupal/cern-theme",
@@ -4290,54 +3883,6 @@
             "homepage": "https://www.drupal.org/project/ctools",
             "support": {
                 "source": "https://git.drupalcode.org/project/ctools"
-            }
-        },
-        {
-            "name": "drupal/date_popup",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/date_popup.git",
-                "reference": "8.x-1.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/date_popup-8.x-1.1.zip",
-                "reference": "8.x-1.1",
-                "shasum": "b877b29cf11414e600b154eeea5c9078e0b125c6"
-            },
-            "require": {
-                "drupal/core": "^8 || ^9"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-1.1",
-                    "datestamp": "1591849806",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "benjy",
-                    "homepage": "https://www.drupal.org/user/1852732"
-                },
-                {
-                    "name": "larowlan",
-                    "homepage": "https://www.drupal.org/user/395439"
-                }
-            ],
-            "description": "Provides a HTML 5 date popup for all views filters.",
-            "homepage": "https://www.drupal.org/project/date_popup",
-            "support": {
-                "source": "https://git.drupalcode.org/project/date_popup"
             }
         },
         {
@@ -6041,74 +5586,6 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/imce",
                 "issues": "https://www.drupal.org/project/issues/imce?version=8.x"
-            }
-        },
-        {
-            "name": "drupal/jcarousel",
-            "version": "4.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/jcarousel.git",
-                "reference": "8.x-4.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/jcarousel-8.x-4.0.zip",
-                "reference": "8.x-4.0",
-                "shasum": "62b91427f95d4a482fa1f9b32ec6a422eea046ee"
-            },
-            "require": {
-                "drupal/core": "^8"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-4.0",
-                    "datestamp": "1492072743",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "RobLoach",
-                    "homepage": "https://www.drupal.org/user/61114"
-                },
-                {
-                    "name": "mangy.fox",
-                    "homepage": "https://www.drupal.org/user/2513442"
-                },
-                {
-                    "name": "markpavlitski",
-                    "homepage": "https://www.drupal.org/user/2438878"
-                },
-                {
-                    "name": "mfer",
-                    "homepage": "https://www.drupal.org/user/25701"
-                },
-                {
-                    "name": "niko-",
-                    "homepage": "https://www.drupal.org/user/1409266"
-                },
-                {
-                    "name": "quicksketch",
-                    "homepage": "https://www.drupal.org/user/35821"
-                },
-                {
-                    "name": "voleger",
-                    "homepage": "https://www.drupal.org/user/3260314"
-                }
-            ],
-            "description": "Create jQuery-based carousel rotators.",
-            "homepage": "https://www.drupal.org/project/jcarousel",
-            "support": {
-                "source": "https://git.drupalcode.org/project/jcarousel"
             }
         },
         {
@@ -8230,58 +7707,6 @@
             }
         },
         {
-            "name": "drupal/social_media",
-            "version": "1.8.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/social_media.git",
-                "reference": "8.x-1.8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/social_media-8.x-1.8.zip",
-                "reference": "8.x-1.8",
-                "shasum": "aaf92e087e5d3c4c6907b00b5dbb66b05eb5cda2"
-            },
-            "require": {
-                "drupal/core": "^8",
-                "drupal/token": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-1.8",
-                    "datestamp": "1581591836",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Takim Islam",
-                    "homepage": "http://drupalsharing.com/",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Jack Over",
-                    "homepage": "https://www.drupal.org/user/252386",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "Share current page to social media",
-            "homepage": "https://drupal.org/project/social_media",
-            "support": {
-                "source": "http://cgit.drupalcode.org/social_media",
-                "issues": "https://www.drupal.org/project/issues/social_media"
-            }
-        },
-        {
             "name": "drupal/sophron",
             "version": "1.1.0",
             "source": {
@@ -8688,7 +8113,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-3.11",
-                    "datestamp": "1632233579",
+                    "datestamp": "1632233523",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -8794,26 +8219,32 @@
         },
         {
             "name": "drupal/views_bulk_operations",
-            "version": "2.6.0",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/views_bulk_operations.git",
-                "reference": "8.x-2.6"
+                "reference": "4.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/views_bulk_operations-8.x-2.6.zip",
-                "reference": "8.x-2.6",
-                "shasum": "517b671adb55c3ad023032607d360dab77db9f22"
+                "url": "https://ftp.drupal.org/files/projects/views_bulk_operations-4.0.0.zip",
+                "reference": "4.0.0",
+                "shasum": "d5bb4afeaaead0b8ebc7dd9e1fc6aac464aff4b1"
             },
             "require": {
-                "drupal/core": "~8.5"
+                "drupal/core": "^8.8 || ^9"
+            },
+            "require-dev": {
+                "drush/drush": "^10"
+            },
+            "suggest": {
+                "drush/drush": "^9 || ^10"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.6",
-                    "datestamp": "1580924749",
+                    "version": "4.0.0",
+                    "datestamp": "1625650987",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -8821,13 +8252,13 @@
                 },
                 "drush": {
                     "services": {
-                        "drush.services.yml": "^9"
+                        "drush.services.yml": "^9 || ^10"
                     }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -8854,7 +8285,7 @@
             "description": "Adds an ability to perform bulk operations on selected entities from view results. Provides an API to create such operations.",
             "homepage": "https://www.drupal.org/project/views_bulk_operations",
             "support": {
-                "source": "https://git.drupalcode.org/project/views_bulk_operations",
+                "source": "https://git.drupalcode.org/project/views_bulk_operations/-/tree/8.x-3.x",
                 "issues": "https://www.drupal.org/project/issues/views_bulk_operations?version=8.x",
                 "docs": "https://www.drupal.org/docs/8/modules/views-bulk-operations-vbo"
             }
@@ -10093,16 +9524,16 @@
         },
         {
             "name": "graham-campbell/result-type",
-            "version": "v1.0.3",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Result-Type.git",
-                "reference": "296c015dc30ec4322168c5ad3ee5cc11dae827ac"
+                "reference": "84afea85c6841deeea872f36249a206e878a5de0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/296c015dc30ec4322168c5ad3ee5cc11dae827ac",
-                "reference": "296c015dc30ec4322168c5ad3ee5cc11dae827ac",
+                "url": "https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/84afea85c6841deeea872f36249a206e878a5de0",
+                "reference": "84afea85c6841deeea872f36249a206e878a5de0",
                 "shasum": ""
             },
             "require": {
@@ -10138,7 +9569,7 @@
             ],
             "support": {
                 "issues": "https://github.com/GrahamCampbell/Result-Type/issues",
-                "source": "https://github.com/GrahamCampbell/Result-Type/tree/v1.0.3"
+                "source": "https://github.com/GrahamCampbell/Result-Type/tree/v1.0.2"
             },
             "funding": [
                 {
@@ -10150,7 +9581,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-17T19:48:54+00:00"
+            "time": "2021-08-28T21:34:50+00:00"
         },
         {
             "name": "grasmash/expander",
@@ -18015,16 +17446,16 @@
         },
         {
             "name": "instaclick/php-webdriver",
-            "version": "1.4.10",
+            "version": "1.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/instaclick/php-webdriver.git",
-                "reference": "6bc1f44cf23031e68c326cd61e14ec32486f241b"
+                "reference": "961b12178cb71f8667afaf2f66ab3e000e060e1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/instaclick/php-webdriver/zipball/6bc1f44cf23031e68c326cd61e14ec32486f241b",
-                "reference": "6bc1f44cf23031e68c326cd61e14ec32486f241b",
+                "url": "https://api.github.com/repos/instaclick/php-webdriver/zipball/961b12178cb71f8667afaf2f66ab3e000e060e1c",
+                "reference": "961b12178cb71f8667afaf2f66ab3e000e060e1c",
                 "shasum": ""
             },
             "require": {
@@ -18072,9 +17503,9 @@
             ],
             "support": {
                 "issues": "https://github.com/instaclick/php-webdriver/issues",
-                "source": "https://github.com/instaclick/php-webdriver/tree/1.4.10"
+                "source": "https://github.com/instaclick/php-webdriver/tree/1.4.9"
             },
-            "time": "2021-10-14T03:25:34+00:00"
+            "time": "2021-06-28T22:23:20+00:00"
         },
         {
             "name": "jcalderonzumba/gastonjs",
@@ -19708,7 +19139,6 @@
                     "type": "github"
                 }
             ],
-            "abandoned": true,
             "time": "2020-11-30T07:30:19+00:00"
         },
         {
