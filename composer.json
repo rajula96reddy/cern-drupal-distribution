@@ -29,6 +29,50 @@
     },
     {
       "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-taxonomies.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_configuration.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_basic_page.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_event_page.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_faq_page.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_feature_story_page.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-landing-page.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_news_pages.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_resource_page.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_story_page.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern_system_page.git"
+    },
+    {
+      "type": "vcs",
       "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-components"
     },
     {
@@ -157,6 +201,7 @@
     "drupal/cern-loading": "~2.1.2",
     "drupal/cern-paragraph-types": "~2.2.3",
     "drupal/cern-profile-displayname": "~2.1.1",
+    "drupal/cern-taxonomies": "^2.0",
     "drupal/cern-theme": "~2.7.0",
     "drupal/cern-toolbar": "~2.2.3",
     "drupal/cern-webcast-feeds": "~2.0.4",
@@ -238,7 +283,7 @@
     "drupal/ui_patterns": "~1.2.0",
     "drupal/upgrade_status": "~3.11",
     "drupal/userprotect": "~1.1.0",
-    "drupal/views_bulk_operations": "~4.0.0",
+    "drupal/views_bulk_operations": "~2.6",
     "drupal/views_slideshow": "~4.8.0",
     "drupal/views_taxonomy_term_name_depth": "~7.0.2",
     "drupal/viewsreference": "~1.7.0",
