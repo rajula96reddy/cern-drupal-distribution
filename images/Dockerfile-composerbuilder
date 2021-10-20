@@ -15,7 +15,7 @@ LABEL maintainer="Drupal Admins <drupal-admins@cern.ch>" \
 # from https://github.com/docker-library/docs/blob/master/php/README.md#supported-tags-and-respective-dockerfile-links
 # install some utils
 RUN apk --update add \
-    # Some composer packages need git
+    # Some composer packages need git    
     git \
     patch \
     curl \
@@ -47,7 +47,13 @@ RUN set -eux; \
 		mysql-client \
 	; \
     \
+    # install redis
+	pecl install -o -f redis \
+	; \
     rm -rf /tmp/pear \
+	; \
+	docker-php-ext-enable redis \
+
     ; \
 	\
 	docker-php-ext-configure gd \
@@ -73,6 +79,7 @@ RUN set -eux; \
 	apk del .build-deps
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=${COMPOSER_VERSION}
+
 
 # Install nginx on php-fpm. At this point in the Dockerfile PHP/composer is installed. Now we're also adding nginx.
 # We add nginx in the same image to eliminate the need to copy the sitebuilder to an empty dir on pod startup.
