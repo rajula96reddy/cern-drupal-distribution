@@ -4,7 +4,7 @@
 if [[ -z "${ENABLE_REDIS}" ]]; then
     echo "ENABLE_REDIS module not set. Therefore uninstalling redis module."
     drush cr
-    drush pm:uninstall redis
+    drush pm:uninstall -y redis
     drush cr
     drush pm:list | grep redis | grep Disabled
     if [ $? -ne "0" ]; then
@@ -13,7 +13,7 @@ if [[ -z "${ENABLE_REDIS}" ]]; then
 else
     echo "ENABLE_REDIS module is set. Therefore enabling redis module."
     drush cr
-    drush pm:enable redis -y
+    drush pm:enable -y redis
     drush cr
     drush pm:list | grep redis | grep Enabled
     if [ $? -ne "0" ]; then
