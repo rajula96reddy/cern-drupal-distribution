@@ -4,4 +4,4 @@ nginx: '1.20.1'
 # It will NOT affect the sitebuilder directly.
 composer: '2.1.8'
 # This is instead the version of the composer builder that the sitebuilder will use.
-composerBuilderTag: 'dev-v9-redis-a818fa31'
+composerBuilderTag: 'v9.2-1-RELEASE-2021.10.20T13-40-51Z'
