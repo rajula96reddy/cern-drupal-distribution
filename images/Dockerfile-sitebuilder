@@ -32,6 +32,10 @@ RUN \
 COPY nginx/run-nginx.sh /
 RUN chmod +x /run-nginx.sh
 
+# ENTRYPOINT: php-fpm
+COPY php-fpm/run-php-fpm.sh /
+RUN chmod +x /run-php-fpm.sh
+
 
 # RUN composer clearcache; composer require drush/drush ${DRUSH_VERSION}; composer install;
 # ENV PATH=$PATH:/tmp/drush/vendor/bin
