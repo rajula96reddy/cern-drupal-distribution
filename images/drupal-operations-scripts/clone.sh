@@ -26,3 +26,6 @@ cd /app
 rsync -rv /drupal-data-source/ /drupal-data
 /operations/database-restore.sh -f $FILENAME
 /operations/clear-cache.sh
+
+# Run enable or disable redis script
+/operations/enable-or-disable-redis.sh

@@ -31,5 +31,8 @@ if [ "$?" -ne "0" ]; then
     drush cr
 fi
 
+# Run enable or disable redis script
+/operations/enable-or-disable-redis.sh
+
 # Leave cookie
 touch $INSTALL_COOKIE
