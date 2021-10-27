@@ -29,3 +29,8 @@ drush sql-drop -y
 # Database restore
 echo "Restoring database from" $FILENAME
 `drush sql-connect` < /drupal-data/$FILENAME
+
+# If we restore between namespaces (in order to clone), the source database will have the wrong OIDC credentials.
+# After restoring, for safety, enforce the OIDC credentials of the destination.
+drush config:set -y openid_connect.settings.generic settings.client_id "$clientID"
+drush config:set -y openid_connect.settings.generic settings.client_secret "$clientSecret"
