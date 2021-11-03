@@ -11,13 +11,11 @@ ARG NGINX_VERSION
 LABEL maintainer="Drupal Admins <drupal-admins@cern.ch>" \
       composer_version="$COMPOSER_VERSION"
 
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.1/main' >>  /etc/apk/repositories
-
 # from https://www.drupal.org/docs/8/system-requirements/drupal-8-php-requirements
 # from https://github.com/docker-library/docs/blob/master/php/README.md#supported-tags-and-respective-dockerfile-links
 # install some utils
 RUN apk --update add \
-    # Some composer packages need git
+    # Some composer packages need git    
     git \
     patch \
     curl \
@@ -27,23 +25,7 @@ RUN apk --update add \
     mysql-client \
     jq \
     tzdata \
-    rsync \
-    icu-dev \
-    libcurl \
-    imagemagick-dev \
-    imagemagick \
-    php7-pecl-imagick \
-    bzip2-dev \
-    ldb-dev \
-    libldap \
-    openldap-dev \
-    libxml2-dev \
-    libxml2 \
-    libxslt-dev \
-    libxslt \
-    net-snmp \
-    net-snmp-dev
-
+    rsync
 
 # Configured timezone.
 ENV TZ=Europe/Zurich
@@ -71,27 +53,7 @@ RUN set -eux; \
     rm -rf /tmp/pear \
 	; \
 	docker-php-ext-enable redis \
-    ; \
-    \
-    # install imagick
-	pecl install -o -f imagick \
-	; \
-	\
-	docker-php-ext-enable imagick \
-    ; \
-	\
-    # install igbinary
-	pecl install -o -f igbinary\
-	; \
-	\
-	docker-php-ext-enable igbinary\
-    ; \
-	\
-    # install msgpack
-	pecl install -o -f msgpack\
-	; \
-	\
-	docker-php-ext-enable msgpack \
+
     ; \
 	\
 	docker-php-ext-configure gd \
@@ -105,30 +67,6 @@ RUN set -eux; \
 		opcache \
 		pdo_mysql \
 		zip \
-        calendar \
-        bz2 \
-        dba \
-        exif \
-        intl \
-        ldap \
-        # Exists on the old infra, to deprecate?
-        #memcached \
-        mysqli \
-        # Exists on the old infra, to deprecate?
-        #odbc \
-        #pdo_odbc \
-        # recode \ Does no longer exist ?
-        shmop \
-        snmp \
-        soap \
-        sockets \
-        sysvmsg \
-        sysvsem \
-        sysvshm \
-        xml \
-        wddx \
-        xmlrpc \
-        xsl \
 	; \
 	\
 	runDeps="$( \
