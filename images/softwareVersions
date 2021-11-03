@@ -4,4 +4,4 @@ nginx: '1.20.1'
 composer: '2.1.8'
 php: '7.3.23-fpm-alpine3.12'
 # This is instead the version of the composer builder that the sitebuilder will use.
-composerBuilderTag: 'perf-nginx-merge-bd2f8032'
+composerBuilderTag: '8.9-2-with-php-modules-de7248fa'
