@@ -11,7 +11,9 @@ ARG NGINX_VERSION
 LABEL maintainer="Drupal Admins <drupal-admins@cern.ch>" \
       composer_version="$COMPOSER_VERSION"
 
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.1/main' >>  /etc/apk/repositories
+RUN source /etc/os-release && \
+    ALPINE_VERSION=$(echo "$VERSION_ID" | cut -d. -f1-2) && \
+    echo "http://dl-cdn.alpinelinux.org/alpine/v${ALPINE_VERSION}/main" >>  /etc/apk/repositories
 
 # from https://www.drupal.org/docs/8/system-requirements/drupal-8-php-requirements
 # from https://github.com/docker-library/docs/blob/master/php/README.md#supported-tags-and-respective-dockerfile-links
