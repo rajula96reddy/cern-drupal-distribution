@@ -31,7 +31,7 @@ The image tag that is used by the sitebuilder is listed in [software versions](i
 To create a local development environment with the same composer version the following can be used, replacing the tag as needed:
 
 ```bash
-$ docker run -it -v .:/project:z gitlab-registry.cern.ch/drupal/paas/cern-drupal-distribution/composer-builder:RELEASE-2021.09.29T19-25-11Z
+$ docker run -it -v .:/project:z gitlab-registry.cern.ch/drupal/paas/cern-drupal-distribution/composer-builder:master-RELEASE-2021.11.03T17-28-43Z
 # composer -n require ...
 # composer -n update
 ```
