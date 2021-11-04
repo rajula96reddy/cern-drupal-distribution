@@ -98,8 +98,8 @@ RUN set -eux; \
     ; \
 	\
 	docker-php-ext-configure gd \
-    --with-freetype=/usr/include \
-    --with-jpeg=/usr/include \
+#    --with-freetype=/usr/include \
+#    --with-jpeg=/usr/include \
 	; \
 	\
 	docker-php-ext-install -j "$(nproc)" \
