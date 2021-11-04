@@ -98,8 +98,8 @@ RUN set -eux; \
     ; \
 	\
 	docker-php-ext-configure gd \
-#    --with-freetype=/usr/include \
-#    --with-jpeg=/usr/include \
+     --with-freetype=/usr/include \
+     --with-jpeg=/usr/include \
 	; \
 	\
 	docker-php-ext-install -j "$(nproc)" \
@@ -128,7 +128,7 @@ RUN set -eux; \
         sysvsem \
         sysvshm \
         xml \
-        wddx \
+        #wddx \ Does not exist for Drupal9/PHP7.4
         xmlrpc \
         xsl \
 	; \
