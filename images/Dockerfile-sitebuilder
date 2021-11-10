@@ -45,9 +45,10 @@ RUN chmod -R +x /usr/libexec/s2i/; \
     chmod +x /fix-permissions
 
 # DRUPAL
+
 # Path configuration
 # Set up drupal site folder and drupal operations folder
-RUN mkdir -p /app; \
+RUN mkdir -p /app/web; \
     mkdir -p /operations
 
 ENV DRUPAL_APP_DIR /app
@@ -58,6 +59,8 @@ COPY ../../cern-drupal-distribution ${DRUPAL_APP_DIR}
 # Add scripts for Drupal operations
 COPY drupal-operations-scripts ${DRUPAL_OPERATIONS_DIR}
 RUN chmod +x ${DRUPAL_OPERATIONS_DIR}/*
+# Add static well-known responses
+COPY well-known/ $DRUPAL_APP_DIR/web/.well-known
 
 WORKDIR ${DRUPAL_APP_DIR}
 
