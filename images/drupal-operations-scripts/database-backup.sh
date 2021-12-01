@@ -23,7 +23,7 @@ if [ -z "$FILENAME" ] && [ -z "$FILEPATH" ]; then
     usage
 fi
 # If both are set, we should not process either
-if [ ! -z "$FILENAME" ] && [ !-z "$FILEPATH" ]; then
+if [ ! -z "$FILENAME" ] && [ ! -z "$FILEPATH" ]; then
     usage
 fi
 # Change working directory to the drupal code
