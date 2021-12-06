@@ -21,35 +21,31 @@
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-components.git"
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/modules/cern-components.git"
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/paragraph-types"
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/modules/cern-paragraph-types.git"
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-components"
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/modules/cern-full-html-format.git"
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-full-html-format"
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/modules/cern-cds-media.git"
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-cds-media"
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/modules/cern-landing-page.git"
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-landing-page"
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/modules/cern-webcast-feeds.git"
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-webcast-feeds"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-indico-feeds"
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/modules/cern-indico-feeds.git"
     },
     {
       "type": "vcs",
@@ -61,71 +57,43 @@
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/drupal-welcome-message-block"
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/modules/drupal-welcome-message-block"
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/themes/adminimal_subtheme.git"
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/themes/adminimal_subtheme.git"
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/themes/cern.git"
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/themes/cern.git"
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/themes/cernbase.git"
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/themes/cernbase.git"
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/drupal-welcome-message-block.git"
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/modules/cern-profile-displayname.git"
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-profile-displayname.git"
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/modules/cern-dev-status.git"
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-full-html-format.git"
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/modules/cern-display-formats.git"
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-dev-status.git"
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/modules/cern-loading.git"
     },
     {
       "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-display-formats.git"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-cds-media.git"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-landing-page.git"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-loading.git"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/paragraph-types.git"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-toolbar.git"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-indico-feeds.git"
+      "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/modules/cern-toolbar.git"
     },
     {
       "type": "vcs",
       "url": "https://gitlab.cern.ch/drupal/profiles.git"
-    },
-    {
-      "type": "vcs",
-      "url": "https://gitlab.cern.ch/web-team/drupal/public/d8/modules/cern-webcast-feeds.git"
     }
   ],
   "require": {
