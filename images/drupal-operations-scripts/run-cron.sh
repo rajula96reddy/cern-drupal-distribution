@@ -38,6 +38,9 @@ case $HTTP_CODE in
     204)
         echo "$(date) : [${site}] ${HTTP_CODE/204/OK}" # Logs not added since pod logs should suffice ? >> "$LOGFILE_MASTER"  204 No Content -> success
     ;;
+    504)
+        echo "$(date) : [${site}] ${HTTP_CODE/504/NOT OK, ignoring since server might be going through heavy load...}"
+    ;;
     *)
         echo "$(date) : [${site}] Error code, expected 204, got ${HTTP_CODE}"
         exit 1
