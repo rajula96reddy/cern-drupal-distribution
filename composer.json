@@ -228,7 +228,7 @@
     "drupal/redirect": "~1.6.0",
     "drupal/redis": "~1.5.0",
     "drupal/require_login": "~2.4.0",
-    "drupal/rules": "3.x-dev",
+    "drupal/rules": "~3.0.0",
     "drupal/scheduler": "~1.3.0",
     "drupal/search_api": "~1.19.0",
     "drupal/simplesamlphp_auth": "~3.2.0",
