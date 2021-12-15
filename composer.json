@@ -273,7 +273,8 @@
         "DRUPAL-496: TermName views argument_validator is not working as expected": "patches/drupal_views_argument_validator_TermName-2494617-99.patch",
         "DRUPAL-567: Cannot save translated nodes after upgrading to 8.8 due to invalid path": "patches/3101344-drupal-core-fix-permissions-checking-while-node-translating-64.patch",
         "DRUPAL-503: Support enclosure field in Views RssFields row plugin": "patches/views-rss-fields-enclosure-2511878-35.patch",
-        "Fixes UID base filed still having old default value callbacks https://www.drupal.org/project/drupal/issues/3153455": "patches/3153455-104.patch"
+        "Fixes UID base filed still having old default value callbacks https://www.drupal.org/project/drupal/issues/3153455": "patches/3153455-104.patch",
+        "Fixes crash if an external URL is specified in page path https://www.drupal.org/project/drupal/issues/2973422": "patches/save_views_external_url-2973422-19.patch"
       },
       "drupal/paragraphs": {
         "DRUPAL-466: adds the widget that fixes the landing pages issues\n WARNING: there is a new version of this patch upstream for PHP7.2 with some community validation.  But since this version still applies cleanly, we wont update it yet.": "patches/experimental-widget-asymetric-translation-2904705-47.patch"
