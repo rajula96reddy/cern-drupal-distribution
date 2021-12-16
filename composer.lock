@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "989bf7c711010ee0f58c2922f2ae403c",
+    "content-hash": "6024035c05a4d693ed8e8c5d76e503ed",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2405,11 +2405,11 @@
         },
         {
             "name": "drupal/cern-base-theme",
-            "version": "2.6.10",
+            "version": "2.6.11",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/themes/cernbase.git",
-                "reference": "eaa7625a6e8a2c0f92250e7b0baf0e258486b31b"
+                "reference": "3ac2e6c5f83365140f0a7450c5ffcb5d1d37d400"
             },
             "require": {
                 "drupal/bootstrap": "^3.23"
@@ -2429,7 +2429,7 @@
                 }
             ],
             "description": "Base theme of all CERN Drupal themes",
-            "time": "2021-11-29T14:47:39+00:00"
+            "time": "2021-12-15T09:09:32+00:00"
         },
         {
             "name": "drupal/cern-cds-media",
@@ -4181,17 +4181,17 @@
         },
         {
             "name": "drupal/devel",
-            "version": "4.1.2",
+            "version": "4.1.3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/devel.git",
-                "reference": "4.1.2"
+                "reference": "4.1.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/devel-4.1.2.zip",
-                "reference": "4.1.2",
-                "shasum": "62e3d25787285e7333c49f5d0203f513cc1ef717"
+                "url": "https://ftp.drupal.org/files/projects/devel-4.1.3.zip",
+                "reference": "4.1.3",
+                "shasum": "f82261ca19a43379742e1df4c5a3795ef7a70441"
             },
             "require": {
                 "doctrine/common": "^2.7",
@@ -4210,8 +4210,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "4.1.2",
-                    "datestamp": "1638973249",
+                    "version": "4.1.3",
+                    "datestamp": "1639534069",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6069,30 +6069,34 @@
         },
         {
             "name": "drupal/matomo",
-            "version": "1.11.0",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/matomo.git",
-                "reference": "8.x-1.11"
+                "reference": "8.x-1.14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/matomo-8.x-1.11.zip",
-                "reference": "8.x-1.11",
-                "shasum": "82be96c20ab15df03d199ab98d047cef6e67d40b"
+                "url": "https://ftp.drupal.org/files/projects/matomo-8.x-1.14.zip",
+                "reference": "8.x-1.14",
+                "shasum": "d098510f86002376fd0cd5970280c45faba7d8cb"
             },
             "require": {
-                "drupal/core": "^8 || ^9"
+                "drupal/core": "^8.8.0 || ^9.0.0"
+            },
+            "conflict": {
+                "drupal/csp": "<1.12"
             },
             "require-dev": {
-                "drupal/php": "*",
-                "drupal/token": "*"
+                "drupal/csp": "~1.12",
+                "drupal/php": "~1.1",
+                "drupal/token": "~1.9"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.11",
-                    "datestamp": "1601651459",
+                    "version": "8.x-1.14",
+                    "datestamp": "1639155906",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6105,27 +6109,26 @@
             ],
             "authors": [
                 {
-                    "name": "Carsten Logemann",
-                    "homepage": "https://www.drupal.org/u/C_Logemann"
+                    "name": "C-Logemann",
+                    "homepage": "https://www.drupal.org/user/218368"
                 },
                 {
-                    "name": "Shelane French",
-                    "homepage": "https://www.drupal.org/u/shelane"
+                    "name": "Grimreaper",
+                    "homepage": "https://www.drupal.org/user/2388214"
                 },
                 {
-                    "name": "See other contributors",
-                    "homepage": "https://www.drupal.org/node/247808/committers"
+                    "name": "hass",
+                    "homepage": "https://www.drupal.org/user/85918"
                 },
                 {
                     "name": "shelane",
                     "homepage": "https://www.drupal.org/user/2674989"
                 }
             ],
-            "description": "Adds Matomo javascript tracking code to all your site's pages",
+            "description": "Adds Matomo javascript tracking code to all your site's pages.",
             "homepage": "https://www.drupal.org/project/matomo",
             "support": {
-                "source": "https://git.drupal.org/project/matomo.git",
-                "issues": "https://www.drupal.org/project/issues/matomo"
+                "source": "https://git.drupalcode.org/project/matomo"
             }
         },
         {
@@ -8371,17 +8374,17 @@
         },
         {
             "name": "drupal/upgrade_status",
-            "version": "3.12.0",
+            "version": "3.13.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/upgrade_status.git",
-                "reference": "8.x-3.12"
+                "reference": "8.x-3.13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/upgrade_status-8.x-3.12.zip",
-                "reference": "8.x-3.12",
-                "shasum": "760665fd62fea68c9649adaffbcf3324f317d43f"
+                "url": "https://ftp.drupal.org/files/projects/upgrade_status-8.x-3.13.zip",
+                "reference": "8.x-3.13",
+                "shasum": "7dd12034dad9fb5e58b6c3e4dd1ea0c530442e8d"
             },
             "require": {
                 "drupal/core": "^8 || ^9",
@@ -8395,8 +8398,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.12",
-                    "datestamp": "1637076799",
+                    "version": "8.x-3.13",
+                    "datestamp": "1639504710",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -10578,16 +10581,16 @@
         },
         {
             "name": "mglaman/phpstan-drupal",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mglaman/phpstan-drupal.git",
-                "reference": "165429a23945f978cccddf15aac5d7e2482514e4"
+                "reference": "fecdf4c2617ae68d0f56d7b630cff46a0d83c235"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mglaman/phpstan-drupal/zipball/165429a23945f978cccddf15aac5d7e2482514e4",
-                "reference": "165429a23945f978cccddf15aac5d7e2482514e4",
+                "url": "https://api.github.com/repos/mglaman/phpstan-drupal/zipball/fecdf4c2617ae68d0f56d7b630cff46a0d83c235",
+                "reference": "fecdf4c2617ae68d0f56d7b630cff46a0d83c235",
                 "shasum": ""
             },
             "require": {
@@ -10659,7 +10662,7 @@
             "description": "Drupal extension and rules for PHPStan",
             "support": {
                 "issues": "https://github.com/mglaman/phpstan-drupal/issues",
-                "source": "https://github.com/mglaman/phpstan-drupal/tree/1.1.1"
+                "source": "https://github.com/mglaman/phpstan-drupal/tree/1.1.2"
             },
             "funding": [
                 {
@@ -10675,7 +10678,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-29T01:51:37+00:00"
+            "time": "2021-12-15T22:10:01+00:00"
         },
         {
             "name": "nette/finder",

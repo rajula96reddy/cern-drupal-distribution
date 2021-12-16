@@ -167,7 +167,7 @@
     "drupal/jquery_ui_droppable": "~1.2.0",
     "drupal/ludwig": "~1.7.0",
     "drupal/mailsystem": "~4.3.0",
-    "drupal/matomo": "~1.11.0",
+    "drupal/matomo": "~1.14.0",
     "drupal/memcache": "~2.3.0",
     "drupal/menu_block": "~1.6.0",
     "drupal/menu_breadcrumb": "~1.14.0",
