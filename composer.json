@@ -312,7 +312,8 @@
         "DRUPAL-496: TermName views argument_validator is not working as expected": "patches/drupal_views_argument_validator_TermName-2494617-75.patch",
         "steps.everis.com/CERN-904: https://www.drupal.org/project/drupal/issues/2930599#comment-12779330": "patches/empty-alias-check-2930599-44.patch",
         "DRUPAL-567: Cannot save translated nodes after upgrading to 8.8 due to invalid path": "patches/translations_not_save_invalid_path-3101344-20.patch",
-        "DRUPAL-503: Support enclosure field in Views RssFields row plugin": "patches/views-rss-fields-enclosure-2511878-17.patch"
+        "DRUPAL-503: Support enclosure field in Views RssFields row plugin": "patches/views-rss-fields-enclosure-2511878-17.patch",
+        "Fixes crash if an external URL is specified in page path https://www.drupal.org/project/drupal/issues/2973422": "patches/save_views_external_url-2973422-19.patch"
       },
       "drupal/webform_analysis": {
         "fix webform analysis charts not compatible with latest version of google libraries https://www.drupal.org/project/webform_analysis/issues/3137161": "patches/webform_analysis_google_charts_version_downgrade-3137161-5.patch"
