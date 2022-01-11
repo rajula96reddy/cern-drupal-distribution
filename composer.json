@@ -192,7 +192,7 @@
     "drupal/feeds": "~3.0.0@alpha",
     "drupal/fences": "~2.0.0@rc",
     "drupal/field_formatter_class": "~1.5.0",
-    "drupal/field_group": "~3.1.0",
+    "drupal/field_group": "~3.2.0",
     "drupal/field_permissions": "~1.1.0",
     "drupal/filefield_paths": "~1.0.0@beta",
     "drupal/honeypot": "~1.30.0",
