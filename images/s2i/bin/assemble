@@ -24,9 +24,9 @@ mv composer.json composer.user.json
 # composer.admin.json -> composer.json
 mv composer.admins.json composer.json
 
-if [ -f composer.json ] && [ -f composer.user.json ] && [ -f composer.lock ]; then	
+if [ -f composer.json ] && [ -f composer.user.json ] && [ -f composer.lock ]; then
 	echo "---> Found 'composer.lock', updating dependencies ... "
-	composer update --optimize-autoloader -vvv --with-dependencies
+	composer update --optimize-autoloader -vv --with-dependencies
 fi
 
 echo "--> Ignition..."
