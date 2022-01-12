@@ -1,0 +1,14 @@
+apiVersion: drupal.webservices.cern.ch/v1alpha1
+kind: SupportedDrupalVersions
+metadata:
+  name: supported-drupal-versions
+  annotations:
+    # ArgoCD needs to wait until the SupportedDrupalVersions CRD has been deployed by another ArgoCD application
+    # before creating this custom resource.
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  blacklist:
+    {{- range .Values.blacklist }}
+      - {{ . | quote }}
+    {{- end }}
+  defaultVersion: {{ .Values.defaultVersion | quote }}

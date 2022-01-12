@@ -1,0 +1,12 @@
+apiVersion: v2
+name: supported-drupal-versions
+home: https://gitlab.cern.ch/drupal/paas/cern-drupal-distribution
+description: Chart to deploy SupportedDrupalVersions resource
+version: 0.1.0
+icon: https://www.drupal.org/files/druplicon-small.png
+keywords:
+- drupal
+- supported-drupal-versions
+maintainers:
+- name: CERN IT-CDA-WF
+  email: drupal-admins@cern.ch
