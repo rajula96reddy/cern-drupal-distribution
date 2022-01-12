@@ -32,8 +32,8 @@ To create a local development environment with the same composer version the fol
 
 ```bash
 $ docker run -it -v .:/project:z gitlab-registry.cern.ch/drupal/paas/cern-drupal-distribution/composer-builder:master-RELEASE-2021.11.03T17-28-43Z
-# composer -n require ...
-# composer -n update
+# COMPOSER_MEMORY_LIMIT=-1 composer -n require ...
+# COMPOSER_MEMORY_LIMIT=-1 composer -n update
 ```
 
 ## <h2 id="release"></h2> Versioning and Release
@@ -87,9 +87,9 @@ Each non-version branch produces image tags with each commit of the format `<bra
 Eventually, CI should run a test suite for every commit against the drupal-stg cluster.
 CI should be a normal user that creates a DrupalSite with this version/release and runs tests against it.
 
- ⚠️  Important Note: 
+ ⚠️  Important Note:
  Currently our Nginx image is merged into sitebuilder, as such a few points to
- take into consideration.   
- One, our image implementation is inspired by https://github.com/bkuhl/fpm-nginx (That does not differ from Nginx supported [image](https://github.com/nginxinc/docker-nginx/blob/master/stable/alpine/Dockerfile)).    
+ take into consideration.
+ One, our image implementation is inspired by https://github.com/bkuhl/fpm-nginx (That does not differ from Nginx supported [image](https://github.com/nginxinc/docker-nginx/blob/master/stable/alpine/Dockerfile)).
  Two, Nginx might break CI if stable upstream changes, to fix CI please update the local DockerFile according to upstream.
 
