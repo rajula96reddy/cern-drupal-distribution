@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7fbcf7adda533820369ee3f73152bc64",
+    "content-hash": "94d0632f81744e4554d33fd3e24b38c1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -330,16 +330,16 @@
         },
         {
             "name": "consolidation/annotated-command",
-            "version": "2.12.1",
+            "version": "2.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/annotated-command.git",
-                "reference": "0ee361762df2274f360c085e3239784a53f850b5"
+                "reference": "2472a23610cba1d86dcb783a81a21259473b059e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/0ee361762df2274f360c085e3239784a53f850b5",
-                "reference": "0ee361762df2274f360c085e3239784a53f850b5",
+                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/2472a23610cba1d86dcb783a81a21259473b059e",
+                "reference": "2472a23610cba1d86dcb783a81a21259473b059e",
                 "shasum": ""
             },
             "require": {
@@ -434,9 +434,9 @@
             "description": "Initialize Symfony Console commands from annotated command class methods.",
             "support": {
                 "issues": "https://github.com/consolidation/annotated-command/issues",
-                "source": "https://github.com/consolidation/annotated-command/tree/2.12.1"
+                "source": "https://github.com/consolidation/annotated-command/tree/2.12.2"
             },
-            "time": "2020-10-11T04:30:03+00:00"
+            "time": "2022-01-03T00:23:44+00:00"
         },
         {
             "name": "consolidation/config",
@@ -977,16 +977,16 @@
         },
         {
             "name": "consolidation/site-alias",
-            "version": "3.1.1",
+            "version": "3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/site-alias.git",
-                "reference": "e824b57253d9174f4a500f87e6d0e1e497c2a50a"
+                "reference": "e2784362e98f315c996fb2b9ed80a9118a0ba8b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/site-alias/zipball/e824b57253d9174f4a500f87e6d0e1e497c2a50a",
-                "reference": "e824b57253d9174f4a500f87e6d0e1e497c2a50a",
+                "url": "https://api.github.com/repos/consolidation/site-alias/zipball/e2784362e98f315c996fb2b9ed80a9118a0ba8b7",
+                "reference": "e2784362e98f315c996fb2b9ed80a9118a0ba8b7",
                 "shasum": ""
             },
             "require": {
@@ -1029,9 +1029,9 @@
             "description": "Manage alias records for local and remote sites.",
             "support": {
                 "issues": "https://github.com/consolidation/site-alias/issues",
-                "source": "https://github.com/consolidation/site-alias/tree/3.1.1"
+                "source": "https://github.com/consolidation/site-alias/tree/3.1.3"
             },
-            "time": "2021-09-21T00:30:48+00:00"
+            "time": "2022-01-03T19:00:28+00:00"
         },
         {
             "name": "consolidation/site-process",
@@ -2353,11 +2353,11 @@
         },
         {
             "name": "drupal/cern-install-profiles",
-            "version": "8.1.5",
+            "version": "8.1.6",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cern.ch/drupal/profiles.git",
-                "reference": "3e36a5d9ee9b497e8c37caafc2426e532fc8a72c"
+                "reference": "a41d816f12929cd4f3ffc590714d12e57d790f1e"
             },
             "type": "drupal-profile",
             "license": [
@@ -2370,7 +2370,7 @@
                 }
             ],
             "description": "Initialize the site with configuration that integrates it with the CERN environment",
-            "time": "2021-10-12T10:12:38+00:00"
+            "time": "2022-01-12T12:11:24+00:00"
         },
         {
             "name": "drupal/cern-integration",
@@ -6585,17 +6585,17 @@
         },
         {
             "name": "drupal/openid_connect",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/openid_connect.git",
-                "reference": "8.x-1.1"
+                "reference": "8.x-1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/openid_connect-8.x-1.1.zip",
-                "reference": "8.x-1.1",
-                "shasum": "9153c4ecbadd1ea11b2dff41de30b8c90103ea9b"
+                "url": "https://ftp.drupal.org/files/projects/openid_connect-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "b00290161d7dc54fe1dccca1b0ab91bed920f051"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9",
@@ -6604,8 +6604,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.1",
-                    "datestamp": "1622902228",
+                    "version": "8.x-1.2",
+                    "datestamp": "1640195069",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -10710,16 +10710,16 @@
         },
         {
             "name": "mglaman/phpstan-drupal",
-            "version": "1.1.1",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mglaman/phpstan-drupal.git",
-                "reference": "165429a23945f978cccddf15aac5d7e2482514e4"
+                "reference": "f51ff1ad597480944a7d2f255484a4255daa6e13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mglaman/phpstan-drupal/zipball/165429a23945f978cccddf15aac5d7e2482514e4",
-                "reference": "165429a23945f978cccddf15aac5d7e2482514e4",
+                "url": "https://api.github.com/repos/mglaman/phpstan-drupal/zipball/f51ff1ad597480944a7d2f255484a4255daa6e13",
+                "reference": "f51ff1ad597480944a7d2f255484a4255daa6e13",
                 "shasum": ""
             },
             "require": {
@@ -10734,13 +10734,16 @@
                 "drupal/core-dev": "^8.8@alpha || ^9.0",
                 "drupal/core-recommended": "^8.8@alpha || ^9.0",
                 "drush/drush": "^9.6 | ^10.0",
+                "phpstan/extension-installer": "^1.1",
                 "phpstan/phpstan-deprecation-rules": "^1.0",
                 "phpstan/phpstan-strict-rules": "^1.0",
                 "phpunit/phpunit": "^6.5 || ^7.5 || ^8.0 || ^9",
                 "squizlabs/php_codesniffer": "^3.3"
             },
             "suggest": {
-                "phpstan/phpstan-deprecation-rules": "For catching deprecations, especially in Drupal core."
+                "jangregor/phpstan-prophecy": "Provides a prophecy/prophecy extension for phpstan/phpstan.",
+                "phpstan/phpstan-deprecation-rules": "For catching deprecations, especially in Drupal core.",
+                "phpstan/phpstan-phpunit": "PHPUnit extensions and rules for PHPStan."
             },
             "type": "phpstan-extension",
             "extra": {
@@ -10791,7 +10794,7 @@
             "description": "Drupal extension and rules for PHPStan",
             "support": {
                 "issues": "https://github.com/mglaman/phpstan-drupal/issues",
-                "source": "https://github.com/mglaman/phpstan-drupal/tree/1.1.1"
+                "source": "https://github.com/mglaman/phpstan-drupal/tree/1.1.4"
             },
             "funding": [
                 {
@@ -10807,7 +10810,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-29T01:51:37+00:00"
+            "time": "2021-12-29T22:28:39+00:00"
         },
         {
             "name": "nette/finder",
@@ -11307,20 +11310,23 @@
         },
         {
             "name": "phenx/php-font-lib",
-            "version": "0.5.2",
+            "version": "0.5.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/PhenX/php-font-lib.git",
-                "reference": "ca6ad461f032145fff5971b5985e5af9e7fa88d8"
+                "url": "https://github.com/dompdf/php-font-lib.git",
+                "reference": "dd448ad1ce34c63d09baccd05415e361300c35b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhenX/php-font-lib/zipball/ca6ad461f032145fff5971b5985e5af9e7fa88d8",
-                "reference": "ca6ad461f032145fff5971b5985e5af9e7fa88d8",
+                "url": "https://api.github.com/repos/dompdf/php-font-lib/zipball/dd448ad1ce34c63d09baccd05415e361300c35b4",
+                "reference": "dd448ad1ce34c63d09baccd05415e361300c35b4",
                 "shasum": ""
             },
+            "require": {
+                "ext-mbstring": "*"
+            },
             "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5 || ^6 || ^7"
+                "symfony/phpunit-bridge": "^3 || ^4 || ^5"
             },
             "type": "library",
             "autoload": {
@@ -11341,10 +11347,10 @@
             "description": "A library to read, parse, export and make subsets of different types of font files.",
             "homepage": "https://github.com/PhenX/php-font-lib",
             "support": {
-                "issues": "https://github.com/PhenX/php-font-lib/issues",
-                "source": "https://github.com/PhenX/php-font-lib/tree/0.5.2"
+                "issues": "https://github.com/dompdf/php-font-lib/issues",
+                "source": "https://github.com/dompdf/php-font-lib/tree/0.5.4"
             },
-            "time": "2020-03-08T15:31:32+00:00"
+            "time": "2021-12-17T19:44:54+00:00"
         },
         {
             "name": "phenx/php-svg-lib",
@@ -11617,16 +11623,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.2.0",
+            "version": "1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "cbe085f9fdead5b6d62e4c022ca52dc9427a10ee"
+                "reference": "151a51f6149855785fbd883e79768c0abc96b75f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/cbe085f9fdead5b6d62e4c022ca52dc9427a10ee",
-                "reference": "cbe085f9fdead5b6d62e4c022ca52dc9427a10ee",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/151a51f6149855785fbd883e79768c0abc96b75f",
+                "reference": "151a51f6149855785fbd883e79768c0abc96b75f",
                 "shasum": ""
             },
             "require": {
@@ -11642,7 +11648,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -11657,7 +11663,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.2.0"
+                "source": "https://github.com/phpstan/phpstan/tree/1.3.3"
             },
             "funding": [
                 {
@@ -11677,7 +11683,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-18T14:09:01+00:00"
+            "time": "2022-01-07T09:49:03+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -11887,16 +11893,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.0",
+            "version": "v0.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "c9a85cd388afde68721d304bbb3257a068f5ab05"
+                "reference": "570292577277f06f590635381a7f761a6cf4f026"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/c9a85cd388afde68721d304bbb3257a068f5ab05",
-                "reference": "c9a85cd388afde68721d304bbb3257a068f5ab05",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/570292577277f06f590635381a7f761a6cf4f026",
+                "reference": "570292577277f06f590635381a7f761a6cf4f026",
                 "shasum": ""
             },
             "require": {
@@ -11956,9 +11962,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.0"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.1"
             },
-            "time": "2021-12-05T06:09:05+00:00"
+            "time": "2022-01-03T13:58:38+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -12139,16 +12145,16 @@
         },
         {
             "name": "simplesamlphp/saml2",
-            "version": "v4.2.5",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/saml2.git",
-                "reference": "4ae96cb02a9ac9da3825d69af0500e594509bcaf"
+                "reference": "c55ebdf61859c979945e600bf2c94ef3b6cdebf3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/4ae96cb02a9ac9da3825d69af0500e594509bcaf",
-                "reference": "4ae96cb02a9ac9da3825d69af0500e594509bcaf",
+                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/c55ebdf61859c979945e600bf2c94ef3b6cdebf3",
+                "reference": "c55ebdf61859c979945e600bf2c94ef3b6cdebf3",
                 "shasum": ""
             },
             "require": {
@@ -12191,9 +12197,9 @@
             "description": "SAML2 PHP library from SimpleSAMLphp",
             "support": {
                 "issues": "https://github.com/simplesamlphp/saml2/issues",
-                "source": "https://github.com/simplesamlphp/saml2/tree/v4.2.5"
+                "source": "https://github.com/simplesamlphp/saml2/tree/v4.2.7"
             },
-            "time": "2021-12-09T21:25:23+00:00"
+            "time": "2022-01-12T09:23:56+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp",
@@ -12325,16 +12331,16 @@
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-adfs",
-            "version": "v0.9.8",
+            "version": "v0.9.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-adfs.git",
-                "reference": "ac2ba46a6b94ed48b527ac190b0fa99bcda8d98e"
+                "reference": "a2349c2131f2dfe21a56eb5ede3fddd429278850"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-adfs/zipball/ac2ba46a6b94ed48b527ac190b0fa99bcda8d98e",
-                "reference": "ac2ba46a6b94ed48b527ac190b0fa99bcda8d98e",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-adfs/zipball/a2349c2131f2dfe21a56eb5ede3fddd429278850",
+                "reference": "a2349c2131f2dfe21a56eb5ede3fddd429278850",
                 "shasum": ""
             },
             "require": {
@@ -12343,7 +12349,6 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "~5.7",
-                "sensiolabs/security-checker": "^5.0",
                 "simplesamlphp/simplesamlphp": "^1.17",
                 "simplesamlphp/simplesamlphp-test-framework": "^0.0.15",
                 "webmozart/assert": "<1.7"
@@ -12373,20 +12378,20 @@
                 "issues": "https://github.com/tvdijen/simplesamlphp-module-adfs/issues",
                 "source": "https://github.com/tvdijen/simplesamlphp-module-adfs"
             },
-            "time": "2021-08-17T07:54:07+00:00"
+            "time": "2022-01-03T20:33:38+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-authcrypt",
-            "version": "v0.9.3",
+            "version": "v0.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-authcrypt.git",
-                "reference": "9a2c1a761e2d94394a4f2d3499fd6f0853899530"
+                "reference": "62555123e61b11463be3cd7adb708562023cff28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-authcrypt/zipball/9a2c1a761e2d94394a4f2d3499fd6f0853899530",
-                "reference": "9a2c1a761e2d94394a4f2d3499fd6f0853899530",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-authcrypt/zipball/62555123e61b11463be3cd7adb708562023cff28",
+                "reference": "62555123e61b11463be3cd7adb708562023cff28",
                 "shasum": ""
             },
             "require": {
@@ -12424,7 +12429,7 @@
                 "issues": "https://github.com/tvdijen/simplesamlphp-module-authcrypt/issues",
                 "source": "https://github.com/tvdijen/simplesamlphp-module-authcrypt"
             },
-            "time": "2021-01-08T09:09:33+00:00"
+            "time": "2022-01-03T20:50:47+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-authfacebook",
@@ -12482,16 +12487,16 @@
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-authorize",
-            "version": "v0.9.3",
+            "version": "v0.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-authorize.git",
-                "reference": "0593bfcb84fca9d9133f415246ab8ca51b412c92"
+                "reference": "4c7ce4eaa54fc301f131c62e803fc843e4d88056"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-authorize/zipball/0593bfcb84fca9d9133f415246ab8ca51b412c92",
-                "reference": "0593bfcb84fca9d9133f415246ab8ca51b412c92",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-authorize/zipball/4c7ce4eaa54fc301f131c62e803fc843e4d88056",
+                "reference": "4c7ce4eaa54fc301f131c62e803fc843e4d88056",
                 "shasum": ""
             },
             "require": {
@@ -12527,20 +12532,20 @@
                 "issues": "https://github.com/tvdijen/simplesamlphp-module-authorize/issues",
                 "source": "https://github.com/tvdijen/simplesamlphp-module-authorize"
             },
-            "time": "2021-03-24T10:37:17+00:00"
+            "time": "2022-01-03T20:56:53+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-authtwitter",
-            "version": "v0.9.1",
+            "version": "v0.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-authtwitter.git",
-                "reference": "29a15e58061222632fea9eb2c807aef5e2c0d54a"
+                "reference": "6e178e7aae7827a64dc462b5bb2f28d6eddc4381"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-authtwitter/zipball/29a15e58061222632fea9eb2c807aef5e2c0d54a",
-                "reference": "29a15e58061222632fea9eb2c807aef5e2c0d54a",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-authtwitter/zipball/6e178e7aae7827a64dc462b5bb2f28d6eddc4381",
+                "reference": "6e178e7aae7827a64dc462b5bb2f28d6eddc4381",
                 "shasum": ""
             },
             "require": {
@@ -12550,7 +12555,8 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.8.35",
-                "simplesamlphp/simplesamlphp": "^1.17"
+                "simplesamlphp/simplesamlphp": "^1.17",
+                "webmozart/assert": "<1.7"
             },
             "type": "simplesamlphp-module",
             "autoload": {
@@ -12560,7 +12566,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL-3.0-or-later"
+                "LGPL-2.1-or-later"
             ],
             "authors": [
                 {
@@ -12581,7 +12587,7 @@
                 "issues": "https://github.com/tvdijen/simplesamlphp-module-authtwitter/issues",
                 "source": "https://github.com/tvdijen/simplesamlphp-module-authtwitter"
             },
-            "time": "2019-12-03T09:00:09+00:00"
+            "time": "2022-01-03T23:01:48+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-authwindowslive",
@@ -12641,16 +12647,16 @@
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-authx509",
-            "version": "v0.9.8",
+            "version": "v0.9.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-authX509.git",
-                "reference": "66525b1ec4145ec8d0d0e9db4534624b6be4c1fb"
+                "reference": "b138f41b2bc725371f42abb63b5a39ac11b5432a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-authX509/zipball/66525b1ec4145ec8d0d0e9db4534624b6be4c1fb",
-                "reference": "66525b1ec4145ec8d0d0e9db4534624b6be4c1fb",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-authX509/zipball/b138f41b2bc725371f42abb63b5a39ac11b5432a",
+                "reference": "b138f41b2bc725371f42abb63b5a39ac11b5432a",
                 "shasum": ""
             },
             "require": {
@@ -12694,20 +12700,20 @@
                 "issues": "https://github.com/tvdijen/simplesamlphp-module-authx509/issues",
                 "source": "https://github.com/tvdijen/simplesamlphp-module-authx509"
             },
-            "time": "2020-12-15T23:06:47+00:00"
+            "time": "2022-01-06T19:02:38+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-authyubikey",
-            "version": "v0.9.2",
+            "version": "v0.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-authyubikey.git",
-                "reference": "b287a13195a5910beb4c68f9b9fee3aac7f8a73d"
+                "reference": "414e2a73da4adfee6d97ba66e852ec7c85369913"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-authyubikey/zipball/b287a13195a5910beb4c68f9b9fee3aac7f8a73d",
-                "reference": "b287a13195a5910beb4c68f9b9fee3aac7f8a73d",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-authyubikey/zipball/414e2a73da4adfee6d97ba66e852ec7c85369913",
+                "reference": "414e2a73da4adfee6d97ba66e852ec7c85369913",
                 "shasum": ""
             },
             "require": {
@@ -12747,7 +12753,7 @@
                 "issues": "https://github.com/tvdijen/simplesamlphp-module-authyubikey/issues",
                 "source": "https://github.com/tvdijen/simplesamlphp-module-authyubikey"
             },
-            "time": "2021-12-10T13:18:22+00:00"
+            "time": "2022-01-06T19:07:32+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-cas",
@@ -12802,16 +12808,16 @@
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-cdc",
-            "version": "v0.9.1",
+            "version": "v0.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-cdc.git",
-                "reference": "16a5bfac7299e04e5feb472af328e07598708166"
+                "reference": "92498fc3004c02849d96da29ca472d99ed23af73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-cdc/zipball/16a5bfac7299e04e5feb472af328e07598708166",
-                "reference": "16a5bfac7299e04e5feb472af328e07598708166",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-cdc/zipball/92498fc3004c02849d96da29ca472d99ed23af73",
+                "reference": "92498fc3004c02849d96da29ca472d99ed23af73",
                 "shasum": ""
             },
             "require": {
@@ -12819,7 +12825,8 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "~5.7",
-                "simplesamlphp/simplesamlphp": "^1.17"
+                "simplesamlphp/simplesamlphp": "^1.17",
+                "webmozart/assert": "<1.7"
             },
             "type": "simplesamlphp-module",
             "autoload": {
@@ -12829,7 +12836,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL-3.0-or-later"
+                "LGPL-2.1-or-later"
             ],
             "authors": [
                 {
@@ -12851,20 +12858,20 @@
                 "issues": "https://github.com/simplesamlphp/simplesamlphp-module-cdc/issues",
                 "source": "https://github.com/simplesamlphp/simplesamlphp-module-cdc/"
             },
-            "time": "2019-12-03T09:04:11+00:00"
+            "time": "2022-01-06T19:27:16+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-consent",
-            "version": "v0.9.7",
+            "version": "v0.9.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-consent.git",
-                "reference": "16a347ee4003e2adf415284b334a582e9b8a5717"
+                "reference": "8466b0b7c6207b15ca5e265f436299ff2dec85da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-consent/zipball/16a347ee4003e2adf415284b334a582e9b8a5717",
-                "reference": "16a347ee4003e2adf415284b334a582e9b8a5717",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-consent/zipball/8466b0b7c6207b15ca5e265f436299ff2dec85da",
+                "reference": "8466b0b7c6207b15ca5e265f436299ff2dec85da",
                 "shasum": ""
             },
             "require": {
@@ -12901,20 +12908,20 @@
                 "issues": "https://github.com/tvdijen/simplesamlphp-module-consent/issues",
                 "source": "https://github.com/tvdijen/simplesamlphp-module-consent"
             },
-            "time": "2021-09-04T19:57:14+00:00"
+            "time": "2022-01-06T19:17:22+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-consentadmin",
-            "version": "v0.9.1",
+            "version": "v0.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-consentadmin.git",
-                "reference": "466e8d0d751f0080162d78e63ab2e125b24d17a1"
+                "reference": "62dc5e9d5b1a12a73549c80140b7224d7f7d1c2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-consentadmin/zipball/466e8d0d751f0080162d78e63ab2e125b24d17a1",
-                "reference": "466e8d0d751f0080162d78e63ab2e125b24d17a1",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-consentadmin/zipball/62dc5e9d5b1a12a73549c80140b7224d7f7d1c2e",
+                "reference": "62dc5e9d5b1a12a73549c80140b7224d7f7d1c2e",
                 "shasum": ""
             },
             "require": {
@@ -12933,7 +12940,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL-3.0-or-later"
+                "LGPL-2.1-or-later"
             ],
             "authors": [
                 {
@@ -12954,7 +12961,7 @@
                 "issues": "https://github.com/simplesamlphp/simplesamlphp-module-consentadmin/issues",
                 "source": "https://github.com/simplesamlphp/simplesamlphp-module-consentadmin"
             },
-            "time": "2019-12-03T09:06:40+00:00"
+            "time": "2022-01-06T19:19:38+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-discopower",
@@ -13058,26 +13065,25 @@
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-expirycheck",
-            "version": "v0.9.3",
+            "version": "v0.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-expirycheck.git",
-                "reference": "59c59cdf87e2679257b46c07bb4c27666a11cc20"
+                "reference": "02101497281031befba93c48c96ee9133f57241d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-expirycheck/zipball/59c59cdf87e2679257b46c07bb4c27666a11cc20",
-                "reference": "59c59cdf87e2679257b46c07bb4c27666a11cc20",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-expirycheck/zipball/02101497281031befba93c48c96ee9133f57241d",
+                "reference": "02101497281031befba93c48c96ee9133f57241d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6",
-                "simplesamlphp/composer-module-installer": "~1.1",
-                "webmozart/assert": "~1.4"
+                "simplesamlphp/composer-module-installer": "~1.1"
             },
             "require-dev": {
-                "simplesamlphp/simplesamlphp": "^1.17",
-                "simplesamlphp/simplesamlphp-test-framework": "^0.0.10"
+                "phpunit/phpunit": "~5.7",
+                "simplesamlphp/simplesamlphp": "^1.17"
             },
             "type": "simplesamlphp-module",
             "autoload": {
@@ -13087,7 +13093,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL-3.0-or-later"
+                "LGPL-2.1-or-later"
             ],
             "authors": [
                 {
@@ -13101,23 +13107,23 @@
                 "simplesamlphp"
             ],
             "support": {
-                "issues": "https://github.com/simplesamlphp/simplesamlphp-module-expirycheck/issues",
-                "source": "https://github.com/simplesamlphp/simplesamlphp-module-expirycheck"
+                "issues": "https://github.com/tvdijen/simplesamlphp-module-expirycheck/issues",
+                "source": "https://github.com/tvdijen/simplesamlphp-module-expirycheck"
             },
-            "time": "2019-12-14T13:20:46+00:00"
+            "time": "2022-01-06T21:16:01+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-ldap",
-            "version": "v0.9.15",
+            "version": "v0.9.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-ldap.git",
-                "reference": "ecf46d9ea56d892ba6f7fbee625b99d88a3df6fe"
+                "reference": "40f1bfe0c4ac2f91cf8e52d22fa6ec2fe1c03066"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-ldap/zipball/ecf46d9ea56d892ba6f7fbee625b99d88a3df6fe",
-                "reference": "ecf46d9ea56d892ba6f7fbee625b99d88a3df6fe",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-ldap/zipball/40f1bfe0c4ac2f91cf8e52d22fa6ec2fe1c03066",
+                "reference": "40f1bfe0c4ac2f91cf8e52d22fa6ec2fe1c03066",
                 "shasum": ""
             },
             "require": {
@@ -13160,20 +13166,20 @@
                 "issues": "https://github.com/tvdijen/simplesamlphp-module-ldap/issues",
                 "source": "https://github.com/tvdijen/simplesamlphp-module-ldap"
             },
-            "time": "2021-11-30T16:17:11+00:00"
+            "time": "2022-01-11T12:50:47+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-memcachemonitor",
-            "version": "v0.9.2",
+            "version": "v0.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-memcachemonitor.git",
-                "reference": "900b5c6b59913d9013b8dae090841a127ae55ae5"
+                "reference": "8d25463ac56b4e2294f59f622a6658e0c67086f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-memcachemonitor/zipball/900b5c6b59913d9013b8dae090841a127ae55ae5",
-                "reference": "900b5c6b59913d9013b8dae090841a127ae55ae5",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-memcachemonitor/zipball/8d25463ac56b4e2294f59f622a6658e0c67086f4",
+                "reference": "8d25463ac56b4e2294f59f622a6658e0c67086f4",
                 "shasum": ""
             },
             "require": {
@@ -13211,7 +13217,7 @@
                 "issues": "https://github.com/tvdijen/simplesamlphp-module-memcachemonitor/issues",
                 "source": "https://github.com/tvdijen/simplesamlphp-module-memcachemonitor"
             },
-            "time": "2021-01-25T15:44:44+00:00"
+            "time": "2022-01-06T22:37:15+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-memcookie",
@@ -13267,16 +13273,16 @@
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-metarefresh",
-            "version": "v0.9.6",
+            "version": "v0.9.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-metarefresh.git",
-                "reference": "e284306a7097297765b5b78a4e28f19f18d4e001"
+                "reference": "ca724f0edd1179bb0056dc4561d455db7a1f1adc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-metarefresh/zipball/e284306a7097297765b5b78a4e28f19f18d4e001",
-                "reference": "e284306a7097297765b5b78a4e28f19f18d4e001",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-metarefresh/zipball/ca724f0edd1179bb0056dc4561d455db7a1f1adc",
+                "reference": "ca724f0edd1179bb0056dc4561d455db7a1f1adc",
                 "shasum": ""
             },
             "require": {
@@ -13312,20 +13318,20 @@
                 "issues": "https://github.com/tvdijen/simplesamlphp-module-metarefresh/issues",
                 "source": "https://github.com/tvdijen/simplesamlphp-module-metarefresh"
             },
-            "time": "2020-07-31T14:43:37+00:00"
+            "time": "2022-01-06T22:45:08+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-negotiate",
-            "version": "v0.9.11",
+            "version": "v0.9.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-negotiate.git",
-                "reference": "e7c4597110c753a750cd522220fc2a5a34b7c1b8"
+                "reference": "48752cea80e81a60ebb522cc10789589ac16df50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-negotiate/zipball/e7c4597110c753a750cd522220fc2a5a34b7c1b8",
-                "reference": "e7c4597110c753a750cd522220fc2a5a34b7c1b8",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-negotiate/zipball/48752cea80e81a60ebb522cc10789589ac16df50",
+                "reference": "48752cea80e81a60ebb522cc10789589ac16df50",
                 "shasum": ""
             },
             "require": {
@@ -13366,10 +13372,10 @@
                 "simplesamlphp"
             ],
             "support": {
-                "issues": "https://github.com/tvdijen/simplesamlphp-module-negotiate/issues",
-                "source": "https://github.com/tvdijen/simplesamlphp-module-negotiate"
+                "issues": "https://github.com/simplesamlphp/simplesamlphp-module-negotiate/issues",
+                "source": "https://github.com/simplesamlphp/simplesamlphp-module-negotiate"
             },
-            "time": "2021-05-17T11:01:39+00:00"
+            "time": "2022-01-03T23:18:27+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-oauth",
@@ -13427,25 +13433,25 @@
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-preprodwarning",
-            "version": "v0.9.2",
+            "version": "v0.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-preprodwarning.git",
-                "reference": "8e032de33a75eb44857dc06d886ad94ee3af4638"
+                "reference": "b3c6d9d41d009e340f4843ce5c24b4118a38e4c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-preprodwarning/zipball/8e032de33a75eb44857dc06d886ad94ee3af4638",
-                "reference": "8e032de33a75eb44857dc06d886ad94ee3af4638",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-preprodwarning/zipball/b3c6d9d41d009e340f4843ce5c24b4118a38e4c3",
+                "reference": "b3c6d9d41d009e340f4843ce5c24b4118a38e4c3",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6",
+                "php": ">=7.0",
                 "simplesamlphp/composer-module-installer": "~1.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "~5.7",
-                "simplesamlphp/simplesamlphp": "^1.17",
+                "simplesamlphp/simplesamlphp": "dev-simplesamlphp-1.19",
                 "webmozart/assert": "^1.4"
             },
             "type": "simplesamlphp-module",
@@ -13473,20 +13479,20 @@
                 "issues": "https://github.com/simplesamlphp/simplesamlphp-module-preprodwarning/issues",
                 "source": "https://github.com/simplesamlphp/simplesamlphp-module-preprodwarning"
             },
-            "time": "2020-04-09T13:05:27+00:00"
+            "time": "2022-01-06T23:21:17+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-radius",
-            "version": "v0.9.3",
+            "version": "v0.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-radius.git",
-                "reference": "36bd0f39f9a13f7eb96ead97c97c3634aa1c3f2d"
+                "reference": "dbe2976ba27f5131faeca368a5665f8baeaae8b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-radius/zipball/36bd0f39f9a13f7eb96ead97c97c3634aa1c3f2d",
-                "reference": "36bd0f39f9a13f7eb96ead97c97c3634aa1c3f2d",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-radius/zipball/dbe2976ba27f5131faeca368a5665f8baeaae8b6",
+                "reference": "dbe2976ba27f5131faeca368a5665f8baeaae8b6",
                 "shasum": ""
             },
             "require": {
@@ -13506,7 +13512,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL-3.0-or-later"
+                "LGPL-2.1-or-later"
             ],
             "authors": [
                 {
@@ -13523,7 +13529,7 @@
                 "issues": "https://github.com/tvdijen/simplesamlphp-module-radius/issues",
                 "source": "https://github.com/tvdijen/simplesamlphp-module-radius"
             },
-            "time": "2019-10-03T18:13:07+00:00"
+            "time": "2022-01-06T23:23:28+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-riak",
@@ -13573,6 +13579,7 @@
                 "issues": "https://github.com/tvdijen/simplesamlphp-module-riak/issues",
                 "source": "https://github.com/tvdijen/simplesamlphp-module-riak"
             },
+            "abandoned": true,
             "time": "2019-12-03T08:28:45+00:00"
         },
         {
@@ -13627,16 +13634,16 @@
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-smartattributes",
-            "version": "v0.9.1",
+            "version": "v0.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-smartattributes.git",
-                "reference": "b45d3ecd916e359a9cae05f9ae9df09b5c42f4e6"
+                "reference": "ba6a32fa287db0f8d767104471176f70fad7f0e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-smartattributes/zipball/b45d3ecd916e359a9cae05f9ae9df09b5c42f4e6",
-                "reference": "b45d3ecd916e359a9cae05f9ae9df09b5c42f4e6",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-smartattributes/zipball/ba6a32fa287db0f8d767104471176f70fad7f0e1",
+                "reference": "ba6a32fa287db0f8d767104471176f70fad7f0e1",
                 "shasum": ""
             },
             "require": {
@@ -13655,7 +13662,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL-3.0-or-later"
+                "LGPL-2.1-or-later"
             ],
             "authors": [
                 {
@@ -13672,20 +13679,20 @@
                 "issues": "https://github.com/tvdijen/simplesamlphp-module-smartattributes/issues",
                 "source": "https://github.com/tvdijen/simplesamlphp-module-smartattributes"
             },
-            "time": "2019-12-03T09:24:09+00:00"
+            "time": "2022-01-06T23:42:07+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-sqlauth",
-            "version": "v0.9.3",
+            "version": "v0.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp-module-sqlauth.git",
-                "reference": "c2dc4fc8aa6d8b2408131e09b39f06d8610ff374"
+                "reference": "8a28f9a9726bab1dbc8fd3734daa08882dd0a25b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-sqlauth/zipball/c2dc4fc8aa6d8b2408131e09b39f06d8610ff374",
-                "reference": "c2dc4fc8aa6d8b2408131e09b39f06d8610ff374",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp-module-sqlauth/zipball/8a28f9a9726bab1dbc8fd3734daa08882dd0a25b",
+                "reference": "8a28f9a9726bab1dbc8fd3734daa08882dd0a25b",
                 "shasum": ""
             },
             "require": {
@@ -13722,7 +13729,7 @@
                 "issues": "https://github.com/tvdijen/simplesamlphp-module-sqlauth/issues",
                 "source": "https://github.com/tvdijen/simplesamlphp-module-sqlauth"
             },
-            "time": "2021-04-29T16:51:59+00:00"
+            "time": "2022-01-06T23:50:52+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp-module-statistics",
@@ -14078,16 +14085,16 @@
         },
         {
             "name": "symfony/config",
-            "version": "v4.4.34",
+            "version": "v4.4.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "e99b65a18faa34fde57078095c39a1bc91a22492"
+                "reference": "03218ffbd5faeda5e6a97f9109acebf7973ff385"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/e99b65a18faa34fde57078095c39a1bc91a22492",
-                "reference": "e99b65a18faa34fde57078095c39a1bc91a22492",
+                "url": "https://api.github.com/repos/symfony/config/zipball/03218ffbd5faeda5e6a97f9109acebf7973ff385",
+                "reference": "03218ffbd5faeda5e6a97f9109acebf7973ff385",
                 "shasum": ""
             },
             "require": {
@@ -14136,7 +14143,7 @@
             "description": "Helps you find, load, combine, autofill and validate configuration values of any kind",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/config/tree/v4.4.34"
+                "source": "https://github.com/symfony/config/tree/v4.4.36"
             },
             "funding": [
                 {
@@ -14152,7 +14159,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-29T15:43:26+00:00"
+            "time": "2021-12-12T15:06:47+00:00"
         },
         {
             "name": "symfony/console",
@@ -15314,16 +15321,16 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.23.1",
+            "version": "v1.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "1100343ed1a92e3a38f9ae122fc0eb21602547be"
+                "reference": "57b712b08eddb97c762a8caa32c84e037892d2e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/1100343ed1a92e3a38f9ae122fc0eb21602547be",
-                "reference": "1100343ed1a92e3a38f9ae122fc0eb21602547be",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/57b712b08eddb97c762a8caa32c84e037892d2e9",
+                "reference": "57b712b08eddb97c762a8caa32c84e037892d2e9",
                 "shasum": ""
             },
             "require": {
@@ -15377,7 +15384,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.23.1"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.24.0"
             },
             "funding": [
                 {
@@ -15393,20 +15400,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-28T13:41:28+00:00"
+            "time": "2021-09-13T13:58:33+00:00"
         },
         {
             "name": "symfony/polyfill-php81",
-            "version": "v1.23.0",
+            "version": "v1.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php81.git",
-                "reference": "e66119f3de95efc359483f810c4c3e6436279436"
+                "reference": "5de4ba2d41b15f9bd0e19b2ab9674135813ec98f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php81/zipball/e66119f3de95efc359483f810c4c3e6436279436",
-                "reference": "e66119f3de95efc359483f810c4c3e6436279436",
+                "url": "https://api.github.com/repos/symfony/polyfill-php81/zipball/5de4ba2d41b15f9bd0e19b2ab9674135813ec98f",
+                "reference": "5de4ba2d41b15f9bd0e19b2ab9674135813ec98f",
                 "shasum": ""
             },
             "require": {
@@ -15456,7 +15463,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php81/tree/v1.23.0"
+                "source": "https://github.com/symfony/polyfill-php81/tree/v1.24.0"
             },
             "funding": [
                 {
@@ -15472,7 +15479,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-21T13:25:03+00:00"
+            "time": "2021-09-13T13:58:11+00:00"
         },
         {
             "name": "symfony/polyfill-util",
@@ -16057,16 +16064,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v4.4.34",
+            "version": "v4.4.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "2d0c056b2faaa3d785bdbd5adecc593a5be9c16e"
+                "reference": "02685c62fcbc4262235cc72a54fbd45ab719ce3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/2d0c056b2faaa3d785bdbd5adecc593a5be9c16e",
-                "reference": "2d0c056b2faaa3d785bdbd5adecc593a5be9c16e",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/02685c62fcbc4262235cc72a54fbd45ab719ce3c",
+                "reference": "02685c62fcbc4262235cc72a54fbd45ab719ce3c",
                 "shasum": ""
             },
             "require": {
@@ -16126,7 +16133,7 @@
                 "dump"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v4.4.34"
+                "source": "https://github.com/symfony/var-dumper/tree/v4.4.36"
             },
             "funding": [
                 {
@@ -16142,7 +16149,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-12T10:50:54+00:00"
+            "time": "2021-12-29T09:28:53+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -18116,16 +18123,16 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.5.1",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "a12f7e301eb7258bb68acd89d4aefa05c2906cae"
+                "reference": "93ebd0014cab80c4ea9f5e297ea48672f1b87706"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/a12f7e301eb7258bb68acd89d4aefa05c2906cae",
-                "reference": "a12f7e301eb7258bb68acd89d4aefa05c2906cae",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/93ebd0014cab80c4ea9f5e297ea48672f1b87706",
+                "reference": "93ebd0014cab80c4ea9f5e297ea48672f1b87706",
                 "shasum": ""
             },
             "require": {
@@ -18160,9 +18167,9 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.5.1"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.6.0"
             },
-            "time": "2021-10-02T14:08:47+00:00"
+            "time": "2022-01-04T19:58:01+00:00"
         },
         {
             "name": "phpspec/prophecy",
