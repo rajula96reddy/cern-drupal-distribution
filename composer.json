@@ -230,15 +230,7 @@
   "prefer-stable": true,
   "config": {
     "discard-changes": true,
-    "sort-packages": true,
-    "allow-plugins": {
-      "composer/installers": true,
-      "cweagans/composer-patches": true,
-      "drupal/core-composer-scaffold": true,
-      "drupal/core-project-message": true,
-      "wikimedia/composer-merge-plugin": true,
-      "zaporylie/composer-drupal-optimizations": false
-    }
+    "sort-packages": true
   },
   "autoload": {
     "classmap": [
