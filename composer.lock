@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d3c64f5ed3951300ea9857f8556c5b78",
+    "content-hash": "476e490ac1438323c38655fc64da73c5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2459,18 +2459,18 @@
         },
         {
             "name": "drupal/cern-components",
-            "version": "2.7.16",
+            "version": "2.7.17",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/modules/cern-components.git",
-                "reference": "0b729f96f108744163368d9562f2ff066cfd88c2"
+                "reference": "0d765aef3b142bb97fbc731025fa04a89ea09b87"
             },
             "require": {
                 "drupal/cern-full-html-format": "^2.0.2",
                 "drupal/components": "^2.4",
                 "drupal/ds": "^3.9",
                 "drupal/field_group": "^3.1",
-                "drupal/twig_tweak": "^2.8",
+                "drupal/twig_tweak": "^3.1.3",
                 "drupal/ui_patterns": "^1.2"
             },
             "type": "drupal-custom-module",
@@ -2488,7 +2488,7 @@
                 }
             ],
             "description": "Defines a set of re-usable patterns for the CERN Drupal infrastructure",
-            "time": "2022-01-11T14:15:59+00:00"
+            "time": "2022-01-11T15:18:43+00:00"
         },
         {
             "name": "drupal/cern-dev-status",
@@ -5172,17 +5172,17 @@
         },
         {
             "name": "drupal/field_group",
-            "version": "3.1.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/field_group.git",
-                "reference": "8.x-3.1"
+                "reference": "8.x-3.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/field_group-8.x-3.1.zip",
-                "reference": "8.x-3.1",
-                "shasum": "8a719eaea594f0ba874172831cb28da93c66b77a"
+                "url": "https://ftp.drupal.org/files/projects/field_group-8.x-3.2.zip",
+                "reference": "8.x-3.2",
+                "shasum": "2020bbfe40f6ba43bc733ae7c8761632572433a0"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9"
@@ -5193,8 +5193,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.1",
-                    "datestamp": "1591772567",
+                    "version": "8.x-3.2",
+                    "datestamp": "1628513585",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7737,7 +7737,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/rules.git",
-                "reference": "5c23deb5eee0173e5fbb21c80f9547ddb0fc3830"
+                "reference": "8a63c77a0eafd547c047f754873d158671daa5a1"
             },
             "require": {
                 "drupal/core": "^9 || ^10",
@@ -7750,7 +7750,7 @@
                 },
                 "drupal": {
                     "version": "8.x-3.x-dev",
-                    "datestamp": "1641238314",
+                    "datestamp": "1641327161",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -8153,21 +8153,24 @@
         },
         {
             "name": "drupal/twig_tweak",
-            "version": "2.9.0",
+            "version": "3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/twig_tweak.git",
-                "reference": "8.x-2.9"
+                "reference": "3.1.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/twig_tweak-8.x-2.9.zip",
-                "reference": "8.x-2.9",
-                "shasum": "c45ba1a41e323a432d1ff36d0a72344b88595a39"
+                "url": "https://ftp.drupal.org/files/projects/twig_tweak-3.1.3.zip",
+                "reference": "3.1.3",
+                "shasum": "9f2f6813bf6d40faded73b0fd36e6c669565c7f7"
             },
             "require": {
-                "drupal/core": "^8.7 || ^9.0",
-                "twig/twig": "^1.41 || ^2.12"
+                "drupal/core": "^9.0",
+                "ext-json": "*",
+                "php": ">=7.3",
+                "symfony/polyfill-php80": "^1.17",
+                "twig/twig": "^2.12"
             },
             "suggest": {
                 "symfony/var-dumper": "Better dump() function for debugging Twig variables"
@@ -8175,8 +8178,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.9",
-                    "datestamp": "1608093728",
+                    "version": "3.1.3",
+                    "datestamp": "1635338145",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -8185,7 +8188,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -10750,16 +10753,16 @@
         },
         {
             "name": "mglaman/phpstan-drupal",
-            "version": "1.1.7",
+            "version": "1.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mglaman/phpstan-drupal.git",
-                "reference": "2d7cc0f646d01af0d7f42dbc55c2211eaeed6675"
+                "reference": "62d99794b9df2a0e56010a79d67ddeffe61b745b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mglaman/phpstan-drupal/zipball/2d7cc0f646d01af0d7f42dbc55c2211eaeed6675",
-                "reference": "2d7cc0f646d01af0d7f42dbc55c2211eaeed6675",
+                "url": "https://api.github.com/repos/mglaman/phpstan-drupal/zipball/62d99794b9df2a0e56010a79d67ddeffe61b745b",
+                "reference": "62d99794b9df2a0e56010a79d67ddeffe61b745b",
                 "shasum": ""
             },
             "require": {
@@ -10834,7 +10837,7 @@
             "description": "Drupal extension and rules for PHPStan",
             "support": {
                 "issues": "https://github.com/mglaman/phpstan-drupal/issues",
-                "source": "https://github.com/mglaman/phpstan-drupal/tree/1.1.7"
+                "source": "https://github.com/mglaman/phpstan-drupal/tree/1.1.8"
             },
             "funding": [
                 {
@@ -10850,7 +10853,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-10T13:58:09+00:00"
+            "time": "2022-01-12T22:51:02+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -11308,16 +11311,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.3.3",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "151a51f6149855785fbd883e79768c0abc96b75f"
+                "reference": "72b04d97b5e6e60a081f17c416fef35bd521120b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/151a51f6149855785fbd883e79768c0abc96b75f",
-                "reference": "151a51f6149855785fbd883e79768c0abc96b75f",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/72b04d97b5e6e60a081f17c416fef35bd521120b",
+                "reference": "72b04d97b5e6e60a081f17c416fef35bd521120b",
                 "shasum": ""
             },
             "require": {
@@ -11333,7 +11336,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -11348,7 +11351,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.3.3"
+                "source": "https://github.com/phpstan/phpstan/tree/1.4.0"
             },
             "funding": [
                 {
@@ -11368,7 +11371,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-07T09:49:03+00:00"
+            "time": "2022-01-14T15:58:47+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
