@@ -1,0 +1,1094 @@
+diff --git a/core/modules/comment/src/Plugin/views/field/EntityLink.php b/core/modules/comment/src/Plugin/views/field/EntityLink.php
+index 9760057103..a33843a555 100644
+--- a/core/modules/comment/src/Plugin/views/field/EntityLink.php
++++ b/core/modules/comment/src/Plugin/views/field/EntityLink.php
+@@ -76,7 +76,7 @@ public function render(ResultRow $values) {
+     $entity = $this->getEntity($values);
+ 
+     // Only render the links, if they are defined.
+-    return !empty($this->build[$entity->id()]['links']['comment__comment']) ? \Drupal::service('renderer')->render($this->build[$entity->id()]['links']['comment__comment']) : '';
++    return $entity && !empty($this->build[$entity->id()]['links']['comment__comment']) ? \Drupal::service('renderer')->render($this->build[$entity->id()]['links']['comment__comment']) : '';
+   }
+ 
+ }
+diff --git a/core/modules/comment/src/Plugin/views/field/LinkApprove.php b/core/modules/comment/src/Plugin/views/field/LinkApprove.php
+index 683c3cbb4c..6f21a2c551 100644
+--- a/core/modules/comment/src/Plugin/views/field/LinkApprove.php
++++ b/core/modules/comment/src/Plugin/views/field/LinkApprove.php
+@@ -19,7 +19,8 @@ class LinkApprove extends LinkBase {
+    * {@inheritdoc}
+    */
+   protected function getUrlInfo(ResultRow $row) {
+-    return Url::fromRoute('comment.approve', ['comment' => $this->getEntity($row)->id()]);
++    $entity = $this->getEntity($row);
++    return $entity ? Url::fromRoute('comment.approve', ['comment' => $entity->id()]) : NULL;
+   }
+ 
+   /**
+diff --git a/core/modules/comment/src/Plugin/views/field/LinkReply.php b/core/modules/comment/src/Plugin/views/field/LinkReply.php
+index 3ddbd08152..3ca38ec7e9 100644
+--- a/core/modules/comment/src/Plugin/views/field/LinkReply.php
++++ b/core/modules/comment/src/Plugin/views/field/LinkReply.php
+@@ -21,12 +21,13 @@ class LinkReply extends LinkBase {
+   protected function getUrlInfo(ResultRow $row) {
+     /** @var \Drupal\comment\CommentInterface $comment */
+     $comment = $this->getEntity($row);
+-    return Url::fromRoute('comment.reply', [
+-      'entity_type' => $comment->getCommentedEntityTypeId(),
+-      'entity' => $comment->getCommentedEntityId(),
+-      'field_name' => $comment->getFieldName(),
+-      'pid' => $comment->id(),
+-    ]);
++    return $comment ?
++      Url::fromRoute('comment.reply', [
++        'entity_type' => $comment->getCommentedEntityTypeId(),
++        'entity' => $comment->getCommentedEntityId(),
++        'field_name' => $comment->getFieldName(),
++        'pid' => $comment->id(),
++      ]) : NULL;
+   }
+ 
+   /**
+diff --git a/core/modules/comment/tests/src/Unit/Plugin/views/field/EntityLinkTest.php b/core/modules/comment/tests/src/Unit/Plugin/views/field/EntityLinkTest.php
+new file mode 100644
+index 0000000000..236812f253
+--- /dev/null
++++ b/core/modules/comment/tests/src/Unit/Plugin/views/field/EntityLinkTest.php
+@@ -0,0 +1,31 @@
++<?php
++
++namespace Drupal\Tests\comment\Unit\Plugin\views\field;
++
++use Drupal\comment\Plugin\views\field\EntityLink;
++use Drupal\Tests\UnitTestCase;
++use Drupal\views\Plugin\views\display\DisplayPluginBase;
++use Drupal\views\ResultRow;
++use Drupal\views\ViewExecutable;
++
++/**
++ * @coversDefaultClass \Drupal\comment\Plugin\views\field\EntityLink
++ * @group comment
++ */
++class EntityLinkTest extends UnitTestCase {
++
++  /**
++   * Test the render method.
++   *
++   * @covers ::render
++   */
++  public function testRender() {
++    $row = new ResultRow();
++    $field = new EntityLink([], '', []);
++    $view = $this->createMock(ViewExecutable::class);
++    $display = $this->createMock(DisplayPluginBase::class);
++    $field->init($view, $display);
++    $this->assertEmpty($field->render($row));
++  }
++
++}
+diff --git a/core/modules/comment/tests/src/Unit/Plugin/views/field/LinkApproveTest.php b/core/modules/comment/tests/src/Unit/Plugin/views/field/LinkApproveTest.php
+new file mode 100644
+index 0000000000..498cd4d503
+--- /dev/null
++++ b/core/modules/comment/tests/src/Unit/Plugin/views/field/LinkApproveTest.php
+@@ -0,0 +1,47 @@
++<?php
++
++namespace Drupal\Tests\comment\Unit\Plugin\views\field;
++
++use Drupal\comment\Plugin\views\field\LinkApprove;
++use Drupal\Core\Access\AccessManagerInterface;
++use Drupal\Core\Entity\EntityRepositoryInterface;
++use Drupal\Core\Entity\EntityTypeManagerInterface;
++use Drupal\Core\Language\LanguageManagerInterface;
++use Drupal\Core\StringTranslation\TranslationInterface;
++use Drupal\Tests\UnitTestCase;
++use Drupal\views\Plugin\views\display\DisplayPluginBase;
++use Drupal\views\ResultRow;
++use Drupal\views\ViewExecutable;
++use Symfony\Component\DependencyInjection\ContainerBuilder;
++
++/**
++ * @coversDefaultClass \Drupal\comment\Plugin\views\field\LinkApprove
++ * @group comment
++ */
++class LinkApproveTest extends UnitTestCase {
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function tearDown(): void {
++    parent::tearDown();
++    $container = new ContainerBuilder();
++    \Drupal::setContainer($container);
++  }
++
++  /**
++   * @covers ::render
++   */
++  public function testRender() {
++    $row = new ResultRow();
++    $container = new ContainerBuilder();
++    $container->set('string_translation', $this->createMock(TranslationInterface::class));
++    \Drupal::setContainer($container);
++    $field = new LinkApprove([], '', [], $this->createMock(AccessManagerInterface::class), $this->createMock(EntityTypeManagerInterface::class), $this->createMock(EntityRepositoryInterface::class), $this->createMock(LanguageManagerInterface::class));
++    $view = $this->createMock(ViewExecutable::class);
++    $display = $this->createMock(DisplayPluginBase::class);
++    $field->init($view, $display);
++    $this->assertEmpty($field->render($row));
++  }
++
++}
+diff --git a/core/modules/comment/tests/src/Unit/Plugin/views/field/LinkReplyTest.php b/core/modules/comment/tests/src/Unit/Plugin/views/field/LinkReplyTest.php
+new file mode 100644
+index 0000000000..c7d3e3ce46
+--- /dev/null
++++ b/core/modules/comment/tests/src/Unit/Plugin/views/field/LinkReplyTest.php
+@@ -0,0 +1,47 @@
++<?php
++
++namespace Drupal\Tests\comment\Unit\Plugin\views\field;
++
++use Drupal\comment\Plugin\views\field\LinkReply;
++use Drupal\Core\Access\AccessManagerInterface;
++use Drupal\Core\Entity\EntityRepositoryInterface;
++use Drupal\Core\Entity\EntityTypeManagerInterface;
++use Drupal\Core\Language\LanguageManagerInterface;
++use Drupal\Core\StringTranslation\TranslationInterface;
++use Drupal\Tests\UnitTestCase;
++use Drupal\views\Plugin\views\display\DisplayPluginBase;
++use Drupal\views\ResultRow;
++use Drupal\views\ViewExecutable;
++use Symfony\Component\DependencyInjection\ContainerBuilder;
++
++/**
++ * @coversDefaultClass \Drupal\comment\Plugin\views\field\LinkReply
++ * @group comment
++ */
++class LinkReplyTest extends UnitTestCase {
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function tearDown(): void {
++    parent::tearDown();
++    $container = new ContainerBuilder();
++    \Drupal::setContainer($container);
++  }
++
++  /**
++   * @covers ::render
++   */
++  public function testRender() {
++    $row = new ResultRow();
++    $container = new ContainerBuilder();
++    $container->set('string_translation', $this->createMock(TranslationInterface::class));
++    \Drupal::setContainer($container);
++    $field = new LinkReply([], '', [], $this->createMock(AccessManagerInterface::class), $this->createMock(EntityTypeManagerInterface::class), $this->createMock(EntityRepositoryInterface::class), $this->createMock(LanguageManagerInterface::class));
++    $view = $this->createMock(ViewExecutable::class);
++    $display = $this->createMock(DisplayPluginBase::class);
++    $field->init($view, $display);
++    $this->assertEmpty($field->render($row));
++  }
++
++}
+diff --git a/core/modules/contact/src/Plugin/views/field/ContactLink.php b/core/modules/contact/src/Plugin/views/field/ContactLink.php
+index a98be137dd..8323b0aee4 100644
+--- a/core/modules/contact/src/Plugin/views/field/ContactLink.php
++++ b/core/modules/contact/src/Plugin/views/field/ContactLink.php
+@@ -30,7 +30,8 @@ public function buildOptionsForm(&$form, FormStateInterface $form_state) {
+    * {@inheritdoc}
+    */
+   protected function getUrlInfo(ResultRow $row) {
+-    return Url::fromRoute('entity.user.contact_form', ['user' => $this->getEntity($row)->id()]);
++    $entity = $this->getEntity($row);
++    return $entity ? Url::fromRoute('entity.user.contact_form', ['user' => $entity->id()]) : NULL;
+   }
+ 
+   /**
+@@ -38,6 +39,9 @@ protected function getUrlInfo(ResultRow $row) {
+    */
+   protected function renderLink(ResultRow $row) {
+     $entity = $this->getEntity($row);
++    if (!$entity) {
++      return '';
++    }
+ 
+     $this->options['alter']['make_link'] = TRUE;
+     $this->options['alter']['url'] = $this->getUrlInfo($row);
+diff --git a/core/modules/contact/tests/src/Unit/ContactLinkTest.php b/core/modules/contact/tests/src/Unit/ContactLinkTest.php
+new file mode 100644
+index 0000000000..46630ac5b6
+--- /dev/null
++++ b/core/modules/contact/tests/src/Unit/ContactLinkTest.php
+@@ -0,0 +1,47 @@
++<?php
++
++namespace Drupal\Tests\contact\Unit;
++
++use Drupal\contact\Plugin\views\field\ContactLink;
++use Drupal\Core\Access\AccessManagerInterface;
++use Drupal\Core\Entity\EntityRepositoryInterface;
++use Drupal\Core\Entity\EntityTypeManagerInterface;
++use Drupal\Core\Language\LanguageManagerInterface;
++use Drupal\Core\StringTranslation\TranslationInterface;
++use Drupal\Tests\UnitTestCase;
++use Drupal\views\Plugin\views\display\DisplayPluginBase;
++use Drupal\views\ResultRow;
++use Drupal\views\ViewExecutable;
++use Symfony\Component\DependencyInjection\ContainerBuilder;
++
++/**
++ * @coversDefaultClass \Drupal\contact\Plugin\views\field\ContactLink
++ * @group contact
++ */
++class ContactLinkTest extends UnitTestCase {
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function tearDown(): void {
++    parent::tearDown();
++    $container = new ContainerBuilder();
++    \Drupal::setContainer($container);
++  }
++
++  /**
++   * @covers ::render
++   */
++  public function testRender() {
++    $row = new ResultRow();
++    $container = new ContainerBuilder();
++    $container->set('string_translation', $this->createMock(TranslationInterface::class));
++    \Drupal::setContainer($container);
++    $field = new ContactLink([], '', [], $this->createMock(AccessManagerInterface::class), $this->createMock(EntityTypeManagerInterface::class), $this->createMock(EntityRepositoryInterface::class), $this->createMock(LanguageManagerInterface::class));
++    $view = $this->createMock(ViewExecutable::class);
++    $display = $this->createMock(DisplayPluginBase::class);
++    $field->init($view, $display);
++    $this->assertEmpty($field->render($row));
++  }
++
++}
+diff --git a/core/modules/media_library/media_library.module b/core/modules/media_library/media_library.module
+index 5312b8e96d..54384a9557 100644
+--- a/core/modules/media_library/media_library.module
++++ b/core/modules/media_library/media_library.module
+@@ -271,9 +271,7 @@ function media_library_form_views_form_media_library_page_alter(array &$form, Fo
+     foreach (Element::getVisibleChildren($form['media_bulk_form']) as $key) {
+       if (isset($view->result[$key])) {
+         $media = $view->field['media_bulk_form']->getEntity($view->result[$key]);
+-        $form['media_bulk_form'][$key]['#title'] = t('Select @label', [
+-          '@label' => $media->label(),
+-        ]);
++        $form['media_bulk_form'][$key]['#title'] = $media ? t('Select @label', ['@label' => $media->label()]) : '';
+       }
+     }
+   }
+diff --git a/core/modules/media_library/src/Plugin/views/field/MediaLibrarySelectForm.php b/core/modules/media_library/src/Plugin/views/field/MediaLibrarySelectForm.php
+index 2d0702bd4d..f9458d18ec 100644
+--- a/core/modules/media_library/src/Plugin/views/field/MediaLibrarySelectForm.php
++++ b/core/modules/media_library/src/Plugin/views/field/MediaLibrarySelectForm.php
+@@ -56,14 +56,14 @@ public function viewsForm(array &$form, FormStateInterface $form_state) {
+     $form[$this->options['id']]['#tree'] = TRUE;
+     foreach ($this->view->result as $row_index => $row) {
+       $entity = $this->getEntity($row);
+-      $form[$this->options['id']][$row_index] = [
++      $form[$this->options['id']][$row_index] = $entity ? [
+         '#type' => 'checkbox',
+         '#title' => $this->t('Select @label', [
+           '@label' => $entity->label(),
+         ]),
+         '#title_display' => 'invisible',
+         '#return_value' => $entity->id(),
+-      ];
++      ] : [];
+     }
+ 
+     // The selection is persistent across different pages in the media library
+diff --git a/core/modules/media_library/tests/src/Unit/MediaLibrarySelectFormTest.php b/core/modules/media_library/tests/src/Unit/MediaLibrarySelectFormTest.php
+new file mode 100644
+index 0000000000..2b677b6530
+--- /dev/null
++++ b/core/modules/media_library/tests/src/Unit/MediaLibrarySelectFormTest.php
+@@ -0,0 +1,115 @@
++<?php
++
++namespace Drupal\Tests\media_library\Unit;
++
++use Drupal\Core\Form\FormStateInterface;
++use Drupal\Core\StringTranslation\TranslationInterface;
++use Drupal\media_library\Plugin\views\field\MediaLibrarySelectForm;
++use Drupal\Tests\UnitTestCase;
++use Drupal\views\Entity\View;
++use Drupal\views\Plugin\views\display\DefaultDisplay;
++use Drupal\views\Plugin\ViewsPluginManager;
++use Drupal\views\ResultRow;
++use Drupal\views\ViewExecutable;
++use Symfony\Component\DependencyInjection\ContainerBuilder;
++use Symfony\Component\HttpFoundation\ParameterBag;
++use Symfony\Component\HttpFoundation\Request;
++
++/**
++ * @coversDefaultClass \Drupal\media_library\Plugin\views\field\MediaLibrarySelectForm
++ * @group media_library
++ */
++class MediaLibrarySelectFormTest extends UnitTestCase {
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function tearDown(): void {
++    parent::tearDown();
++    $container = new ContainerBuilder();
++    \Drupal::setContainer($container);
++  }
++
++  /**
++   * @covers ::viewsForm
++   */
++  public function testViewsForm() {
++    $row = new ResultRow();
++
++    $field = $this->getMockBuilder(MediaLibrarySelectForm::class)
++      ->setMethods(['getEntity'])
++      ->disableOriginalConstructor()
++      ->getMock();
++    $field->expects($this->any())
++      ->method('getEntity')
++      ->willReturn(NULL);
++
++    $container = new ContainerBuilder();
++    $container->set('string_translation', $this->createMock(TranslationInterface::class));
++    \Drupal::setContainer($container);
++
++    $query = $this->getMockBuilder(ParameterBag::class)
++      ->setMethods(['all'])
++      ->disableOriginalConstructor()
++      ->getMock();
++    $query->expects($this->any())
++      ->method('all')
++      ->willReturn([]);
++
++    $request = $this->getMockBuilder(Request::class)
++      ->disableOriginalConstructor()
++      ->getMock();
++    $request->query = $query;
++
++    $view = $this->getMockBuilder(ViewExecutable::class)
++      ->setMethods(['getRequest', 'initStyle', 'getDisplay'])
++      ->disableOriginalConstructor()
++      ->getMock();
++    $view->expects($this->any())
++      ->method('getRequest')
++      ->willReturn($request);
++    $view->expects($this->any())
++      ->method('initStyle')
++      ->willReturn(TRUE);
++
++    $display = $this->getMockBuilder(DefaultDisplay::class)
++      ->disableOriginalConstructor()
++      ->getMock();
++    $display->display['id'] = 'foo';
++    $view->expects($this->any())
++      ->method('getDisplay')
++      ->willReturn($display);
++
++    $view_entity = $this->getMockBuilder(View::class)
++      ->disableOriginalConstructor()
++      ->getMock();
++    $view_entity->expects($this->any())
++      ->method('get')
++      ->willReturn([]);
++    $view->storage = $view_entity;
++
++    $display_manager = $this->getMockBuilder(ViewsPluginManager::class)
++      ->disableOriginalConstructor()
++      ->getMock();
++    $display = $this->getMockBuilder(DefaultDisplay::class)
++      ->disableOriginalConstructor()
++      ->getMock();
++    $display_manager->expects($this->any())
++      ->method('createInstance')
++      ->willReturn($display);
++    $container->set('plugin.manager.views.display', $display_manager);
++    \Drupal::setContainer($container);
++
++    $form_state = $this->createMock(FormStateInterface::class);
++    $view->result = [$row];
++    $field->view = $view;
++    $field->options = ['id' => 'bar'];
++    $form = [];
++    $field->viewsForm($form, $form_state);
++    $this->assertNotEmpty($form);
++    $this->assertNotEmpty($field->view->result);
++    $this->assertIsArray($form[$field->options['id']][0]);
++    $this->assertEmpty($form[$field->options['id']][0]);
++  }
++
++}
+diff --git a/core/modules/node/src/Plugin/views/field/RevisionLink.php b/core/modules/node/src/Plugin/views/field/RevisionLink.php
+index 949ad6e07c..72476298f5 100644
+--- a/core/modules/node/src/Plugin/views/field/RevisionLink.php
++++ b/core/modules/node/src/Plugin/views/field/RevisionLink.php
+@@ -21,10 +21,15 @@ class RevisionLink extends LinkBase {
+   protected function getUrlInfo(ResultRow $row) {
+     /** @var \Drupal\node\NodeInterface $node */
+     $node = $this->getEntity($row);
+-    // Current revision uses the node view path.
+-    return !$node->isDefaultRevision() ?
+-      Url::fromRoute('entity.node.revision', ['node' => $node->id(), 'node_revision' => $node->getRevisionId()]) :
+-      $node->toUrl();
++    if ($node) {
++      // Current revision uses the node view path.
++      return !$node->isDefaultRevision() ?
++        Url::fromRoute('entity.node.revision', [
++          'node' => $node->id(),
++          'node_revision' => $node->getRevisionId(),
++        ]) :
++        $node->toUrl();
++    }
+   }
+ 
+   /**
+@@ -33,7 +38,7 @@ protected function getUrlInfo(ResultRow $row) {
+   protected function renderLink(ResultRow $row) {
+     /** @var \Drupal\node\NodeInterface $node */
+     $node = $this->getEntity($row);
+-    if (!$node->getRevisionid()) {
++    if (!$node || !$node->getRevisionid()) {
+       return '';
+     }
+     $text = parent::renderLink($row);
+diff --git a/core/modules/node/src/Plugin/views/field/RevisionLinkDelete.php b/core/modules/node/src/Plugin/views/field/RevisionLinkDelete.php
+index 2e1f683b52..a34eef3b6c 100644
+--- a/core/modules/node/src/Plugin/views/field/RevisionLinkDelete.php
++++ b/core/modules/node/src/Plugin/views/field/RevisionLinkDelete.php
+@@ -20,7 +20,7 @@ class RevisionLinkDelete extends RevisionLink {
+   protected function getUrlInfo(ResultRow $row) {
+     /** @var \Drupal\node\NodeInterface $node */
+     $node = $this->getEntity($row);
+-    return Url::fromRoute('node.revision_delete_confirm', ['node' => $node->id(), 'node_revision' => $node->getRevisionId()]);
++    return $node ? Url::fromRoute('node.revision_delete_confirm', ['node' => $node->id(), 'node_revision' => $node->getRevisionId()]) : NULL;
+   }
+ 
+   /**
+diff --git a/core/modules/node/src/Plugin/views/field/RevisionLinkRevert.php b/core/modules/node/src/Plugin/views/field/RevisionLinkRevert.php
+index 33b20b8885..0af6d7f195 100644
+--- a/core/modules/node/src/Plugin/views/field/RevisionLinkRevert.php
++++ b/core/modules/node/src/Plugin/views/field/RevisionLinkRevert.php
+@@ -20,7 +20,7 @@ class RevisionLinkRevert extends RevisionLink {
+   protected function getUrlInfo(ResultRow $row) {
+     /** @var \Drupal\node\NodeInterface $node */
+     $node = $this->getEntity($row);
+-    return Url::fromRoute('node.revision_revert_confirm', ['node' => $node->id(), 'node_revision' => $node->getRevisionId()]);
++    return $node ? Url::fromRoute('node.revision_revert_confirm', ['node' => $node->id(), 'node_revision' => $node->getRevisionId()]) : NULL;
+   }
+ 
+   /**
+diff --git a/core/modules/node/tests/src/Unit/Plugin/views/field/RevisionLinkDeleteTest.php b/core/modules/node/tests/src/Unit/Plugin/views/field/RevisionLinkDeleteTest.php
+new file mode 100644
+index 0000000000..52f748d4d5
+--- /dev/null
++++ b/core/modules/node/tests/src/Unit/Plugin/views/field/RevisionLinkDeleteTest.php
+@@ -0,0 +1,47 @@
++<?php
++
++namespace Drupal\Tests\node\Unit\Plugin\views\field;
++
++use Drupal\Core\Access\AccessManagerInterface;
++use Drupal\Core\Entity\EntityRepositoryInterface;
++use Drupal\Core\Entity\EntityTypeManagerInterface;
++use Drupal\Core\Language\LanguageManagerInterface;
++use Drupal\Core\StringTranslation\TranslationInterface;
++use Drupal\node\Plugin\views\field\RevisionLinkDelete;
++use Drupal\Tests\UnitTestCase;
++use Drupal\views\Plugin\views\display\DisplayPluginBase;
++use Drupal\views\ResultRow;
++use Drupal\views\ViewExecutable;
++use Symfony\Component\DependencyInjection\ContainerBuilder;
++
++/**
++ * @coversDefaultClass \Drupal\node\Plugin\views\field\RevisionLinkDelete
++ * @group node
++ */
++class RevisionLinkDeleteTest extends UnitTestCase {
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function tearDown(): void {
++    parent::tearDown();
++    $container = new ContainerBuilder();
++    \Drupal::setContainer($container);
++  }
++
++  /**
++   * @covers ::render
++   */
++  public function testRender() {
++    $row = new ResultRow();
++    $container = new ContainerBuilder();
++    $container->set('string_translation', $this->createMock(TranslationInterface::class));
++    \Drupal::setContainer($container);
++    $field = new RevisionLinkDelete([], '', [], $this->createMock(AccessManagerInterface::class), $this->createMock(EntityTypeManagerInterface::class), $this->createMock(EntityRepositoryInterface::class), $this->createMock(LanguageManagerInterface::class));
++    $view = $this->createMock(ViewExecutable::class);
++    $display = $this->createMock(DisplayPluginBase::class);
++    $field->init($view, $display);
++    $this->assertEmpty($field->render($row));
++  }
++
++}
+diff --git a/core/modules/node/tests/src/Unit/Plugin/views/field/RevisionLinkRevertTest.php b/core/modules/node/tests/src/Unit/Plugin/views/field/RevisionLinkRevertTest.php
+new file mode 100644
+index 0000000000..6827d787fb
+--- /dev/null
++++ b/core/modules/node/tests/src/Unit/Plugin/views/field/RevisionLinkRevertTest.php
+@@ -0,0 +1,47 @@
++<?php
++
++namespace Drupal\Tests\node\Unit\Plugin\views\field;
++
++use Drupal\Core\Access\AccessManagerInterface;
++use Drupal\Core\Entity\EntityRepositoryInterface;
++use Drupal\Core\Entity\EntityTypeManagerInterface;
++use Drupal\Core\Language\LanguageManagerInterface;
++use Drupal\Core\StringTranslation\TranslationInterface;
++use Drupal\node\Plugin\views\field\RevisionLinkDelete;
++use Drupal\Tests\UnitTestCase;
++use Drupal\views\Plugin\views\display\DisplayPluginBase;
++use Drupal\views\ResultRow;
++use Drupal\views\ViewExecutable;
++use Symfony\Component\DependencyInjection\ContainerBuilder;
++
++/**
++ * @coversDefaultClass \Drupal\node\Plugin\views\field\RevisionLinkRevert
++ * @group node
++ */
++class RevisionLinkRevertTest extends UnitTestCase {
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function tearDown(): void {
++    parent::tearDown();
++    $container = new ContainerBuilder();
++    \Drupal::setContainer($container);
++  }
++
++  /**
++   * @covers ::render
++   */
++  public function testRender() {
++    $row = new ResultRow();
++    $container = new ContainerBuilder();
++    $container->set('string_translation', $this->createMock(TranslationInterface::class));
++    \Drupal::setContainer($container);
++    $field = new RevisionLinkDelete([], '', [], $this->createMock(AccessManagerInterface::class), $this->createMock(EntityTypeManagerInterface::class), $this->createMock(EntityRepositoryInterface::class), $this->createMock(LanguageManagerInterface::class));
++    $view = $this->createMock(ViewExecutable::class);
++    $display = $this->createMock(DisplayPluginBase::class);
++    $field->init($view, $display);
++    $this->assertEmpty($field->render($row));
++  }
++
++}
+diff --git a/core/modules/node/tests/src/Unit/Plugin/views/field/RevisionLinkTest.php b/core/modules/node/tests/src/Unit/Plugin/views/field/RevisionLinkTest.php
+new file mode 100644
+index 0000000000..2336e9708f
+--- /dev/null
++++ b/core/modules/node/tests/src/Unit/Plugin/views/field/RevisionLinkTest.php
+@@ -0,0 +1,47 @@
++<?php
++
++namespace Drupal\Tests\node\Unit\Plugin\views\field;
++
++use Drupal\Core\Access\AccessManagerInterface;
++use Drupal\Core\Entity\EntityRepositoryInterface;
++use Drupal\Core\Entity\EntityTypeManagerInterface;
++use Drupal\Core\Language\LanguageManagerInterface;
++use Drupal\Core\StringTranslation\TranslationInterface;
++use Drupal\node\Plugin\views\field\RevisionLink;
++use Drupal\Tests\UnitTestCase;
++use Drupal\views\Plugin\views\display\DisplayPluginBase;
++use Drupal\views\ResultRow;
++use Drupal\views\ViewExecutable;
++use Symfony\Component\DependencyInjection\ContainerBuilder;
++
++/**
++ * @coversDefaultClass \Drupal\node\Plugin\views\field\RevisionLink
++ * @group node
++ */
++class RevisionLinkTest extends UnitTestCase {
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function tearDown(): void {
++    parent::tearDown();
++    $container = new ContainerBuilder();
++    \Drupal::setContainer($container);
++  }
++
++  /**
++   * @covers ::render
++   */
++  public function testRender() {
++    $row = new ResultRow();
++    $container = new ContainerBuilder();
++    $container->set('string_translation', $this->createMock(TranslationInterface::class));
++    \Drupal::setContainer($container);
++    $field = new RevisionLink([], '', [], $this->createMock(AccessManagerInterface::class), $this->createMock(EntityTypeManagerInterface::class), $this->createMock(EntityRepositoryInterface::class), $this->createMock(LanguageManagerInterface::class));
++    $view = $this->createMock(ViewExecutable::class);
++    $display = $this->createMock(DisplayPluginBase::class);
++    $field->init($view, $display);
++    $this->assertEmpty($field->render($row));
++  }
++
++}
+diff --git a/core/modules/user/src/Plugin/views/field/Permissions.php b/core/modules/user/src/Plugin/views/field/Permissions.php
+index 705ba7a589..c9b29a6e2d 100644
+--- a/core/modules/user/src/Plugin/views/field/Permissions.php
++++ b/core/modules/user/src/Plugin/views/field/Permissions.php
+@@ -87,11 +87,14 @@ public function preRender(&$values) {
+ 
+     $rids = [];
+     foreach ($values as $result) {
+-      $user_rids = $this->getEntity($result)->getRoles();
+-      $uid = $this->getValue($result);
++      $user = $this->getEntity($result);
++      if ($user) {
++        $user_rids = $user->getRoles();
++        $uid = $this->getValue($result);
+ 
+-      foreach ($user_rids as $rid) {
+-        $rids[$rid][] = $uid;
++        foreach ($user_rids as $rid) {
++          $rids[$rid][] = $uid;
++        }
+       }
+     }
+ 
+diff --git a/core/modules/user/tests/src/Unit/Plugin/views/field/PermissionsTest.php b/core/modules/user/tests/src/Unit/Plugin/views/field/PermissionsTest.php
+new file mode 100644
+index 0000000000..65401c6108
+--- /dev/null
++++ b/core/modules/user/tests/src/Unit/Plugin/views/field/PermissionsTest.php
+@@ -0,0 +1,49 @@
++<?php
++
++namespace Drupal\Tests\user\Unit\Plugin\views\field;
++
++use Drupal\Core\Entity\EntityTypeManagerInterface;
++use Drupal\Core\Extension\ModuleHandlerInterface;
++use Drupal\Core\StringTranslation\TranslationInterface;
++use Drupal\Tests\UnitTestCase;
++use Drupal\user\PermissionHandlerInterface;
++use Drupal\user\Plugin\views\field\Permissions;
++use Drupal\views\Plugin\views\display\DisplayPluginBase;
++use Drupal\views\ResultRow;
++use Drupal\views\ViewExecutable;
++use Symfony\Component\DependencyInjection\ContainerBuilder;
++
++/**
++ * @coversDefaultClass \Drupal\user\Plugin\views\field\Permissions
++ * @group user
++ */
++class PermissionsTest extends UnitTestCase {
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function tearDown(): void {
++    parent::tearDown();
++    $container = new ContainerBuilder();
++    \Drupal::setContainer($container);
++  }
++
++  /**
++   * Tests the preRender method.
++   *
++   * @covers ::preRender
++   */
++  public function testPreRender() {
++    $values = [new ResultRow()];
++    $container = new ContainerBuilder();
++    $container->set('string_translation', $this->createMock(TranslationInterface::class));
++    $container->set('user.permissions', $this->createMock(PermissionHandlerInterface::class));
++    \Drupal::setContainer($container);
++    $field = new Permissions([], '', [], $this->createMock(ModuleHandlerInterface::class), $this->createMock(EntityTypeManagerInterface::class));
++    $view = $this->createMock(ViewExecutable::class);
++    $display = $this->createMock(DisplayPluginBase::class);
++    $field->init($view, $display);
++    $this->assertEquals('', $field->preRender($values));
++  }
++
++}
+diff --git a/core/modules/views/src/Plugin/views/field/BulkForm.php b/core/modules/views/src/Plugin/views/field/BulkForm.php
+index a94bc5fad4..4f7bc27221 100644
+--- a/core/modules/views/src/Plugin/views/field/BulkForm.php
++++ b/core/modules/views/src/Plugin/views/field/BulkForm.php
+@@ -288,17 +288,23 @@ public function viewsForm(&$form, FormStateInterface $form_state) {
+       // Render checkboxes for all rows.
+       $form[$this->options['id']]['#tree'] = TRUE;
+       foreach ($this->view->result as $row_index => $row) {
+-        $entity = $this->getEntityTranslation($this->getEntity($row), $row);
+-
+-        $form[$this->options['id']][$row_index] = [
+-          '#type' => 'checkbox',
+-          // We are not able to determine a main "title" for each row, so we can
+-          // only output a generic label.
+-          '#title' => $this->t('Update this item'),
+-          '#title_display' => 'invisible',
+-          '#default_value' => !empty($form_state->getValue($this->options['id'])[$row_index]) ? 1 : NULL,
+-          '#return_value' => $this->calculateEntityBulkFormKey($entity, $use_revision),
+-        ];
++        $entity = $this->getEntity($row);
++        if ($entity) {
++          $entity = $this->getEntityTranslation($entity, $row);
++
++          $form[$this->options['id']][$row_index] = [
++            '#type' => 'checkbox',
++            // We are not able to determine a main "title" for each row, so we
++            // can only output a generic label.
++            '#title' => $this->t('Update this item'),
++            '#title_display' => 'invisible',
++            '#default_value' => !empty($form_state->getValue($this->options['id'])[$row_index]) ? 1 : NULL,
++            '#return_value' => $this->calculateEntityBulkFormKey($entity, $use_revision),
++          ];
++        }
++        else {
++          $form[$this->options['id']][$row_index] = [];
++        }
+       }
+ 
+       // Replace the form submit button label.
+diff --git a/core/modules/views/src/Plugin/views/field/EntityLink.php b/core/modules/views/src/Plugin/views/field/EntityLink.php
+index f7b2877a6c..746c4d8416 100644
+--- a/core/modules/views/src/Plugin/views/field/EntityLink.php
++++ b/core/modules/views/src/Plugin/views/field/EntityLink.php
+@@ -26,7 +26,8 @@ public function render(ResultRow $row) {
+    */
+   protected function renderLink(ResultRow $row) {
+     if ($this->options['output_url_as_text']) {
+-      return $this->getUrlInfo($row)->toString();
++      $url_info = $this->getUrlInfo($row);
++      return $url_info ? $url_info->toString() : '';
+     }
+     return parent::renderLink($row);
+   }
+@@ -37,10 +38,12 @@ protected function renderLink(ResultRow $row) {
+   protected function getUrlInfo(ResultRow $row) {
+     $template = $this->getEntityLinkTemplate();
+     $entity = $this->getEntity($row);
+-    if ($this->languageManager->isMultilingual()) {
+-      $entity = $this->getEntityTranslation($entity, $row);
++    if ($entity) {
++      if ($this->languageManager->isMultilingual()) {
++        $entity = $this->getEntityTranslation($entity, $row);
++      }
++      return $entity->toUrl($template)->setAbsolute($this->options['absolute']);
+     }
+-    return $entity->toUrl($template)->setAbsolute($this->options['absolute']);
+   }
+ 
+   /**
+diff --git a/core/modules/views/src/Plugin/views/field/EntityOperations.php b/core/modules/views/src/Plugin/views/field/EntityOperations.php
+index e08cd8cade..dab5a7601c 100644
+--- a/core/modules/views/src/Plugin/views/field/EntityOperations.php
++++ b/core/modules/views/src/Plugin/views/field/EntityOperations.php
+@@ -127,7 +127,11 @@ public function buildOptionsForm(&$form, FormStateInterface $form_state) {
+    * {@inheritdoc}
+    */
+   public function render(ResultRow $values) {
+-    $entity = $this->getEntityTranslation($this->getEntity($values), $values);
++    $entity = $this->getEntity($values);
++    if (!$entity) {
++      return '';
++    }
++    $entity = $this->getEntityTranslation($entity, $values);
+     $operations = $this->entityTypeManager->getListBuilder($entity->getEntityTypeId())->getOperations($entity);
+     if ($this->options['destination']) {
+       foreach ($operations as &$operation) {
+diff --git a/core/modules/views/src/Plugin/views/field/LinkBase.php b/core/modules/views/src/Plugin/views/field/LinkBase.php
+index 6e23473785..88df5cc34d 100644
+--- a/core/modules/views/src/Plugin/views/field/LinkBase.php
++++ b/core/modules/views/src/Plugin/views/field/LinkBase.php
+@@ -164,9 +164,12 @@ public function query() {
+    */
+   public function render(ResultRow $row) {
+     $access = $this->checkUrlAccess($row);
+-    $build = ['#markup' => $access->isAllowed() ? $this->renderLink($row) : ''];
+-    BubbleableMetadata::createFromObject($access)->applyTo($build);
+-    return $build;
++    if ($access) {
++      $build = ['#markup' => $access->isAllowed() ? $this->renderLink($row) : ''];
++      BubbleableMetadata::createFromObject($access)->applyTo($build);
++      return $build;
++    }
++    return '';
+   }
+ 
+   /**
+@@ -175,12 +178,13 @@ public function render(ResultRow $row) {
+    * @param \Drupal\views\ResultRow $row
+    *   A view result row.
+    *
+-   * @return \Drupal\Core\Access\AccessResultInterface
+-   *   The access result.
++   * @return \Drupal\Core\Access\AccessResultInterface|null
++   *   The access result, or NULL if the URI elements of the link doesn't exist.
+    */
+   protected function checkUrlAccess(ResultRow $row) {
+-    $url = $this->getUrlInfo($row);
+-    return $this->accessManager->checkNamedRoute($url->getRouteName(), $url->getRouteParameters(), $this->currentUser(), TRUE);
++    if ($url = $this->getUrlInfo($row)) {
++      return $this->accessManager->checkNamedRoute($url->getRouteName(), $url->getRouteParameters(), $this->currentUser(), TRUE);
++    }
+   }
+ 
+   /**
+@@ -189,7 +193,7 @@ protected function checkUrlAccess(ResultRow $row) {
+    * @param \Drupal\views\ResultRow $row
+    *   A view result row.
+    *
+-   * @return \Drupal\Core\Url
++   * @return \Drupal\Core\Url|null
+    *   The URI elements of the link.
+    */
+   abstract protected function getUrlInfo(ResultRow $row);
+@@ -219,7 +223,7 @@ protected function renderLink(ResultRow $row) {
+    */
+   protected function addLangcode(ResultRow $row) {
+     $entity = $this->getEntity($row);
+-    if ($this->languageManager->isMultilingual()) {
++    if ($entity && $this->languageManager->isMultilingual()) {
+       $this->options['alter']['language'] = $this->getEntityTranslation($entity, $row)->language();
+     }
+   }
+diff --git a/core/modules/views/src/Plugin/views/field/RenderedEntity.php b/core/modules/views/src/Plugin/views/field/RenderedEntity.php
+index 5dd4948053..71de527d3e 100644
+--- a/core/modules/views/src/Plugin/views/field/RenderedEntity.php
++++ b/core/modules/views/src/Plugin/views/field/RenderedEntity.php
+@@ -129,17 +129,19 @@ public function buildOptionsForm(&$form, FormStateInterface $form_state) {
+    * {@inheritdoc}
+    */
+   public function render(ResultRow $values) {
+-    $entity = $this->getEntityTranslation($this->getEntity($values), $values);
+-    $build = [];
+-    if (isset($entity)) {
++    $entity = $this->getEntity($values);
++    if ($entity) {
++      $build = [];
++      $entity = $this->getEntityTranslation($entity, $values);
+       $access = $entity->access('view', NULL, TRUE);
+       $build['#access'] = $access;
+       if ($access->isAllowed()) {
+         $view_builder = $this->entityTypeManager->getViewBuilder($this->getEntityTypeId());
+         $build += $view_builder->view($entity, $this->options['view_mode'], $entity->language()->getId());
+       }
++      return $build;
+     }
+-    return $build;
++    return '';
+   }
+ 
+   /**
+diff --git a/core/modules/views/tests/src/Unit/Plugin/views/field/BulkFormTest.php b/core/modules/views/tests/src/Unit/Plugin/views/field/BulkFormTest.php
+new file mode 100644
+index 0000000000..74330ca930
+--- /dev/null
++++ b/core/modules/views/tests/src/Unit/Plugin/views/field/BulkFormTest.php
+@@ -0,0 +1,76 @@
++<?php
++
++namespace Drupal\Tests\views\Unit\Plugin\views\field;
++
++use Drupal\Core\Form\FormStateInterface;
++use Drupal\Core\StringTranslation\TranslationInterface;
++use Drupal\Tests\UnitTestCase;
++use Drupal\views\Plugin\views\field\BulkForm;
++use Drupal\views\Plugin\views\query\QueryPluginBase;
++use Drupal\views\ResultRow;
++use Drupal\views\ViewExecutable;
++use Symfony\Component\DependencyInjection\ContainerBuilder;
++
++/**
++ * @coversDefaultClass \Drupal\views\Plugin\views\field\BulkForm
++ * @group Views
++ */
++class BulkFormTest extends UnitTestCase {
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function tearDown(): void {
++    parent::tearDown();
++    $container = new ContainerBuilder();
++    \Drupal::setContainer($container);
++  }
++
++  /**
++   * @covers ::viewsForm
++   */
++  public function testViewsForm() {
++    $row = new ResultRow();
++
++    $container = new ContainerBuilder();
++    $container->set('string_translation', $this->createMock(TranslationInterface::class));
++    \Drupal::setContainer($container);
++
++    $field = $this->getMockBuilder(BulkForm::class)
++      ->setMethods(['getEntityType', 'getEntity'])
++      ->disableOriginalConstructor()
++      ->getMock();
++    $field->expects($this->any())
++      ->method('getEntityType')
++      ->willReturn('foo');
++    $field->expects($this->any())
++      ->method('getEntity')
++      ->willReturn(NULL);
++
++    $query = $this->getMockBuilder(QueryPluginBase::class)
++      ->setMethods(['getEntityTableInfo'])
++      ->disableOriginalConstructor()
++      ->getMock();
++    $query->expects($this->any())
++      ->method('getEntityTableInfo')
++      ->willReturn([]);
++    $view = $this->getMockBuilder(ViewExecutable::class)
++      ->setMethods(['getQuery'])
++      ->disableOriginalConstructor()
++      ->getMock();
++    $view->expects($this->any())
++      ->method('getQuery')
++      ->willReturn($query);
++    $view->result = [$row];
++    $view->query = $query;
++    $field->view = $view;
++    $field->options = ['id' => 'bar', 'action_title' => 'zee'];
++    $form_state = $this->createMock(FormStateInterface::class);
++    $form = [];
++    $field->viewsForm($form, $form_state);
++    $this->assertNotEmpty($form);
++    $this->assertIsArray($form[$field->options['id']][0]);
++    $this->assertEmpty($form[$field->options['id']][0]);
++  }
++
++}
+diff --git a/core/modules/views/tests/src/Unit/Plugin/views/field/LinkBaseTest.php b/core/modules/views/tests/src/Unit/Plugin/views/field/LinkBaseTest.php
+new file mode 100644
+index 0000000000..e48fc3b2df
+--- /dev/null
++++ b/core/modules/views/tests/src/Unit/Plugin/views/field/LinkBaseTest.php
+@@ -0,0 +1,73 @@
++<?php
++
++namespace Drupal\Tests\views\Unit\Plugin\views\field;
++
++use Drupal\Core\Access\AccessManagerInterface;
++use Drupal\Core\Access\AccessResultAllowed;
++use Drupal\Core\Entity\EntityRepositoryInterface;
++use Drupal\Core\Entity\EntityTypeManagerInterface;
++use Drupal\Core\Language\LanguageManagerInterface;
++use Drupal\Core\Render\RendererInterface;
++use Drupal\Core\StringTranslation\TranslationInterface;
++use Drupal\Tests\UnitTestCase;
++use Drupal\views\Plugin\views\display\DisplayPluginBase;
++use Drupal\views\Plugin\views\field\LinkBase;
++use Drupal\views\ResultRow;
++use Drupal\views\ViewExecutable;
++use Symfony\Component\DependencyInjection\ContainerBuilder;
++
++/**
++ * @coversDefaultClass \Drupal\views\Plugin\views\field\EntityLink
++ * @group Views
++ */
++class LinkBaseTest extends UnitTestCase {
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function tearDown(): void {
++    parent::tearDown();
++    $container = new ContainerBuilder();
++    \Drupal::setContainer($container);
++  }
++
++  /**
++   * @covers ::render
++   */
++  public function testRender() {
++    $row = new ResultRow();
++    $container = new ContainerBuilder();
++    $container->set('string_translation', $this->createMock(TranslationInterface::class));
++    $container->set('renderer', $this->createMock(RendererInterface::class));
++    \Drupal::setContainer($container);
++
++    $access = new AccessResultAllowed();
++    $languageManager = $this->createMock(LanguageManagerInterface::class);
++    $languageManager->expects($this->any())
++      ->method('isMultilingual')
++      ->willReturn(TRUE);
++    $field = $this->getMockBuilder(LinkBase::class)
++      ->setConstructorArgs([
++        [],
++        'foo',
++        [],
++        $this->createMock(AccessManagerInterface::class),
++        $this->createMock(EntityTypeManagerInterface::class),
++        $this->createMock(EntityRepositoryInterface::class),
++        $languageManager,
++      ])
++      ->setMethods(['checkUrlAccess', 'getUrlInfo'])
++      ->getMock();
++    $field->expects($this->any())
++      ->method('checkUrlAccess')
++      ->willReturn($access);
++
++    $view = $this->createMock(ViewExecutable::class);
++    $display = $this->createMock(DisplayPluginBase::class);
++
++    $field->init($view, $display);
++    $field_built = $field->render($row);
++    $this->assertEquals('', \Drupal::service('renderer')->render($field_built));
++  }
++
++}
+diff --git a/core/modules/views/tests/src/Unit/Plugin/views/field/RenderedEntityTest.php b/core/modules/views/tests/src/Unit/Plugin/views/field/RenderedEntityTest.php
+new file mode 100644
+index 0000000000..1c321348b0
+--- /dev/null
++++ b/core/modules/views/tests/src/Unit/Plugin/views/field/RenderedEntityTest.php
+@@ -0,0 +1,33 @@
++<?php
++
++namespace Drupal\Tests\views\Unit\Plugin\views\field;
++
++use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
++use Drupal\Core\Entity\EntityRepositoryInterface;
++use Drupal\Core\Entity\EntityTypeManagerInterface;
++use Drupal\Core\Language\LanguageManagerInterface;
++use Drupal\Tests\UnitTestCase;
++use Drupal\views\Plugin\views\display\DisplayPluginBase;
++use Drupal\views\Plugin\views\field\RenderedEntity;
++use Drupal\views\ResultRow;
++use Drupal\views\ViewExecutable;
++
++/**
++ * @coversDefaultClass \Drupal\views\Plugin\views\field\RenderedEntity
++ * @group Views
++ */
++class RenderedEntityTest extends UnitTestCase {
++
++  /**
++   * @covers ::render
++   */
++  public function testRender() {
++    $row = new ResultRow();
++    $field = new RenderedEntity([], '', [], $this->createMock(EntityTypeManagerInterface::class), $this->createMock(LanguageManagerInterface::class), $this->createMock(EntityRepositoryInterface::class), $this->createMock(EntityDisplayRepositoryInterface::class));
++    $view = $this->createMock(ViewExecutable::class);
++    $display = $this->createMock(DisplayPluginBase::class);
++    $field->init($view, $display);
++    $this->assertEmpty($field->render($row));
++  }
++
++}
