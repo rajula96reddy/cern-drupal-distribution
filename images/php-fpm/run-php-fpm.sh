@@ -1,12 +1,8 @@
 #!/bin/sh
 set -ex
 
-INSTALL_COOKIE=/drupal-data/.site-installed
-if [ -f "${INSTALL_COOKIE}" ]; then
-    # Run enable or disable redis script
-    /operations/enable-or-disable-redis.sh
-fi
+# Export cron_key value to a file in emptyDir
+echo $(drush  state-get system.cron_key --format=string) > /var/run/cronkey &
 
 # Run PHP-FPM
-
 exec php-fpm
