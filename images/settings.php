@@ -152,3 +152,9 @@ if (getenv('ENVIRONMENT') != 'production' && file_exists($app_root . '/' . $site
 // $databases['default']['default']['init_commands']['isolation'] = "SET SESSION tx_isolation='READ-COMMITTED'";
 $databases['default']['default']['init_commands']['lock_wait_timeout'] = "SET SESSION innodb_lock_wait_timeout = 20";
 $databases['default']['default']['init_commands']['wait_timeout'] = "SET SESSION wait_timeout = 600";
+
+// These settings force HTTPS for all content served by drupal
+// See: https://gitlab.cern.ch/webservices/webframeworks-planning/-/issues/787
+$settings['reverse_proxy'] = TRUE;
+$settings['reverse_proxy_addresses'] = array($_SERVER['REMOTE_ADDR']);
+$settings['reverse_proxy_trusted_headers'] = SymfonyComponentHttpFoundationRequest::HEADER_X_FORWARDED_FOR | SymfonyComponentHttpFoundationRequest::HEADER_X_FORWARDED_PROTO | SymfonyComponentHttpFoundationRequest::HEADER_X_FORWARDED_PORT;
