@@ -250,6 +250,12 @@
     ],
     "post-update-cmd": [
       "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+    ],
+    "post-install-cmd": [
+        "echo \"Crawl-Delay: 10\" >> web/robots.txt"
+    ],
+    "post-update-cmd": [
+        "echo \"Crawl-Delay: 10\" >> web/robots.txt"
     ]
   },
   "extra": {
