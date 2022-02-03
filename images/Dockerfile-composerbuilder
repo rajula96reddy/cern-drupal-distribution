@@ -152,7 +152,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 # ~~Ref: https://github.com/bkuhl/fpm-nginx/blob/master/Dockerfile~~ (this is inspiration for the "mix")
 # Ref: https://github.com/nginxinc/docker-nginx/blob/master/stable/alpine/Dockerfile
 
-ENV NJS_VERSION   0.5.3
+ARG NJS_VERSION
 ENV PKG_RELEASE   1
 
 RUN set -x \
