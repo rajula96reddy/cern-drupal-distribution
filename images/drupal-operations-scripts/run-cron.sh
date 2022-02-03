@@ -34,6 +34,7 @@ if echo "$cron_key" | grep -Eq '^[[:alnum:]]_-]+$' ; then # key can contain alph
 fi
 
 # We have max time / keep alive due to some crons to take longer than expected (it has been reported in Oct/2021 of a website[test-cnpdfs] to take ~5/6min)
+# Note: ${site} is sufficient as this curl request will query Kubernetes Service and not any DNS, therefore we do not need to provide siteUrl
 HTTP_CODE=$(curl --location --silent -L --max-time 900  --keepalive-time 900 -w "%{http_code}\n" "http://${site}/cron/${cron_key}" -o /dev/null)
 case $HTTP_CODE in
     204)
