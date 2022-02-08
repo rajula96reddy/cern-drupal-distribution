@@ -3,7 +3,8 @@
 # Change working directory to the drupal code
 cd /app
 
-# Run update db 
+# Run update db
 echo "Running drush updatedb"
-/operations/enable-maintenance-mode.sh && drush updatedb -y -q
+/operations/enable-maintenance-mode.sh
+drush updatedb -y
 /operations/disable-maintenance-mode.sh
