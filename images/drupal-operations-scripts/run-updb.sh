@@ -10,5 +10,5 @@ cd /app
 # Run update db
 echo "Running drush updatedb"
 /operations/enable-maintenance-mode.sh
-drush updatedb -y 1>&2 2> "$LOGS_DIR/$DATE"
+drush updatedb -y -q
 /operations/disable-maintenance-mode.sh
