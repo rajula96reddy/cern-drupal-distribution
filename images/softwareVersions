@@ -4,4 +4,4 @@ nginx: '1.20.1'
 # It will NOT affect the sitebuilder directly.
 composer: '2.1.8'
 # This is instead the version of the composer builder that the sitebuilder will use.
-composerBuilderTag: 'v9.2-1-RELEASE-2021.11.04T14-02-53Z'
+composerBuilderTag: 'php-lib-09e5b788'
