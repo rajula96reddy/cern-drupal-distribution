@@ -45,8 +45,15 @@ RUN apk --update add \
     libxslt-dev \
     libxslt \
     net-snmp \
-    net-snmp-dev
+    net-snmp-dev \
+    php7-mbstring
 
+# Fix for iconv library
+# This must be present in the sitebuilder image,
+# so that it can be used in runtime.
+# ffi: https://gitlab.cern.ch/webservices/webframeworks-planning/-/issues/690
+RUN apk add --update gnu-libiconv
+ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so
 
 # Configured timezone.
 ENV TZ=Europe/Zurich
