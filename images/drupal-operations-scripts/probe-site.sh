@@ -27,7 +27,13 @@ FILE=/var/run/${PROBE}_probe_failure
 # Doing the request directly to the unix socket in php-fpm didn't work.
 # Related Issue: https://gitlab.cern.ch/webservices/webframeworks-planning/-/issues/616
 HTTP_CODE_BASE=$(curl --max-time 200 --silent --fail --insecure -I localhost:8080 -w '%{http_code}\n' -o /dev/null)
-if [[ "${HTTP_CODE_BASE}" -ne "200" || "${HTTP_CODE_BASE}" -ne "302" || "${HTTP_CODE_BASE}" -ne "403" || "${HTTP_CODE_BASE}" -ne "503" ]]; then
+
+# Expected responses:
+# 200: normally working base URL
+# 302: redirection (NOTE: not sure if there's a legitimate case to expect this)
+# 403: fully private websites give this response
+# 503: high load
+if [[ "${HTTP_CODE_BASE}" -ne "200" && "${HTTP_CODE_BASE}" -ne "302" && "${HTTP_CODE_BASE}" -ne "403" && "${HTTP_CODE_BASE}" -ne "503" ]]; then
     echo "Probe failed" >> $FILE
     echo "Probe failed. Endpoint / responds with code: $HTTP_CODE_BASE"
     exit 1
@@ -35,6 +41,9 @@ fi
 
 # NOTE: if the site is in maintenance mode or fully private, we expect the login button to still work.
 HTTP_CODE_USER_LOGIN=$(curl --max-time 200 --silent --fail --insecure -I localhost:8080/user/login -w '%{http_code}\n' -o /dev/null)
+
+# Expected responses:
+# 302: redirection to the SSO page
 if [[ "${HTTP_CODE_USER_LOGIN}" -ne "302" ]]; then
     echo "Probe failed" >> $FILE
     echo "Probe failed. Endpoint /user/login responds with code: $HTTP_CODE_USER_LOGIN"
