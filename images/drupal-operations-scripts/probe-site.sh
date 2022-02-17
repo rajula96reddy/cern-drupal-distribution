@@ -27,7 +27,7 @@ FILE=/var/run/${PROBE}_probe_failure
 # Doing the request directly to the unix socket in php-fpm didn't work.
 # Related Issue: https://gitlab.cern.ch/webservices/webframeworks-planning/-/issues/616
 HTTP_CODE_BASE=$(curl --max-time 200 --silent --fail --insecure -I localhost:8080 -w '%{http_code}\n' -o /dev/null)
-if [[ "${HTTP_CODE_BASE}" -ne "200" || "${HTTP_CODE_BASE}" -ne "302" || "${HTTP_CODE_BASE}" -ne "403" || "${HTTP_CODE_BASE}" -ne "503"]]; then
+if [[ "${HTTP_CODE_BASE}" -ne "200" || "${HTTP_CODE_BASE}" -ne "302" || "${HTTP_CODE_BASE}" -ne "403" || "${HTTP_CODE_BASE}" -ne "503" ]]; then
     echo "Probe failed" >> $FILE
     echo "Probe failed. Endpoint / responds with code: $HTTP_CODE_BASE"
     exit 1
