@@ -1,6 +1,8 @@
 stages:
   - environment
   - build
+  - test
+  - deprovision
 
 .build_image: &build_image
   image:
@@ -35,6 +37,8 @@ environment:
     - echo "phpVersion=$phpVersion" >> env.env
     - echo "composerVersion=$composerVersion" >> env.env
     - echo "composerBuilderTag=$composerBuilderTag" >> env.env
+    - echo "NAMESPACE=cern-drupal-distribution-ci" >> env.env
+    - echo "PIPELINE_ID=${RANDOM}" >> env.env
   artifacts:
     reports:
       dotenv: env.env
@@ -65,3 +69,43 @@ build-composerbuilder:
     DOCKERFILE: 'Dockerfile-composerbuilder'
     # space-separated list of variables to interpolate in the dockerfile
     BUILD_ARGS: '--build-arg PHP_VERSION=$phpVersion --build-arg COMPOSER_VERSION=$composerVersion --build-arg NGINX_VERSION=$nginxVersion'
+
+test-newsite-provision:
+  stage: test
+  needs:
+  - environment
+  - build-sitebuilder
+  image: gitlab-registry.cern.ch/paas-tools/openshift-client:4
+  variables:
+    SITENAME: 'test-newsite-${PIPELINE_ID}'
+  script:
+      # Currently, all we require for all tests is to retrieve envsubst binary since it's not present on https://gitlab.cern.ch/paas-tools/openshift-client
+      # Can be removed once https://gitlab.cern.ch/paas-tools/openshift-client/-/merge_requests/18#note_5241799 is resolved
+    - curl -L --silent https://github.com/a8m/envsubst/releases/download/v1.2.0/envsubst-`uname -s`-`uname -m` -o /usr/local/bin/envsubst && chmod +x /usr/local/bin/envsubst
+    - ./.gitlab/ci/scripts/test-new-site-creation.sh
+
+test-clonesite-provision:
+  stage: test
+  needs:
+  - environment
+  - build-sitebuilder
+  image: gitlab-registry.cern.ch/paas-tools/openshift-client:4
+  variables:
+    SITENAME: 'test-clonesite-${PIPELINE_ID}'
+  script:
+      # Currently, all we require for all tests is to retrieve envsubst binary since it's not present on https://gitlab.cern.ch/paas-tools/openshift-client
+      # Can be removed once https://gitlab.cern.ch/paas-tools/openshift-client/-/merge_requests/18#note_5241799 is resolved
+    - curl -L --silent https://github.com/a8m/envsubst/releases/download/v1.2.0/envsubst-`uname -s`-`uname -m` -o /usr/local/bin/envsubst && chmod +x /usr/local/bin/envsubst
+    - ./.gitlab/ci/scripts/test-clone-site-creation.sh
+
+deprovision-test-resources:
+  stage: deprovision
+    # Manual if variable present
+  needs:
+  - environment
+  - build-sitebuilder
+  - test-newsite-provision
+  - test-clonesite-provision
+  image: gitlab-registry.cern.ch/paas-tools/openshift-client:4
+  script:
+    - ./.gitlab/ci/scripts/deprovision-test-resources.sh
