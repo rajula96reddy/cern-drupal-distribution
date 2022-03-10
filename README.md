@@ -39,6 +39,11 @@ $ docker run -it -v .:/project:z gitlab-registry.cern.ch/drupal/paas/cern-drupal
 Note that composer needs a lot of memory to run updates, so it's recommended to remove the memory limit
 by setting the environment variable `COMPOSER_MEMORY_LIMIT=-1`.
 
+To see the changes to the actual versions after updating, run:
+```
+git diff composer.lock | egrep -B1 '(\+|-)            "version":'
+```
+
 ## <h2 id="release"></h2> Versioning and Release
 
 The precise contents of the images currently running a Drupal site can be linked to this repo.

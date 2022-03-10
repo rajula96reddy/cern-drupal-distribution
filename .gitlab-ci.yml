@@ -29,11 +29,13 @@ environment:
     - wget --no-check-certificate https://github.com/mikefarah/yq/releases/download/v4.2.0/yq_linux_amd64 -O /yq && chmod +x /yq
     - export softwareVersions=$CI_PROJECT_DIR/images/softwareVersions
     - export nginxVersion=`/yq e .nginx $softwareVersions`
+    - export nginxNJSVersion=`/yq e .nginxNJS $softwareVersions`
     - export phpVersion=`/yq e .php $softwareVersions`
     - export composerVersion=`/yq e .composer $softwareVersions`
     - export composerBuilderTag=`/yq e .composerBuilderTag $softwareVersions`
     - echo "TAG=$TAG" >> env.env
     - echo "nginxVersion=$nginxVersion" >> env.env
+    - echo "nginxNJSVersion=$nginxNJSVersion" >> env.env
     - echo "phpVersion=$phpVersion" >> env.env
     - echo "composerVersion=$composerVersion" >> env.env
     - echo "composerBuilderTag=$composerBuilderTag" >> env.env
@@ -68,7 +70,7 @@ build-composerbuilder:
     CONTEXT_DIR: 'images'
     DOCKERFILE: 'Dockerfile-composerbuilder'
     # space-separated list of variables to interpolate in the dockerfile
-    BUILD_ARGS: '--build-arg PHP_VERSION=$phpVersion --build-arg COMPOSER_VERSION=$composerVersion --build-arg NGINX_VERSION=$nginxVersion'
+    BUILD_ARGS: '--build-arg PHP_VERSION=$phpVersion --build-arg COMPOSER_VERSION=$composerVersion --build-arg NGINX_VERSION=$nginxVersion --build-arg NJS_VERSION=$nginxNJSVersion'
 
 test-newsite-provision:
   stage: test
