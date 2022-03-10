@@ -31,9 +31,9 @@ The image tag that is used by the sitebuilder is listed in [software versions](i
 To create a local development environment with the same composer version the following can be used, replacing the tag as needed:
 
 ```bash
-$ docker run -it -v .:/project:z gitlab-registry.cern.ch/drupal/paas/cern-drupal-distribution/composer-builder:v9.2-1-RELEASE-2021.11.04T14-02-53Z
+$ docker run -it -v .:/project:z gitlab-registry.cern.ch/drupal/paas/cern-drupal-distribution/composer-builder:v9.3-1-RELEASE-2022.03.10T15-05-23Z
 # composer -n require ...
-# COMPOSER_MEMORY_LIMIT=-1 composer -n update -v --optimize-autoloader --with-dependencies
+# COMPOSER_MEMORY_LIMIT=-1 composer -n update -v --optimize-autoloader --with-all-dependencies
 ```
 
 Note that composer needs a lot of memory to run updates, so it's recommended to remove the memory limit

@@ -9,4 +9,4 @@ nginxNJS: '0.7.2'
 # It will NOT affect the sitebuilder directly.
 composer: '2.2.7'
 # This is instead the version of the composer builder that the sitebuilder will use.
-composerBuilderTag: 'v9.3-1-RELEASE-2022.02.15T15-49-11Z'
+composerBuilderTag: 'v9.3-1-RELEASE-2022.03.10T15-05-23Z'
