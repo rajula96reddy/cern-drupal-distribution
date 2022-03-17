@@ -152,7 +152,7 @@
     "drupal/facets": "~2.0.0",
     "drupal/fast_404": "~2.0@alpha",
     "drupal/features": "~3.12.0",
-    "drupal/feeds": "~3.0@alpha",
+    "drupal/feeds": "3.0-alpha11",
     "drupal/fences": "~2.0@RC",
     "drupal/field_formatter_class": "~1.5.0",
     "drupal/field_group": "~3.2.0",
