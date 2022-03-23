@@ -5,9 +5,12 @@ source `dirname $0`/common-functions.sh
 # Ensure oc access
 oc login -u ${SA_USER} -p ${SA_PASSWORD} --server=https://api.drupal.okd.cern.ch
 
-# $NAMESPACE is defined on .gitlab-ci.yaml
-# Create/ValidateProject
-oc new-project $NAMESPACE --description="Project created by CI on Cern-drupal-distribution"
+# NAMESPACE is provided by .gitlab-ci.yml, the namespace/project is expected to exist at this point
+oc get project ${NAMESPACE}  > /dev/null
+if [[ "$?" != "0" ]]; then
+    echo "‼️  Project ${NAMESPACE} doesn't exist! Aborting...."
+    exit 1
+fi
 
 # Variables to create new DrupalSite
 get_tag
@@ -41,4 +44,4 @@ CHECK_IF_SITE_INSTALL=$(curl --max-time 60 --silent --fail "https://${FQDN}/" | 
 
 echo "✅ Website provisioned as expected!"
 delete_site
-# Don't delete Project, as it might be used on othe CIs at the same time, just delete resources!
+# Don't delete Project, as it might be used on other CIs at the same time, just delete resources!
