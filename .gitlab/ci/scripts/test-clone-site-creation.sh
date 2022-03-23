@@ -5,11 +5,15 @@ source `dirname $0`/common-functions.sh
 # Ensure oc access
 oc login -u ${SA_USER} -p ${SA_PASSWORD} --server=https://api.drupal.okd.cern.ch
 
-# $NAMESPACE is defined on .gitlab-ci.yaml
-# Create/ValidateProject
-oc new-project $NAMESPACE --description="Project created by CI on Cern-drupal-distribution"
+# NAMESPACE is provided by .gitlab-ci.yml, the namespace/project is expected to exist at this point
+oc get project ${NAMESPACE}  > /dev/null
+if [[ "$?" != "0" ]]; then
+    echo "‼️ Project ${NAMESPACE} doesn't exist! Aborting...."
+    exit 1
+fi
 
-export CLONE_FROM=$(oc get drupalsite -l ci=true --no-headers -o custom-columns=name:.metadata.name)
+
+export CLONE_FROM=$(oc get drupalsite -l ci-clone-source=true --no-headers -o custom-columns=name:.metadata.name)
 # Validate we only get one website to clone from
 if [[ $(echo $CLONE_FROM | wc -w )  != "1" ]]; then
     echo "Error, expected 1 website to clone from, got $CLONE_FROM"
@@ -38,5 +42,4 @@ if [[ $working != "True" ]]; then
 fi
 
 echo "✅ Website provisioned as expected!"
-# We do not delete site, this is a step made after web tests
-# Don't delete Project, as it might be used on othe CIs at the same time, just delete resources!
+delete_site
