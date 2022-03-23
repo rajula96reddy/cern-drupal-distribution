@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c9ceb63379273c28724bb8b98fcb99ea",
+    "content-hash": "070ded4be22d78a01998cc89a3c8edce",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2605,11 +2605,11 @@
         },
         {
             "name": "drupal/cern-indico-feeds",
-            "version": "2.0.7",
+            "version": "2.0.8",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/modules/cern-indico-feeds.git",
-                "reference": "d7b433d5ae925b09e819d41725a198c20a1d4419"
+                "reference": "411b65a6c0132f9c972068b5b4bf7d1e3f8590e2"
             },
             "require": {
                 "drupal/feeds": "^3.0-alpha8"
@@ -2629,7 +2629,7 @@
                 }
             ],
             "description": "Defines a set of re-usable patterns for the CERN Drupal infrastructure",
-            "time": "2021-12-03T15:20:56+00:00"
+            "time": "2022-03-23T16:18:48+00:00"
         },
         {
             "name": "drupal/cern-install-profiles",
@@ -3461,7 +3461,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/contribute.git",
-                "reference": "8e0692ac28de695942cbf88677eae7b35dfcd7b9"
+                "reference": "384ed1370dd3901172f83414e8b9fc3a5337293e"
             },
             "require": {
                 "drupal/core": "^8.7.7 || ^9.0"
@@ -3472,8 +3472,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta8+4-dev",
-                    "datestamp": "1588025707",
+                    "version": "8.x-1.0-beta8+5-dev",
+                    "datestamp": "1648052199",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -3494,6 +3494,10 @@
                     "name": "Jacob Rockowitz (jrockowitz)",
                     "homepage": "https://www.drupal.org/u/jrockowitz",
                     "role": "Maintainer"
+                },
+                {
+                    "name": "joshua1234511",
+                    "homepage": "https://www.drupal.org/user/3362218"
                 },
                 {
                     "name": "jrockowitz",
@@ -15762,7 +15766,7 @@
         },
         {
             "name": "drupal/core-dev",
-            "version": "9.3.8",
+            "version": "9.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-dev.git",
@@ -15806,7 +15810,7 @@
             ],
             "description": "require-dev dependencies from drupal/drupal; use in addition to drupal/core-recommended to run tests from drupal/core.",
             "support": {
-                "source": "https://github.com/drupal/core-dev/tree/9.3.8"
+                "source": "https://github.com/drupal/core-dev/tree/9.3.9"
             },
             "time": "2021-11-30T05:41:29+00:00"
         },
@@ -18737,7 +18741,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "drupal/cern-indico-feeds": 15,
         "drupal/content_access": 15,
         "drupal/contribute": 20,
         "drupal/fast_404": 15,
