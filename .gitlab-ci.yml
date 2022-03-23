@@ -102,12 +102,6 @@ test-clonesite-provision:
 
 deprovision-test-resources:
   stage: deprovision
-    # Manual if variable present
-  needs:
-  - environment
-  - build-sitebuilder
-  - test-newsite-provision
-  - test-clonesite-provision
   image: gitlab-registry.cern.ch/paas-tools/openshift-client:4
   script:
     - ./.gitlab/ci/scripts/deprovision-test-resources.sh
