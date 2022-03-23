@@ -22,16 +22,15 @@ done
 
 # Wait  for clone pod to spawn
 sleep 60s
-max_attempts="16"
+max_attempts="20"
 attempt_num="0"
 while [[ $(oc get drupalsite/$SITENAME -n $NAMESPACE -o json | jq -r '.status.conditions[] | select(.type=="Ready") | .status') != "True" ]]
 do
   if (( $attempt_num == $max_attempts ))
     then
-        echo $(date -u +"%Y-%m-%dT%H:%M:%SZ")"-Sitename: ${SITENAME}, Timed out (10minutes) waiting for DrupalSite to be ready!"
+        echo $(date -u +"%Y-%m-%dT%H:%M:%SZ")"-Sitename: ${SITENAME}, Timed out (20minutes) waiting for DrupalSite to be ready!"
         exit 0
     else
-       #echo $(date -u +"%Y-%m-%dT%H:%M:%SZ")-"Sitename: ${SITENAME}, >> Waiting 10s for Drupalsite to be ready "
         (( attempt_num++ ))
         sleep 60s
     fi
@@ -40,7 +39,7 @@ done
 # Warm up the website
 curl --max-time 60 --silent --fail --insecure -IL "https://${FQDN}/" > /dev/null
 curl --max-time 60 --silent --fail --insecure -IL "https://${FQDN}/user/login" > /dev/null
-# Give another minute for SSO etc. to be properly running
+# Give another 10 minutes for SSO etc. to be properly running
 sleep 600
 
 # Check if the base URL works
