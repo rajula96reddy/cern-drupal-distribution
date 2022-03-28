@@ -1,0 +1,13 @@
+diff --git a/src/OpenIDConnectSession.php b/src/OpenIDConnectSession.php
+index 836d0e2..62bb09f 100644
+--- a/src/OpenIDConnectSession.php
++++ b/src/OpenIDConnectSession.php
+@@ -52,7 +52,7 @@ class OpenIDConnectSession {
+    */
+   public function saveDestination() {
+     $current_path = $this->currentPath->getPath();
+-    $path = ($current_path == '/user/login') ? '/user' : $current_path;
++    $path = ($current_path == '/user/login') ? '/' : $current_path;
+ 
+     // The destination could contain query parameters. Ensure that they are
+     // preserved.
