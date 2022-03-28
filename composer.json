@@ -300,7 +300,8 @@
       },
       "drupal/openid_connect": {
         "OIDC roles mapping from JWT https://www.drupal.org/project/openid_connect/issues/3166508": "patches/openid_connect-3166508-role-mapping.patch",
-        "OIDC autologin (skip Drupal login page) https://www.drupal.org/project/openid_connect/issues/3011413": "patches/openid_connect-3011413-autologin.patch"
+        "OIDC autologin (skip Drupal login page) https://www.drupal.org/project/openid_connect/issues/3011413": "patches/openid_connect-3011413-autologin.patch",
+        "OIDC default redirection after login to / instead of /user/{user_id} ": "patches/openid_connect-custom-default-redirection.patch"
       },
       "drupal/captcha": {
         "Fixes CAPTCHAs not loading due to not being able to access font directory https://www.drupal.org/project/captcha/issues/3211385": "patches/captcha-white-image-captcha-3211385-12.patch"
