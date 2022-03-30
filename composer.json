@@ -306,6 +306,9 @@
       "drupal/captcha": {
         "Fixes CAPTCHAs not loading due to not being able to access font directory https://www.drupal.org/project/captcha/issues/3211385": "patches/captcha-white-image-captcha-3211385-12.patch"
       },
+      "drupal/scheduler": {
+        "Hardcoded local task dependency on view.scheduler_scheduled_content": "patches/scheduler-view-dependency-3224340.patch"
+      },
       "__comments__": {
       }
     },
