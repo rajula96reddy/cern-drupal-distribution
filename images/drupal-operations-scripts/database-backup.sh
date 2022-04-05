@@ -30,10 +30,12 @@ fi
 cd /app
 
 # Database backup
+# Need to add --extra-dump=--no-tablespaces to drush sql-dump to be compatible since MySQL 5.7
+# https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-31.html#mysqld-5-7-31-security 
 if [[ ! -z "$FILEPATH" ]]; then
     echo "Backing up database to $FILEPATH"
-    drush sql-dump > $FILEPATH
+    drush sql-dump --extra-dump=--no-tablespaces > $FILEPATH
 else
     echo "Backing up database to /drupal-data/$FILENAME"
-    drush sql-dump > /drupal-data/$FILENAME
+    drush sql-dump --extra-dump=--no-tablespaces > /drupal-data/$FILENAME
 fi
