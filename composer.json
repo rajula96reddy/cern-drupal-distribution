@@ -98,7 +98,7 @@
   ],
   "require": {
     "php": ">=7.4",
-    "ckeditor/ckeditor": "~4.17.0",
+    "ckeditor/ckeditor": "dev-full/4.17.x",
     "composer/installers": "~2.0.0",
     "cweagans/composer-patches": "~1.7.0",
     "dompdf/dompdf": "^1.0",
