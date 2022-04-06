@@ -152,6 +152,4 @@ Note: find the latest versions for the libs with a `VERSION` variable.
 ( mkdir -p web/libraries/jquery.hoverIntent && cd $_ && wget https://raw.githubusercontent.com/briancherne/jquery-hoverIntent/master/jquery.hoverIntent.js; )
 ( mkdir -p web/libraries/json2 && cd $_ && wget https://raw.githubusercontent.com/douglascrockford/JSON-js/master/json2.js; )
 ( mkdir -p web/libraries/jquery.pause && cd $_ && wget https://raw.githubusercontent.com/tobia/Pause/master/jquery.pause.js; )
-( VERSION=4.16.2; cd web/libraries && wget https://download.ckeditor.com/colorbutton/releases/colorbutton_$VERSION.zip && unzip colorbutton_$VERSION.zip && rm colorbutton_$VERSION.zip; )
-( VERSION=4.16.2; cd web/libraries && wget https://download.ckeditor.com/panelbutton/releases/panelbutton_$VERSION.zip && unzip panelbutton_$VERSION.zip && rm panelbutton_$VERSION.zip; )
 ```
