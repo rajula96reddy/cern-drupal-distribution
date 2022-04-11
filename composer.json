@@ -20,6 +20,10 @@
       "url": "https://packages.drupal.org/8"
     },
     {
+        "type": "composer",
+        "url": "https://asset-packagist.org"
+    },
+    {
       "type": "vcs",
       "url": "https://gitlab.cern.ch/web-team/drupal/public/d9/modules/cern-components.git"
     },
@@ -98,10 +102,15 @@
   ],
   "require": {
     "php": ">=7.4",
+    "bower-asset/bootstrap": "~5.1.0",
+    "bower-asset/jquery-cycle": "~3.0.0",
+    "bower-asset/jquery-hoverintent": "~1.10.0",
+    "bower-asset/json2": "dev-master",
     "ckeditor/ckeditor": "dev-full/4.17.x",
+    "bower-asset/ckeditor": "dev-full/4.17.x",
     "composer/installers": "~2.0.0",
     "cweagans/composer-patches": "~1.7.0",
-    "dompdf/dompdf": "^1.0",
+    "dompdf/dompdf": "~1.2.1",
     "drupal/admin_toolbar": "~3.1.0",
     "drupal/adminimal_theme": "~1.6.0",
     "drupal/allowed_formats": "~1.4.0",
@@ -217,6 +226,7 @@
     "drupal/workbench_access": "~1.0@beta",
     "drupal/workbench_moderation": "~1.6.0",
     "drush/drush": "~10.6.2",
+    "npm-asset/jquery": "~3.6.0",
     "vlucas/phpdotenv": "~5.4.0",
     "webflo/drupal-finder": "~1.2.0",
     "wikimedia/composer-merge-plugin": "~2.0.1"
@@ -257,12 +267,14 @@
       "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
     ],
     "post-install-cmd": [
+      "@putenv CKEDITOR_PLUGIN_VERSION=4.17.2",
       "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-      "echo \"Crawl-Delay: 10\" >> web/robots.txt"
+      "scripts/post-setup-actions.sh"
     ],
     "post-update-cmd": [
+      "@putenv CKEDITOR_PLUGIN_VERSION=4.17.2",
       "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-      "echo \"Crawl-Delay: 10\" >> web/robots.txt"
+      "scripts/post-setup-actions.sh"
     ]
   },
   "extra": {
