@@ -101,3 +101,18 @@ CI should be a normal user that creates a DrupalSite with this version/release a
  One, our image implementation is inspired by https://github.com/bkuhl/fpm-nginx (That does not differ from Nginx supported [image](https://github.com/nginxinc/docker-nginx/blob/master/stable/alpine/Dockerfile)).
  Two, Nginx might break CI if stable upstream changes, to fix CI please update the local DockerFile according to upstream.
 
+## Upgrade version constraints of included Composer packages
+
+Occasionally we would like to try upgrading all the bundled packages to the latest version that doesn't break the CERN Drupal Distribution.
+This will become easier with more thorough CI testing.
+
+Workflow:
+1. Update all version constraints in composer.json to the newest available.
+1. Let CI tests confirm that the generated websites aren't breaking. Test thoroughly in coordination with the Web team all the bundled functionality.
+1. As we iterate on the changes, it is likely that some of the upgrades may have to be rolled back.
+
+To update all version constraints to the newest:
+
+```bash
+jq -r '.require | keys[]' composer.json | xargs composer require
+```
