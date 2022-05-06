@@ -267,7 +267,17 @@
   "prefer-stable": true,
   "config": {
     "discard-changes": true,
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "composer/installers": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "cweagans/composer-patches": true,
+      "drupal/core-composer-scaffold": true,
+      "drupal/core-project-message": true,
+      "wikimedia/composer-merge-plugin": true,
+      "zaporylie/composer-drupal-optimizations": true,
+      "simplesamlphp/composer-module-installer": true
+    }
   },
   "autoload": {
     "classmap": [
