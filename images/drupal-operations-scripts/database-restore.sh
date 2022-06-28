@@ -31,6 +31,17 @@ fi
 cd /app
 
 # Database drop
+## We don't want to drop immediatly without at least some time-out
+echo "Database will be dropped in 5s, if you want to cancel please press any key."
+## Loop to read input from terminal, if no input we allow script to proceed
+for i in {0..5}
+do
+    read -t 3 -n 1
+    if [ $? = 0 ] ; then
+        echo "Operation canceled!"; exit ;
+    fi
+    sleep 1s
+done
 echo "Dropping database"
 drush sql-drop -y
 

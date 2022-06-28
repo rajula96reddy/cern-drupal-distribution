@@ -31,11 +31,12 @@ cd /app
 
 # Database backup
 # Need to add --extra-dump=--no-tablespaces to drush sql-dump to be compatible since MySQL 5.7
-# https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-31.html#mysqld-5-7-31-security 
+# https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-31.html#mysqld-5-7-31-security
 if [[ ! -z "$FILEPATH" ]]; then
     echo "Backing up database to $FILEPATH"
-    drush sql-dump --extra-dump=--no-tablespaces > $FILEPATH
+    ## --max_allowed_packets to avoid https://stackoverflow.com/questions/8815445/mysqldump-error-got-packet-bigger-than-max-allowed-packet
+    drush sql-dump --extra-dump=--no-tablespaces --extra-dump=--max_allowed_packet=512M > $FILEPATH
 else
     echo "Backing up database to /drupal-data/$FILENAME"
-    drush sql-dump --extra-dump=--no-tablespaces > /drupal-data/$FILENAME
+    drush sql-dump --extra-dump=--no-tablespaces --extra-dump=--max_allowed_packet=512M > /drupal-data/$FILENAME
 fi
