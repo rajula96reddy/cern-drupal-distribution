@@ -15,7 +15,7 @@ if [[ "$1" == "-h" ]]; then
 fi
 
 echo "---> Moving user drupal configuration to final location..."
-cp -Rf /tmp/src/* /app/
+cp -Rf /tmp/src/* /app/ || true
 # At this point we have
 # - composer.admins.json (composer from admins)
 # - composer.json (composer from users)
