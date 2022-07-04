@@ -261,7 +261,8 @@
   },
   "scripts": {
     "pre-install-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion",
+      "scripts/pre-setup-actions.sh"
     ],
     "pre-update-cmd": [
       "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
