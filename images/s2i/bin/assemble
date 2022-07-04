@@ -1,5 +1,5 @@
 #!/bin/sh
-set -ex
+set -exu
 
 #
 # S2I assemble script for the image.
