@@ -1,5 +1,5 @@
 #!/bin/sh
-set -exu
+set -eo pipefail
 
 #
 # S2I assemble script for the image.
