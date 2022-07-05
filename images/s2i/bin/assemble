@@ -28,7 +28,9 @@ mv composer.admins.json composer.json
 
 # Add git safe repositories due to Git 2.35.2 security update
 echo "[safe]
-        directory = *"  > .gitconfig
+        directory = /app/web/themes/custom/cern-adminimal-subtheme"  > .gitconfig
+
+git config --system --add safe.directory "/app/web"
 
 if [ -f composer.json ] && [ -f composer.user.json ] && [ -f composer.lock ]; then
 	echo "---> Found 'composer.lock', updating dependencies ... "
